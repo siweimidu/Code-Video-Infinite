@@ -54,4 +54,5 @@ mg-motion `engines/mg-motion/references/styles.md` 的 15 个 H2、onetake `engi
 - **五个渲染链没有统一**：onetake/mg-motion 用 Python+Chrome 或 Node+Chrome 逐帧；shotcraft 用 Remotion；claude-motion 用 Node+Playwright；wise-motion 只导出源码。命令各不相同，别混用。
 - **统一闸只测机器能测的**（时长/画幅/fps/响度/真峰值/黑帧/静帧）。承接分、镜头还原度这类要么用引擎自带闸，要么靠评审闸。
 - **索引条数 ≠ 可交付案例数**：claude-motion 的 122 条研究清单是只读目录，47 套案例里有 11 套预览不可用；wise-motion 462 条是动效条目，不是 462 支片。
+- **shotcraft 的 `workbench/` 没随包分发**：它的 ENGINE.md 会让人跑 `node workbench/scripts/open.mjs`，但本包里没有这个目录（上游仓库才有）。交付时按 `references/delivery.md` 的说明降级处理，不要假装工作台可用。
 - **mg-motion 包内缺独立 LICENSE 文件**：上游 mg-styles-15 是 MIT，但这份 skill 包没附带 LICENSE，已在 `engines/mg-motion/NOTICE-UPSTREAM.md` 里写明。

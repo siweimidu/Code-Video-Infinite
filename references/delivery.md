@@ -17,7 +17,7 @@
 |---|---|
 | 成片 MP4（终版规格） | 永远 |
 | 可编辑源码工程（能一键重渲） | 永远（用户只要成片时可以问，但不主动省略源码说明） |
-| 本地可播放预览 / 工作台 | shotcraft 交付后**主动**开动效工作台（`node workbench/scripts/open.mjs <工程>`，http://localhost:5198） |
+| 本地可播放预览 / 工作台 | shotcraft 交付后**主动**开动效工作台（`node workbench/scripts/open.mjs <工程>`，http://localhost:5198）。⚠️ **本包不含 `workbench/` 目录**（上游只在仓库里提供）：没有这个目录就直接交「成片 + 可渲染工程 + 关键帧」，并告诉用户工作台需从上游仓库取 |
 | `ADAPTATION.md` | claude-motion：来源与提交、保留/改写/舍弃的实现、用到的资产与许可、实际做过的检查、未解决问题 |
 | 多语言版本 | onetake：同一个合成用 `?lang=` 切语言，**不许复制合成**（复制会双倍每次修复） |
 | 剪映工程 | shotcraft 用户要求时（`engines/shotcraft/references/jianying-export.md`） |
