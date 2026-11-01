@@ -1,0 +1,23 @@
+# 保持原样：不做 EOL 转换，不改任何字节
+* -text
+# 明确标为二进制，便于将来迁移 LFS 时识别
+*.mp4 binary
+*.mov binary
+*.webm binary
+*.glb binary
+*.gltf binary
+*.bin binary
+*.woff2 binary
+*.woff binary
+*.ttf binary
+*.otf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+*.hdr binary
+*.flac binary
+*.mp3 binary
+*.m4a binary
+*.wav binary

@@ -1,0 +1,13 @@
+{
+  "$comment": "统一机器闸默认规格。node scripts/qc.mjs gate <video> --spec spec.json",
+  "duration": 10,
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "lufs": -14,
+  "lufsTolerance": 2.5,
+  "truePeakMax": -1,
+  "blackSecondsMax": 0.8,
+  "frozenRatioMax": 0.85,
+  "requireAudio": true
+}
