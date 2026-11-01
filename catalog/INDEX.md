@@ -19,53 +19,53 @@
 
 | id | 名称 / 一句话 | 分类 | 时长 / 能量 | 入口 |
 | --- | --- | --- | --- | --- |
-| `lemo-art-deco` | Midnight at the Starlight Hotel | 装饰艺术 |  | `assets/cases/lemo-opuscar/styles/art-deco/demo/index.html` |
-| `lemo-ascii-crt` | Tranquility.log | ASCII / CRT 终端 |  | `assets/cases/lemo-opuscar/styles/ascii-crt/demo/index.html` |
-| `lemo-backrooms` | Night Shift Orientation | 后室 / 新怪谈 |  | `assets/cases/lemo-opuscar/styles/backrooms/demo/index.html` |
-| `lemo-blueprint` | Patent Pending: The Cloud Catcher | 蓝图 / 工程制图 |  | `assets/cases/lemo-opuscar/styles/blueprint/demo/index.html` |
-| `lemo-brick-toy` | Rocket from Spare Parts | 积木玩具 |  | `assets/cases/lemo-opuscar/styles/brick-toy/demo/index.html` |
-| `lemo-cel-anime-80s` | City Lights, 1987 | 80 年代赛璐璐动画 |  | `assets/cases/lemo-opuscar/styles/cel-anime-80s/demo/index.html` |
-| `lemo-crayon-book` | The Moon Can't Sleep | 蜡笔儿童绘本 |  | `assets/cases/lemo-opuscar/styles/crayon-book/demo/index.html` |
-| `lemo-dark-keynote` | Room to Think | 暗色科技发布 |  | `assets/cases/lemo-opuscar/styles/dark-keynote/demo/index.html` |
-| `lemo-dataviz` | A Hundred Summers | 数据叙事 |  | `assets/cases/lemo-opuscar/styles/dataviz/demo/index.html` |
-| `lemo-engraving` | The Honeybee, Plate VII | 铜版画 |  | `assets/cases/lemo-opuscar/styles/engraving/demo/index.html` |
-| `lemo-game-show` | Rhythm of AI, 1997 → 2026 | 综艺节奏扁平 |  | `assets/cases/lemo-opuscar/styles/game-show/demo/index.html` |
-| `lemo-glass-product` | Aura — Hear the Light | 玻璃质感产品 |  | `assets/cases/lemo-opuscar/styles/glass-product/demo/index.html` |
-| `lemo-halftone-dossier` | Case File: Chubby | 复古半调案卷 |  | `assets/cases/lemo-opuscar/styles/halftone-dossier/demo/index.html` |
-| `lemo-hd-2d` | The Lampbearer | HD-2D |  | `assets/cases/lemo-opuscar/styles/hd-2d/demo/index.html` |
-| `lemo-hologram-hud` | Volt · Spec Scan | 科幻全息界面 |  | `assets/cases/lemo-opuscar/styles/hologram-hud/demo/index.html` |
-| `lemo-impasto` | The Colour of Rain | 油画厚涂 |  | `assets/cases/lemo-opuscar/styles/impasto/demo/index.html` |
-| `lemo-ink-wash` | The Swordsman and the River | 中国水墨 |  | `assets/cases/lemo-opuscar/styles/ink-wash/demo/index.html` |
-| `lemo-iso-infographic` | From Bean to Cup | 等距信息图 |  | `assets/cases/lemo-opuscar/styles/iso-infographic/demo/index.html` |
-| `lemo-living-screencast` | Clawd Moves In | 活体实机录屏 |  | `assets/cases/lemo-opuscar/styles/living-screencast/demo/index.html` |
-| `lemo-lowpoly-island` | The Island That Grew | 低多边形等距 |  | `assets/cases/lemo-opuscar/styles/lowpoly-island/demo/index.html` |
-| `lemo-microgame` | Five-Second Astronaut | 微游戏快闪（瓦里奥制造式） |  | `assets/cases/lemo-opuscar/styles/microgame/demo/index.html` |
-| `lemo-midcentury-toon` | Meet Pip | 50s 扁平卡通 |  | `assets/cases/lemo-opuscar/styles/midcentury-toon/demo/index.html` |
-| `lemo-one-line` | The Line That Never Lifted | 一笔画 |  | `assets/cases/lemo-opuscar/styles/one-line/demo/index.html` |
-| `lemo-paper-lantern` | A Mooncake's Longing | 纸雕灯影 |  | `assets/cases/lemo-opuscar/styles/paper-lantern/demo/index.html` |
-| `lemo-paper-popup` | Pip's Paper Adventure | 纸片立体书 |  | `assets/cases/lemo-opuscar/styles/paper-popup/demo/index.html` |
-| `lemo-papercut-red` | Nian Comes to Town | 红色窗花剪纸 |  | `assets/cases/lemo-opuscar/styles/papercut-red/demo/index.html` |
-| `lemo-pictogram-motion` | Aichi-Nagoya 2026 — All 43 Sports | 象形运动图形 |  | `assets/cases/lemo-opuscar/styles/pictogram-motion/demo/index.html` |
-| `lemo-pixel-rpg` | The Last Save Point | 16-bit 像素 RPG |  | `assets/cases/lemo-opuscar/styles/pixel-rpg/demo/index.html` |
-| `lemo-risograph` | Sunday Ride | Risograph 丝网印刷 |  | `assets/cases/lemo-opuscar/styles/risograph/demo/index.html` |
-| `lemo-rubber-hose` | Coffee Cup Chase | 1930s 橡皮管卡通 |  | `assets/cases/lemo-opuscar/styles/rubber-hose/demo/index.html` |
-| `lemo-scifi-toon` | Coffee Run | 科幻情景喜剧卡通 |  | `assets/cases/lemo-opuscar/styles/scifi-toon/demo/index.html` |
-| `lemo-shadow-puppet` | Hou Yi Shoots the Suns | 皮影戏 |  | `assets/cases/lemo-opuscar/styles/shadow-puppet/demo/index.html` |
-| `lemo-silent-film` | The Runaway Loaf | 1920s 默片 |  | `assets/cases/lemo-opuscar/styles/silent-film/demo/index.html` |
-| `lemo-silkscreen-poster` | Three Trails | 丝印旅行海报 |  | `assets/cases/lemo-opuscar/styles/silkscreen-poster/demo/index.html` |
-| `lemo-spy-titles` | The Velvet Cipher | 60s 间谍片头 |  | `assets/cases/lemo-opuscar/styles/spy-titles/demo/index.html` |
-| `lemo-stained-glass` | The Dragon of the East Window | 彩色玻璃窗 |  | `assets/cases/lemo-opuscar/styles/stained-glass/demo/index.html` |
-| `lemo-swiss-motion` | Five Rules for a Poster | 瑞士动态排版 |  | `assets/cases/lemo-opuscar/styles/swiss-motion/demo/index.html` |
-| `lemo-tilt-shift` | Toy Town Rush Hour | 移轴微缩 |  | `assets/cases/lemo-opuscar/styles/tilt-shift/demo/index.html` |
-| `lemo-ukiyoe` | A Journey Toward the Mountain | 浮世绘 |  | `assets/cases/lemo-opuscar/styles/ukiyoe/demo/index.html` |
-| `lemo-urban-sketch` | Where the Wind Went | 钢笔淡彩 |  | `assets/cases/lemo-opuscar/styles/urban-sketch/demo/index.html` |
-| `lemo-watercolor` | Follow the Rain | 水彩笔刷 |  | `assets/cases/lemo-opuscar/styles/watercolor/demo/index.html` |
-| `lemo-whiteboard` | Einstein in Your Pocket | 白板讲解 |  | `assets/cases/lemo-opuscar/styles/whiteboard/demo/index.html` |
-| `lemo-woodcut` | The Bell Founder | 木刻版画 |  | `assets/cases/lemo-opuscar/styles/woodcut/demo/index.html` |
-| `reelmimic-anime-cel` | 赛璐珞角色绘图引擎 | 赛璐珞角色 |  | `assets/cases/reelmimic/.claude/skills/anime-cel/template/studio.html` |
-| `reelmimic-paper-cutout` | 剪纸定格绘图引擎 | 剪纸定格 |  | `assets/cases/reelmimic/.claude/skills/paper-cutout/template/studio.html` |
-| `reelmimic-pixel-art` | 像素角色绘图引擎 | 像素角色 |  | `assets/cases/reelmimic/.claude/skills/pixel-art/template/studio.html` |
-| `reelmimic-whiteboard` | 白板手绘绘图引擎 | 白板手绘 |  | `assets/cases/reelmimic/.claude/skills/whiteboard/template/studio.html` |
+| `lemo-art-deco` | Midnight at the Starlight Hotel | 装饰艺术 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/art-deco/demo/index.html` |
+| `lemo-ascii-crt` | Tranquility.log | ASCII / CRT 终端 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/ascii-crt/demo/index.html` |
+| `lemo-backrooms` | Night Shift Orientation | 后室 / 新怪谈 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/backrooms/demo/index.html` |
+| `lemo-blueprint` | Patent Pending: The Cloud Catcher | 蓝图 / 工程制图 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/blueprint/demo/index.html` |
+| `lemo-brick-toy` | Rocket from Spare Parts | 积木玩具 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/brick-toy/demo/index.html` |
+| `lemo-cel-anime-80s` | City Lights, 1987 | 80 年代赛璐璐动画 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/cel-anime-80s/demo/index.html` |
+| `lemo-crayon-book` | The Moon Can't Sleep | 蜡笔儿童绘本 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/crayon-book/demo/index.html` |
+| `lemo-dark-keynote` | Room to Think | 暗色科技发布 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/dark-keynote/demo/index.html` |
+| `lemo-dataviz` | A Hundred Summers | 数据叙事 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/dataviz/demo/index.html` |
+| `lemo-engraving` | The Honeybee, Plate VII | 铜版画 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/engraving/demo/index.html` |
+| `lemo-game-show` | Rhythm of AI, 1997 → 2026 | 综艺节奏扁平 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/game-show/demo/index.html` |
+| `lemo-glass-product` | Aura — Hear the Light | 玻璃质感产品 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/glass-product/demo/index.html` |
+| `lemo-halftone-dossier` | Case File: Chubby | 复古半调案卷 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/halftone-dossier/demo/index.html` |
+| `lemo-hd-2d` | The Lampbearer | HD-2D |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/hd-2d/demo/index.html` |
+| `lemo-hologram-hud` | Volt · Spec Scan | 科幻全息界面 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/hologram-hud/demo/index.html` |
+| `lemo-impasto` | The Colour of Rain | 油画厚涂 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/impasto/demo/index.html` |
+| `lemo-ink-wash` | The Swordsman and the River | 中国水墨 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/ink-wash/demo/index.html` |
+| `lemo-iso-infographic` | From Bean to Cup | 等距信息图 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/iso-infographic/demo/index.html` |
+| `lemo-living-screencast` | Clawd Moves In | 活体实机录屏 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/living-screencast/demo/index.html` |
+| `lemo-lowpoly-island` | The Island That Grew | 低多边形等距 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/lowpoly-island/demo/index.html` |
+| `lemo-microgame` | Five-Second Astronaut | 微游戏快闪（瓦里奥制造式） |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/microgame/demo/index.html` |
+| `lemo-midcentury-toon` | Meet Pip | 50s 扁平卡通 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/midcentury-toon/demo/index.html` |
+| `lemo-one-line` | The Line That Never Lifted | 一笔画 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/one-line/demo/index.html` |
+| `lemo-paper-lantern` | A Mooncake's Longing | 纸雕灯影 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/paper-lantern/demo/index.html` |
+| `lemo-paper-popup` | Pip's Paper Adventure | 纸片立体书 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/paper-popup/demo/index.html` |
+| `lemo-papercut-red` | Nian Comes to Town | 红色窗花剪纸 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/papercut-red/demo/index.html` |
+| `lemo-pictogram-motion` | Aichi-Nagoya 2026 — All 43 Sports | 象形运动图形 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/pictogram-motion/demo/index.html` |
+| `lemo-pixel-rpg` | The Last Save Point | 16-bit 像素 RPG |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/pixel-rpg/demo/index.html` |
+| `lemo-risograph` | Sunday Ride | Risograph 丝网印刷 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/risograph/demo/index.html` |
+| `lemo-rubber-hose` | Coffee Cup Chase | 1930s 橡皮管卡通 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/rubber-hose/demo/index.html` |
+| `lemo-scifi-toon` | Coffee Run | 科幻情景喜剧卡通 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/scifi-toon/demo/index.html` |
+| `lemo-shadow-puppet` | Hou Yi Shoots the Suns | 皮影戏 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/shadow-puppet/demo/index.html` |
+| `lemo-silent-film` | The Runaway Loaf | 1920s 默片 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/silent-film/demo/index.html` |
+| `lemo-silkscreen-poster` | Three Trails | 丝印旅行海报 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/silkscreen-poster/demo/index.html` |
+| `lemo-spy-titles` | The Velvet Cipher | 60s 间谍片头 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/spy-titles/demo/index.html` |
+| `lemo-stained-glass` | The Dragon of the East Window | 彩色玻璃窗 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/stained-glass/demo/index.html` |
+| `lemo-swiss-motion` | Five Rules for a Poster | 瑞士动态排版 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/swiss-motion/demo/index.html` |
+| `lemo-tilt-shift` | Toy Town Rush Hour | 移轴微缩 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/tilt-shift/demo/index.html` |
+| `lemo-ukiyoe` | A Journey Toward the Mountain | 浮世绘 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/ukiyoe/demo/index.html` |
+| `lemo-urban-sketch` | Where the Wind Went | 钢笔淡彩 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/urban-sketch/demo/index.html` |
+| `lemo-watercolor` | Follow the Rain | 水彩笔刷 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/watercolor/demo/index.html` |
+| `lemo-whiteboard` | Einstein in Your Pocket | 白板讲解 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/whiteboard/demo/index.html` |
+| `lemo-woodcut` | The Bell Founder | 木刻版画 |  | `engines/claude-motion/assets/cases/lemo-opuscar/styles/woodcut/demo/index.html` |
+| `reelmimic-anime-cel` | 赛璐珞角色绘图引擎 | 赛璐珞角色 |  | `engines/claude-motion/assets/cases/reelmimic/.claude/skills/anime-cel/template/studio.html` |
+| `reelmimic-paper-cutout` | 剪纸定格绘图引擎 | 剪纸定格 |  | `engines/claude-motion/assets/cases/reelmimic/.claude/skills/paper-cutout/template/studio.html` |
+| `reelmimic-pixel-art` | 像素角色绘图引擎 | 像素角色 |  | `engines/claude-motion/assets/cases/reelmimic/.claude/skills/pixel-art/template/studio.html` |
+| `reelmimic-whiteboard` | 白板手绘绘图引擎 | 白板手绘 |  | `engines/claude-motion/assets/cases/reelmimic/.claude/skills/whiteboard/template/studio.html` |
 
 ## 起始 look（onetake）
 
@@ -644,11 +644,11 @@
 
 | id | 名称 / 一句话 | 分类 | 时长 / 能量 | 入口 |
 | --- | --- | --- | --- | --- |
-| `glass` | 玻璃实体 |  |  | `assets/production/glass` |
-| `handdrawn` | 手绘角色 |  |  | `assets/production/handdrawn` |
-| `hd2d` | 像素三维 |  |  | `assets/production/hd2d` |
-| `papercut` | 纸片与镂空 |  |  | `assets/production/papercut` |
-| `swiss` | 字体与图形 |  |  | `assets/production/swiss` |
+| `glass` | 玻璃实体 |  |  | `engines/claude-motion/assets/production/glass` |
+| `handdrawn` | 手绘角色 |  |  | `engines/claude-motion/assets/production/handdrawn` |
+| `hd2d` | 像素三维 |  |  | `engines/claude-motion/assets/production/hd2d` |
+| `papercut` | 纸片与镂空 |  |  | `engines/claude-motion/assets/production/papercut` |
+| `swiss` | 字体与图形 |  |  | `engines/claude-motion/assets/production/swiss` |
 
 ## 研究清单 · 未接通源码（claude-motion）
 
@@ -781,20 +781,20 @@
 
 | id | 名称 / 一句话 | 分类 | 时长 / 能量 | 入口 |
 | --- | --- | --- | --- | --- |
-| `animate-crosshatch` | 钢笔排线 |  |  | `assets/scenes/animate-crosshatch` |
-| `animate-cut-paper` | 彩纸室内 |  |  | `assets/scenes/animate-cut-paper` |
-| `animate-isometric` | 等距线描 |  |  | `assets/scenes/animate-isometric` |
-| `animate-math` | 数学演示 |  |  | `assets/scenes/animate-math` |
-| `animate-pixel` | 像素夜景 |  |  | `assets/scenes/animate-pixel` |
-| `animate-riso` | 孔版叠印 |  |  | `assets/scenes/animate-riso` |
-| `animate-sketchbook` | 素描笔记 |  |  | `assets/scenes/animate-sketchbook` |
-| `botanical-ink` | 蒲公英的远行 |  |  | `assets/scenes/botanical-ink` |
-| `contact-workshop` | 装回音乐盒齿轮 |  |  | `assets/scenes/contact-workshop` |
-| `lemo-lowpoly-island` | 海岛入夜 |  |  | `assets/scenes/lemo-lowpoly-island` |
-| `lemo-midcentury-toon` | 下班后的片刻 |  |  | `assets/scenes/lemo-midcentury-toon` |
-| `lemo-paper-popup` | 纸书里的飞行 |  |  | `assets/scenes/lemo-paper-popup` |
-| `lemo-scifi-toon` | 最后一杯咖啡 |  |  | `assets/scenes/lemo-scifi-toon` |
-| `reading-room` | 风翻过书页 |  |  | `assets/scenes/reading-room` |
+| `animate-crosshatch` | 钢笔排线 |  |  | `engines/claude-motion/assets/scenes/animate-crosshatch` |
+| `animate-cut-paper` | 彩纸室内 |  |  | `engines/claude-motion/assets/scenes/animate-cut-paper` |
+| `animate-isometric` | 等距线描 |  |  | `engines/claude-motion/assets/scenes/animate-isometric` |
+| `animate-math` | 数学演示 |  |  | `engines/claude-motion/assets/scenes/animate-math` |
+| `animate-pixel` | 像素夜景 |  |  | `engines/claude-motion/assets/scenes/animate-pixel` |
+| `animate-riso` | 孔版叠印 |  |  | `engines/claude-motion/assets/scenes/animate-riso` |
+| `animate-sketchbook` | 素描笔记 |  |  | `engines/claude-motion/assets/scenes/animate-sketchbook` |
+| `botanical-ink` | 蒲公英的远行 |  |  | `engines/claude-motion/assets/scenes/botanical-ink` |
+| `contact-workshop` | 装回音乐盒齿轮 |  |  | `engines/claude-motion/assets/scenes/contact-workshop` |
+| `lemo-lowpoly-island` | 海岛入夜 |  |  | `engines/claude-motion/assets/scenes/lemo-lowpoly-island` |
+| `lemo-midcentury-toon` | 下班后的片刻 |  |  | `engines/claude-motion/assets/scenes/lemo-midcentury-toon` |
+| `lemo-paper-popup` | 纸书里的飞行 |  |  | `engines/claude-motion/assets/scenes/lemo-paper-popup` |
+| `lemo-scifi-toon` | 最后一杯咖啡 |  |  | `engines/claude-motion/assets/scenes/lemo-scifi-toon` |
+| `reading-room` | 风翻过书页 |  |  | `engines/claude-motion/assets/scenes/reading-room` |
 
 ## 镜头配方卡（shotcraft）
 
@@ -929,23 +929,23 @@
 
 | id | 名称 / 一句话 | 分类 | 时长 / 能量 | 入口 |
 | --- | --- | --- | --- | --- |
-| `anatomy-mechanisms` | 精确投影与机械零件 |  |  | `assets/extensions/anatomy-mechanisms/examples` |
-| `anidoodle-paper` | Anidoodle 水粉纸艺与折页 |  |  | `assets/extensions/anidoodle-paper/examples` |
+| `anatomy-mechanisms` | 精确投影与机械零件 |  |  | `engines/claude-motion/assets/extensions/anatomy-mechanisms/examples` |
+| `anidoodle-paper` | Anidoodle 水粉纸艺与折页 |  |  | `engines/claude-motion/assets/extensions/anidoodle-paper/examples` |
 | `bee-colony` | 纸面昆虫与植物 |  |  | `` |
-| `blockworld` | 体素地形、AO 网格与橡树生成 |  |  | `assets/extensions/blockworld/template` |
-| `clearwater` | 实时浅水、FFT 波面与 RGB 焦散 |  |  | `assets/extensions/clearwater/template` |
-| `eudoom-motion` | 四墨印刷与仪表图解 |  |  | `assets/extensions/eudoom-motion/template` |
-| `functional-emotions` | GPU 笔触情绪叙事 |  |  | `assets/extensions/functional-emotions/template` |
+| `blockworld` | 体素地形、AO 网格与橡树生成 |  |  | `engines/claude-motion/assets/extensions/blockworld/template` |
+| `clearwater` | 实时浅水、FFT 波面与 RGB 焦散 |  |  | `engines/claude-motion/assets/extensions/clearwater/template` |
+| `eudoom-motion` | 四墨印刷与仪表图解 |  |  | `engines/claude-motion/assets/extensions/eudoom-motion/template` |
+| `functional-emotions` | GPU 笔触情绪叙事 |  |  | `engines/claude-motion/assets/extensions/functional-emotions/template` |
 | `lanshu-signal-explainer` | 信号系统讲解 |  |  | `` |
-| `launch-graphics` | 原生应用发布动效 |  |  | `assets/extensions/launch-graphics/template` |
-| `neighbourhood` | 邻里居民投影造型与关节动作 |  |  | `assets/extensions/neighbourhood/template` |
-| `neon-city` | 雨夜城市、程序幕墙与无状态雨 |  |  | `assets/extensions/neon-city/template` |
-| `neon-overdrive` | 霓虹 GPU 线场与 HDR 后期 |  |  | `assets/extensions/neon-overdrive/template` |
+| `launch-graphics` | 原生应用发布动效 |  |  | `engines/claude-motion/assets/extensions/launch-graphics/template` |
+| `neighbourhood` | 邻里居民投影造型与关节动作 |  |  | `engines/claude-motion/assets/extensions/neighbourhood/template` |
+| `neon-city` | 雨夜城市、程序幕墙与无状态雨 |  |  | `engines/claude-motion/assets/extensions/neon-city/template` |
+| `neon-overdrive` | 霓虹 GPU 线场与 HDR 后期 |  |  | `engines/claude-motion/assets/extensions/neon-overdrive/template` |
 | `people-gait` | 人物支撑步态与关节曲线 |  |  | `` |
 | `pixel-birds` | 像素鸟类形态与帧绘制 |  |  | `` |
-| `procedural-animals` | 程序动物雕塑、毛层与四足动作 |  |  | `assets/extensions/procedural-animals/examples` |
+| `procedural-animals` | 程序动物雕塑、毛层与四足动作 |  |  | `engines/claude-motion/assets/extensions/procedural-animals/examples` |
 | `procedural-buildings` | 参数化建筑与立面材质 |  |  | `` |
-| `songbie-crayon` | 蜡笔纸面与空间叙事 |  |  | `assets/extensions/songbie-crayon/examples` |
-| `vehicle-motion` | 真实车辆动力与可寻址运动轨迹 |  |  | `assets/extensions/vehicle-motion/template` |
-| `watercolor-memory` | 记忆水彩颜料运输 |  |  | `assets/extensions/watercolor-memory/template` |
-| `workspace` | 程序生成办公室道具与材质 |  |  | `assets/extensions/workspace/template` |
+| `songbie-crayon` | 蜡笔纸面与空间叙事 |  |  | `engines/claude-motion/assets/extensions/songbie-crayon/examples` |
+| `vehicle-motion` | 真实车辆动力与可寻址运动轨迹 |  |  | `engines/claude-motion/assets/extensions/vehicle-motion/template` |
+| `watercolor-memory` | 记忆水彩颜料运输 |  |  | `engines/claude-motion/assets/extensions/watercolor-memory/template` |
+| `workspace` | 程序生成办公室道具与材质 |  |  | `engines/claude-motion/assets/extensions/workspace/template` |

@@ -103,7 +103,7 @@ cmAdd('case-catalog.json', (c) => ({
   category: (c.style && c.style.zh) || (c.style && c.style.slug) || '',
   summary: (c.description && (c.description.zh || c.description.en)) || '',
   tags: [c.style && c.style.slug, c.style && c.style.en, c.style && c.style.category].filter(Boolean),
-  path: (c.paths && c.paths.entry) || '',
+  path: c.paths && c.paths.entry ? 'engines/claude-motion/' + c.paths.entry : '',
   license: (c.source && c.source.license) || '',
   upstream: (c.source && c.source.url) || '',
   use: 'node engines/claude-motion/scripts/prepare-case.mjs --case ' + c.id + ' --out <作品目录>',
@@ -115,8 +115,8 @@ cmAdd('engine-catalog.json', (e) => ({
   title: e.title || e.id,
   tags: e.tags || [],
   summary: e.status || '',
-  path: e.template || '',
-  preview: e.preview || '',
+  path: e.template ? 'engines/claude-motion/' + e.template : '',
+  preview: e.preview ? 'engines/claude-motion/' + e.preview : '',
   use: 'node engines/claude-motion/scripts/create-engine.mjs --engine ' + e.id + ' --out <新目录>',
 }));
 cmAdd('scene-catalog.json', (s) => ({
@@ -127,7 +127,7 @@ cmAdd('scene-catalog.json', (s) => ({
   kind: s.kind || '',
   tags: s.tags || [],
   summary: s.retained || '',
-  path: s.path || '',
+  path: s.path ? 'engines/claude-motion/' + s.path : '',
   license: s.license || '',
   upstream: s.source || '',
   use: 'node engines/claude-motion/scripts/create-scene.mjs --scene ' + s.id + ' --out <新目录>',
@@ -150,8 +150,8 @@ cmAdd('extension-catalog.json', (e) => ({
   title: e.title || e.id,
   tags: e.tags || [],
   summary: e.status || '',
-  path: e.template || '',
-  preview: e.preview || '',
+  path: e.template ? 'engines/claude-motion/' + e.template : '',
+  preview: e.preview ? 'engines/claude-motion/' + e.preview : '',
   use: 'node engines/claude-motion/scripts/create-extension.mjs --extension ' + e.id + ' --out <新目录>',
 }));
 const cmSrc = path.join(cm, 'source-index.json');
