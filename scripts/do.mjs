@@ -69,7 +69,7 @@ async function main() {
     process.exit(2);
   }
   const plan = analyse(brief, { medium: flags.medium, engine: flags.engine });
-  const outDir = path.resolve(flags.dir || path.join(ROOT, 'out', slugify(brief)));
+  const outDir = path.resolve(flags.dir || path.join(process.cwd(), 'out', slugify(brief)));
   const engine = plan.reading.engine;
   const style0 = plan.styleDirections[0];
 
