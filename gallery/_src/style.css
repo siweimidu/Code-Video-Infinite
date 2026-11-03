@@ -138,7 +138,7 @@ input[type=search]::placeholder{color:#8e8e93}
 
 /* ---------------- sections ---------------- */
 main{padding-bottom:96px}
-section{padding:88px 0 8px}
+section{padding:88px 0 8px;scroll-margin-top:170px}
 section:first-of-type{padding-top:56px}
 .sec-h{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:34px;flex-wrap:wrap}
 .sec-h .t{max-width:64ch}
@@ -249,3 +249,32 @@ button:hover{background:var(--muted);border-color:#d6d6dc;text-decoration:none}
   section{padding:60px 0 8px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---------------- sticky chrome：nav + 搜索 + 筛选 一起吸顶 ---------------- */
+.chrome{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--border)}
+.chrome .nav{border-bottom:0;background:none;backdrop-filter:none;position:static}
+.chrome .nav .wrap{height:52px}
+.chrome .controls-inner{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:0 0 10px}
+.chrome .chips{padding:0 0 8px}
+.chrome .filterNote{padding:0 0 10px}
+.chrome.scrolled{box-shadow:0 1px 0 rgba(0,0,0,.04),0 8px 24px -18px rgba(0,0,0,.18)}
+.chrome.scrolled .navlinks{display:none}
+.chrome.scrolled .nav .wrap{height:44px}
+.chrome.scrolled .search{padding:0 16px}
+.chrome.scrolled input[type=search]{padding:9px 0;font-size:13.5px}
+.chrome.scrolled .chk{padding:9px 14px;font-size:12.5px}
+.chrome.scrolled .chip{padding:6px 13px;font-size:12.5px}
+.chrome{transition:box-shadow var(--t-mid) var(--ease)}
+
+/* ---------------- 素材库总表 ---------------- */
+.libbar{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px}
+.libchip{white-space:nowrap;font:inherit;font-size:12.5px;color:var(--muted-foreground);background:var(--muted);border:1px solid transparent;border-radius:var(--radius-pill);padding:7px 14px;cursor:pointer;transition:all var(--t-fast) var(--ease)}
+.libchip:hover{background:#ececf1;color:var(--foreground)}
+.libchip.on{background:var(--primary);border-color:var(--primary);color:#fff;font-weight:500}
+.libchip .n{opacity:.55;margin-left:6px;font-family:var(--font-mono);font-size:10.5px}
+.libchip.on .n{opacity:.8}
+.g-lib{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.libmeta{font-family:var(--font-mono);font-size:10.5px;color:var(--muted-foreground);word-break:break-all}
+.tile{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:12px;letter-spacing:.05em}
+.cov{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted-foreground)}
+.cov b{font-family:var(--font-mono);color:var(--foreground);font-weight:500}

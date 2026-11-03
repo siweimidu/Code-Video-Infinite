@@ -278,6 +278,99 @@
   $('#statShot').textContent = D.totals.shotCards;
   $('#statMove').textContent = D.totals.motions;
   $('#gen').textContent = '生成于 ' + D.generatedAt + ' · node scripts/build-gallery.mjs';
+  /* ---------------- 素材库总表（覆盖索引里每一类素材） ---------------- */
+  var libState = { key: "all", limit: 60 };
+  function libKeyOf(collKey, id) { return collKey + "|" + id; }
+  function cardLib(coll, it) {
+    var media;
+    if (it.poster) {
+      media = "<div class=" + Q + "media" + Q + "><img loading=" + Q + "lazy" + Q + " src=" + Q + it.poster + Q + " alt=" + Q + Q + ">" +
+        "<span class=" + Q + "tagbadge real" + Q + ">预览" + "</span></div>";
+    } else {
+      var hue = hueOf(coll.label + it.cat);
+      var g1 = "radial-gradient(120% 110% at 18% 0%,hsl(" + hue + ",58%,94%),transparent 62%)";
+      var g2 = "linear-gradient(165deg,#ffffff,#f5f5f7)";
+      media = "<div class=" + Q + "media" + Q + "><div style=" + Q + "position:absolute;inset:0;background:" + g1 + "," + g2 + Q + "></div>" +
+        "<div class=" + Q + "tile" + Q + " style=" + Q + "color:hsl(" + hue + ",38%,56%)" + Q + ">" + esc(it.cat || coll.label) + "</div>" +
+        "<span class=" + Q + "tagbadge demo" + Q + ">无预览</span></div>";
+    }
+    var meta = it.n ? "<span class=" + Q + "tag" + Q + ">" + it.n + "ms</span>" : "";
+    return "<div class=" + Q + "card" + Q + " tabindex=" + Q + "0" + Q + " role=" + Q + "button" + Q + " data-lib=" + Q + esc(libKeyOf(coll.key, it.id)) + Q + ">" + media +
+      "<div class=" + Q + "body" + Q + "><div class=" + Q + "name" + Q + ">" + esc(it.title || it.id) + "</div>" +
+      "<div class=" + Q + "sub" + Q + ">" + esc(it.sum || (it.cat ? it.cat : coll.label)) + "</div>" +
+      "<div class=" + Q + "tags" + Q + "><span class=" + Q + "tag k" + Q + ">" + esc(coll.label) + "</span>" +
+      (it.cat ? "<span class=" + Q + "tag" + Q + ">" + esc(it.cat) + "</span>" : "") + meta + "</div></div></div>";
+  }
+  function renderLibChips() {
+    var bar = $("#libbar");
+    if (!bar) return;
+    var all = D.library.reduce(function (s, c) { return s + c.count; }, 0);
+    var html = "<button class=" + Q + "libchip" + (libState.key === "all" ? " on" : "") + Q + " data-key=" + Q + "all" + Q + ">全部<span class=" + Q + "n" + Q + ">" + all + "</span></button>";
+    D.library.forEach(function (c) {
+      html += "<button class=" + Q + "libchip" + (libState.key === c.key ? " on" : "") + Q + " data-key=" + Q + esc(c.key) + Q + ">" + esc(c.label) +
+        "<span class=" + Q + "n" + Q + ">" + c.count + "</span></button>";
+    });
+    bar.innerHTML = html;
+  }
+  function renderLib() {
+    var grid = $("#gridLib");
+    if (!grid) return;
+    var pool = [];
+    D.library.forEach(function (c) {
+      if (libState.key !== "all" && libState.key !== c.key) return;
+      c.items.forEach(function (it) {
+        if (state.realOnly && !it.poster) return;
+        if (!hit([it.id, it.title, it.cat, it.sum, c.label].join(" "))) return;
+        pool.push({ coll: c, it: it });
+      });
+    });
+    grid.innerHTML = pool.slice(0, libState.limit).map(function (x) { return cardLib(x.coll, x.it); }).join("") ||
+      "<p class=" + Q + "empty" + Q + ">这个条件下没有条目</p>";
+    var c = $("#cLib");
+    if (c) c.textContent = pool.length + " 条命中" + (pool.length > libState.limit ? "（显示前 " + libState.limit + "）" : "");
+    var w = $("#libMoreWrap");
+    if (w) w.style.display = pool.length > libState.limit ? "block" : "none";
+  }
+  function openLib(key, id) {
+    var coll = D.library.filter(function (c) { return c.key === key; })[0];
+    if (!coll) return;
+    var it = coll.items.filter(function (x) { return x.id === id; })[0];
+    if (!it) return;
+    var h = "";
+    h += "<div class=" + Q + "kv" + Q + "><b>类别</b><span>" + esc(coll.label) + "</span>" +
+      (it.cat ? "<b>分类</b><span>" + esc(it.cat) + "</span>" : "") +
+      "<b>id</b><span>" + esc(it.id) + "</span></div>";
+    if (it.sum) h += "<h4>说明</h4><p class=" + Q + "sub" + Q + " style=" + Q + "-webkit-line-clamp:unset;display:block" + Q + ">" + esc(it.sum) + "</p>";
+    if (it.hint) h += "<h4>怎么用</h4><pre>" + esc(it.hint) + "</pre>";
+    if (it.path) h += "<h4>入口</h4><pre>" + esc(it.path) + "</pre>";
+    if (it.link) h += "<h4>来源</h4><p class=" + Q + "libmeta" + Q + ">" + esc(it.link) + "</p>";
+    if (it.poster) h += "<h4>预览</h4><img src=" + Q + it.poster + Q + " style=" + Q + "width:100%;border-radius:12px;border:1px solid var(--border)" + Q + ">";
+    $("#mTitle").textContent = it.title || it.id;
+    $("#mBody").innerHTML = h;
+    $("#modal").classList.add("on");
+    document.body.style.overflow = "hidden";
+  }
+
+  var baseRender = render;
+  render = function () { baseRender(); renderLib(); };
+
+  document.addEventListener("click", function (e) {
+    var lc = e.target.closest && e.target.closest(".libchip");
+    if (lc) { libState.key = lc.getAttribute("data-key"); libState.limit = 60; renderLibChips(); renderLib(); return; }
+    if (e.target.id === "libMore") { libState.limit += 96; renderLib(); return; }
+    var card = e.target.closest && e.target.closest("[data-lib]");
+    if (card) { var v = card.getAttribute("data-lib").split("|"); openLib(v[0], v[1]); return; }
+  });
+
+  /* 滚动后收起导航链接，把整条控制区变成紧凑吸顶条 */
+  var chromeEl = document.getElementById("chrome");
+  function onScroll() { if (chromeEl) chromeEl.className = "chrome" + (window.scrollY > 120 ? " scrolled" : ""); }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  if ($("#statEntries")) $("#statEntries").textContent = D.coverage ? D.coverage.catalogEntries : D.totals.entries;
+  if ($("#covNum")) $("#covNum").textContent = D.coverage ? (D.coverage.covered + " / " + D.coverage.catalogEntries) : String(D.totals.entries);
+  renderLibChips();
   renderChips();
   render();
 })();

@@ -13,6 +13,7 @@ const exists = (p) => fs.existsSync(p);
 const rel = (p) => path.relative(ROOT, p).split(path.sep).join('/');
 const url = (p) => '../' + rel(p);
 const posix = (p) => p.split(path.sep).join('/');
+const stripBom = (s) => (s.charCodeAt(0) === 0xfeff ? s.slice(1) : s);
 
 function walk(dir, acc) {
   acc = acc || [];
@@ -128,6 +129,55 @@ const tools = entries.filter((e) => e.collection === 'tool').map((e) => ({
   id: e.id, medium: e.medium, t: String(e.summary || '').slice(0, 240), cover: coverOf(e.id), p: e.path,
 }));
 
+/* ---------- 预览图索引：claude-motion 的 scenes/extensions/production/models 各自带 preview ---------- */
+const cmPreview = {};
+for (const dir of ["scenes", "extensions", "production", "models"]) {
+  const d = path.join(engRoot, "claude-motion/assets", dir);
+  if (!exists(d)) continue;
+  for (const sub of fs.readdirSync(d, { withFileTypes: true })) {
+    if (!sub.isDirectory()) continue;
+    for (const f of ["preview.png", "preview.webp", "preview.jpg", "cover.png"]) {
+      const p = path.join(d, sub.name, f);
+      if (exists(p)) { cmPreview[sub.name] = url(p); break; }
+    }
+  }
+}
+
+/* ---------- 素材库总表：把 index.json 里「没有专属展区」的集合全部收进来 ---------- */
+const num = (v) => (typeof v === "number" ? v : 0);
+const libDefs = [
+  { key: "animation-case", label: "源码动画案例", hint: (e) => "node engines/claude-motion/scripts/prepare-case.mjs --case " + e.id + " --out <作品目录>",
+    poster: (e) => { const s = String(e.styleId || ""); if (!s) return null; for (const c of ["lemo-" + s, "expansion-" + s, s]) if (previews.has(c)) return previews.get(c); return null; } },
+  { key: "production-engine", label: "制作系统", hint: (e) => "node engines/claude-motion/scripts/create-engine.mjs --engine " + e.id + " --out <新目录>", poster: (e) => cmPreview[e.id] || null },
+  { key: "scene-starter", label: "场景起点", hint: (e) => "node engines/claude-motion/scripts/create-scene.mjs --scene " + e.id + " --out <新目录>", poster: (e) => cmPreview[e.id] || null },
+  { key: "source-component", label: "源码组件", hint: (e) => "node engines/claude-motion/scripts/create-extension.mjs --extension " + e.id + " --out <新目录>", poster: (e) => cmPreview[e.id] || null },
+  { key: "object-model", label: "物件模型", hint: (e) => "node engines/claude-motion/scripts/create-model.mjs --model " + e.id + " --out <新目录>", poster: (e) => cmPreview[e.id] || null },
+  { key: "mg-style", label: "MG 签名技法", hint: (e) => "读 engines/mg-motion/references/styles.md 对应小节，写进 renderAt(t)", poster: () => null },
+  { key: "move", label: "动效函数", hint: (e) => "window.OM." + e.id + "(t, t0, ...) 纯时间函数", poster: () => null },
+  { key: "look", label: "起始 look", hint: (e) => "python engines/onetake/scripts/look.py apply " + e.id, poster: () => null },
+  { key: "design-school", label: "网页设计学校", hint: () => "按 Design Read 五档标尺给三个不同行的方向", poster: () => null },
+  { key: "image-template", label: "出图模板类", hint: (e) => "读 " + (e.path || "") + "，再按模板槽位填 prompt", poster: () => null },
+  { key: "research-source", label: "研究清单（只读）", hint: () => "已收录但未接成可调用案例，不要当可运行案例", poster: () => null },
+];
+const library = libDefs.map((d) => {
+  const items = entries.filter((e) => e.collection === d.key).map((e) => ({
+    id: e.id,
+    title: String(e.title || e.titleZh || e.id).slice(0, 120),
+    cat: e.category || "",
+    sum: String(e.summary || "").slice(0, 220),
+    path: e.path || e.doc || "",
+    hint: (() => { try { return d.hint(e); } catch (err) { return ""; } })(),
+    poster: (() => { try { return d.poster(e); } catch (err) { return null; } })(),
+    link: e.upstream || "",
+    n: num(e.durationMs),
+  }));
+  return { key: d.key, label: d.label, count: items.length, items };
+}).filter((c) => c.count > 0);
+
+const libTotal = library.reduce((s, c) => s + c.count, 0);
+const dedicated = entries.filter((e) => ["shot-card", "motion-entry", "tool"].indexOf(e.collection) >= 0).length;
+const styleCount = entries.filter((e) => e.collection === "style").length;
+const covered = libTotal + dedicated + styleCount;
 const DATA = {
   generatedAt: new Date().toISOString().slice(0, 10),
   totals: {
@@ -139,12 +189,14 @@ const DATA = {
     entries: entries.length,
   },
   families, videos, gifs, shotCards, motions, tools,
+  library,
+  coverage: { catalogEntries: entries.length, dedicated, styleCount, libTotal, covered },
 };
 
-const shell = fs.readFileSync(path.join(SRC, 'shell.html'), 'utf8');
-const fontCss = exists(path.join(SRC, 'fonts.css')) ? fs.readFileSync(path.join(SRC, 'fonts.css'), 'utf8') : '';
-const css = fontCss + fs.readFileSync(path.join(SRC, 'style.css'), 'utf8');
-const app = fs.readFileSync(path.join(SRC, 'app.js'), 'utf8');
+const shell = stripBom(fs.readFileSync(path.join(SRC, 'shell.html'), 'utf8'));
+const fontCss = exists(path.join(SRC, 'fonts.css')) ? stripBom(fs.readFileSync(path.join(SRC, 'fonts.css'), 'utf8')) : '';
+const css = fontCss + stripBom(fs.readFileSync(path.join(SRC, 'style.css'), 'utf8'));
+const app = stripBom(fs.readFileSync(path.join(SRC, 'app.js'), 'utf8'));
 
 const html = shell
   .split('<!--CSS-->').join(css)

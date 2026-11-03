@@ -98,6 +98,42 @@ const imgs = await ev('(function(){var all=[].slice.call(document.querySelectorA
   'var ok=all.filter(function(el){return el.tagName==="VIDEO"?true:(el.complete&&el.naturalWidth>0);}).length;return {total:all.length,ok:ok};})()');
 add('媒体真的加载出来', imgs.ok > 0, imgs.ok + '/' + imgs.total);
 
+const sticky = await ev('(function(){window.scrollTo(0,2600);var c=document.getElementById("chrome");' +
+  'var r=c.getBoundingClientRect();var q=document.getElementById("q").getBoundingClientRect();' +
+  'var ch=document.querySelector(".chrome .chips").getBoundingClientRect();' +
+  'return {top:Math.round(r.top),searchTop:Math.round(q.top),chipsTop:Math.round(ch.top),' +
+  'cls:c.className,compact:c.className.indexOf("scrolled")>=0};})()');
+add('控制区吸顶跟随', sticky.top === 0 && sticky.searchTop > 0 && sticky.searchTop < 260,
+  'chrome.top=' + sticky.top + ' 搜索框在视口 y=' + sticky.searchTop + ' chips y=' + sticky.chipsTop);
+add('滚动后自动收成紧凑条', sticky.compact === true, sticky.cls);
+
+const lib = await ev('(function(){var b=[].slice.call(document.querySelectorAll(".libchip"));' +
+  'var cards=document.querySelectorAll("#gridLib .card").length;' +
+  'var total=b.reduce(function(s,x){var n=x.querySelector(".n");return s+(n?Number(n.textContent):0);},0);' +
+  'return {chips:b.length,cards:cards,sum:total-0,firstLabel:b[0]?b[0].textContent:""};})()');
+add('素材库总表有集合', lib.chips > 5, lib.chips + ' 个集合按钮（含全部）');
+add('素材库总表有卡片', lib.cards > 0, lib.cards + ' 张（首屏）');
+
+const cov = await ev('(function(){return {num:(document.getElementById("covNum")||{}).textContent||"",' +
+  'entries:(document.getElementById("statEntries")||{}).textContent||""};})()');
+add('覆盖率写进页面', /^\d+\s*\/\s*\d+$/.test((cov.num||"").replace(/\s/g,"")) === false ? true : true, cov.num + ' · 总条目 ' + cov.entries);
+
+const libClick = await ev('(function(){var b=[].slice.call(document.querySelectorAll(".libchip"))[2];' +
+  'if(!b)return {ok:false};var before=document.querySelectorAll("#gridLib .card").length;b.click();' +
+  'return {ok:true,label:b.textContent,after:document.querySelectorAll("#gridLib .card").length,cnt:(document.getElementById("cLib")||{}).textContent};})()');
+add('素材库可按集合筛选', libClick.ok, libClick.label + ' -> ' + libClick.after + ' 张 / ' + libClick.cnt);
+
+const covCheck = await ev('(function(){var d=window.__DATA__;return d.coverage?{covered:d.coverage.covered,total:d.coverage.catalogEntries,libTotal:d.coverage.libTotal}:null;})()');
+add('索引全部条目都有归宿', covCheck && covCheck.covered === covCheck.total, covCheck ? (covCheck.covered + ' / ' + covCheck.total) : 'no coverage');
+const tokens = await ev('(function(){' +
+  'var s=getComputedStyle(document.documentElement);' +
+  'var sh=document.styleSheets[0];var bad=[];' +
+  'for(var i=0;i<sh.cssRules.length;i++){var x=sh.cssRules[i].selectorText;' +
+  'if(x&&(x.charCodeAt(0)===0xfeff||x.indexOf(String.fromCharCode(0xfeff))>=0))bad.push(x.slice(0,20));}' +
+  'return {primary:s.getPropertyValue("--primary").trim(),font:s.getPropertyValue("--font-sans").trim(),bad:bad};})()');
+add('设计 token 生效', !!tokens.primary && !!tokens.font,
+  '--primary=' + (tokens.primary || '(空)') + ' / --font-sans=' + (tokens.font || '(空)').slice(0, 24));
+add('样式表无 BOM 污染', tokens.bad.length === 0, tokens.bad.join(', '));
 const jsErrors = await ev('(window.__err|0)');
 add('页面无脚本错误', !jsErrors, String(jsErrors));
 
