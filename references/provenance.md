@@ -82,3 +82,17 @@ mg-motion `engines/mg-motion/references/styles.md` 的 15 个 H2、onetake `engi
 6. **文档扩充**：新增 `references/style-library.md`（风格库用法/三方向/混搭/反 AI 陈词滥调）与
    `references/web-and-image.md`（网页·长文·出图·网页视频的工艺）。
 7. 索引从 880 条增至 **1013 条**，集合从 11 个增至 15 个（新增 style / tool / design-school / image-template）。
+## 第三轮：易用性层（为什么又改了一次）
+
+目标只有一个：**用户不该记住形态/引擎/风格**。
+
+| 新增 | 解决了什么 |
+|---|---|
+| `scripts/lib/router.mjs` | 判读逻辑从 CLI 里抽出来，pick / do / selftest 共用一套，改一处三处生效 |
+| `scripts/do.mjs` | 从「给建议」变成「直接建好 brief.md / NEXT.md / plan.json / spec.json」；`--ask` 让不想敲命令的人回答 7 个问题 |
+| `scripts/help.mjs` + `CHEATSHEET.md` | 一屏速查 / 可打印一页，替代「翻 11 份文档」 |
+| `QUICKSTART.md` | 视频 / 网页 / 图 三次真实走查，含脚本真实输出 |
+| `scripts/selftest.mjs` | 20 条路由回归。**它上线第一天就抓到一个真 bug**：「用真实网页画面做产品宣传片」被 M3 的「网页」带到网页制品去，已用「视频优先」规则修掉 |
+| `SLOPPY` 口语词表 | 「炫 / 酷 / 能发朋友圈 / 贴墙上 / 台上边讲边点」这类说法也能判对形态 |
+
+SKILL.md 也加了第 0 节「说人话就行」：默认先 `do.mjs`，再读文档，判读置信低就先问一句。

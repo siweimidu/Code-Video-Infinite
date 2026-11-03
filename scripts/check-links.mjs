@@ -23,7 +23,7 @@ function walk(dir, acc) {
 }
 
 const targets = [];
-for (const f of ['SKILL.md', 'README.md', 'LICENSES.md']) {
+for (const f of ['SKILL.md', 'README.md', 'LICENSES.md', 'CHEATSHEET.md', 'QUICKSTART.md']) {
   const p = path.join(ROOT, f);
   if (fs.existsSync(p)) targets.push(p);
 }

@@ -1,4 +1,4 @@
-# Code-Video-Infinite
+﻿# Code-Video-Infinite
 
 **把一句话需求变成可交付的视觉成品。** 一个入口，八种交付形态，十一个引擎，一套跨库风格体系，三类交付闸。
 
@@ -89,3 +89,16 @@ mg-motion 以上游 mg-styles-15 的 MIT 为准。统一层文字与脚本按 MI
 
 十一个引擎的原始项目、版本、许可以及**两轮合并到底做了什么、没做什么**，写在 `references/provenance.md`。
 索引与风格库都是生成物：`node scripts/build-catalog.mjs` 可随时从真实目录重建。
+
+## 现在怎么用（记忆负担为零）
+
+| 想做什么 | 敲这一行 |
+|---|---|
+| 直接开工 | `node scripts/do.mjs "<随便一句话>"` — 建出 `brief.md / NEXT.md / plan.json / spec.json` |
+| 不想写命令 | `node scripts/do.mjs --ask` — 回答 7 个问题就开工 |
+| 忘了怎么用 | `node scripts/help.mjs` — 一屏速查 |
+| 只看判读 | `node scripts/pick.mjs "<一句话>"` |
+| 找素材 | `node scripts/find.mjs "<关键词>" --medium M1-video` |
+| 改判读词表后自检 | `node scripts/selftest.mjs`（20 条回归） |
+
+两份给人看的东西：`CHEATSHEET.md`（打印一页）、`QUICKSTART.md`（三个 5 分钟走查）。
