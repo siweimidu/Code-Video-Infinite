@@ -73,7 +73,7 @@ mg-motion `engines/mg-motion/references/styles.md` 的 15 个 H2、onetake `engi
 1. **新建分类学** `references/taxonomy.md`：八种交付形态 × 十一个引擎 × 六条风格轴 + 组合矩阵 + 反模式。
    `references/engine-selection.md` 收薄为入口指针（判断已并入 taxonomy）。
 2. **新建统一风格库** `catalog/styles.json`：把 43 个动效风格文件、46 个案例风格、15 种 MG 技法交叉对齐成
-   **82 个风格族**（其中 39 个跨 2–4 个库有实现），人工整理了族名/分类/情绪/实现路径。
+   **39 个风格族**（其中 39 个跨 2–4 个库有实现），人工整理了族名/分类/情绪/实现路径。
    同一风格族在三处实现的对照是一手数据，不是猜测。
 3. **新建路由脚本** `scripts/pick.mjs`：自然语言需求 → 交付形态 + 引擎 + 三个风格方向（不同分类）+ 镜头/动作起点 + 闸 + 交付清单。
    内置决定性分流词表（避免「网页」把长文/海报的活抢走）。
@@ -96,3 +96,10 @@ mg-motion `engines/mg-motion/references/styles.md` 的 15 个 H2、onetake `engi
 | `SLOPPY` 口语词表 | 「炫 / 酷 / 能发朋友圈 / 贴墙上 / 台上边讲边点」这类说法也能判对形态 |
 
 SKILL.md 也加了第 0 节「说人话就行」：默认先 `do.mjs`，再读文档，判读置信低就先问一句。
+
+## 第四轮：选片台（gallery/）
+
+- 新增 gallery/index.html：39 个风格族 + 13 段真实样片 + 11 个动图 + 124 张镜头卡 + 462 条动作，可搜索可筛选，file:// 直接打开。
+- 视觉语言按用户提供的 **Pinguo / Apple-inspired design system** 落地：主色 Pinguo Blue #0066cc、圆角 1.2rem、药丸按钮、whisper-light 阴影、间距 4–128 标尺、动效曲线 cubic-bezier(.32,.72,0,1) 与 150/250/350ms 计时。token 以静态 CSS 内联，**不引入该设计系统的运行时依赖**。
+- 数据与封面帧都是生成物：node scripts/build-posters.mjs（取片长 35% 处一帧）+ node scripts/build-gallery.mjs。源文件在 gallery/_src/{shell.html,style.css,app.js}。
+- 没有真实案例帧的风格用「示意」瓦片（白底 + 分类 tint + 家族首字水印），**页面上明确标注，不冒充原片**。

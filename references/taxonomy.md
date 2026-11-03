@@ -47,7 +47,7 @@ M8 不是独立交付形态，是「做 M1 时的镜头零件」；单独调用�
 
 | 轴 | 内容 | 在哪 | 用途 |
 |---|---|---|---|
-| A 风格族 | 82 个族（其中 39 个跨 2–4 个库有实现） | `catalog/styles.json` | 选风格、混搭、跨库换实现 |
+| A 风格族 | 39 个族（其中 39 个跨 2–4 个库有实现） | `catalog/styles.json` | 选风格、混搭、跨库换实现 |
 | B motion-showreel 风格库 | 43 个风格文件（本质/辨识信号/运动/声音/坑） | `engines/garden-skills/skills/motion-showreel/references/styles/` | 当写实约束用，不当选择题 |
 | C claude-motion 案例风格 | 46 个风格（10 大类，带真实源码案例） | `engines/claude-motion/references/case-catalog.json` | 要源码级复现时 |
 | D mg-motion 签名技法 | 15 种可检验技法 | `engines/mg-motion/references/styles.md` | 要可被评审核对的技法 |

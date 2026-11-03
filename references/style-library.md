@@ -8,7 +8,7 @@
 - `claude-motion:hologram-hud` —— 一套可运行源码案例
 - `mg-motion:style-22` —— mg 的第 22 号签名技法（赛博朋克 HUD/FUI）
 
-族的清单与实现路径在 `catalog/styles.json`（82 个族，39 个跨库），人读版在 `catalog/INDEX.md` 第三节。
+族的清单与实现路径在 `catalog/styles.json`（39 个族，39 个跨库），人读版在 `catalog/INDEX.md` 第三节。
 **选族 ≠ 选实现**：族决定「长什么样」，实现决定「用什么代码做、有什么代价」。
 
 ## 二、风格是起点，不是选择题（motion-showreel 的三条正当用法）

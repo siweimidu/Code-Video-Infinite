@@ -11,6 +11,7 @@
 | 只看判读不建文件 | `node scripts/pick.mjs "<一句话>"` |
 | 找素材 | `node scripts/find.mjs "<关键词>" --medium M1-video` |
 | 忘了怎么用 | `node scripts/help.mjs` |
+| **看样片再选** | 浏览器打开 `gallery/index.html`：82 风格族 / 13 段真实样片 / 124 镜头卡，可搜索可筛选 |
 | 交付前 | `node scripts/qc.mjs gate film.mp4` / `node scripts/check-web.mjs page.html` |
 
 `do.mjs` 会建出一个工程目录，里面有：`brief.md`（七件事 + 风格那一行）、`NEXT.md`（照做就行）、

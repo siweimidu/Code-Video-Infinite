@@ -109,7 +109,7 @@ function mdTableRows(file) {
     if (cells.length < 3) continue;
     const fileCell = cells.find((c) => c.includes('.md'));
     if (!fileCell) continue;
-    const slug = fileCell.split('.').join('').split(BT).join('').trim();
+    const slug = fileCell.split(BT).join('').replace(/\.md$/i, '').trim();
     if (!slug || slug.startsWith('_')) continue;
     if (cells[0].replace(/\*/g, '').trim()) group = cells[0].replace(/\*/g, '').trim();
     rows.push({ slug, group, cells });

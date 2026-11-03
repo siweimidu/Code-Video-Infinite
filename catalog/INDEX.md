@@ -31,90 +31,47 @@
 | wise-motion | 462 |
 | **合计** | **1013** |
 
-## 三、风格族（82）
+## 三、风格族（39）
 
 同一风格在多个库里的实现并列，选 1-2 个用。
 
 | 族 | 名称 | 分类 | 情绪 | 实现 |
 | --- | --- | --- | --- | --- |
 | `glass-material` | 玻璃 / 弥散渐变 | 3D 与材质 | 高级/精密 | motion-showreel:glass-material · claude-motion:glass-product · mg-motion:style-12 |
-| `glass-materialmd` | glass-materialmd | 3D 与材质 | 高级、精密 | motion-showreel:glass-materialmd |
-| `liquid-shadermd` | liquid-shadermd | 3D 与材质 | 迷幻、流动 | motion-showreel:liquid-shadermd |
-| `soft-3d-toymd` | soft-3d-toymd | 3D 与材质 | 亲和、愉快 | motion-showreel:soft-3d-toymd |
 | `stained-glass` | 彩绘玻璃 | 3D 与材质 | 通透/静谧 | motion-showreel:stained-glass · claude-motion:stained-glass |
-| `stained-glassmd` | stained-glassmd | 3D 与材质 | 通透、静谧 | motion-showreel:stained-glassmd |
 | `tilt-shift` | 移轴微缩 | 3D 与材质 | 精巧/专注 | motion-showreel:tilt-shift-miniature · claude-motion:tilt-shift |
-| `tilt-shift-miniaturemd` | tilt-shift-miniaturemd | 3D 与材质 | 精巧、专注 | motion-showreel:tilt-shift-miniaturemd |
 | `toy-3d` | 3D 渲染 / 玩具 / 积木 | 3D 与材质 | 亲和/愉快 | motion-showreel:soft-3d-toy · claude-motion:brick-toy · claude-motion:lowpoly-island · mg-motion:style-04 |
 | `painting` | 绘画（厚涂/水彩/速写） | 插画与绘画 | 浓烈/怀旧 | motion-showreel:painterly · motion-showreel:soft-organic · claude-motion:impasto · claude-motion:watercolor |
-| `cel-anime-80smd` | cel-anime-80smd | 插画与漫画 | 鲜明、戏剧感 | motion-showreel:cel-anime-80smd |
-| `comic-popmd` | comic-popmd | 插画与漫画 | 热血、幽默 | motion-showreel:comic-popmd |
-| `flat-vectormd` | flat-vectormd | 插画与漫画 | 清晰、亲和 | motion-showreel:flat-vectormd |
-| `guochaomd` | guochaomd | 插画与漫画 | 喜庆、雅致 | motion-showreel:guochaomd |
-| `painterlymd` | painterlymd | 插画与漫画 | 浓烈、怀旧 | motion-showreel:painterlymd |
 | `rubber-hose` | 橡皮管动画 | 插画与漫画 | 诙谐/活泼 | motion-showreel:rubber-hose · claude-motion:rubber-hose |
-| `rubber-hosemd` | rubber-hosemd | 插画与漫画 | 诙谐、活泼 | motion-showreel:rubber-hosemd |
 | `toon` | 卡通 / 赛璐璐 | 插画与漫画 | 热血/幽默 | motion-showreel:comic-pop · motion-showreel:cel-anime-80s · claude-motion:cel-anime-80s · claude-motion:anime-cel · claude-motion:scifi-toon · claude-motion:midcentury-toon |
-| `whiteboard-explainermd` | whiteboard-explainermd | 插画与漫画 | 亲近、清晰 | motion-showreel:whiteboard-explainermd |
-| `cinematic-titlemd` | cinematic-titlemd | 电影感 | 史诗、沉稳 | motion-showreel:cinematic-titlemd |
-| `mixed-media-eramd` | mixed-media-eramd | 电影感 | 史诗、动人 | motion-showreel:mixed-media-eramd |
 | `illuminated` | 泥金手抄本 | 东方传统 | 珍重/静谧 | motion-showreel:illuminated-manuscript |
 | `ink-wash` | 水墨 / 东方 | 东方传统 | 意境/沉静 | motion-showreel:ink-wash · claude-motion:ink-wash · motion-showreel:guochao |
 | `shadow-puppet` | 皮影 / 剪影戏 | 东方传统 | 温暖/戏剧感 | motion-showreel:shadow-puppet · claude-motion:shadow-puppet |
 | `ukiyo-e` | 浮世绘 | 东方传统 | 平和/有力 | motion-showreel:ukiyo-e · claude-motion:ukiyoe |
-| `crt-vhsmd` | crt-vhsmd | 复古与屏幕 | 怀旧、诡异 | motion-showreel:crt-vhsmd |
 | `glitch` | 故障艺术 | 复古与屏幕 | 叛逆/紧张 | motion-showreel:glitch-digital |
-| `glitch-digitalmd` | glitch-digitalmd | 复古与屏幕 | 叛逆、紧张 | motion-showreel:glitch-digitalmd |
 | `hd2d` | HD-2D 像素立体 | 复古与屏幕 | 怀旧/沉浸 | claude-motion:hd-2d |
 | `pixel` | 像素 / 复古游戏 | 复古与屏幕 | 怀旧/可爱 | motion-showreel:pixel-game · motion-showreel:pixel-diorama · claude-motion:pixel-art · claude-motion:pixel-rpg · claude-motion:microgame · mg-motion:style-20 |
-| `pixel-dioramamd` | pixel-dioramamd | 复古与屏幕 | 怀旧、沉浸 | motion-showreel:pixel-dioramamd |
-| `pixel-gamemd` | pixel-gamemd | 复古与屏幕 | 怀旧、可爱 | motion-showreel:pixel-gamemd |
 | `retro-screen` | 复古屏幕（CRT/VHS/ASCII） | 复古与屏幕 | 怀旧/诡异 | motion-showreel:crt-vhs · motion-showreel:terminal-ascii · claude-motion:ascii-crt · claude-motion:backrooms |
 | `synthwave` | Synthwave / 复古未来 | 复古与屏幕 | 热烈/复古未来 | motion-showreel:synthwave-neon · mg-motion:style-10 |
-| `synthwave-neonmd` | synthwave-neonmd | 复古与屏幕 | 热烈、复古未来 | motion-showreel:synthwave-neonmd |
-| `terminal-asciimd` | terminal-asciimd | 复古与屏幕 | 极客、冷静 | motion-showreel:terminal-asciimd |
 | `game-show` | 综艺节奏 / 游戏化 | 讲解与科普 | 快节奏 | claude-motion:game-show |
 | `variety` | 综艺花字 | 讲解与科普 | 热闹 | mg-motion:style-18 |
 | `whiteboard` | 白板讲解 | 讲解与科普 | 亲近/清晰 | motion-showreel:whiteboard-explainer · claude-motion:whiteboard · mg-motion:style-19 |
-| `blueprintmd` | blueprintmd | 界面与产品 | 精确、理性 | motion-showreel:blueprintmd |
-| `dark-keynotemd` | dark-keynotemd | 界面与产品 | 隆重、高级 | motion-showreel:dark-keynotemd |
 | `data-motion` | 数据叙事 | 界面与产品 | 可信/利落 | motion-showreel:data-motion · claude-motion:dataviz |
-| `data-motionmd` | data-motionmd | 界面与产品 | 可信、利落 | motion-showreel:data-motionmd |
-| `hologram-hudmd` | hologram-hudmd | 界面与产品 | 冷静、未来感 | motion-showreel:hologram-hudmd |
 | `iso` | 等轴 2.5D | 界面与产品 | 清晰/俏皮 | motion-showreel:isometric-infographic · claude-motion:iso-infographic · mg-motion:style-03 |
-| `isometric-infographicmd` | isometric-infographicmd | 界面与产品 | 清晰、俏皮 | motion-showreel:isometric-infographicmd |
 | `keynote` | 暗色发布会 | 界面与产品 | 隆重/高级 | motion-showreel:dark-keynote · claude-motion:dark-keynote |
 | `minimal-ui` | 产品 UI / 极简界面 | 界面与产品 | 精致/友好 | motion-showreel:minimal-ui · claude-motion:living-screencast |
-| `minimal-uimd` | minimal-uimd | 界面与产品 | 精致、友好 | motion-showreel:minimal-uimd |
 | `anchor-hud` | 全息 / 赛博 HUD | 界面与屏幕 | 冷静/未来感 | motion-showreel:hologram-hud · claude-motion:hologram-hud · mg-motion:style-22 |
 | `generative` | 生成几何 / 粒子场 | 生成与抽象 | 催眠/宏大 | motion-showreel:generative-geometry · motion-showreel:particle-field |
-| `generative-geometrymd` | generative-geometrymd | 生成与抽象 | 催眠、秩序 | motion-showreel:generative-geometrymd |
 | `liquid` | 液态流动 | 生成与抽象 | 迷幻/流动 | motion-showreel:liquid-shader · mg-motion:style-07 |
 | `morph` | 形变 / 概念变形 | 生成与抽象 | 清楚/专注 | motion-showreel:concept-morph · mg-motion:style-08 |
-| `particle-fieldmd` | particle-fieldmd | 生成与抽象 | 宏大、科技 | motion-showreel:particle-fieldmd |
-| `soft-organicmd` | soft-organicmd | 生成与抽象 | 温暖、安静 | motion-showreel:soft-organicmd |
 | `collage` | 拼贴 / 剪贴 | 手作 | 活泼/潮流 | motion-showreel:editorial-collage · motion-showreel:mixed-media-era · mg-motion:style-06 |
-| `copperplate-engravingmd` | copperplate-engravingmd | 手作 | 精细、沉静 | motion-showreel:copperplate-engravingmd |
 | `crayon` | 蜡笔 / 儿童绘本 | 手作 | 童趣/温暖 | motion-showreel:crayon-storybook · claude-motion:crayon-book · claude-motion:urban-sketch |
-| `crayon-storybookmd` | crayon-storybookmd | 手作 | 童趣、温暖 | motion-showreel:crayon-storybookmd |
-| `illuminated-manuscriptmd` | illuminated-manuscriptmd | 手作 | 珍重、静谧 | motion-showreel:illuminated-manuscriptmd |
-| `ink-washmd` | ink-washmd | 手作 | 意境、沉静 | motion-showreel:ink-washmd |
 | `paper` | 纸艺（剪纸/立体书/纸灯） | 手作 | 温暖/精巧 | motion-showreel:paper-cut · claude-motion:paper-cutout · claude-motion:paper-popup · claude-motion:paper-lantern · claude-motion:papercut-red |
-| `paper-cutmd` | paper-cutmd | 手作 | 温暖、精巧 | motion-showreel:paper-cutmd |
-| `shadow-puppetmd` | shadow-puppetmd | 手作 | 温暖、戏剧感 | motion-showreel:shadow-puppetmd |
-| `ukiyo-emd` | ukiyo-emd | 手作 | 平和、有力 | motion-showreel:ukiyo-emd |
 | `art-deco` | 装饰艺术 | 图形与排版 | 庄重/精致 | motion-showreel:art-deco · claude-motion:art-deco |
-| `art-decomd` | art-decomd | 图形与排版 | 庄重、精致 | motion-showreel:art-decomd |
 | `blueprint` | 蓝图 / 工程制图 | 图形与排版 | 精确/理性 | motion-showreel:blueprint · claude-motion:blueprint |
-| `concept-morphmd` | concept-morphmd | 图形与排版 | 清楚、专注 | motion-showreel:concept-morphmd |
-| `editorial-collagemd` | editorial-collagemd | 图形与排版 | 活泼、潮流 | motion-showreel:editorial-collagemd |
 | `flat-vector` | 扁平矢量 | 图形与排版 | 清晰/亲和 | motion-showreel:flat-vector · claude-motion:pictogram-motion · mg-motion:style-01 |
-| `kinetic-brutalistmd` | kinetic-brutalistmd | 图形与排版 | 冲击、躁动 | motion-showreel:kinetic-brutalistmd |
 | `kinetic-type` | 巨字 / 动态排版 | 图形与排版 | 冲击/躁动 | motion-showreel:kinetic-brutalist · motion-showreel:cinematic-title · claude-motion:spy-titles · claude-motion:silent-film |
 | `one-line` | 一笔线描 | 图形与排版 | 简洁/轻巧 | motion-showreel:one-line · claude-motion:one-line · mg-motion:style-02 |
-| `one-linemd` | one-linemd | 图形与排版 | 简洁、轻巧 | motion-showreel:one-linemd |
-| `risograph-printmd` | risograph-printmd | 图形与排版 | 温暖、手作 | motion-showreel:risograph-printmd |
-| `swiss-editorialmd` | swiss-editorialmd | 图形与排版 | 理性、克制 | motion-showreel:swiss-editorialmd |
 | `swiss-grid` | 瑞士网格 / 包豪斯 | 图形与排版 | 理性/克制 | motion-showreel:swiss-editorial · claude-motion:swiss-motion · mg-motion:style-09 |
 | `engraving` | 铜版 / 木刻 | 印刷与版画 | 精细/沉静 | motion-showreel:copperplate-engraving · claude-motion:engraving · claude-motion:woodcut |
 | `print-ink` | 孔版 / 丝网 / 半调印刷 | 印刷与版画 | 温暖/手作 | motion-showreel:risograph-print · claude-motion:risograph · claude-motion:silkscreen-poster · claude-motion:halftone-dossier |
@@ -1094,10 +1051,10 @@
 
 | id | 名称 / 一句话 | 分类 | 形态 | 入口 |
 | --- | --- | --- | --- | --- |
-| `art-decomd` | art-decomd | 图形与排版 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/art-decomd.md` |
-| `blueprintmd` | blueprintmd | 界面与产品 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/blueprintmd.md` |
-| `cel-anime-80smd` | cel-anime-80smd | 插画与漫画 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/cel-anime-80smd.md` |
-| `cinematic-titlemd` | cinematic-titlemd | 电影感 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/cinematic-titlemd.md` |
+| `art-deco` | art-deco | 图形与排版 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/art-deco.md` |
+| `blueprint` | blueprint | 界面与产品 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/blueprint.md` |
+| `cel-anime-80s` | cel-anime-80s | 插画与漫画 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/cel-anime-80s.md` |
+| `cinematic-title` | cinematic-title | 电影感 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/cinematic-title.md` |
 | `claude:anime-cel` | 赛璐珞角色 |  | M1-video | `engines/claude-motion/references/case-catalog.json` |
 | `claude:art-deco` | 装饰艺术 |  | M1-video | `engines/claude-motion/references/case-catalog.json` |
 | `claude:ascii-crt` | ASCII / CRT 终端 |  | M1-video | `engines/claude-motion/references/case-catalog.json` |
@@ -1144,25 +1101,25 @@
 | `claude:watercolor` | 水彩笔刷 |  | M1-video | `engines/claude-motion/references/case-catalog.json` |
 | `claude:whiteboard` | 白板手绘 |  | M1-video | `engines/claude-motion/references/case-catalog.json` |
 | `claude:woodcut` | 木刻版画 |  | M1-video | `engines/claude-motion/references/case-catalog.json` |
-| `comic-popmd` | comic-popmd | 插画与漫画 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/comic-popmd.md` |
-| `concept-morphmd` | concept-morphmd | 图形与排版 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/concept-morphmd.md` |
-| `copperplate-engravingmd` | copperplate-engravingmd | 手作 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/copperplate-engravingmd.md` |
-| `crayon-storybookmd` | crayon-storybookmd | 手作 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/crayon-storybookmd.md` |
-| `crt-vhsmd` | crt-vhsmd | 复古与屏幕 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/crt-vhsmd.md` |
-| `dark-keynotemd` | dark-keynotemd | 界面与产品 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/dark-keynotemd.md` |
-| `data-motionmd` | data-motionmd | 界面与产品 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/data-motionmd.md` |
-| `editorial-collagemd` | editorial-collagemd | 图形与排版 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/editorial-collagemd.md` |
-| `flat-vectormd` | flat-vectormd | 插画与漫画 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/flat-vectormd.md` |
-| `generative-geometrymd` | generative-geometrymd | 生成与抽象 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/generative-geometrymd.md` |
-| `glass-materialmd` | glass-materialmd | 3D 与材质 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/glass-materialmd.md` |
-| `glitch-digitalmd` | glitch-digitalmd | 复古与屏幕 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/glitch-digitalmd.md` |
-| `guochaomd` | guochaomd | 插画与漫画 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/guochaomd.md` |
-| `hologram-hudmd` | hologram-hudmd | 界面与产品 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/hologram-hudmd.md` |
-| `illuminated-manuscriptmd` | illuminated-manuscriptmd | 手作 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/illuminated-manuscriptmd.md` |
-| `ink-washmd` | ink-washmd | 手作 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/ink-washmd.md` |
-| `isometric-infographicmd` | isometric-infographicmd | 界面与产品 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/isometric-infographicmd.md` |
-| `kinetic-brutalistmd` | kinetic-brutalistmd | 图形与排版 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/kinetic-brutalistmd.md` |
-| `liquid-shadermd` | liquid-shadermd | 3D 与材质 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/liquid-shadermd.md` |
+| `comic-pop` | comic-pop | 插画与漫画 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/comic-pop.md` |
+| `concept-morph` | concept-morph | 图形与排版 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/concept-morph.md` |
+| `copperplate-engraving` | copperplate-engraving | 手作 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/copperplate-engraving.md` |
+| `crayon-storybook` | crayon-storybook | 手作 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/crayon-storybook.md` |
+| `crt-vhs` | crt-vhs | 复古与屏幕 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/crt-vhs.md` |
+| `dark-keynote` | dark-keynote | 界面与产品 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/dark-keynote.md` |
+| `data-motion` | data-motion | 界面与产品 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/data-motion.md` |
+| `editorial-collage` | editorial-collage | 图形与排版 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/editorial-collage.md` |
+| `flat-vector` | flat-vector | 插画与漫画 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/flat-vector.md` |
+| `generative-geometry` | generative-geometry | 生成与抽象 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/generative-geometry.md` |
+| `glass-material` | glass-material | 3D 与材质 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/glass-material.md` |
+| `glitch-digital` | glitch-digital | 复古与屏幕 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/glitch-digital.md` |
+| `guochao` | guochao | 插画与漫画 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/guochao.md` |
+| `hologram-hud` | hologram-hud | 界面与产品 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/hologram-hud.md` |
+| `illuminated-manuscript` | illuminated-manuscript | 手作 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/illuminated-manuscript.md` |
+| `ink-wash` | ink-wash | 手作 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/ink-wash.md` |
+| `isometric-infographic` | isometric-infographic | 界面与产品 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/isometric-infographic.md` |
+| `kinetic-brutalist` | kinetic-brutalist | 图形与排版 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/kinetic-brutalist.md` |
+| `liquid-shader` | liquid-shader | 3D 与材质 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/liquid-shader.md` |
 | `mg:style-01` | 扁平矢量动画 Flat / Vector 2D Motion Graphics | MG 签名技法 | M1-video | `engines/mg-motion/references/styles.md` |
 | `mg:style-02` | 线条动画 Line Art / Line Animation | MG 签名技法 | M1-video | `engines/mg-motion/references/styles.md` |
 | `mg:style-03` | 等轴 2.5D Isometric / 2.5D | MG 签名技法 | M1-video | `engines/mg-motion/references/styles.md` |
@@ -1178,26 +1135,26 @@
 | `mg:style-19` | 粗描边贴纸人科普 MG Bold-outline Sticker Explainer MG (PaperClip / 林超风格) | MG 签名技法 | M1-video | `engines/mg-motion/references/styles.md` |
 | `mg:style-20` | 像素风 Pixel Art / 8-bit | MG 签名技法 | M1-video | `engines/mg-motion/references/styles.md` |
 | `mg:style-22` | 赛博朋克 HUD / FUI Cyberpunk HUD / FUI (Fictional UI) | MG 签名技法 | M1-video | `engines/mg-motion/references/styles.md` |
-| `minimal-uimd` | minimal-uimd | 界面与产品 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/minimal-uimd.md` |
-| `mixed-media-eramd` | mixed-media-eramd | 电影感 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/mixed-media-eramd.md` |
-| `one-linemd` | one-linemd | 图形与排版 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/one-linemd.md` |
-| `painterlymd` | painterlymd | 插画与漫画 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/painterlymd.md` |
-| `paper-cutmd` | paper-cutmd | 手作 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/paper-cutmd.md` |
-| `particle-fieldmd` | particle-fieldmd | 生成与抽象 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/particle-fieldmd.md` |
-| `pixel-dioramamd` | pixel-dioramamd | 复古与屏幕 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/pixel-dioramamd.md` |
-| `pixel-gamemd` | pixel-gamemd | 复古与屏幕 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/pixel-gamemd.md` |
-| `risograph-printmd` | risograph-printmd | 图形与排版 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/risograph-printmd.md` |
-| `rubber-hosemd` | rubber-hosemd | 插画与漫画 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/rubber-hosemd.md` |
-| `shadow-puppetmd` | shadow-puppetmd | 手作 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/shadow-puppetmd.md` |
-| `soft-3d-toymd` | soft-3d-toymd | 3D 与材质 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/soft-3d-toymd.md` |
-| `soft-organicmd` | soft-organicmd | 生成与抽象 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/soft-organicmd.md` |
-| `stained-glassmd` | stained-glassmd | 3D 与材质 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/stained-glassmd.md` |
-| `swiss-editorialmd` | swiss-editorialmd | 图形与排版 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/swiss-editorialmd.md` |
-| `synthwave-neonmd` | synthwave-neonmd | 复古与屏幕 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/synthwave-neonmd.md` |
-| `terminal-asciimd` | terminal-asciimd | 复古与屏幕 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/terminal-asciimd.md` |
-| `tilt-shift-miniaturemd` | tilt-shift-miniaturemd | 3D 与材质 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/tilt-shift-miniaturemd.md` |
-| `ukiyo-emd` | ukiyo-emd | 手作 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/ukiyo-emd.md` |
-| `whiteboard-explainermd` | whiteboard-explainermd | 插画与漫画 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/whiteboard-explainermd.md` |
+| `minimal-ui` | minimal-ui | 界面与产品 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/minimal-ui.md` |
+| `mixed-media-era` | mixed-media-era | 电影感 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/mixed-media-era.md` |
+| `one-line` | one-line | 图形与排版 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/one-line.md` |
+| `painterly` | painterly | 插画与漫画 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/painterly.md` |
+| `paper-cut` | paper-cut | 手作 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/paper-cut.md` |
+| `particle-field` | particle-field | 生成与抽象 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/particle-field.md` |
+| `pixel-diorama` | pixel-diorama | 复古与屏幕 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/pixel-diorama.md` |
+| `pixel-game` | pixel-game | 复古与屏幕 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/pixel-game.md` |
+| `risograph-print` | risograph-print | 图形与排版 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/risograph-print.md` |
+| `rubber-hose` | rubber-hose | 插画与漫画 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/rubber-hose.md` |
+| `shadow-puppet` | shadow-puppet | 手作 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/shadow-puppet.md` |
+| `soft-3d-toy` | soft-3d-toy | 3D 与材质 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/soft-3d-toy.md` |
+| `soft-organic` | soft-organic | 生成与抽象 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/soft-organic.md` |
+| `stained-glass` | stained-glass | 3D 与材质 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/stained-glass.md` |
+| `swiss-editorial` | swiss-editorial | 图形与排版 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/swiss-editorial.md` |
+| `synthwave-neon` | synthwave-neon | 复古与屏幕 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/synthwave-neon.md` |
+| `terminal-ascii` | terminal-ascii | 复古与屏幕 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/terminal-ascii.md` |
+| `tilt-shift-miniature` | tilt-shift-miniature | 3D 与材质 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/tilt-shift-miniature.md` |
+| `ukiyo-e` | ukiyo-e | 手作 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/ukiyo-e.md` |
+| `whiteboard-explainer` | whiteboard-explainer | 插画与漫画 | M1-video | `engines/garden-skills/skills/motion-showreel/references/styles/whiteboard-explainer.md` |
 
 ### 工具型 skill（garden-skills）（6）
 

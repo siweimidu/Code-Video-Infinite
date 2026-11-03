@@ -63,7 +63,7 @@ Code-Video-Infinite.skill/
 │   ├── style-library.md     选族/三方向/混搭/反 AI 陈词滥调
 │   ├── web-and-image.md     网页·长文·出图·网页视频的工艺
 │   └── pipeline / motion-grammar / sound / quality-gates / delivery / assets-and-licenses / provenance
-├── catalog/            index.json（1013 条）· styles.json（82 族）· INDEX.md · assets-index.json
+├── catalog/            index.json（1013 条）· styles.json（39 族）· INDEX.md · assets-index.json
 ├── scripts/            pick · find · doctor · qc · check-web · build-catalog · check-links
 └── engines/            onetake · shotcraft · claude-motion · mg-motion · wise-motion · garden-skills
 ```

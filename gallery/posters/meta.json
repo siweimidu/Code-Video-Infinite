@@ -1,0 +1,106 @@
+{
+  "clearing-15s__clearing": {
+    "rel": "onetake/cases/clearing-15s/clearing.mp4",
+    "dir": "clearing-15s",
+    "base": "clearing",
+    "duration": 15.02,
+    "at": 5.26,
+    "poster": "clearing-15s__clearing.jpg"
+  },
+  "ebb-15s__ebb": {
+    "rel": "onetake/cases/ebb-15s/ebb.mp4",
+    "dir": "ebb-15s",
+    "base": "ebb",
+    "duration": 15.02,
+    "at": 5.26,
+    "poster": "ebb-15s__ebb.jpg"
+  },
+  "knockon-15s__knockon": {
+    "rel": "onetake/cases/knockon-15s/knockon.mp4",
+    "dir": "knockon-15s",
+    "base": "knockon",
+    "duration": 15.02,
+    "at": 5.26,
+    "poster": "knockon-15s__knockon.jpg"
+  },
+  "motion-web-15s__motion-web": {
+    "rel": "onetake/cases/motion-web-15s/motion-web.mp4",
+    "dir": "motion-web-15s",
+    "base": "motion-web",
+    "duration": 15.02,
+    "at": 5.26,
+    "poster": "motion-web-15s__motion-web.jpg"
+  },
+  "one-dot-15s__one-dot": {
+    "rel": "onetake/cases/one-dot-15s/one-dot.mp4",
+    "dir": "one-dot-15s",
+    "base": "one-dot",
+    "duration": 15.02,
+    "at": 5.26,
+    "poster": "one-dot-15s__one-dot.jpg"
+  },
+  "onetake-launch-30s__onetake-launch": {
+    "rel": "onetake/cases/onetake-launch-30s/onetake-launch.mp4",
+    "dir": "onetake-launch-30s",
+    "base": "onetake-launch",
+    "duration": 30.02,
+    "at": 10.51,
+    "poster": "onetake-launch-30s__onetake-launch.jpg"
+  },
+  "overlap-15s__overlap": {
+    "rel": "onetake/cases/overlap-15s/overlap.mp4",
+    "dir": "overlap-15s",
+    "base": "overlap",
+    "duration": 15.02,
+    "at": 5.26,
+    "poster": "overlap-15s__overlap.jpg"
+  },
+  "pith-21s__pith": {
+    "rel": "onetake/cases/pith-21s/pith.mp4",
+    "dir": "pith-21s",
+    "base": "pith",
+    "duration": 21.5,
+    "at": 7.53,
+    "poster": "pith-21s__pith.jpg"
+  },
+  "skill-demo-15s__skill-demo": {
+    "rel": "onetake/cases/skill-demo-15s/skill-demo.mp4",
+    "dir": "skill-demo-15s",
+    "base": "skill-demo",
+    "duration": 15.02,
+    "at": 5.26,
+    "poster": "skill-demo-15s__skill-demo.jpg"
+  },
+  "unbroken-15s__unbroken": {
+    "rel": "onetake/cases/unbroken-15s/unbroken.mp4",
+    "dir": "unbroken-15s",
+    "base": "unbroken",
+    "duration": 15.02,
+    "at": 5.26,
+    "poster": "unbroken-15s__unbroken.jpg"
+  },
+  "mechanical-pulse__movie": {
+    "rel": "wise-motion/catalog/assets/mechanical-pulse/movie.mp4",
+    "dir": "mechanical-pulse",
+    "base": "movie",
+    "duration": 18,
+    "at": 6.3,
+    "poster": "mechanical-pulse__movie.jpg"
+  },
+  "mechanical-windows__movie": {
+    "rel": "wise-motion/catalog/assets/mechanical-windows/movie.mp4",
+    "dir": "mechanical-windows",
+    "base": "movie",
+    "duration": 32,
+    "at": 11.2,
+    "poster": "mechanical-windows__movie.jpg"
+  },
+  "time-in-motion__movie": {
+    "rel": "wise-motion/catalog/assets/time-in-motion/movie.mp4",
+    "dir": "time-in-motion",
+    "base": "movie",
+    "duration": 44,
+    "at": 15.4,
+    "poster": "time-in-motion__movie.jpg"
+  }
+}

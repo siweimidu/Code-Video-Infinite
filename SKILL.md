@@ -1,6 +1,6 @@
 ﻿---
 name: code-video-infinite
-description: 把一句话需求变成可交付的视觉成品的总控 skill：视频成片、网页视频演示、网页/UI 制品、长文、静态图、动效源码、知识库检索七类交付形态，十一个引擎（onetake / shotcraft / claude-motion / mg-motion / wise-motion / motion-showreel / web-video-presentation / web-design-engineer / beautiful-article / gpt-image-2 / kb-retriever），一套跨库风格体系（82 个风格族，覆盖 43 个动效风格 + 46 个案例风格 + 15 种 MG 技法 + 6 个设计学校 + 17 类出图模板），以及三类交付闸。Use when 用户要做 视频/动效/MG/宣传片/发布片/teaser/片头/讲解视频/作品集、用网页做视频/可录屏演示、网页或仪表盘或原型或 deck 或数据可视化、把链接或 PDF 做成网页长文、海报或信息图或产品图或 UI mockup、要某个动效的真实源码、从本地知识库检索答问，或抱怨成片「像 PPT、没节奏、没设计感」。NOT for 实拍剪辑、纯后端或命令行开发、只想要内容摘要、品牌 logo 设计。
+description: 把一句话需求变成可交付的视觉成品的总控 skill：视频成片、网页视频演示、网页/UI 制品、长文、静态图、动效源码、知识库检索七类交付形态，十一个引擎（onetake / shotcraft / claude-motion / mg-motion / wise-motion / motion-showreel / web-video-presentation / web-design-engineer / beautiful-article / gpt-image-2 / kb-retriever），一套跨库风格体系（39 个风格族，覆盖 43 个动效风格 + 46 个案例风格 + 15 种 MG 技法 + 6 个设计学校 + 17 类出图模板），以及三类交付闸。Use when 用户要做 视频/动效/MG/宣传片/发布片/teaser/片头/讲解视频/作品集、用网页做视频/可录屏演示、网页或仪表盘或原型或 deck 或数据可视化、把链接或 PDF 做成网页长文、海报或信息图或产品图或 UI mockup、要某个动效的真实源码、从本地知识库检索答问，或抱怨成片「像 PPT、没节奏、没设计感」。NOT for 实拍剪辑、纯后端或命令行开发、只想要内容摘要、品牌 logo 设计。
 ---
 
 # Code-Video-Infinite
@@ -10,7 +10,7 @@ description: 把一句话需求变成可交付的视觉成品的总控 skill：�
 
 装了什么：十一个引擎、**1013 条可检索素材**（124 张镜头卡 / 462 条动效条目 / 47 套源码案例 / 20 个组件 /
 30 个物件模型 / 14 个场景 / 15 种 MG 技法 / 43 个动效风格文件 / 6 个设计学校 / 17 类出图模板）、
-82 个风格族、以及七个能跑的脚本。
+39 个风格族、以及七个能跑的脚本。
 
 ## 0 · 说人话就行（记忆负担为零）
 
@@ -20,6 +20,7 @@ description: 把一句话需求变成可交付的视觉成品的总控 skill：�
 node scripts/do.mjs "<用户那句话>"      # 建工程骨架：brief.md / NEXT.md / plan.json / spec.json
 node scripts/do.mjs --ask               # 不想写命令：回答 7 个问题，一样建骨架
 node scripts/help.mjs                   # 一屏速查（用户问「怎么用」时先给他这一页）
+node scripts/build-gallery.mjs && start gallery/index.html   # 选片台：浏览器里看全部样片与风格族
 node scripts/selftest.mjs               # 路由回归自检（改了词表就跑）
 ```
 
@@ -61,7 +62,7 @@ node scripts/find.mjs "<更具体的关键词>"       # 按需检索素材（分
 
 | 轴 | 内容 | 落地 |
 |---|---|---|
-| A 风格族 | 82 族（39 族跨库有实现） | `catalog/styles.json` |
+| A 风格族 | 39 族（39 族跨库有实现） | `catalog/styles.json` |
 | B 动效风格文件 | 43 个（本质/辨识信号/运动/声音/坑） | `engines/garden-skills/skills/motion-showreel/references/styles/` |
 | C 案例风格 | 46 个（10 大类，带真实源码） | `engines/claude-motion/references/case-catalog.json` |
 | D MG 签名技法 | 15 种可检验技法 | `engines/mg-motion/references/styles.md` |
