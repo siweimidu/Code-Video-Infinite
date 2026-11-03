@@ -64,3 +64,14 @@
 1. **跳过 brief 直接写代码**：七件事没定，做到一半必然返工。
 2. **不看闸就交**：视频不跑 `qc.mjs`、网页不跑 `check-web.mjs`，等于没交付。
 3. **三个方向同一分类**：等于没给选择。
+
+## 维护选片台（gallery/）
+
+| 做什么 | 命令 |
+| --- | --- |
+| 改完样式/脚本后重建页面 | `node scripts/build-gallery.mjs` |
+| 重新抓视频封面帧 | `node scripts/build-posters.mjs` |
+| 重新下字体 | `node scripts/build-fonts.mjs` |
+| 页面回归自检（13 项，失败退出 1） | `node scripts/check-gallery.mjs` |
+
+源文件在 `gallery/_src/{shell.html,style.css,app.js,fonts.css}`，index.html 是生成物，别手改。
