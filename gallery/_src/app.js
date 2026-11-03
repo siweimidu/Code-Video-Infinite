@@ -72,12 +72,49 @@
       '<div class="sub">' + esc(f.one || f.cat) + '</div>' +
       '<div class="tags">' + tags + '</div></div></div>';
   }
+  var Q = String.fromCharCode(34);
+  function energyLevel(en) {
+    var t = String(en || "");
+    if (/中高/.test(t)) return 3;
+    if (/高/.test(t)) return 4;
+    if (/中/.test(t)) return 2;
+    if (/低/.test(t)) return 1;
+    return 0;
+  }
+  function energyBar(lv) {
+    if (!lv) return "";
+    var bars = "";
+    for (var i = 1; i <= 4; i++) {
+      bars += "<i style=" + Q + "display:block;width:3px;height:" + (4 + i * 2) + "px;border-radius:1px;background:" + (i <= lv ? "var(--foreground)" : "var(--border)") + Q + "></i>";
+    }
+    return "<span style=" + Q + "display:inline-flex;align-items:flex-end;gap:2px;height:14px" + Q + " title=" + Q + "能量 " + lv + "/4" + Q + ">" + bars + "</span>";
+  }
+  function hueOf(s) {
+    var h = 0, str = String(s || "");
+    for (var i = 0; i < str.length; i++) h = (h * 31 + str.charCodeAt(i)) % 360;
+    return h;
+  }
   function cardShot(c) {
-    return '<div class="card" tabindex="0" role="button" data-open="s:' + esc(c.id) + '">' +
-      '<div class="body" style="padding-top:18px"><div class="name">' + esc(c.id) + '</div>' +
-      '<div class="sub">' + esc(c.t) + '</div>' +
-      '<div class="tags"><span class="tag k">' + esc(c.cat) + '</span>' +
-      '<span class="tag">' + esc(c.d) + '</span><span class="tag">' + esc(c.en) + '</span></div></div></div>';
+    var lv = energyLevel(c.en);
+    var media;
+    if (c.poster) {
+      media = "<div class=" + Q + "media" + Q + "><img loading=" + Q + "lazy" + Q + " src=" + Q + c.poster + Q + " alt=" + Q + Q + ">" +
+        "<span class=" + Q + "tagbadge" + Q + ">真实静帧</span>" + (c.d ? "<span class=" + Q + "corner" + Q + ">" + esc(c.d) + "</span>" : "") + "</div>";
+    } else {
+      var hue = hueOf(c.cat || c.id);
+      var g1 = "radial-gradient(120% 110% at 18% 0%,hsl(" + hue + ",62%,94%),transparent 62%)";
+      var g2 = "linear-gradient(165deg,#ffffff,#f5f5f7)";
+      media = "<div class=" + Q + "media" + Q + "><div style=" + Q + "position:absolute;inset:0;background:" + g1 + "," + g2 + Q + "></div>" +
+        "<div style=" + Q + "position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;color:hsl(" + hue + ",40%,56%)" + Q + ">" + esc(c.cat || "") + "</div>" +
+        "<span class=" + Q + "tagbadge demo" + Q + ">配方卡</span></div>";
+    }
+    var tags = "<span class=" + Q + "tag k" + Q + ">" + esc(c.cat) + "</span>" +
+      (c.d ? "<span class=" + Q + "tag" + Q + ">" + esc(c.d) + "</span>" : "") +
+      (lv ? "<span class=" + Q + "tag" + Q + ">" + energyBar(lv) + "</span>" : "");
+    return "<div class=" + Q + "card" + Q + " tabindex=" + Q + "0" + Q + " role=" + Q + "button" + Q + " data-open=" + Q + "s:" + esc(c.id) + Q + ">" + media +
+      "<div class=" + Q + "body" + Q + "><div class=" + Q + "name" + Q + ">" + esc(c.id) + "</div>" +
+      "<div class=" + Q + "sub" + Q + ">" + esc(c.t) + "</div>" +
+      "<div class=" + Q + "tags" + Q + ">" + tags + "</div></div></div>";
   }
   function cardMove(m) {
     return '<div class="card" tabindex="0" role="button" data-open="m:' + esc(m.id) + '">' +

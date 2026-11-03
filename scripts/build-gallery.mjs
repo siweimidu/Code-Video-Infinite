@@ -111,9 +111,14 @@ const families = (sty.families || []).map((f) => {
   };
 });
 
+const posterRoot = path.join(engRoot, 'shotcraft/gallery/media/poster');
+const posterOf = (id) => {
+  const p = path.join(posterRoot, id + '.jpg');
+  return exists(p) ? url(p) : null;
+};
 const shotCards = entries.filter((e) => e.collection === 'shot-card').map((e) => ({
   id: e.id, t: String(e.title || '').slice(0, 140), cat: e.category || '',
-  d: e.duration || '', en: e.energy || '', p: e.path || '',
+  d: e.duration || '', en: e.energy || '', p: e.path || '', poster: posterOf(e.id),
 }));
 const motions = entries.filter((e) => e.collection === 'motion-entry').map((e) => ({
   id: e.id, t: e.title || e.id, cat: e.category || '', ms: e.durationMs || 0,
@@ -129,14 +134,16 @@ const DATA = {
     families: families.length,
     withPreview: families.filter((f) => f.preview).length,
     videos: videos.length, gifs: gifs.length,
-    shotCards: shotCards.length, motions: motions.length, tools: tools.length,
+    shotCards: shotCards.length, shotWithPoster: shotCards.filter((c) => c.poster).length,
+    motions: motions.length, tools: tools.length,
     entries: entries.length,
   },
   families, videos, gifs, shotCards, motions, tools,
 };
 
 const shell = fs.readFileSync(path.join(SRC, 'shell.html'), 'utf8');
-const css = fs.readFileSync(path.join(SRC, 'style.css'), 'utf8');
+const fontCss = exists(path.join(SRC, 'fonts.css')) ? fs.readFileSync(path.join(SRC, 'fonts.css'), 'utf8') : '';
+const css = fontCss + fs.readFileSync(path.join(SRC, 'style.css'), 'utf8');
 const app = fs.readFileSync(path.join(SRC, 'app.js'), 'utf8');
 
 const html = shell

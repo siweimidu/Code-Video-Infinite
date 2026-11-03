@@ -103,3 +103,9 @@ SKILL.md 也加了第 0 节「说人话就行」：默认先 `do.mjs`，再读�
 - 视觉语言按用户提供的 **Pinguo / Apple-inspired design system** 落地：主色 Pinguo Blue #0066cc、圆角 1.2rem、药丸按钮、whisper-light 阴影、间距 4–128 标尺、动效曲线 cubic-bezier(.32,.72,0,1) 与 150/250/350ms 计时。token 以静态 CSS 内联，**不引入该设计系统的运行时依赖**。
 - 数据与封面帧都是生成物：node scripts/build-posters.mjs（取片长 35% 处一帧）+ node scripts/build-gallery.mjs。源文件在 gallery/_src/{shell.html,style.css,app.js}。
 - 没有真实案例帧的风格用「示意」瓦片（白底 + 分类 tint + 家族首字水印），**页面上明确标注，不冒充原片**。
+
+## 第五轮：字体与静帧（让选片台"看得准"）
+
+- **字体自托管**：gallery/fonts/ 里放了 DM Sans（400/500/600）与 JetBrains Mono（400/500）的 **latin 子集 woff2**，共 5 个 face / 170KB，附 OFL 许可原文（OFL-DMSans.txt、OFL-JetBrainsMono.txt）。构建时由 scripts/build-fonts.mjs 生成 gallery/_src/fonts.css 并内联进 index.html，所以离线打开也是设计系统原本的字形；中文仍回落系统字体（未内嵌 CJK，避免几百 MB）。
+- **镜头卡静帧**：shotcraft 随包的 gallery/media/poster/ 有 54 张镜头卡静帧，其中 **50 张与卡片 id 对上**，已挂到选片台；其余卡片用「配方卡」（分类色 + 时长 + 能量条 1–4 格）呈现，**页面上标为配方卡，不冒充样片**。
+- 两个构建器都可重跑：node scripts/build-fonts.mjs 与 node scripts/build-gallery.mjs。
