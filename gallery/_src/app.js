@@ -134,14 +134,33 @@
   }
 
   function renderChips() {
-    var cats = ['全部'];
+    var cats = ["全部"];
     D.families.forEach(function (f) { if (cats.indexOf(f.cat) < 0) cats.push(f.cat); });
     cats.sort(function (a, b) {
-      return a === '全部' ? -1 : b === '全部' ? 1 : a.localeCompare(b, 'zh');
+      return a === "全部" ? -1 : b === "全部" ? 1 : a.localeCompare(b, "zh");
     });
-    $('#chips').innerHTML = cats.map(function (c) {
-      return '<button class="chip' + (state.cat === c ? ' on' : '') + '" data-cat="' + esc(c) + '">' + esc(c) + '</button>';
-    }).join('');
+    $("#chips").innerHTML = cats.map(function (c) {
+      var n = c === "全部" ? D.families.length : D.families.filter(function (f) { return f.cat === c; }).length;
+      var on = state.cat === c;
+      return "<button class=" + Q + "chip" + (on ? " on" : "") + Q + " data-cat=" + Q + esc(c) + Q +
+        " aria-pressed=" + Q + (on ? "true" : "false") + Q + ">" + esc(c) +
+        "<span class=" + Q + "n" + Q + ">" + n + "</span></button>";
+    }).join("");
+    var note = $("#filterNote");
+    if (!note) return;
+    if (state.cat === "全部") { note.className = "filterNote"; note.innerHTML = ""; return; }
+    var cnt = D.families.filter(function (f) { return f.cat === state.cat; }).length;
+    note.className = "filterNote on";
+    note.innerHTML = "已筛选 <b>" + esc(state.cat) + "</b>（" + cnt + " 个风格族）" +
+      "<button id=" + Q + "clearFilter" + Q + ">清除筛选</button>";
+  }
+  function scrollToStyles() {
+    var el = document.getElementById("styles");
+    if (!el) return;
+    var top = el.getBoundingClientRect().top;
+    if (top > window.innerHeight * 0.55 || top < 0) {
+      window.scrollTo({ top: el.offsetTop - 130, behavior: "smooth" });
+    }
   }
   function hit(s) {
     if (!state.q) return true;
@@ -224,7 +243,20 @@
 
   document.addEventListener('click', function (e) {
     var chip = e.target.closest && e.target.closest('.chip');
-    if (chip) { state.cat = chip.getAttribute('data-cat'); renderChips(); render(); return; }
+    if (chip) {
+      state.cat = chip.getAttribute("data-cat");
+      renderChips();
+      render();
+      scrollToStyles();
+      return;
+    }
+    var cf = e.target.id === "clearFilter" ? e.target : (e.target.closest ? e.target.closest("#clearFilter") : null);
+    if (cf) {
+      state.cat = "全部";
+      renderChips();
+      render();
+      return;
+    }
     var card = e.target.closest && e.target.closest('[data-open]');
     if (card) { openDetail(card.getAttribute('data-open')); return; }
     if (e.target.id === 'modal' || e.target.id === 'mClose') closeDetail();

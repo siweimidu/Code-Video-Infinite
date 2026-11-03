@@ -21,6 +21,7 @@ node scripts/do.mjs "<用户那句话>"      # 建工程骨架：brief.md / NEXT
 node scripts/do.mjs --ask               # 不想写命令：回答 7 个问题，一样建骨架
 node scripts/help.mjs                   # 一屏速查（用户问「怎么用」时先给他这一页）
 node scripts/build-gallery.mjs && start gallery/index.html   # 选片台：浏览器里看全部样片与风格族
+node scripts/check-gallery.mjs                                 # 选片台回归自检（13 项）
 node scripts/selftest.mjs               # 路由回归自检（改了词表就跑）
 ```
 

@@ -109,3 +109,16 @@ SKILL.md 也加了第 0 节「说人话就行」：默认先 `do.mjs`，再读�
 - **字体自托管**：gallery/fonts/ 里放了 DM Sans（400/500/600）与 JetBrains Mono（400/500）的 **latin 子集 woff2**，共 5 个 face / 170KB，附 OFL 许可原文（OFL-DMSans.txt、OFL-JetBrainsMono.txt）。构建时由 scripts/build-fonts.mjs 生成 gallery/_src/fonts.css 并内联进 index.html，所以离线打开也是设计系统原本的字形；中文仍回落系统字体（未内嵌 CJK，避免几百 MB）。
 - **镜头卡静帧**：shotcraft 随包的 gallery/media/poster/ 有 54 张镜头卡静帧，其中 **50 张与卡片 id 对上**，已挂到选片台；其余卡片用「配方卡」（分类色 + 时长 + 能量条 1–4 格）呈现，**页面上标为配方卡，不冒充样片**。
 - 两个构建器都可重跑：node scripts/build-fonts.mjs 与 node scripts/build-gallery.mjs。
+
+## 第六轮：选片台三处可用性修复 + 回归自检
+
+用户实测反馈「按钮显示不全、点了没反应」。用 CDP 连真浏览器量出来是三件事，不是猜：
+
+| 现象 | 实测证据 | 修法 |
+| --- | --- | --- |
+| chip 被裁 | 14 个 chip 内容宽 1378px、容器 1116px，MG 签名技法 完全在视口外 | chips 改 flex-wrap，不再横向滚动 |
+| 点击落空 | elementFromPoint 在 印刷与版画 圆心返回 DIV.filters（被粘性栏接走） | 换行后所有 chip 都在栏内；筛选栏偏移改用 nav 高度变量 |
+| 点了像没反应 | 点 3D 与材质 确实 39/39 → 4/39，但结果区在 3700px 以下 | 点击后自动滚到结果区 + 已筛选提示 + 清除按钮 + chip 上显示族数 |
+
+- 新增 scripts/check-gallery.mjs：CDP 起真浏览器，查 chips 可见性/遮挡/横向滚动、过滤生效、清除生效、自动滚动、字体加载、媒体加载，共 13 项，失败退出码 1。
+- 现在 13/13 通过（chips 14 个全可见、过滤 39→4、scrollY 约 4143、DM Sans 与 JetBrains Mono 均已加载）。
