@@ -1,4 +1,4 @@
-# 许可说明（逐引擎）
+﻿# 许可说明（逐引擎）
 
 **Code-Video-Infinite 是一个聚合分发包，不是单一许可的软件。** 五个引擎各自保留原有许可，
 合并**没有**改变任何条款，也**没有**把非商用条款「统一」成宽松许可。
@@ -37,3 +37,12 @@
 | 用真实品牌/商标 | 不要。品牌名一律虚构 |
 
 有任何一条不确定，就先查 `references/assets-and-licenses.md` 再开工——素材许可返工比做片贵。
+
+
+## 第二轮：garden-skills（六件套）
+
+| 目录 | 引擎 | 许可 | 一句话条款 | 许可文件 |
+|---|---|---|---|---|
+| `engines/garden-skills/` | garden-skills（motion-showreel · web-video-presentation · web-design-engineer · beautiful-article · gpt-image-2 · kb-retriever） | **MIT** | 可商用，保留版权与声明；出图的 prompt 与产物自行记账 | `engines/garden-skills/LICENSE` |
+
+它的 `dist/` 与 `website/` 是上游发布物料（MIT 同样适用），原样保留但不参与产出。

@@ -1,160 +1,147 @@
 ---
 name: code-video-infinite
-description: 用代码做视频的唯一入口：一句需求 → 成片 MP4 + 可编辑源码。内置五个引擎（onetake / video-shotcraft / claude-motion / mg-motion / wise-motion）与 880 条可检索素材（124 张 Remotion 镜头配方卡、462 条通用动效条目、47 套动画源码案例、20 个源码组件、30 个物件模型、14 个场景起点、15 种 MG 风格签名技法、35 个纯时间动效函数、6 套起始 look），共用一套节奏语法、声音规范与三道质检闸。Use when 用户要做动效 / MG / motion design / 产品宣传片 / 发布片 / teaser / 功能演示 / 网页或截图变视频 / 转场与文字动效 / 复刻某个动效 / 用 Remotion 或逐帧渲染做片，或抱怨成片「像 PPT、没节奏、一个一个展示」。NOT for 实拍剪辑与长视频、只想要内容摘要、只出图不出片、品牌 logo 设计。
+description: 把一句话需求变成可交付的视觉成品的总控 skill：视频成片、网页视频演示、网页/UI 制品、长文、静态图、动效源码、知识库检索七类交付形态，十一个引擎（onetake / shotcraft / claude-motion / mg-motion / wise-motion / motion-showreel / web-video-presentation / web-design-engineer / beautiful-article / gpt-image-2 / kb-retriever），一套跨库风格体系（82 个风格族，覆盖 43 个动效风格 + 46 个案例风格 + 15 种 MG 技法 + 6 个设计学校 + 17 类出图模板），以及三类交付闸。Use when 用户要做 视频/动效/MG/宣传片/发布片/teaser/片头/讲解视频/作品集、用网页做视频/可录屏演示、网页或仪表盘或原型或 deck 或数据可视化、把链接或 PDF 做成网页长文、海报或信息图或产品图或 UI mockup、要某个动效的真实源码、从本地知识库检索答问，或抱怨成片「像 PPT、没节奏、没设计感」。NOT for 实拍剪辑、纯后端或命令行开发、只想要内容摘要、品牌 logo 设计。
 ---
 
 # Code-Video-Infinite
 
-**画面不是「生成」出来的，是「写」出来的。** 这里没有生图/生视频模型：一支片是一个网页或一个
-Remotion 工程，给它一个时间 t，它画出那一帧；无头浏览器或 Remotion 逐帧渲染，ffmpeg 合音画。
-声音同样可以代码合成。所以每支片都能任意 seek、任意重渲、改一版不会把上一版带偏。
+**先判形态，再选引擎，最后定风格。** 这个 skill 不生产一种东西：它把「做个视觉成品」分成八种交付形态，
+每种形态都有专属引擎、专属硬节点和专属闸；风格则是一套跨库的规则，同一套规则在多个引擎里都有实现。
 
-本 skill 是五个引擎的合并体：**一个入口、一套流程、三条闸**，五个引擎各自保留全部纵深文档与素材。
+装了什么：十一个引擎、**1013 条可检索素材**（124 张镜头卡 / 462 条动效条目 / 47 套源码案例 / 20 个组件 /
+30 个物件模型 / 14 个场景 / 15 种 MG 技法 / 43 个动效风格文件 / 6 个设计学校 / 17 类出图模板）、
+82 个风格族、以及七个能跑的脚本。
 
-## 0 · 开工先跑这两条（30 秒，不要跳）
+## 0 · 开工三件套（每次先跑，30 秒）
 
 ```bash
-node scripts/doctor.mjs          # 环境：Node / ffmpeg / ffprobe / Python / Chrome / 五个引擎是否齐全
-node scripts/find.mjs --stats    # 目录：880 条素材按来源、集合清点
+node scripts/doctor.mjs                       # 环境 + 十一个引擎是否齐全
+node scripts/pick.mjs "<用户那句话>"           # 判形态 + 选引擎 + 给三个风格方向 + 素材起点 + 闸 + 交付清单
+node scripts/find.mjs "<更具体的关键词>"       # 按需检索素材（分面：--medium / --engine / --collection）
 ```
 
-doctor 有 FAIL 就先修环境，再谈创作。缺 Chrome 的装 Chrome 或 `npx playwright install chromium`；
-Windows 上 npm 被执行策略拦掉时用 `npm.cmd`。
+`pick.mjs` 的输出就是这次的施工蓝图；判读偏弱时它会提示「先向用户确认一句」，那就问，别硬猜。
 
-## 1 · 先选引擎，再谈风格
+## 1 · 八种交付形态
 
-用户的需求决定引擎，不由目录丰盛程度决定。一个片子**默认只用一个主引擎**，第二个引擎只用来取素材。
-
-| 需求长什么样 | 引擎 | 它强在哪 | 开箱要付的代价 |
+| 形态 | 交付物 | 引擎 | 硬节点 |
 |---|---|---|---|
-| 15–30 秒产品/发布/技能动效片，要节奏、要运镜、要「不像 PPT」 | **onetake** | 单 HTML 合成、真实快门运动模糊、合成音效、节奏与承接的 oracle | Python + Chrome；4K60 渲染慢（先报时） |
-| 产品宣传片、影视感、真实网页画面、多镜头叙事、要剪映再改、要发布社交平台 | **shotcraft** | 124 张镜头配方卡 + Ink Press 模板 + 真实页面捕获 + Freesound 选音 + 工作台 | Node + Remotion（npm 安装）；Remotion 有独立许可 |
-| 要具体造型、材质、3D 物件、角色与动物、手绘纸艺、可直接运行的场景 | **claude-motion** | 47 套源码案例 + 20 个源码组件 + 30 个物件模型 + 14 个场景起点，保真源码而非画风标签 | Node ≥ 22 + Playwright Chromium + ffmpeg；素材体量大 |
-| 要 MG 风格（扁平/线描/等轴/3D 渲染/逐帧/拼贴/液态/形变/包豪斯/Synthwave/玻璃/花字/贴纸/像素/赛博 HUD） | **mg-motion** | 15 种可检验的签名技法 + 103 采样配乐工具包 + 10 道机器闸 + 两轮评审 | 需 Chrome（MG_CHROME）+ ffmpeg + 字体自举 |
-| 只要一个动作、转场、文字动效的**真实源码**，交给别的工程用 | **wise-motion** | 462 条动效条目、预览、真实源码入口与导出脚本 | 只交素材，不替你设计整片 |
+| **M1 视频成片** | MP4 + 可渲染源码 | onetake · shotcraft · mg-motion · motion-showreel · claude-motion | 概念三选一 → 关键帧/静帧 → 草稿 1080p → 过闸 → 终版 |
+| **M2 网页视频** | 点击驱动的 16:9 网页 | web-video-presentation | 一次产出 script+outline → 对齐 5 件事 → 第 1 章验收 |
+| **M3 网页制品** | 单页 HTML / React 工程 | web-design-engineer | Design Read 五档 → 声明设计系统 → v0 早给 |
+| **M4 长文** | 单文件 HTML 长文 | beautiful-article | Source→MD → 编辑计划 → 三次 Checkpoint |
+| **M5 静态图** | PNG / 系列图 | gpt-image-2 | 先定运行模式（A/B/C）→ 读方法论 → 按模板填槽 |
+| **M6 动效素材** | 导出源码 + 接入说明 | wise-motion | match → show → export → 在目标工程真跑一遍 |
+| **M7 知识检索** | 答案 + 出处 | kb-retriever | 先读该类文件的 references → 渐进式检索 → 标出处 |
+| **M8 镜头配方** | 单镜头实现 | shotcraft | 读卡全文 → 按「参考实现」定位 demo → 改参数不降档 |
 
-路由细节、被否证的组合、以及每个引擎的明确边界见 `references/engine-selection.md`。
+同形态内怎么选、每个引擎的硬前提与长度上限，见 `references/taxonomy.md` 第一节和第二节。
 
-**检索任何素材都用同一条命令**（跨五个引擎）：
-```bash
-node scripts/find.mjs "HUD 雷达"
-node scripts/find.mjs "咖啡 手绘" --limit 5
-node scripts/find.mjs fade --source wise-motion
-node scripts/find.mjs "标题 入场" --collection shot-card --json
-```
+## 2 · 风格：一条轴不够，有六条
 
-## 2 · 六段流水线（顺序固定，可以删段但不能跳闸）
-
-| 段 | 做什么 | 纵深文档 |
+| 轴 | 内容 | 落地 |
 |---|---|---|
-| 0 需求 | 问清交付规格（时长/画幅/fps/有无配音字幕/语言）、素材来源、受众与投放位；一次问完，不逐条追问 | `references/pipeline.md` §0 |
-| 1 参考 | 有参考片就实测它：能量图、切点、静止比例、t80 与拖影（onetake `analyze_ref.py`）；没有参考就写下一组可复核的数字目标 | `references/motion-grammar.md` |
-| 2 概念 | **三个互不相同的中心思想**，用户选一个；同时按名选定 look/风格，不静默套默认 | onetake §2 / mg-motion §2 |
-| 3 节奏与承接 | 分镜按**节奏**和**承接**两条腿设计：不许等长镜头、不许一个 beat 替换上一个 beat | `references/motion-grammar.md` |
-| 4 素材与镜头 | 真实页面捕获 / 截图还原 UI / 物件模型 / 镜头卡 / 动效条目；先取一个最小的可跑片段 | 各引擎 ENGINE.md |
-| 5 实现 | 每帧都是时间的纯函数；动作从库里选，曲线按 t80 定；先出静帧再整片 | 各引擎 ENGINE.md |
-| 6 渲染与交付 | 1080p30 草稿 → 验收 → 4K60/终版；过三条闸；按交付契约报告 | `references/delivery.md` |
+| A 风格族 | 82 族（39 族跨库有实现） | `catalog/styles.json` |
+| B 动效风格文件 | 43 个（本质/辨识信号/运动/声音/坑） | `engines/garden-skills/skills/motion-showreel/references/styles/` |
+| C 案例风格 | 46 个（10 大类，带真实源码） | `engines/claude-motion/references/case-catalog.json` |
+| D MG 签名技法 | 15 种可检验技法 | `engines/mg-motion/references/styles.md` |
+| E 网页设计学校 | 6 个学校 | `engines/garden-skills/skills/web-design-engineer/SKILL.md` |
+| F 出图模板类 | 17 类 + prompt 方法论 | `engines/garden-skills/skills/gpt-image-2/references/` |
 
-## 3 · 铁律（五家合并去重，每条都是别人踩过的）
+三条风格铁律（细节见 `references/style-library.md`）：
 
-1. **每帧只依赖 t。** 禁 `Date.now()`、禁 rAF 累积状态、禁状态触发的 CSS 动画；伪随机用固定种子。
-2. **不要把模板的故事当用户的故事。** 概念三选一；新片套模板的 beat 就会读成模板。
-3. **不要把上一支片的 look 带进下一支。** look/风格必须被**按名选择**，静默默认不允许。
-4. **不要按节拍器等分切。** 等长镜头无论单镜多好都读成幻灯片。
-5. **不要替换 beat，要承接它。** 每个段落边界都得有东西活下来并可见地运动/缩放到下一段；
-   互斥场景（`display:none` 换页）即使节奏完美也是 PPT。硬切爆点与片尾卡除外。
-6. **留白是爆点落地的条件。** 参考片约 1/3 时间是静止的；整片不停 = 没有高潮。
-7. **小元素，大地面。** 这类片的画幅常是 70% 白/底色；满屏素材是例外，不是默认。
-8. **成因必须看得见。** 手从录制路径画出来、球落地、点分裂——页面自己动起来读成屏保。
-9. **快动作必须有快门。** 超过 ~80 px/帧没有运动模糊就会频闪成重影；用渲染器的快门，不用 CSS blur。
-10. **运镜要追主角。** 静止机位会被评价成「就缺灵动的跟踪运镜」；声明 `inFrame`，让相机滞后、倾斜、落定。
-11. **草稿 1080p30。** 未经接受的剪辑不渲 4K60。
-12. **不用粒子/彩纸/碎屑当装饰。** 读起来就是模板；要花活就让字自己落地。
-13. **声音一个房间、一套材质。** 每个事件一条合成音 = 音频版的幻灯片。
-14. **不伪造：** 没跑过的样片不叫复现，无声片不叫有声片，技术通过不等于审美达标。
+1. **用户没指定风格时给三个方向，且必须来自不同分类**：A 贴合 / B 换语言 / C 大胆，每个配一张真代码渲的关键帧。
+2. **只读选中的 1–2 个风格文件**；一主一辅；超过 3 种同时在场 = 糊。
+3. **风格是起点不是选择题**：可以直接用、可以改造（写明改了什么）、可以按 `styles/_template.md` 自定义；
+   换主题不换规则，但也别把上一支片换文案再交一次。
 
-## 4 · 三道闸，缺一不可
+## 3 · 通用五段流程
 
-| 闸 | 谁判 | 判什么 | 不过怎么办 |
-|---|---|---|---|
-| **机器闸** | `node scripts/qc.mjs gate <video>` | 时长/画幅/fps/有无音轨/LUFS/真峰值/黑帧/静帧比例 | 改片子重渲，不改标准 |
-| **静帧闸** | 你自己 `read_image` | 6–10 张关键帧能不能当海报：构图/层次/留白/文字排版 | 重排画面 |
-| **评审闸** | **干净上下文的独立 subagent** | 7 维打分 + 带帧号的修改清单；改完**再评一轮** | 按影响排序改 |
+| 段 | 做什么 | 纵深 |
+|---|---|---|
+| 0 Brief | 一次问清七件事：时长/画幅/fps、交付物、声音、字幕与语言、素材来源、投放位、品牌约束 | `references/pipeline.md` §0 |
+| 1 参考与定调 | 有参考就实测（能量图/切点/静止比/t80 与拖影）；没参考就立可复核的数字目标 | `references/motion-grammar.md` |
+| 2 概念与风格 | 三个互不相同的中心思想 + 按名选定风格（或按学校库给三方向） | `references/style-library.md` |
+| 3 结构 | 视频＝节奏+承接的 beat sheet；网页＝Design Read 与信息架构；长文＝编辑计划与阅读节奏 | 各引擎 ENGINE.md |
+| 4 实现与闸 | 每帧是时间的纯函数（视频）/ 单文件可离线（网页文章图）；先关键帧再整片；过三道闸 | `references/quality-gates.md` |
+| 5 交付 | 按形态交付，带实测数字与诚实的弱点 | `references/delivery.md` |
 
-机器闸只测机器能测的；审美一律交给独立评审，制作者的自检有确认偏差。
-各引擎自带的闸（`mg-qc.mjs`、`verify_promo.py`、`final-review.md`、`jury.md`）用法与判定口径见
-`references/quality-gates.md`。
+## 4 · 铁律（按形态分组，别跨形态套用）
 
-## 5 · 声音
+**所有形态**：1) 需求先问清再动手；2) 不许伪造（没跑过的不叫复现，无声片不叫有声片）；3) 品牌名虚构、不用真商标；
+4) 素材记账（来源/许可/作者/URL 进 CREDITS）；5) 交付前必须自检，自检不过不许交。
 
-- 目标：**一个房间、一套材质**，事件数少于 beat 数；音乐默认只用允许商用的曲目并记账。
-- 常用落点：`−14 LUFS`（社交/网页）、`−16 LUFS`（长片/播客式），真峰值 `≤ −1 dBTP`（AAC 编码后还会抬）；
-  要留更多余量按 `−3.5` 走。
-- 三家的现成工具：onetake `sfx_palette.py` / `score.py`（合成 + 录制混音），mg-motion `audio.py` + 103 采样，
-  shotcraft `sound-design.md` + `sfx-source.py`（Freesound，CC0 默认）。
-- 细节与许可红线见 `references/sound.md`。
+**M1 视频**：每帧只依赖 t（禁 `Date.now()` / 随机不固定种子）；不按节拍器等分切；不替换 beat 要承接它；
+留白是爆点落地的条件；快动作上快门（> ~80px/帧）；运镜要追主角并声明 `inFrame`；不用粒子彩纸当装饰；
+草稿只渲 1080p30。
+
+**M2/M3/M4 网页类**：单文件可离线；字体系 ≤ 2 套、层级 ≤ 5 级；占位符清零；先给 v0 再完整构建；
+三个方向不许同一分类；关键状态截图留档。
+
+**M5 出图**：先定模式再动手；按模板槽位填，不即兴写散文；prompt 与产物记账；真商标与真人肖像不做。
+
+**M7 检索**：先读该类文件的处理方法再检索；最多 5 轮迭代；每条结论标出处，找不到就说找不到。
+
+## 5 · 三类闸
+
+| 闸 | 用什么 | 判什么 |
+|---|---|---|
+| **机器闸（视频）** | `node scripts/qc.mjs gate <video> --spec spec.json` + 引擎自带闸（`mg-qc.mjs` / `verify_promo.py`） | 时长/画幅/fps/LUFS/真峰值/黑帧/静帧比例 |
+| **机器闸（网页/文章）** | `node scripts/check-web.mjs <file.html>` | 单文件、体积、title/lang/viewport、字体数、emoji 数、时间驱动入口、占位符残留 |
+| **静帧/截图闸** | 自己 `read_image` | 6–10 张关键帧能不能当海报；关键状态有没有崩 |
+| **评审闸** | **干净上下文的独立 subagent** | 视频按 `jury.md` / `final-review.md` 打分，带帧号证据；改完再评一轮 |
+
+不出闸不交片，也不许改标准来「通过」。判定口径见 `references/quality-gates.md`。
 
 ## 6 · 交付契约
 
-**每支片都要齐这七项**（缺一项就是没做完）：概念两句话 / 带时间码 beat sheet / 签名技法逐条对应 /
-用了哪几种风格与怎么交接 / 技术路线 / **实测数字**（时长 画幅 fps LUFS 真峰值 黑帧 静帧比例）/
-诚实的 top-3 弱点。
+**视频（M1/M2）**：MP4/网页 + 可重建源码 + 七项报告（概念 / 带时间码 beat sheet / 技法逐条 / 风格与交接 /
+技术路线 / **实测数字** / top-3 弱点）。
+**网页文章图（M3/M4/M5）**：产物文件 + 关键状态截图 + Design Read 或编辑计划 + 素材许可清单。
+**素材与检索（M6/M7/M8）**：导出目录或答案 + 接入说明或出处清单 + 依赖与许可。
 
-引擎额外交付物：onetake 多语言同源（`?lang=` 不分叉）、claude-motion `ADAPTATION.md`（保留/改写/许可/未解决问题）、
-shotcraft 动效工作台与剪映工程、mg-motion 版本目录 `v1/ v2/`。见 `references/delivery.md`。
+细节与各形态的额外交付物见 `references/delivery.md`。
 
 ## 7 · 目录地图
 
 ```
 Code-Video-Infinite.skill/
-├── SKILL.md                  # 本文件：路由 + 铁律 + 闸 + 交付
-├── README.md                 # 人看的：五个引擎是什么、怎么装、许可表
-├── LICENSES.md               # 逐引擎许可与第三方声明
-├── references/               # 合并后的共享知识（本层新写，只放跨引擎判断）
-│   ├── engine-selection.md   # 决策矩阵与边界
-│   ├── pipeline.md           # 六段流水线的每段纵深
-│   ├── motion-grammar.md     # 节奏/曲线/承接/运镜的统一词汇
+├── SKILL.md                  # 本文件：判形态 → 选引擎 → 定风格 → 闸 → 交付
+├── README.md / LICENSES.md   # 人看的说明与逐引擎许可
+├── spec.json                 # 统一机器闸默认规格
+├── references/               # 跨引擎判断（本 skill 自己的东西）
+│   ├── taxonomy.md           # 分类学：八形态 × 十一引擎 × 六风格轴
+│   ├── style-library.md      # 风格库怎么用：选族/三方向/混搭/反 AI 陈词滥调
+│   ├── web-and-image.md      # 网页·文章·出图·网页视频的工艺
+│   ├── pipeline.md           # 通用五段流程与每段的动作与命令
+│   ├── motion-grammar.md     # 节奏·曲线·承接·运镜
 │   ├── sound.md              # 声音与许可红线
-│   ├── quality-gates.md      # 三道闸的判定口径
-│   ├── delivery.md           # 交付契约
+│   ├── quality-gates.md      # 三类闸的判定口径
+│   ├── delivery.md           # 按形态的交付清单
 │   ├── assets-and-licenses.md# 素材在哪、能不能再分发
-│   └── provenance.md         # 五个来源、版本、合并做了什么
-├── catalog/
-│   ├── INDEX.md              # 880 条素材清单（生成物）
-│   ├── index.json            # 同一份数据的机器可读版
-│   └── assets-index.json     # 537 个重型素材清单
-├── scripts/
-│   ├── doctor.mjs            # 环境自检
-│   ├── find.mjs              # 跨引擎检索
-│   ├── qc.mjs                # 统一机器闸（measure / gate / delegate）
-│   ├── build-catalog.mjs     # 重建索引
-│   └── check-links.mjs       # 文档互链体检
-└── engines/                  # 五个引擎原样保留（含各自的文档/素材/许可）
-    ├── onetake/       ENGINE.md + lib/motion.js + scripts/ + looks/ + cases/
-    ├── shotcraft/     ENGINE.md + references/shots(124) + template/ + demos/ + assets/
-    ├── claude-motion/ ENGINE.md + references/*.json + assets/{cases,extensions,models,scenes}
-    ├── mg-motion/     ENGINE.md + mg-styles-15/{harness,assets} + references/ + scripts/
-    └── wise-motion/   ENGINE.md + catalog/registry.json + references/effects(462) + scripts/
+│   └── provenance.md         # 十一个来源、版本、合并做了什么
+├── catalog/                  # 生成物：index.json / styles.json / INDEX.md / assets-index.json
+├── scripts/                  # pick / find / doctor / qc / check-web / build-catalog / check-links
+└── engines/                  # 十一个引擎原样保留（各自 ENGINE.md 或 skills/*/SKILL.md）
 ```
 
 ## 8 · 什么时候读哪个文件
 
 | 时机 | 读 |
 |---|---|
-| 不知道该用哪个引擎 | `references/engine-selection.md` |
+| 不知道用哪种形态 / 哪个引擎 | `references/taxonomy.md` |
+| 要选风格、要三个方向、要混搭 | `references/style-library.md` |
+| 做网页 / 长文 / 出图 / 网页视频 | `references/web-and-image.md` |
 | 要开工，需要每段的具体动作与命令 | `references/pipeline.md` |
-| 节奏不对、像 PPT、动作太软/太硬 | `references/motion-grammar.md` |
-| 配音/音效/配乐/响度 | `references/sound.md` |
-| 片子做完了，怕不过闸 | `references/quality-gates.md` |
+| 视频节奏不对、像 PPT、动作太软 | `references/motion-grammar.md` |
+| 配音 / 音效 / 配乐 / 响度 | `references/sound.md` |
+| 快交付了，怕不过闸 | `references/quality-gates.md` |
 | 要交片、要报告、要再改 | `references/delivery.md` |
-| 用某引擎的素材，不确定能不能商用 | `references/assets-and-licenses.md` |
-| 要升级某个引擎或追问来源 | `references/provenance.md` |
-| 引擎纵深（唯一权威） | `engines/<engine>/ENGINE.md` 及其 `references/` |
+| 素材能不能商用 | `references/assets-and-licenses.md` |
+| 引擎纵深（唯一权威） | `engines/<engine>/ENGINE.md`；garden 的在 `engines/garden-skills/ENGINE.md` |
 
-## 9 · 许可与素材边界（一句话版）
+## 9 · 许可一句话
 
-五个引擎许可各不相同，**合并仓库不改变各自的许可**：onetake 是 PolyForm Noncommercial（非商用免费），
-wise-motion 是 Apache-2.0，claude-motion 与上游 mg-styles-15 是 MIT（第三方资产各自保留许可），
-shotcraft 自带许可且 Remotion 另有独立许可（公司商用需自行确认）。字体、模型、音效、BGM 的授权
-逐条记在 `references/assets-and-licenses.md` 与各引擎的 `LICENSE` / `ATTRIBUTION` / `NOTICE` 里。
-品牌名一律虚构，不要用真商标。
+聚合分发，不改变各自许可：onetake 是 PolyForm Noncommercial（**非商用免费，商用需授权**），
+shotcraft / wise-motion 是 Apache-2.0，claude-motion 与 garden-skills 是 MIT（第三方资产各自许可），
+mg-motion 以上游 mg-styles-15 的 MIT 为准。统一层文字与脚本按 MIT。商用前读 `LICENSES.md` 的「商用速查」。

@@ -1,4 +1,4 @@
-# 来源、版本与合并记录
+﻿# 来源、版本与合并记录
 
 ## 五个来源
 
@@ -56,3 +56,29 @@ mg-motion `engines/mg-motion/references/styles.md` 的 15 个 H2、onetake `engi
 - **索引条数 ≠ 可交付案例数**：claude-motion 的 122 条研究清单是只读目录，47 套案例里有 11 套预览不可用；wise-motion 462 条是动效条目，不是 462 支片。
 - **shotcraft 的 `workbench/` 没随包分发**：它的 ENGINE.md 会让人跑 `node workbench/scripts/open.mjs`，但本包里没有这个目录（上游仓库才有）。交付时按 `references/delivery.md` 的说明降级处理，不要假装工作台可用。
 - **mg-motion 包内缺独立 LICENSE 文件**：上游 mg-styles-15 是 MIT，但这份 skill 包没附带 LICENSE，已在 `engines/mg-motion/NOTICE-UPSTREAM.md` 里写明。
+
+
+## 第二轮合并：garden-skills（六件套）
+
+| 项 | 内容 |
+|---|---|
+| 来源 | **garden-skills**（ConardLi/garden-skills，上游 MIT） |
+| 版本 | 以 `engines/garden-skills/package.json` 与各 skill 的 `manifest.json` 为准 |
+| 位置 | `engines/garden-skills/`，743 个文件 / 27.1MB，**原样保留**（含 `dist/` 与 `website/`） |
+| 与第一轮的区别 | 六个 skill 的 `SKILL.md` **没有改名**：它们带 manifest.json 与 README 交叉链接，改名会破坏上游结构。它们不是本仓库的独立入口，只是这个引擎内部的分工指南（见 `engines/garden-skills/ENGINE.md`） |
+| 新增统一层 | `engines/garden-skills/ENGINE.md`（六件套 ↔ 八形态映射、硬节点、依赖、素材边界） |
+
+这一轮还做了真正的**重构**（不只是加目录）：
+
+1. **新建分类学** `references/taxonomy.md`：八种交付形态 × 十一个引擎 × 六条风格轴 + 组合矩阵 + 反模式。
+   `references/engine-selection.md` 收薄为入口指针（判断已并入 taxonomy）。
+2. **新建统一风格库** `catalog/styles.json`：把 43 个动效风格文件、46 个案例风格、15 种 MG 技法交叉对齐成
+   **82 个风格族**（其中 39 个跨 2–4 个库有实现），人工整理了族名/分类/情绪/实现路径。
+   同一风格族在三处实现的对照是一手数据，不是猜测。
+3. **新建路由脚本** `scripts/pick.mjs`：自然语言需求 → 交付形态 + 引擎 + 三个风格方向（不同分类）+ 镜头/动作起点 + 闸 + 交付清单。
+   内置决定性分流词表（避免「网页」把长文/海报的活抢走）。
+4. **新建网页闸** `scripts/check-web.mjs`：单文件/体积/title/lang/viewport/字体数/emoji/时间入口/占位符 10 项。
+5. **检索升级**：`scripts/find.mjs` 支持 `--medium / --engine / --collection` 分面，风格族也进检索。
+6. **文档扩充**：新增 `references/style-library.md`（风格库用法/三方向/混搭/反 AI 陈词滥调）与
+   `references/web-and-image.md`（网页·长文·出图·网页视频的工艺）。
+7. 索引从 880 条增至 **1013 条**，集合从 11 个增至 15 个（新增 style / tool / design-school / image-template）。

@@ -1,56 +1,55 @@
 # Code-Video-Infinite
 
-**用代码做视频的单一入口。** 一句话需求 → 成片 MP4 + 可编辑源码。
+**把一句话需求变成可交付的视觉成品。** 一个入口，八种交付形态，十一个引擎，一套跨库风格体系，三类交付闸。
 
-把五个原本各自独立的动效/视频 skill 合成一个：**一个入口（`SKILL.md`）、一套流程（六段流水线）、三条闸（机器 / 静帧 / 评审）**，
-五个引擎各自保留全部纵深文档、源码、素材与许可，一个字节没删。
+不是把几个 skill 塞进一个文件夹：这里有一层**判断系统** —— 先判形态，再选引擎，最后按风格族落地，
+每一步都有可执行的脚本、可核对的素材 ID 和可复现的闸。
 
-## 五个引擎
+## 八种交付形态
 
-| 引擎 | 它是什么 | 家底 |
+| 形态 | 交付物 | 引擎 |
 |---|---|---|
-| **onetake** | 单 HTML 合成 + 逐帧渲染的节奏型短片（10–30s，配音演示可到 ~60s） | 真实快门运动模糊、合成音效、6 套起始 look、35 个纯时间动效函数、节奏/承接 oracle |
-| **video-shotcraft** | Remotion 电影感产品宣传片（真实页面捕获 + 镜头配方卡） | **124 张镜头卡**、Ink Press 完整模板、可复用组件库、Freesound 选音、动效工作台、剪映导出、社交发布 |
-| **claude-motion** | 案例辅助的代码动画（造型、材质、3D、角色动物、纸艺、可运行场景） | **47 套源码案例**、5 套制作系统、14 个场景起点、20 个源码组件、30 个物件模型、122 条研究清单 |
-| **mg-motion** | 15 种 MG 风格的签名技法 + 逐帧渲染 + 机器闸 | 15 种风格技法、混搭语法、103 采样配乐工具包、10 道实测闸、两轮评审协议 |
-| **wise-motion** | 动效素材供应商（要一个动作的真实源码就用它） | **462 条动效条目**（23 分类）+ 预览 + 源码导出脚本 + 逐素材署名 |
+| **M1 视频成片** | MP4 + 可渲染源码（10 秒到 20 分钟） | onetake · shotcraft · mg-motion · motion-showreel · claude-motion |
+| **M2 网页视频** | 点击驱动的 16:9 网页，录屏即成片 | web-video-presentation |
+| **M3 网页制品** | 页面 / 仪表盘 / 原型 / deck / 数据可视化 | web-design-engineer |
+| **M4 长文** | 单文件 HTML 长文（离线可分享） | beautiful-article |
+| **M5 静态图** | 海报 / 信息图 / 产品图 / UI mockup / 分镜 | gpt-image-2 |
+| **M6 动效素材** | 单动作/转场的真实源码 | wise-motion |
+| **M7 知识检索** | 答案 + 出处 | kb-retriever |
+| **M8 镜头配方** | 单镜头实现（做 M1 时的零件） | shotcraft |
 
-## 统一层（合并时新增）
-
-| 文件 | 作用 |
-|---|---|
-| `SKILL.md` | 唯一入口：引擎路由 + 14 条铁律 + 三道闸 + 交付契约 |
-| `references/` | 8 份跨引擎判断：选型、流水线、动效语法、声音、质检、交付、素材许可、来源 |
-| `catalog/` | **880 条统一索引**（镜头卡 124 / 动效条目 462 / 案例 47 / 组件 20 / 模型 30 / 场景 14 / 风格 15 / 动效函数 35 / look 6 / 研究清单 122）+ 537 个重型素材清单 |
-| `scripts/` | `doctor.mjs`（环境自检）· `find.mjs`（跨引擎检索）· `qc.mjs`（统一机器闸）· `build-catalog.mjs`（重建索引）· `check-links.mjs`（文档互链体检） |
-| `engines/` | 五个引擎原样保留（各自的 ENGINE.md / references / scripts / assets / LICENSE） |
-
-## 快速开始
+## 三条命令决定这一单怎么做
 
 ```bash
-# 0) 放到你的 skills 目录里（Claude Code / Codex / 兼容 skill 的 agent 都能读）
-#    ~/.claude/skills/Code-Video-Infinite.skill   （或 ~/.agents/skills/...）
+node scripts/pick.mjs "做一支 20 秒赛博风的产品发布动效，要运镜和音效"
+# → 判形态 · 选引擎 · 三个不同分类的风格方向 · 镜头/动作起点 · 闸 · 交付清单
 
-# 1) 环境自检（30 秒，缺什么会告诉你装什么）
-node scripts/doctor.mjs
-
-# 2) 检索素材（跨全部五个引擎，中英文都行）
-node scripts/find.mjs "HUD 雷达"
-node scripts/find.mjs "产品 发布" --limit 5
-node scripts/find.mjs fade --source wise-motion --json
-
-# 3) 出片后过闸
-node scripts/qc.mjs measure film.mp4
-node scripts/qc.mjs gate film.mp4 --spec spec.json
+node scripts/find.mjs "HUD 雷达" --medium M1-video       # 分面检索：--medium / --engine / --collection
+node scripts/doctor.mjs                                  # 环境 + 十一个引擎自检
 ```
 
-开工时让 agent 读 `SKILL.md`：它会先问清交付规格，再按需求选引擎，不会拿目录丰盛程度当理由。
+## 家底（全部可检索，共 1013 条）
 
-## 三条闸（这个仓库和别的「素材包」最大的区别）
+| 内容 | 数量 | 出处 |
+|---|---|---|
+| 镜头配方卡 | 124 张 | shotcraft |
+| 动效条目（23 类动作语汇） | 462 条 | wise-motion |
+| 源码动画案例 | 47 套 | claude-motion |
+| 源码组件 / 物件模型 / 场景起点 | 20 / 30 / 14 | claude-motion |
+| MG 签名技法 | 15 种 | mg-motion |
+| 动效风格文件 | 43 个 | garden-skills · motion-showreel |
+| 网页设计学校 | 6 个 | garden-skills · web-design-engineer |
+| 出图模板类 | 17 类 | garden-skills · gpt-image-2 |
+| 纯时间动效函数 / 起始 look | 35 / 6 | onetake |
+| **统一风格族** | **82 个**（39 个跨库有实现） | 交叉对齐上面三个风格库 |
 
-1. **机器闸** —— `scripts/qc.mjs` 实测时长/画幅/fps/LUFS/真峰值/黑帧/静帧比例，或调引擎自带的闸。
-2. **静帧闸** —— 6–10 张关键帧逐张看，能不能当海报。
-3. **评审闸** —— 干净上下文的独立 subagent，带帧号证据打分，改完再评一轮。
+## 三类闸
+
+| 闸 | 命令 | 判什么 |
+|---|---|---|
+| 视频 | `node scripts/qc.mjs gate film.mp4 --spec spec.json` | 时长/画幅/fps/LUFS/真峰值/黑帧/静帧比例 |
+| 网页·文章 | `node scripts/check-web.mjs out/page.html` | 单文件/体积/title/lang/viewport/字体数/emoji/时间入口/占位符 |
+| 人工 | 自己 `read_image` + 干净上下文的 subagent | 关键帧能不能当海报；评审带帧号证据，改完再评一轮 |
 
 不出闸不交片；也不许改标准来「通过」。
 
@@ -58,31 +57,35 @@ node scripts/qc.mjs gate film.mp4 --spec spec.json
 
 ```
 Code-Video-Infinite.skill/
-├── SKILL.md            唯一入口
-├── README.md           本文件
-├── LICENSES.md         逐引擎许可
-├── spec.json           统一机器闸默认规格
-├── references/         8 份跨引擎文档
-├── catalog/            880 条索引 + 素材清单（生成物）
-├── scripts/            5 个工具
-└── engines/            onetake · shotcraft · claude-motion · mg-motion · wise-motion
+├── SKILL.md            唯一入口：判形态 → 选引擎 → 定风格 → 闸 → 交付
+├── references/         10 份跨引擎文档（taxonomy 是总纲）
+│   ├── taxonomy.md          八形态 × 十一引擎 × 六风格轴
+│   ├── style-library.md     选族/三方向/混搭/反 AI 陈词滥调
+│   ├── web-and-image.md     网页·长文·出图·网页视频的工艺
+│   └── pipeline / motion-grammar / sound / quality-gates / delivery / assets-and-licenses / provenance
+├── catalog/            index.json（1013 条）· styles.json（82 族）· INDEX.md · assets-index.json
+├── scripts/            pick · find · doctor · qc · check-web · build-catalog · check-links
+└── engines/            onetake · shotcraft · claude-motion · mg-motion · wise-motion · garden-skills
 ```
 
-## 安装与体积
+## 安装
 
-这是一个**全量包**：所有字体、预览图、案例 mp4、GLB 模型、音效与配乐都在仓库里，离线可用，
-所以克隆和下载体积明显偏大（千兆以内，首次 clone 慢是正常的）。
-只想要窄带工作也可以只保留需要的 `engines/<name>/` 目录；此时 `scripts/doctor.mjs` 会如实报缺引擎。
+```bash
+git clone https://github.com/siweimidu/Code-Video-Infinite.git "%USERPROFILE%\.claude\skills\Code-Video-Infinite.skill"
+node "%USERPROFILE%\.claude\skills\Code-Video-Infinite.skill\scripts\doctor.mjs"
+```
+
+全量包：字体、预览图、案例视频、3D 模型、音效、上游官网物料都在仓库里，离线可用，所以克隆体积偏大。
+只保留需要的 `engines/<name>/` 也能用；此时 doctor 会如实报缺引擎（预期行为）。
 
 ## 许可
 
-**聚合分发，不改变各自许可**：onetake 是 PolyForm Noncommercial（**非商用免费，商用需授权**），
-shotcraft 与 wise-motion 是 Apache-2.0，claude-motion 是 MIT（第三方资产各自许可），
-mg-motion 以上游 mg-styles-15 的 MIT 为准（本包未附 LICENSE，已在其目录写明）。
-统一层文字与脚本按 MIT。素材、字体、模型、音效、BGM 的逐条授权见 `references/assets-and-licenses.md` 与各引擎的
-LICENSE / NOTICE / ATTRIBUTION。**商用前请先读 `LICENSES.md` 的「商用速查」。**
+聚合分发，不改变各自许可：**onetake 是 PolyForm Noncommercial（非商用免费，商用需授权）**，
+shotcraft / wise-motion 是 Apache-2.0，claude-motion / garden-skills 是 MIT（第三方资产各自许可），
+mg-motion 以上游 mg-styles-15 的 MIT 为准。统一层文字与脚本按 MIT。
+商用前先读 `LICENSES.md` 的「商用速查」，素材逐条授权见 `references/assets-and-licenses.md`。
 
 ## 来源
 
-五个引擎的原始项目、版本、许可以及「合并到底做了什么、没做什么」，逐条写在 `references/provenance.md`。
-重跑 `node scripts/build-catalog.mjs` 可以随时从五个引擎的真实目录重建索引。
+十一个引擎的原始项目、版本、许可以及**两轮合并到底做了什么、没做什么**，写在 `references/provenance.md`。
+索引与风格库都是生成物：`node scripts/build-catalog.mjs` 可随时从真实目录重建。

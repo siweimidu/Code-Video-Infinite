@@ -1,4 +1,4 @@
-# 素材在哪、能不能再分发
+﻿# 素材在哪、能不能再分发
 
 ## 原则
 
@@ -40,3 +40,14 @@
 
 全量仓库体积大（字体/预览/案例 mp4/GLB 都在里面）。想窄带工作可以直接只留需要的引擎目录，
 但那样 `scripts/doctor.mjs` 会报缺引擎 —— 这是预期行为，不是坏包。
+
+## garden-skills（六件套）
+
+| 项 | 情况 |
+|---|---|
+| 许可 | **MIT**（`engines/garden-skills/LICENSE`） |
+| 技能内容 | 六个 skill，各自的 `assets/ references/ scripts/ themes/ templates/` 都在 `engines/garden-skills/skills/` 下 |
+| `dist/`（7.5MB） | 上游封面图，原样保留；**做片时不要用**（发布物料，不是素材库） |
+| `website/`（16.4MB） | 上游官网静态站，原样保留；不参与任何产出 |
+| 出图产物 | prompt 与图片必须记账（模式 A/B/C + 模型 + 尺寸 + 许可） |
+| 字体 | 各 skill 自己 references 里说明来源；M3/M4 用系统字体或内联 OFL 字体 |

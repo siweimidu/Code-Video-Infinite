@@ -80,12 +80,23 @@ const engines = [
   ['shotcraft', 'engines/shotcraft/template/package.json', 'Remotion 产品片 + 124 镜头卡'],
   ['claude-motion', 'engines/claude-motion/references/case-catalog.json', '47 源码案例 + 组件/模型/场景'],
   ['mg-motion', 'engines/mg-motion/mg-styles-15/harness/render.mjs', '15 种 MG 风格 + 逐帧渲染 + 机器闸'],
-  ['wise-motion', 'engines/wise-motion/catalog/registry.json', '462 动效条目 + 源码导出'],
+  ['wise-motion', 'engines/wise-motion/catalog/registry.json', 'M6 462 动效条目 + 源码导出'],
+  ['garden-skills', 'engines/garden-skills/skills/motion-showreel/references/styles/INDEX.md', 'M1/M2/M3/M4/M5/M7 六件套（showreel·web-video·web-design·article·image·kb）'],
 ];
 for (const [name, marker, note] of engines) {
   const ok = fs.existsSync(path.join(ROOT, marker));
   const doc = fs.existsSync(path.join(ROOT, 'engines', name, 'ENGINE.md'));
   add('engine:' + name, ok && doc ? 'PASS' : 'FAIL', ok && doc ? note : '缺少 ' + marker + ' 或 ENGINE.md', '重新完整解压仓库（不要只拷部分目录）');
+}
+
+// --- garden 运行时依赖 ----------------------------------------------------
+const garden = path.join(ROOT, 'engines/garden-skills');
+if (fs.existsSync(garden)) {
+  const checkMode = path.join(garden, 'skills/gpt-image-2/scripts/check-mode.js');
+  add('garden:image-mode', fs.existsSync(checkMode) ? 'PASS' : 'WARN',
+    fs.existsSync(checkMode) ? 'check-mode.js 可判定出图模式（A 本地/B 宿主/C 顾问）' : '缺 check-mode.js',
+    '重新完整解压仓库');
+  add('garden:kb-deps', 'WARN', 'kb-retriever 按需依赖 pdfplumber / pandas', 'pip install pdfplumber pandas（只在检索 PDF/Excel 时需要）');
 }
 
 // --- unified layer --------------------------------------------------------
