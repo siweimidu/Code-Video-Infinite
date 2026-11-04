@@ -328,7 +328,8 @@ button:hover{background:var(--muted);border-color:#d6d6dc;text-decoration:none}
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
         <input type="search" id="q" placeholder="搜风格、场景、情绪、动作、镜头、案例、模型…（例如 赛博 / 中国风 / 数据 / 纸艺）">
       </div>
-      <label class="chk"><input type="checkbox" id="realOnly"> 只看有真实样片</label>
+      <label class="chk"><input type="checkbox" id="playOnly"> 只看能播放的</label>
+      <label class="chk"><input type="checkbox" id="realOnly"> 只看有图的</label>
     </div>
     <div class="chips" id="chips"></div>
     <div class="filterNote" id="filterNote"></div>
@@ -488,7 +489,7 @@ button:hover{background:var(--muted);border-color:#d6d6dc;text-decoration:none}
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
     });
   };
-  var state = { q: '', cat: '全部', realOnly: false, moveLimit: 72 };
+  var state = { q: '', cat: '全部', realOnly: false, playOnly: false, moveLimit: 72 };
   var Q = String.fromCharCode(34);   // 双引号，避免 HTML 属性里转义地狱
 
   function rgba(c, a) {
@@ -643,31 +644,54 @@ button:hover{background:var(--muted);border-color:#d6d6dc;text-decoration:none}
       window.scrollTo({ top: el.offsetTop - 130, behavior: "smooth" });
     }
   }
+  function canPlay(kind, item) {
+    if (kind === 'video' || kind === 'gif') return true;
+    if (!item || !item.player) return false;
+    if (item.playerKind === 'module') return false;   // 需要装依赖，本机播不了
+    return true;
+  }
   function hit(s) {
     if (!state.q) return true;
     return String(s).toLowerCase().indexOf(state.q.toLowerCase()) >= 0;
   }
 
   function render() {
-    $('#gridFilm').innerHTML = D.videos.map(cardFilm).concat(D.gifs.map(cardGif)).join('') || '<p class="empty">没有样片</p>';
-    var fams = D.families.filter(function (f) {
-      if (state.cat !== '全部' && f.cat !== state.cat) return false;
-      if (state.realOnly && !f.preview) return false;
-      return hit(f.name + ' ' + f.cat + ' ' + (f.one || '') + ' ' + f.mood.join(' ') + ' ' + f.id);
-    });
-    $('#gridStyle').innerHTML = fams.map(cardFamily).join('') || '<p class="empty">这个分类下没有匹配的风格族</p>';
-    $('#cStyle').textContent = fams.length + ' / ' + D.totals.families;
-    $('#cFilm').textContent = D.videos.length + ' 段视频 · ' + D.gifs.length + ' 个动图';
-    var shots = D.shotCards.filter(function (c) { return !state.realOnly && hit(c.id + ' ' + c.t + ' ' + c.cat); });
-    $('#gridShot').innerHTML = shots.slice(0, 160).map(cardShot).join('') || '<p class="empty">没有</p>';
-    $('#cShot').textContent = shots.length + ' / ' + D.totals.shotCards;
-    var moves = D.motions.filter(function (m) { return !state.realOnly && hit(m.id + ' ' + m.t + ' ' + m.cat); });
-    $('#gridMove').innerHTML = moves.slice(0, state.moveLimit).map(cardMove).join('') || '<p class="empty">没有</p>';
-    $('#cMove').textContent = moves.length + ' 条命中';
-    $('#moreWrap').style.display = moves.length > state.moveLimit ? 'block' : 'none';
-    $('#gridTool').innerHTML = D.tools.filter(function (t) { return !state.realOnly && hit(t.id + ' ' + t.medium); }).map(cardTool).join('');
-  }
+    var playOnly = state.playOnly;
+    var secOf = function (id) { return document.getElementById(id); };
+    var show = function (id, on) { var el = secOf(id); if (el) el.style.display = on ? "" : "none"; };
 
+    $("#gridFilm").innerHTML = D.videos.map(cardFilm).concat(D.gifs.map(cardGif)).join("") || "<p class=" + Q + "empty" + Q + ">没有样片</p>";
+
+    var fams = playOnly ? [] : D.families.filter(function (f) {
+      if (state.cat !== "全部" && f.cat !== state.cat) return false;
+      if (state.realOnly && !f.preview) return false;
+      return hit(f.name + " " + f.cat + " " + (f.one || "") + " " + f.mood.join(" ") + " " + f.id);
+    });
+    $("#gridStyle").innerHTML = fams.map(cardFamily).join("") || ("<p class=" + Q + "empty" + Q + ">" + (playOnly ? "风格族是静态条目，播不了；关掉「只看能播放的」再看" : "这个分类下没有匹配的风格族") + "</p>");
+    $("#cStyle").textContent = fams.length + " / " + D.totals.families;
+    show("styles", !playOnly);
+
+    var shots = playOnly ? [] : D.shotCards.filter(function (c) { return !state.realOnly || c.poster ? true : true; })
+      .filter(function (c) { return hit(c.id + " " + c.t + " " + c.cat); })
+      .filter(function (c) { return !state.realOnly || !!c.poster; });
+    $("#gridShot").innerHTML = shots.slice(0, 160).map(cardShot).join("") || ("<p class=" + Q + "empty" + Q + ">" + (playOnly ? "镜头卡是静帧，播不了；关掉「只看能播放的」再看" : "没有") + "</p>");
+    $("#cShot").textContent = shots.length + " / " + D.totals.shotCards;
+    show("shots", !playOnly);
+
+    var moves = D.motions.filter(function (m) {
+      if (playOnly && !canPlay("move", m)) return false;
+      return hit(m.id + " " + m.t + " " + m.cat);
+    });
+    $("#gridMove").innerHTML = moves.slice(0, state.moveLimit).map(cardMove).join("") || "<p class=" + Q + "empty" + Q + ">没有</p>";
+    $("#cMove").textContent = moves.length + " 条命中" + (playOnly ? "（都可试播）" : "");
+    $("#moreWrap").style.display = moves.length > state.moveLimit ? "block" : "none";
+
+    var tools = playOnly ? [] : D.tools.filter(function (t) { return hit(t.id + " " + t.medium); });
+    $("#gridTool").innerHTML = tools.map(cardTool).join("");
+    show("tools", !playOnly);
+
+    $("#cFilm").textContent = D.videos.length + " 段视频 · " + D.gifs.length + " 个动图" + (playOnly ? "（全部可播）" : "");
+  }
   function findObj(kind, id) {
     if (kind === 'f') return D.families.filter(function (x) { return x.id === id; })[0];
     if (kind === 'v' || kind === 'g') return D.videos.concat(D.gifs).filter(function (x) { return x.path === id; })[0];
@@ -751,6 +775,7 @@ button:hover{background:var(--muted);border-color:#d6d6dc;text-decoration:none}
   });
   $('#q').addEventListener('input', function (e) { state.q = e.target.value.trim(); render(); });
   $('#realOnly').addEventListener('change', function (e) { state.realOnly = e.target.checked; render(); });
+$('#playOnly').addEventListener('change', function (e) { state.playOnly = e.target.checked; if (e.target.checked) state.realOnly = false; render(); });
   $('#more').addEventListener('click', function () { state.moveLimit += 96; render(); });
 
   $('#statFamilies').textContent = D.totals.families;
@@ -792,6 +817,7 @@ button:hover{background:var(--muted);border-color:#d6d6dc;text-decoration:none}
       if (libState.key !== "all" && libState.key !== c.key) return;
       c.items.forEach(function (it) {
         if (state.realOnly && !it.poster) return;
+    if (state.playOnly && !canPlay('lib', it)) return;
         if (!hit([it.id, it.title, it.cat, it.sum, c.label].join(" "))) return;
         pool.push({ coll: c, it: it });
       });

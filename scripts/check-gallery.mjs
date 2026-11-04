@@ -170,6 +170,24 @@ add('角标不超长', layout.longCorner.length === 0, layout.longCorner.slice(0
 const covers = await ev('(function(){var d=window.__DATA__;' +
   'return {motions:d.motions.length,covers:d.motions.filter(function(m){return !!m.cover;}).length};})()');
 add('动作条目有真实封面', covers.covers > 0, covers.covers + ' / ' + covers.motions + ' 条有抓帧封面');
+const playOnly = await ev('(function(){' +
+  'var c=document.getElementById("playOnly");if(!c)return {missing:true};' +
+  'c.checked=true;c.dispatchEvent(new Event("change"));' +
+  'var hid=function(id){var el=document.getElementById(id);return el?getComputedStyle(el).display:"none";};' +
+  'var lib=document.querySelectorAll("#gridLib .card").length;' +
+  'var moves=document.querySelectorAll("#gridMove .card").length;' +
+  'var moduleTags=[].slice.call(document.querySelectorAll("#gridLib .tag.play")).filter(function(x){return x.textContent.indexOf("需装依赖")>=0;}).length;' +
+  'return {styles:hid("styles"),shots:hid("shots"),tools:hid("tools"),lib:lib,moves:moves,moduleTags:moduleTags};})()');
+add('只看能播放：隐藏静态区', !playOnly.missing && playOnly.styles === 'none' && playOnly.shots === 'none', 'styles=' + playOnly.styles + ' shots=' + playOnly.shots);
+add('只看能播放：不列需装依赖的条目', !playOnly.missing && playOnly.moduleTags === 0, '需装依赖标签 ' + playOnly.moduleTags + ' 个');
+add('只看能播放：仍能播动作条目', !playOnly.missing && playOnly.moves > 0, playOnly.moves + ' 张动作卡');
+
+await ev('(function(){var c=document.querySelectorAll("#gridMove .card")[0];if(c)c.click();return 1;})()');
+await sleep(1500);
+const playModal = await ev('(function(){var f=document.querySelector("#mBody .frame iframe");return {frame:!!f,src:f?f.getAttribute("src"):""};})()');
+add('可播条目点开真出播放器', playModal.frame && playModal.src.indexOf('index.html#') >= 0, playModal.src.slice(-42));
+await ev('(function(){document.getElementById("mClose").click();var c=document.getElementById("playOnly");c.checked=false;c.dispatchEvent(new Event("change"));return 1;})()');
+await sleep(400);
 const jsErrors = await ev('(window.__err|0)');
 add('页面无脚本错误', !jsErrors, String(jsErrors));
 
