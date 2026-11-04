@@ -134,6 +134,29 @@ const tokens = await ev('(function(){' +
 add('设计 token 生效', !!tokens.primary && !!tokens.font,
   '--primary=' + (tokens.primary || '(空)') + ' / --font-sans=' + (tokens.font || '(空)').slice(0, 24));
 add('样式表无 BOM 污染', tokens.bad.length === 0, tokens.bad.join(', '));
+add('本地服务脚本存在', fs.existsSync(path.join(ROOT, 'scripts/serve.mjs')), 'scripts/serve.mjs');
+
+const playable = await ev('(function(){var d=window.__DATA__;' +
+  'return {motions:d.motions.filter(function(m){return !!m.player;}).length,allMotions:d.motions.length,' +
+  'libPlayable:d.library.reduce(function(s,c){return s+c.items.filter(function(i){return !!i.player;}).length;},0)};})()');
+add('动作条目全部可播', playable.motions === playable.allMotions && playable.allMotions > 0, playable.motions + ' / ' + playable.allMotions + ' 条挂播放器');
+add('素材库有可播条目', playable.libPlayable > 0, playable.libPlayable + ' 条');
+
+const movePlay = await ev('(function(){var cards=document.querySelectorAll("#gridMove .card");if(!cards.length)return {ok:false};' +
+  'cards[0].click();return {ok:true};})()');
+await sleep(1500);
+const moveFrame = await ev('(function(){var f=document.querySelector("#mBody .frame iframe");' +
+  'return {has:!!f,src:f?f.getAttribute("src"):""};})()');
+add('点动作卡内嵌播放器', moveFrame.has && moveFrame.src.indexOf('catalog/index.html') >= 0, moveFrame.src.slice(-46));
+await ev('(function(){document.getElementById("mClose").click();return 1;})()');
+
+const caseHint = await ev('(function(){var b=[].slice.call(document.querySelectorAll(".libchip")).filter(function(x){' +
+  'return x.textContent.indexOf("源码动画案例")>=0;})[0];if(!b)return {ok:false};b.click();' +
+  'var c=document.querySelectorAll("#gridLib .card")[0];if(!c)return {ok:false};c.click();return {ok:true};})()');
+await sleep(1200);
+const caseModal = await ev('(function(){return {frame:!!document.querySelector("#mBody .frame"),' +
+  'note:!!document.querySelector("#mBody .playnote")};})()');
+add('claude demo 不塞黑屏 iframe', caseHint.ok && !caseModal.frame && caseModal.note, '给安装提示而不是空白画面');
 const jsErrors = await ev('(window.__err|0)');
 add('页面无脚本错误', !jsErrors, String(jsErrors));
 

@@ -153,7 +153,8 @@ const libDefs = [
   { key: "source-component", label: "源码组件", hint: (e) => "node engines/claude-motion/scripts/create-extension.mjs --extension " + e.id + " --out <新目录>", poster: (e) => cmPreview[e.id] || null },
   { key: "object-model", label: "物件模型", hint: (e) => "node engines/claude-motion/scripts/create-model.mjs --model " + e.id + " --out <新目录>", poster: (e) => cmPreview[e.id] || null },
   { key: "mg-style", label: "MG 签名技法", hint: (e) => "读 engines/mg-motion/references/styles.md 对应小节，写进 renderAt(t)", poster: () => null },
-  { key: "move", label: "动效函数", hint: (e) => "window.OM." + e.id + "(t, t0, ...) 纯时间函数", poster: () => null },
+  { key: "move", label: "动效函数", hint: (e) => "window.OM." + e.id + "(t, t0, ...) 纯时间函数", poster: () => null,
+    player: (e) => url(path.join(engRoot, "onetake/gallery/gallery.html")) + "?demo=" + e.id + "&play", playerKind: "classic" },
   { key: "look", label: "起始 look", hint: (e) => "python engines/onetake/scripts/look.py apply " + e.id, poster: () => null },
   { key: "design-school", label: "网页设计学校", hint: () => "按 Design Read 五档标尺给三个不同行的方向", poster: () => null },
   { key: "image-template", label: "出图模板类", hint: (e) => "读 " + (e.path || "") + "，再按模板槽位填 prompt", poster: () => null },
@@ -169,6 +170,8 @@ const library = libDefs.map((d) => {
     hint: (() => { try { return d.hint(e); } catch (err) { return ""; } })(),
     poster: (() => { try { return d.poster(e); } catch (err) { return null; } })(),
     link: e.upstream || "",
+    player: (() => { try { return d.player ? d.player(e) : null; } catch (err) { return null; } })(),
+    playerKind: d.playerKind || null,
     n: num(e.durationMs),
   }));
   return { key: d.key, label: d.label, count: items.length, items };
@@ -178,6 +181,31 @@ const libTotal = library.reduce((s, c) => s + c.count, 0);
 const dedicated = entries.filter((e) => ["shot-card", "motion-entry", "tool"].indexOf(e.collection) >= 0).length;
 const styleCount = entries.filter((e) => e.collection === "style").length;
 const covered = libTotal + dedicated + styleCount;
+/* ---------- 可播放资源：wise 播放器 / onetake 播放器 / claude demo ---------- */
+const PLAYERS = {
+  wise: (id) => url(path.join(engRoot, "wise-motion/catalog/index.html")) + "#" + id,
+  onetake: (name) => url(path.join(engRoot, "onetake/gallery/gallery.html")) + "?demo=" + name + "&play",
+  claude: (entryPath) => (entryPath ? "../" + entryPath : null),
+};
+
+/* 给 library 的每个条目补 player（能真播的才给） */
+for (const coll of library) {
+  for (const it of coll.items) {
+    if (coll.key === "animation-case" && it.path && /\.html$/.test(it.path)) {
+      it.player = "../" + it.path;
+      it.playerKind = "module";   // claude 的 demo 用 type=module，file:// 会被拦，需要本地服务
+    }
+  }
+}
+
+/* motions（wise 462 条）与 move（onetake 35 条）都能在播放器里真播 */
+for (const m of motions) {
+  m.player = PLAYERS.wise(m.id);
+  m.playerKind = "classic";
+}
+for (const mv of entries.filter((e) => e.collection === "move")) {
+  const hit = motions.length ? null : null;
+}
 const DATA = {
   generatedAt: new Date().toISOString().slice(0, 10),
   totals: {

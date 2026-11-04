@@ -129,3 +129,19 @@ SKILL.md 也加了第 0 节「说人话就行」：默认先 `do.mjs`，再读�
 - 改法：把 nav + 搜索 + 分类 chips 合成一条吸顶控制区（滚动后自动收成紧凑模式，导航链接收起）；新增「素材库总表」展区，按 11 个集合分栏，把剩下的 317 条全部纳入（源码动画案例 47 / 制作系统 5 / 场景起点 14 / 源码组件 20 / 物件模型 30 / MG 技法 15 / 动效函数 35 / 起始 look 6 / 网页设计学校 6 / 出图模板类 17 / 研究清单 122），每条点开都有「怎么用」命令；页脚显示覆盖率 1013 / 1013。
 - 修掉一个隐藏很深的 bug：PowerShell 的 Set-Content -Encoding UTF8 给 style.css 写了 BOM，浏览器把第一条规则解析成 U+FEFF 加 " :root"（选择器无效），导致全部设计 token 失效、字体根本没被引用。现在 build-gallery 读取 _src 时统一去 BOM，check-gallery 增加「设计 token 生效」「样式表无 BOM 污染」两条断言。
 - check-gallery 断言数 13 → 22，全部通过：控件吸顶跟随、滚动后紧凑模式、素材库分栏与筛选、覆盖率 1013/1013、字体加载、token 解析。
+
+## 第八轮：预览从「静帧」升级成「能真播」
+
+- 用户要求「有视频的直接能看视频」。盘点了每个引擎到底能播什么，而不是拿静帧充数：
+
+| 来源 | 数量 | 播放方式 | file:// 可用 |
+| --- | --- | --- | --- |
+| 真实视频（onetake 案例 / wise 影片） | 13 | 卡片内 video，悬停自动播，点开全屏 | 是 |
+| 动图 | 11 | img 直接动 | 是 |
+| wise 动效条目 | 462 | 详情内嵌 wise 播放器 iframe（catalog/index.html#id） | 是（经典脚本） |
+| onetake 动效函数 | 35 | 详情内嵌 onetake 播放器（gallery.html?demo=x&play） | 是 |
+| claude 源码案例 | 47 | 给安装命令 + 直达链接（demo 用 ES module 且缺字体，装依赖前跑不起来） | 否，需本地服务 |
+| shotcraft 镜头卡 | 124 | 只有 50 张官方静帧，**上游没有视频**，不假装能播 | — |
+
+- 新增 scripts/serve.mjs：零依赖静态服务器（node scripts/serve.mjs --open → http://localhost:8088/gallery/index.html），让模块化 demo 也能播；卡片角标据此区分「可试播」与「需装依赖」。
+- check-gallery 断言 22 → 27 项：动作条目全部挂播放器、点动作卡内嵌播放器、claude demo 不塞黑屏 iframe、serve.mjs 存在。

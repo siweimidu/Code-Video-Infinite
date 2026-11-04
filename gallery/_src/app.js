@@ -117,11 +117,17 @@
       "<div class=" + Q + "tags" + Q + ">" + tags + "</div></div></div>";
   }
   function cardMove(m) {
-    return '<div class="card" tabindex="0" role="button" data-open="m:' + esc(m.id) + '">' +
-      '<div class="body" style="padding-top:18px"><div class="name">' + esc(m.id) + '</div>' +
-      '<div class="sub">' + esc(m.t) + '</div>' +
-      '<div class="tags"><span class="tag k">' + esc(m.cat) + '</span>' +
-      '<span class="tag">' + m.ms + 'ms</span>' + (m.loop ? '<span class="tag">循环</span>' : '') + '</div></div></div>';
+    var hue = hueOf(m.cat || m.id);
+    var tile = "<div style=" + Q + "position:absolute;inset:0;background:radial-gradient(120% 110% at 18% 0%,hsl(" + hue + ",60%,94%),transparent 62%),linear-gradient(165deg,#fff,#f5f5f7)" + Q + "></div>" +
+      "<div class=" + Q + "tile" + Q + " style=" + Q + "color:hsl(" + hue + ",40%,52%);flex-direction:column;gap:6px" + Q + ">" +
+      "<span style=" + Q + "font-size:20px" + Q + ">▶</span><span>" + esc(m.cat || "") + "</span></div>";
+    return "<div class=" + Q + "card" + Q + " tabindex=" + Q + "0" + Q + " role=" + Q + "button" + Q + " data-open=" + Q + "m:" + esc(m.id) + Q + ">" +
+      "<div class=" + Q + "media" + Q + ">" + tile + "<span class=" + Q + "tagbadge pm" + Q + ">▶ 可试播</span>" +
+      (m.ms ? "<span class=" + Q + "corner" + Q + ">" + m.ms + "ms</span>" : "") + "</div>" +
+      "<div class=" + Q + "body" + Q + "><div class=" + Q + "name" + Q + ">" + esc(m.id) + "</div>" +
+      "<div class=" + Q + "sub" + Q + ">" + esc(m.t) + "</div>" +
+      "<div class=" + Q + "tags" + Q + "><span class=" + Q + "tag k" + Q + ">" + esc(m.cat) + "</span>" +
+      (m.loop ? "<span class=" + Q + "tag" + Q + ">循环</span>" : "") + "</div></div></div>";
   }
   function cardTool(t) {
     var media = t.cover
@@ -294,6 +300,7 @@
         "<div class=" + Q + "tile" + Q + " style=" + Q + "color:hsl(" + hue + ",38%,56%)" + Q + ">" + esc(it.cat || coll.label) + "</div>" +
         "<span class=" + Q + "tagbadge demo" + Q + ">无预览</span></div>";
     }
+    if (it.player) media = addPlayBadge(media, it.playerKind);
     var meta = it.n ? "<span class=" + Q + "tag" + Q + ">" + it.n + "ms</span>" : "";
     return "<div class=" + Q + "card" + Q + " tabindex=" + Q + "0" + Q + " role=" + Q + "button" + Q + " data-lib=" + Q + esc(libKeyOf(coll.key, it.id)) + Q + ">" + media +
       "<div class=" + Q + "body" + Q + "><div class=" + Q + "name" + Q + ">" + esc(it.title || it.id) + "</div>" +
@@ -359,7 +366,12 @@
     if (lc) { libState.key = lc.getAttribute("data-key"); libState.limit = 60; renderLibChips(); renderLib(); return; }
     if (e.target.id === "libMore") { libState.limit += 96; renderLib(); return; }
     var card = e.target.closest && e.target.closest("[data-lib]");
-    if (card) { var v = card.getAttribute("data-lib").split("|"); openLib(v[0], v[1]); return; }
+    if (card) {
+      var v = card.getAttribute("data-lib").split("|");
+      openLib(v[0], v[1]);
+      setTimeout(function () { injectPlayer("l:" + v[0] + "|" + v[1]); }, 0);
+      return;
+    }
   });
 
   /* 滚动后收起导航链接，把整条控制区变成紧凑吸顶条 */
@@ -370,6 +382,48 @@
 
   if ($("#statEntries")) $("#statEntries").textContent = D.coverage ? D.coverage.catalogEntries : D.totals.entries;
   if ($("#covNum")) $("#covNum").textContent = D.coverage ? (D.coverage.covered + " / " + D.coverage.catalogEntries) : String(D.totals.entries);
+  /* ---------------- 播放器：详情里直接看/试播 ---------------- */
+  function addPlayBadge(html, kind) {
+    if (!html) return html;
+    var i = html.lastIndexOf("</div>");
+    if (i < 0) return html;
+    return html.slice(0, i) + "<span class=" + Q + "tagbadge pm" + Q + ">▶ 可播放</span>" + html.slice(i);
+  }
+  function isFile() { return location.protocol === "file:"; }
+  function moduleHint(src) {
+    var pre = '<pre style=' + Q + 'margin:10px 0 0' + Q + '>cd engines/claude-motion' + NL + 'npm ci' + NL + 'cd ../..' + NL + 'node scripts/serve.mjs' + NL + '# 然后访问 http://localhost:8088/' + esc(src) + '</pre>';
+    var link = '<a href=' + Q + src + Q + ' target=' + Q + '_blank' + Q + '>先在新窗口打开试试</a>';
+    return '<div class=' + Q + 'playnote' + Q + '>这是源码级 demo（ES module + 本地字体），要先装依赖、补字体，再用本地服务打开：' + pre + link + '</div>';
+  }
+  function playerBlock(src, kind, label) {
+    var head = '<h4>直接播放</h4>';
+    if (kind === 'module') return head + moduleHint(src);
+    var frame = '<div class=' + Q + 'frame' + Q + '><iframe src=' + Q + src + Q + ' loading=' + Q + 'lazy' + Q + ' allow=' + Q + 'autoplay; fullscreen' + Q + '></iframe></div>';
+    var note = '<p class=' + Q + 'playnote' + Q + '>在播放器里实时渲染（' + esc(label || '') + '），可直接操作 · <a href=' + Q + src + Q + ' target=' + Q + '_blank' + Q + '>新窗口打开</a></p>';
+    return head + frame + note;
+  }
+  function injectPlayer(attr) {
+    var kind = attr.slice(0, 1), id = attr.slice(2), src = null, pkind = "classic", label = "";
+    if (kind === "m") {
+      var mv = D.motions.filter(function (x) { return x.id === id; })[0];
+      if (mv && mv.player) { src = mv.player; pkind = mv.playerKind || "classic"; label = "wise 动作播放器"; }
+    } else if (kind === "l") {
+      var parts = id.split("|");
+      var coll = D.library.filter(function (c) { return c.key === parts[0]; })[0];
+      var it = coll && coll.items.filter(function (x) { return x.id === parts[1]; })[0];
+      if (it && it.player) { src = it.player; pkind = it.playerKind || "classic"; label = coll.label; }
+    }
+    if (!src) return;
+    var body = $("#mBody");
+    if (!body || body.querySelector(".frame") || body.querySelector(".playnote")) return;
+    body.insertAdjacentHTML("afterbegin", playerBlock(src, pkind, label));
+  }
+  document.addEventListener("click", function (e) {
+    var card = e.target.closest && e.target.closest("[data-open]");
+    if (!card) return;
+    var attr = card.getAttribute("data-open");
+    setTimeout(function () { injectPlayer(attr); }, 0);
+  });
   renderLibChips();
   renderChips();
   render();

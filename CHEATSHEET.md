@@ -75,3 +75,16 @@
 | 页面回归自检（13 项，失败退出 1） | `node scripts/check-gallery.mjs` |
 
 源文件在 `gallery/_src/{shell.html,style.css,app.js,fonts.css}`，index.html 是生成物，别手改。
+
+## 边看边播
+
+选片台里 **13 段真实视频 + 11 个动图 + 462 条 wise 动作 + 35 个 onetake 动效函数**点开就能播（file:// 直接打开即可）。
+claude-motion 的 47 个源码 demo 用 ES module + 本地字体，要先装依赖再走本地服务：
+
+| 步骤 | 命令 |
+| --- | --- |
+| 1 起本地服务（零依赖） | `node scripts/serve.mjs --open` |
+| 2 用这个地址打开选片台 | `http://localhost:8088/gallery/index.html` |
+| 3 想播 claude demo，先装依赖 | `cd engines/claude-motion && npm ci` |
+
+镜头卡只有 50 张官方静帧（上游没给视频），所以标「配方卡」而不是硬撑成样片。

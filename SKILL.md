@@ -22,6 +22,7 @@ node scripts/do.mjs --ask               # 不想写命令：回答 7 个问题�
 node scripts/help.mjs                   # 一屏速查（用户问「怎么用」时先给他这一页）
 node scripts/build-gallery.mjs && start gallery/index.html   # 选片台：浏览器里看全部样片与风格族
 node scripts/check-gallery.mjs                                 # 选片台回归自检（13 项）
+node scripts/serve.mjs --open                                   # 起本地服务，让模块化 demo 也能播
 node scripts/selftest.mjs               # 路由回归自检（改了词表就跑）
 ```
 
