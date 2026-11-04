@@ -152,3 +152,5 @@ SKILL.md 也加了第 0 节「说人话就行」：默认先 `do.mjs`，再读�
 - 改法：角标只留短时长（正则取 7.5s 这种），CSS 再加 ellipsis 兜底；**没有封面就不画媒体块**，改为紧凑文字卡（body.tight），播放能力改用 tags 里的「▶ 可试播 / ▶ 需装依赖」表达；详情里没有封面就不显示图片位。
 - 新增 scripts/build-covers.mjs：起 headless Chrome 逐个打开 wise 播放器 catalog/index.html#id，抓 #preview 区域两帧取信息量大的那张，存成 gallery/covers/wise-<id>.jpg（支持 --shard/--of 并行、--force 重抓）。
 - check-gallery 断言 27 → 30 项：没有空媒体块、角标不超长、动作条目有真实封面。
+
+- 封面补抓两轮（--retry-blank，等待时间 4.2s → 6s）：**319 → 428 / 462** 条动作条目有真实预览帧；剩 33 条是深色/纯黑画面（抓帧无信息量），保持紧凑文字卡，不画黑缩略图。
