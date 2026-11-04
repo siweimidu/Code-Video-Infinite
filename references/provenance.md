@@ -154,3 +154,14 @@ SKILL.md 也加了第 0 节「说人话就行」：默认先 `do.mjs`，再读�
 - check-gallery 断言 27 → 30 项：没有空媒体块、角标不超长、动作条目有真实封面。
 
 - 封面补抓两轮（--retry-blank，等待时间 4.2s → 6s）：**319 → 428 / 462** 条动作条目有真实预览帧；剩 33 条是深色/纯黑画面（抓帧无信息量），保持紧凑文字卡，不画黑缩略图。
+
+## 第十轮：把「没有封面」彻底补掉（本地渲染静帧 + 字体补齐）
+
+| 做了什么 | 结果 |
+| --- | --- |
+| 新增 scripts/build-shot-stills.mjs | 用 Remotion 渲染镜头卡静帧：临时工程里复制 _fixtures/_textures、改写相对路径、自动注册 124 个 Composition，bundle 一次后逐张 renderStill（约 3.3s/张）→ gallery/shots/<slug>.jpg，124/124 张本地静帧 |
+| 新增 scripts/fetch-demo-fonts.mjs | claude demo 缺本地字体导致字体加载 await 卡死；按 demo 的 fonts.css 解析家族名/字重，用 Android UA 从 Google Fonts 取 .ttf（简写家族名如 Poiret/Josefin 有别名回退） |
+| 新增 scripts/build-demo-videos.mjs | 用 CDP 循环截图把 demo 录成本地 mp4 的尝试（claude demo 仍受上游运行时限制，见下） |
+
+诚实结论：claude-motion 的 47 个源码 demo 在本地跑不起来——除了字体，主脚本还依赖上游站点的其它资源，页面上 bodyLen 始终是 98（DOM 没被渲染），画布全黑。所以这 14 个没有案例帧的 demo 保持文字卡 + 「▶ 需装依赖」，不伪造视频。
+shotcraft 的 template/src 也不在包里，但 demo 是自包含 TSX，所以静帧可以自己渲。

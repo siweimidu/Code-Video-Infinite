@@ -88,3 +88,14 @@ claude-motion 的 47 个源码 demo 用 ES module + 本地字体，要先装依�
 | 3 想播 claude demo，先装依赖 | `cd engines/claude-motion && npm ci` |
 
 镜头卡只有 50 张官方静帧（上游没给视频），所以标「配方卡」而不是硬撑成样片。
+
+## 补素材（本地生成）
+
+| 想补什么 | 命令 | 产出 |
+| --- | --- | --- |
+| 镜头卡静帧 | `node scripts/build-shot-stills.mjs` | `gallery/shots/<slug>.jpg`（124 张，Remotion 渲染，约 3.3s/张） |
+| 动作条目预览帧 | `node scripts/build-covers.mjs --shard 0 --of 4` | `gallery/covers/wise-<id>.jpg` |
+| 视频封面帧 | `node scripts/build-posters.mjs` | `gallery/posters/*.jpg` |
+| demo 缺的字体 | `node scripts/fetch-demo-fonts.mjs` | 各 demo 的 `fonts/*.ttf` |
+
+claude 的 47 个源码 demo 目前在本机跑不起来（缺上游运行时，不是缺字体），所以那 14 个没有案例帧的保持文字卡。

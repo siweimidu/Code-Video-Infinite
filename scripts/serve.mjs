@@ -9,6 +9,8 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const argPort = process.argv.indexOf('--port');
 const PORT = argPort > 0 ? Number(process.argv[argPort + 1]) : 8088;
+const argRoot = process.argv.indexOf('--root');
+const OVERRIDE_ROOT = argRoot >= 0 ? path.resolve(process.argv[argRoot + 1]) : null;
 const OPEN = process.argv.includes('--open');
 
 const MIME = {
@@ -41,9 +43,10 @@ const MIME = {
 
 const server = http.createServer((req, res) => {
   let rel = decodeURIComponent((req.url || '/').split('?')[0].split('#')[0]);
-  if (rel === '/' || rel === '') rel = '/gallery/index.html';
-  const abs = path.join(ROOT, rel);
-  if (!abs.startsWith(ROOT)) { res.writeHead(403).end('forbidden'); return; }
+  if (rel === '/' || rel === '') rel = OVERRIDE_ROOT ? '/styles/art-deco/demo/index.html' : '/gallery/index.html';
+  const base = OVERRIDE_ROOT || ROOT;
+  const abs = path.join(base, rel);
+  if (!abs.startsWith(base)) { res.writeHead(403).end('forbidden'); return; }
   fs.stat(abs, (err, st) => {
     if (err || !st.isFile()) { res.writeHead(404, { 'content-type': 'text/plain; charset=utf-8' }).end('404 ' + rel); return; }
     const type = MIME[path.extname(abs).toLowerCase()] || 'application/octet-stream';

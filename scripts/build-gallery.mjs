@@ -113,7 +113,10 @@ const families = (sty.families || []).map((f) => {
 });
 
 const posterRoot = path.join(engRoot, 'shotcraft/gallery/media/poster');
+const localShotRoot = path.join(OUT, 'shots');
 const posterOf = (id) => {
+  const own = path.join(localShotRoot, id + '.jpg');      // 我们自己用 Remotion 渲的静帧优先
+  if (exists(own)) return 'shots/' + id + '.jpg';
   const p = path.join(posterRoot, id + '.jpg');
   return exists(p) ? url(p) : null;
 };
