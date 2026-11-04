@@ -206,6 +206,17 @@ for (const m of motions) {
 for (const mv of entries.filter((e) => e.collection === "move")) {
   const hit = motions.length ? null : null;
 }
+/* ---------- wise 封面：build-covers.mjs 抓的真实预览帧 ---------- */
+const COVER_DIR = path.join(OUT, "covers");
+const COVER_MIN_BYTES = 2600;   // 小于这个体积基本是黑帧/纯色，当作没有封面
+const coverOfEffect = (id) => {
+  const p = path.join(COVER_DIR, "wise-" + id + ".jpg");
+  if (!exists(p)) return null;
+  if (fs.statSync(p).size < COVER_MIN_BYTES) return null;
+  return "covers/wise-" + id + ".jpg";
+};
+for (const m of motions) m.cover = coverOfEffect(m.id);
+const coveredMotions = motions.filter((m) => m.cover).length;
 const DATA = {
   generatedAt: new Date().toISOString().slice(0, 10),
   totals: {
@@ -213,7 +224,8 @@ const DATA = {
     withPreview: families.filter((f) => f.preview).length,
     videos: videos.length, gifs: gifs.length,
     shotCards: shotCards.length, shotWithPoster: shotCards.filter((c) => c.poster).length,
-    motions: motions.length, tools: tools.length,
+    motions: motions.length, coveredMotions,
+    tools: tools.length,
     entries: entries.length,
   },
   families, videos, gifs, shotCards, motions, tools,

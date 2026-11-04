@@ -145,3 +145,10 @@ SKILL.md 也加了第 0 节「说人话就行」：默认先 `do.mjs`，再读�
 
 - 新增 scripts/serve.mjs：零依赖静态服务器（node scripts/serve.mjs --open → http://localhost:8088/gallery/index.html），让模块化 demo 也能播；卡片角标据此区分「可试播」与「需装依赖」。
 - check-gallery 断言 22 → 27 项：动作条目全部挂播放器、点动作卡内嵌播放器、claude demo 不塞黑屏 iframe、serve.mjs 存在。
+
+## 第九轮：修「角标压封面 / 空封面块」，并批量抓真实封面
+
+- 三个实拍问题：镜头卡的时长角标很长（「约 7.5s（225f@30fps；四站…」）压住画面；没有封面的卡片仍在画一个空的媒体块；点开看不到封面。
+- 改法：角标只留短时长（正则取 7.5s 这种），CSS 再加 ellipsis 兜底；**没有封面就不画媒体块**，改为紧凑文字卡（body.tight），播放能力改用 tags 里的「▶ 可试播 / ▶ 需装依赖」表达；详情里没有封面就不显示图片位。
+- 新增 scripts/build-covers.mjs：起 headless Chrome 逐个打开 wise 播放器 catalog/index.html#id，抓 #preview 区域两帧取信息量大的那张，存成 gallery/covers/wise-<id>.jpg（支持 --shard/--of 并行、--force 重抓）。
+- check-gallery 断言 27 → 30 项：没有空媒体块、角标不超长、动作条目有真实封面。

@@ -157,6 +157,19 @@ await sleep(1200);
 const caseModal = await ev('(function(){return {frame:!!document.querySelector("#mBody .frame"),' +
   'note:!!document.querySelector("#mBody .playnote")};})()');
 add('claude demo 不塞黑屏 iframe', caseHint.ok && !caseModal.frame && caseModal.note, '给安装提示而不是空白画面');
+const layout = await ev('(function(){' +
+  'var emptyMedia=0;' +
+  'document.querySelectorAll(".card .media").forEach(function(m){if(!m.querySelector("img,video"))emptyMedia++;});' +
+  'var longCorner=[];' +
+  'document.querySelectorAll(".corner").forEach(function(c){if(c.textContent.trim().length>10)longCorner.push(c.textContent.trim());});' +
+  'var noMediaCards=document.querySelectorAll(".card:not(:has(.media))").length;' +
+  'return {emptyMedia:emptyMedia,longCorner:longCorner,noMediaCards:noMediaCards};})()');
+add('没有空媒体块', layout.emptyMedia === 0, layout.emptyMedia + ' 个 .media 里没有图/视频');
+add('角标不超长', layout.longCorner.length === 0, layout.longCorner.slice(0, 3).join(' / '));
+
+const covers = await ev('(function(){var d=window.__DATA__;' +
+  'return {motions:d.motions.length,covers:d.motions.filter(function(m){return !!m.cover;}).length};})()');
+add('动作条目有真实封面', covers.covers > 0, covers.covers + ' / ' + covers.motions + ' 条有抓帧封面');
 const jsErrors = await ev('(window.__err|0)');
 add('页面无脚本错误', !jsErrors, String(jsErrors));
 

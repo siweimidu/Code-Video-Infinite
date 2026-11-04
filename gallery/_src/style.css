@@ -286,3 +286,7 @@ button:hover{background:var(--muted);border-color:#d6d6dc;text-decoration:none}
 .playnote a{color:var(--primary)}
 
 .tagbadge.need{background:rgba(0,0,0,.72);color:#fff;border-color:transparent;font-weight:600}
+
+.corner{max-width:46%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tag.play{color:#fff;background:var(--primary);border-color:transparent;font-weight:500}
+.body.tight{padding-top:18px}

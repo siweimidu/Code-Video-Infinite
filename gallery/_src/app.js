@@ -9,6 +9,7 @@
     });
   };
   var state = { q: '', cat: '全部', realOnly: false, moveLimit: 72 };
+  var Q = String.fromCharCode(34);   // 双引号，避免 HTML 属性里转义地狱
 
   function rgba(c, a) {
     var m = /^#?([0-9a-f]{6})$/i.exec(c || '');
@@ -58,21 +59,18 @@
       '<div class="sub">' + esc(g.path) + '</div></div></div>';
   }
   function cardFamily(f) {
-    var media = f.preview
-      ? '<img loading="lazy" src="' + f.preview + '" alt=""><span class="tagbadge real">真实案例帧</span>'
-      : swatch(f) + '<span class="tagbadge demo">示意</span>';
+    var media = f.preview ? ("<div class=" + Q + "media" + Q + "><img loading=" + Q + "lazy" + Q + " src=" + Q + f.preview + Q + " alt=" + Q + Q + ">" +
+      "<span class=" + Q + "tagbadge real" + Q + ">真实案例帧</span></div>") : "";
     var tags = f.mood.slice(0, 3).map(function (m) {
-      return '<span class="tag">' + esc(m) + '</span>';
-    }).join('') + f.libs.map(function (l) {
-      return '<span class="tag k">' + esc(l) + '</span>';
-    }).join('');
-    return '<div class="card" tabindex="0" role="button" data-open="f:' + esc(f.id) + '" data-real="' + (f.preview ? 1 : 0) + '">' +
-      '<div class="media">' + media + '</div>' +
-      '<div class="body"><div class="name">' + esc(f.name) + '</div>' +
-      '<div class="sub">' + esc(f.one || f.cat) + '</div>' +
-      '<div class="tags">' + tags + '</div></div></div>';
+      return "<span class=" + Q + "tag" + Q + ">" + esc(m) + "</span>";
+    }).join("") + f.libs.map(function (l) {
+      return "<span class=" + Q + "tag k" + Q + ">" + esc(l) + "</span>";
+    }).join("");
+    return "<div class=" + Q + "card" + Q + " tabindex=" + Q + "0" + Q + " role=" + Q + "button" + Q + " data-open=" + Q + "f:" + esc(f.id) + Q + " data-real=" + Q + (f.preview ? 1 : 0) + Q + ">" + media +
+      "<div class=" + Q + "body" + Q + (media ? "" : " tight") + Q + "><div class=" + Q + "name" + Q + ">" + esc(f.name) + "</div>" +
+      "<div class=" + Q + "sub" + Q + ">" + esc(f.one || f.cat) + "</div>" +
+      "<div class=" + Q + "tags" + Q + ">" + tags + "</div></div></div>";
   }
-  var Q = String.fromCharCode(34);
   function energyLevel(en) {
     var t = String(en || "");
     if (/中高/.test(t)) return 3;
@@ -94,51 +92,48 @@
     for (var i = 0; i < str.length; i++) h = (h * 31 + str.charCodeAt(i)) % 360;
     return h;
   }
+  function shortDur(s) {
+    var m = String(s || '').match(/(\d+(?:\.\d+)?)\s*(?:s|秒)/);
+    if (m) return m[1] + 's';
+    var t = String(s || '').replace(/\s+/g, '');
+    return t.length > 8 ? t.slice(0, 8) : t;
+  }
   function cardShot(c) {
     var lv = energyLevel(c.en);
-    var media;
-    if (c.poster) {
-      media = "<div class=" + Q + "media" + Q + "><img loading=" + Q + "lazy" + Q + " src=" + Q + c.poster + Q + " alt=" + Q + Q + ">" +
-        "<span class=" + Q + "tagbadge" + Q + ">真实静帧</span>" + (c.d ? "<span class=" + Q + "corner" + Q + ">" + esc(c.d) + "</span>" : "") + "</div>";
-    } else {
-      var hue = hueOf(c.cat || c.id);
-      var g1 = "radial-gradient(120% 110% at 18% 0%,hsl(" + hue + ",62%,94%),transparent 62%)";
-      var g2 = "linear-gradient(165deg,#ffffff,#f5f5f7)";
-      media = "<div class=" + Q + "media" + Q + "><div style=" + Q + "position:absolute;inset:0;background:" + g1 + "," + g2 + Q + "></div>" +
-        "<div style=" + Q + "position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;color:hsl(" + hue + ",40%,56%)" + Q + ">" + esc(c.cat || "") + "</div>" +
-        "<span class=" + Q + "tagbadge demo" + Q + ">配方卡</span></div>";
-    }
+    var media = c.poster ? ("<div class=" + Q + "media" + Q + "><img loading=" + Q + "lazy" + Q + " src=" + Q + c.poster + Q + " alt=" + Q + Q + ">" +
+      "<span class=" + Q + "tagbadge" + Q + ">真实静帧</span>" +
+      (c.d ? "<span class=" + Q + "corner" + Q + ">" + esc(shortDur(c.d)) + "</span>" : "") + "</div>") : "";
     var tags = "<span class=" + Q + "tag k" + Q + ">" + esc(c.cat) + "</span>" +
-      (c.d ? "<span class=" + Q + "tag" + Q + ">" + esc(c.d) + "</span>" : "") +
+      (c.d ? "<span class=" + Q + "tag" + Q + ">" + esc(shortDur(c.d)) + "</span>" : "") +
       (lv ? "<span class=" + Q + "tag" + Q + ">" + energyBar(lv) + "</span>" : "");
     return "<div class=" + Q + "card" + Q + " tabindex=" + Q + "0" + Q + " role=" + Q + "button" + Q + " data-open=" + Q + "s:" + esc(c.id) + Q + ">" + media +
-      "<div class=" + Q + "body" + Q + "><div class=" + Q + "name" + Q + ">" + esc(c.id) + "</div>" +
+      "<div class=" + Q + "body" + Q + (media ? "" : " tight") + Q + "><div class=" + Q + "name" + Q + ">" + esc(c.id) + "</div>" +
       "<div class=" + Q + "sub" + Q + ">" + esc(c.t) + "</div>" +
       "<div class=" + Q + "tags" + Q + ">" + tags + "</div></div></div>";
   }
+  function durLabel(ms) {
+    if (!ms) return "";
+    if (ms >= 1000) return (Math.round(ms / 100) / 10) + "s";
+    return Math.round(ms) + "ms";
+  }
   function cardMove(m) {
-    var hue = hueOf(m.cat || m.id);
-    var tile = "<div style=" + Q + "position:absolute;inset:0;background:radial-gradient(120% 110% at 18% 0%,hsl(" + hue + ",60%,94%),transparent 62%),linear-gradient(165deg,#fff,#f5f5f7)" + Q + "></div>" +
-      "<div class=" + Q + "tile" + Q + " style=" + Q + "color:hsl(" + hue + ",40%,52%);flex-direction:column;gap:6px" + Q + ">" +
-      "<span style=" + Q + "font-size:20px" + Q + ">▶</span><span>" + esc(m.cat || "") + "</span></div>";
-    return "<div class=" + Q + "card" + Q + " tabindex=" + Q + "0" + Q + " role=" + Q + "button" + Q + " data-open=" + Q + "m:" + esc(m.id) + Q + ">" +
-      "<div class=" + Q + "media" + Q + ">" + tile + "<span class=" + Q + "tagbadge pm" + Q + ">▶ 可试播</span>" +
-      (m.ms ? "<span class=" + Q + "corner" + Q + ">" + m.ms + "ms</span>" : "") + "</div>" +
-      "<div class=" + Q + "body" + Q + "><div class=" + Q + "name" + Q + ">" + esc(m.id) + "</div>" +
+    var media = m.cover ? ("<div class=" + Q + "media" + Q + "><img loading=" + Q + "lazy" + Q + " src=" + Q + m.cover + Q + " alt=" + Q + Q + ">" +
+      "<span class=" + Q + "tagbadge real" + Q + ">真实预览帧</span>" +
+      (m.ms ? "<span class=" + Q + "corner" + Q + ">" + durLabel(m.ms) + "</span>" : "") + "</div>") : "";
+    var tags = "<span class=" + Q + "tag k" + Q + ">" + esc(m.cat) + "</span>" +
+      (m.player ? "<span class=" + Q + "tag play" + Q + ">▶ 可试播</span>" : "") +
+      (m.loop ? "<span class=" + Q + "tag" + Q + ">循环</span>" : "");
+    return "<div class=" + Q + "card" + Q + " tabindex=" + Q + "0" + Q + " role=" + Q + "button" + Q + " data-open=" + Q + "m:" + esc(m.id) + Q + ">" + media +
+      "<div class=" + Q + "body" + Q + (media ? "" : " tight") + Q + "><div class=" + Q + "name" + Q + ">" + esc(m.id) + "</div>" +
       "<div class=" + Q + "sub" + Q + ">" + esc(m.t) + "</div>" +
-      "<div class=" + Q + "tags" + Q + "><span class=" + Q + "tag k" + Q + ">" + esc(m.cat) + "</span>" +
-      (m.loop ? "<span class=" + Q + "tag" + Q + ">循环</span>" : "") + "</div></div></div>";
+      "<div class=" + Q + "tags" + Q + ">" + tags + "</div></div></div>";
   }
   function cardTool(t) {
-    var media = t.cover
-      ? '<img loading="lazy" src="' + t.cover + '" alt="">'
-      : swatch({ pal: ['#ffffff', '#1d1d1f', '#0a84ff'], cat: '界面与屏幕', name: t.id });
-    return '<div class="card" tabindex="0" role="button" data-open="t:' + esc(t.id) + '">' +
-      '<div class="media">' + media + '</div>' +
-      '<div class="body"><div class="name">' + esc(t.id) + '</div>' +
-      '<div class="sub">' + esc(t.medium) + '</div></div></div>';
+    var media = t.cover ? ("<div class=" + Q + "media" + Q + "><img loading=" + Q + "lazy" + Q + " src=" + Q + t.cover + Q + " alt=" + Q + Q + "></div>") : "";
+    return "<div class=" + Q + "card" + Q + " tabindex=" + Q + "0" + Q + " role=" + Q + "button" + Q + " data-open=" + Q + "t:" + esc(t.id) + Q + ">" + media +
+      "<div class=" + Q + "body" + Q + (media ? "" : " tight") + Q + "><div class=" + Q + "name" + Q + ">" + esc(t.id) + "</div>" +
+      "<div class=" + Q + "sub" + Q + ">" + esc(t.medium) + "</div></div></div>";
   }
-
   function renderChips() {
     var cats = ["全部"];
     D.families.forEach(function (f) { if (cats.indexOf(f.cat) < 0) cats.push(f.cat); });
@@ -288,25 +283,15 @@
   var libState = { key: "all", limit: 60 };
   function libKeyOf(collKey, id) { return collKey + "|" + id; }
   function cardLib(coll, it) {
-    var media;
-    if (it.poster) {
-      media = "<div class=" + Q + "media" + Q + "><img loading=" + Q + "lazy" + Q + " src=" + Q + it.poster + Q + " alt=" + Q + Q + ">" +
-        "<span class=" + Q + "tagbadge real" + Q + ">预览" + "</span></div>";
-    } else {
-      var hue = hueOf(coll.label + it.cat);
-      var g1 = "radial-gradient(120% 110% at 18% 0%,hsl(" + hue + ",58%,94%),transparent 62%)";
-      var g2 = "linear-gradient(165deg,#ffffff,#f5f5f7)";
-      media = "<div class=" + Q + "media" + Q + "><div style=" + Q + "position:absolute;inset:0;background:" + g1 + "," + g2 + Q + "></div>" +
-        "<div class=" + Q + "tile" + Q + " style=" + Q + "color:hsl(" + hue + ",38%,56%)" + Q + ">" + esc(it.cat || coll.label) + "</div>" +
-        "<span class=" + Q + "tagbadge demo" + Q + ">无预览</span></div>";
-    }
-    if (it.player) media = addPlayBadge(media, it.playerKind);
-    var meta = it.n ? "<span class=" + Q + "tag" + Q + ">" + it.n + "ms</span>" : "";
+    var media = it.poster ? ("<div class=" + Q + "media" + Q + "><img loading=" + Q + "lazy" + Q + " src=" + Q + it.poster + Q + " alt=" + Q + Q + ">" +
+      "<span class=" + Q + "tagbadge real" + Q + ">预览</span></div>") : "";
+    var playTag = it.player ? ("<span class=" + Q + "tag play" + Q + ">" + (it.playerKind === "module" ? "▶ 需装依赖" : "▶ 可试播") + "</span>") : "";
+    var meta = it.n ? "<span class=" + Q + "tag" + Q + ">" + durLabel(it.n) + "</span>" : "";
     return "<div class=" + Q + "card" + Q + " tabindex=" + Q + "0" + Q + " role=" + Q + "button" + Q + " data-lib=" + Q + esc(libKeyOf(coll.key, it.id)) + Q + ">" + media +
-      "<div class=" + Q + "body" + Q + "><div class=" + Q + "name" + Q + ">" + esc(it.title || it.id) + "</div>" +
+      "<div class=" + Q + "body" + Q + (media ? "" : " tight") + Q + "><div class=" + Q + "name" + Q + ">" + esc(it.title || it.id) + "</div>" +
       "<div class=" + Q + "sub" + Q + ">" + esc(it.sum || (it.cat ? it.cat : coll.label)) + "</div>" +
       "<div class=" + Q + "tags" + Q + "><span class=" + Q + "tag k" + Q + ">" + esc(coll.label) + "</span>" +
-      (it.cat ? "<span class=" + Q + "tag" + Q + ">" + esc(it.cat) + "</span>" : "") + meta + "</div></div></div>";
+      (it.cat ? "<span class=" + Q + "tag" + Q + ">" + esc(it.cat) + "</span>" : "") + playTag + meta + "</div></div></div>";
   }
   function renderLibChips() {
     var bar = $("#libbar");
