@@ -342,10 +342,20 @@
       v.addEventListener('loadedmetadata', paint);
       v.addEventListener('play', paint);
       v.addEventListener('pause', paint);
-      vp.querySelector('.vp-track').addEventListener('click', function (e) {
-        var r = e.currentTarget.getBoundingClientRect();
-        if (v.duration) v.currentTime = ((e.clientX - r.left) / r.width) * v.duration;
+      var track = vp.querySelector(".vp-track");
+      var seekTo = function (clientX) {
+        var r = track.getBoundingClientRect();
+        var x = Math.min(Math.max(clientX - r.left, 0), r.width);
+        if (v.duration) { v.currentTime = (x / r.width) * v.duration; paint(); }
+      };
+      var dragging = false;
+      track.addEventListener('pointerdown', function (e) {
+        dragging = true; track.setPointerCapture(e.pointerId); seekTo(e.clientX); e.preventDefault();
       });
+      track.addEventListener('pointermove', function (e) { if (dragging) seekTo(e.clientX); });
+      track.addEventListener('pointerup', function (e) { dragging = false; try { track.releasePointerCapture(e.pointerId); } catch (err) {} });
+      track.addEventListener('pointercancel', function () { dragging = false; });
+      vp.addEventListener('mousemove', function (e) { if (dragging) seekTo(e.clientX); });
       mute.addEventListener('click', function () {
         v.muted = !v.muted;
         mute.textContent = v.muted ? '🔇' : '🔊';
