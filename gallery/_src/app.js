@@ -266,7 +266,8 @@
       else if (o.cover) media = '<img class="dimg" src="' + o.cover + '" alt="">';
       side += '<div class="kv"><b>分类</b><span>' + esc(o.cat) + '</span><b>时长</b><span>' + durLabel(o.ms) + '</span><b>循环</b><span>' + (o.loop ? '是' : '否') + '</span></div>';
       side += '<p class="lead">' + (o.video ? '本地 mp4，页内直接播放。' : '暂无本地录像，用下面的入口到播放器里看。') + '</p>';
-      if (o.player) side += '<p class="acts"><a class="linkplay" href="' + o.player + '" target="_blank">在完整播放器打开</a></p>';
+      if (o.video) side += '<p class="acts"><a class="linkplay" href="' + o.video + '" target="_blank">新页面播放（本地 mp4）</a></p>';
+      else if (o.player) side += '<p class="acts"><a class="linkplay" href="' + o.player + '" target="_blank">在完整播放器打开</a></p>';
       side += '<p class="note">该目录多数动效本身无音轨（462 条中 22 条带音效）。</p>';
       side += details('怎么用', esc('node engines/wise-motion/scripts/show.mjs ' + o.id + ' --details' + NL + 'node engines/wise-motion/scripts/export.mjs ' + o.id + ' --out-dir <你的工程>'));
     } else if (kind === 't') {
