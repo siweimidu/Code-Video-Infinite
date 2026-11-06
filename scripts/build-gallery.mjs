@@ -131,10 +131,11 @@ function inlineMd(s) {
 function mdToHtml(md) {
   const lines = md.replace(/^---[\s\S]*?---\s*/, '').split(/\r?\n/);
   const out = [];
-  let list = null, table = null;
+  let list = null, table = null, para = null;
   const flush = () => {
     if (list) { out.push('<ul>' + list.join('') + '</ul>'); list = null; }
     if (table) { out.push(table); table = null; }
+    if (para) { out.push('<p>' + inlineMd(para.join('')) + '</p>'); para = null; }
   };
   for (const raw of lines) {
     const line = raw.trimEnd();
@@ -152,8 +153,8 @@ function mdToHtml(md) {
     if (/^###\s+/.test(line)) { flush(); out.push('<h4>' + inlineMd(line.replace(/^###\s+/, '')) + '</h4>'); continue; }
     if (/^##\s+/.test(line)) { flush(); out.push('<h3>' + inlineMd(line.replace(/^##\s+/, '')) + '</h3>'); continue; }
     if (/^[-*]\s+/.test(line)) { if (!list) list = []; list.push('<li>' + inlineMd(line.replace(/^[-*]\s+/, '')) + '</li>'); continue; }
-    flush();
-    out.push('<p>' + inlineMd(line) + '</p>');
+    if (!para) para = [];
+    para.push(line.trim());
   }
   flush();
   return out.join('');

@@ -208,6 +208,13 @@ const motionDetail = await ev('(function(){' +
   'return {img:!!img,src:img?img.getAttribute("src"):"",link:!!link,href:link?link.getAttribute("href"):""};})()');
 add('动作详情给播放入口', motionDetail.link && (motionDetail.href.indexOf('#') >= 0 || motionDetail.href.indexOf('.mp4') >= 0), motionDetail.href.slice(-40));
 await ev('(function(){document.getElementById("mClose").click();return 1;})()');
+await ev('(function(){var c=[].slice.call(document.querySelectorAll("#gridShot .card"))[0];if(c)c.click();return 1;})()');
+await sleep(900);
+const shotDetail = await ev('(function(){var b=document.querySelector("#mBody");if(!b)return {no:true};' +
+  'return {h3:b.querySelectorAll(".md h3").length,td:b.querySelectorAll(".md td").length,code:(b.querySelector(".code")||{textContent:""}).textContent.length};})()');
+add('镜头卡详情直接显示全文', !shotDetail.no && shotDetail.h3 > 0, 'h3=' + shotDetail.h3 + ' 表格单元格=' + shotDetail.td);
+add('镜头卡详情带参考实现源码', !shotDetail.no && shotDetail.code > 500, '源码节选 ' + shotDetail.code + ' 字符');
+await ev('(function(){document.getElementById("mClose").click();return 1;})()');
 const jsErrors = await ev('(window.__err|0)');
 add('页面无脚本错误', !jsErrors, String(jsErrors));
 
