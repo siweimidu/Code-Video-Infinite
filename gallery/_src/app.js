@@ -223,7 +223,8 @@
   function vplayer(src, poster, opts) {
     opts = opts || {};
     return '<div class="vp' + (opts.crop ? ' crop-bar' : '') + '" data-loop="' + (opts.loop === false ? '0' : '1') + '" data-audio="' + (opts.audio ? '1' : '0') + '">' +
-      '<video src="' + src + '"' + (poster ? ' poster="' + poster + '"' : '') + ' playsinline preload="metadata"></video>' +
+      '<video src="' + src + '"' + (poster ? ' poster="' + poster + '"' : '') + ' playsinline preload="auto"></video>' +
+      '<div class="vp-loading">加载中…</div>' +
       '<button class="vp-big" type="button" aria-label="播放">▶</button>' +
       '<div class="vp-bar">' +
         '<button class="vp-toggle" type="button" aria-label="播放/暂停">▶</button>' +
@@ -370,6 +371,10 @@
       [big, tg].forEach(function (b) { if (b) b.addEventListener('click', toggle); });
       v.addEventListener('timeupdate', paint);
       v.addEventListener('loadedmetadata', paint);
+      var ld = vp.querySelector(".vp-loading");
+      var hideLd = function () { if (ld) ld.style.display = "none"; };
+      v.addEventListener("canplay", hideLd);
+      if (v.readyState >= 3) hideLd();
       v.addEventListener('play', paint);
       v.addEventListener('pause', paint);
       var track = vp.querySelector(".vp-track");

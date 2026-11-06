@@ -453,6 +453,8 @@ body{padding-left:224px}
 
 .loading{padding:60px 20px;text-align:center;color:#8a8a8e;font-size:14px}
 
+.vp-loading{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#fff;font-size:12.5px;opacity:.8;z-index:2;pointer-events:none}
+
 </style>
 </head>
 <body>
@@ -633,7 +635,7 @@ body{padding-left:224px}
   </div>
 
 </div></main>
-<footer class="buildstamp">构建 <b>2026-11-06 17:36</b> · 若你看到旧界面，请 Ctrl+F5 强制刷新</footer>
+<footer class="buildstamp">构建 <b>2026-11-06 17:39</b> · 若你看到旧界面，请 Ctrl+F5 强制刷新</footer>
 
 <div class="modal" id="modal"><div class="box">
   <div class="hd"><h3 id="mTitle"></h3><div class="hd-actions"><span id="mActions"></span><button id="mClose">关闭</button></div></div>
@@ -867,7 +869,8 @@ body{padding-left:224px}
   function vplayer(src, poster, opts) {
     opts = opts || {};
     return '<div class="vp' + (opts.crop ? ' crop-bar' : '') + '" data-loop="' + (opts.loop === false ? '0' : '1') + '" data-audio="' + (opts.audio ? '1' : '0') + '">' +
-      '<video src="' + src + '"' + (poster ? ' poster="' + poster + '"' : '') + ' playsinline preload="metadata"></video>' +
+      '<video src="' + src + '"' + (poster ? ' poster="' + poster + '"' : '') + ' playsinline preload="auto"></video>' +
+      '<div class="vp-loading">加载中…</div>' +
       '<button class="vp-big" type="button" aria-label="播放">▶</button>' +
       '<div class="vp-bar">' +
         '<button class="vp-toggle" type="button" aria-label="播放/暂停">▶</button>' +
@@ -1014,6 +1017,10 @@ body{padding-left:224px}
       [big, tg].forEach(function (b) { if (b) b.addEventListener('click', toggle); });
       v.addEventListener('timeupdate', paint);
       v.addEventListener('loadedmetadata', paint);
+      var ld = vp.querySelector(".vp-loading");
+      var hideLd = function () { if (ld) ld.style.display = "none"; };
+      v.addEventListener("canplay", hideLd);
+      if (v.readyState >= 3) hideLd();
       v.addEventListener('play', paint);
       v.addEventListener('pause', paint);
       var track = vp.querySelector(".vp-track");
