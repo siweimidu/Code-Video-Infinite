@@ -188,6 +188,17 @@ const playModal = await ev('(function(){var f=document.querySelector("#mBody .fr
 add('可播条目点开真出播放器', playModal.frame && playModal.src.indexOf('index.html#') >= 0, playModal.src.slice(-42));
 await ev('(function(){document.getElementById("mClose").click();var c=document.getElementById("playOnly");c.checked=false;c.dispatchEvent(new Event("change"));return 1;})()');
 await sleep(400);
+await ev('(function(){var c=document.querySelectorAll("#gridFilm .card")[0];if(c)c.click();return 1;})()');
+await sleep(1500);
+const vp = await ev('(function(){var v=document.querySelector("#mBody video");if(!v)return {no:true};' +
+  'return {muted:v.muted,controls:v.controls,paused:v.paused,ready:v.readyState};})()');
+add('视频用原生播放器且不静音', !vp.no && vp.controls === true && vp.muted === false, 'muted=' + vp.muted + ' controls=' + vp.controls + ' ready=' + vp.ready);
+await ev('(function(){document.getElementById("mClose").click();document.querySelectorAll("#gridMove .card")[0].click();return 1;})()');
+await sleep(1800);
+const crop = await ev('(function(){var f=document.querySelector("#mBody .frame.crop");if(!f)return {no:true};var r=f.getBoundingClientRect();' +
+  'return {ratio:Math.round(r.width/r.height*100)/100,w:Math.round(r.width)};})()');
+add('wise 播放器裁掉原站界面', !crop.no && Math.abs(crop.ratio - 16/9) < 0.06, '裁剪框 ' + crop.w + 'px · 比例 ' + crop.ratio);
+await ev('(function(){document.getElementById("mClose").click();return 1;})()');
 const jsErrors = await ev('(window.__err|0)');
 add('页面无脚本错误', !jsErrors, String(jsErrors));
 

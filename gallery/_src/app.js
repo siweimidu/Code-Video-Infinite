@@ -49,7 +49,8 @@
       ' onmouseover="this.play()" onmouseout="this.pause()"></video>' +
       '<span class="tagbadge real">真实样片</span><span class="corner">' + meta + '</span></div>' +
       '<div class="body"><div class="name">' + esc(v.name) + '</div>' +
-      '<div class="sub">' + sub + '</div></div></div>';
+      '<div class="sub">' + sub + '</div>' +
+      '<div class="tags">' + (v.audio ? '<span class="tag play">🔊 有声音</span>' : '<span class="tag">🔇 无音轨</span>') + '</div></div></div>';
   }
   function cardGif(g) {
     return '<div class="card" tabindex="0" role="button" data-open="g:' + esc(g.path) + '">' +
@@ -236,9 +237,15 @@
         '风格：' + o.id + '（' + first.library + ':' + first.id + '）') + '</pre>';
       if (o.preview) h += '<h4>真实案例帧</h4><img src="' + o.preview + '" style="width:100%;border-radius:12px;border:1px solid var(--border)">';
     } else if (kind === 'v' || kind === 'g') {
-      h += kind === 'v'
-        ? '<video src="' + o.src + '" controls autoplay loop style="width:100%;border-radius:12px;background:#000"></video>'
-        : '<img src="' + o.src + '" style="width:100%;border-radius:12px">';
+      if (kind === 'v') {
+        h += '<div class="frame video"><video src="' + o.src + '" controls autoplay playsinline preload="metadata"></video>' +
+          '<button class="bigplay" type="button" aria-label="播放">▶</button></div>';
+        h += '<p class="playnote">' + (o.audio ? '🔊 有音轨（aac 立体声）——若没声音，点播放器里的喇叭图标，或直接点一下画面' : '🔇 这段素材本身没有音轨') +
+          ' · <a href="' + o.src + '" target="_blank">下载 / 新窗口打开</a></p>' +
+          '<p class="playnote autoplay-tip" style="display:none">浏览器拦截了自动播放：点一下画面或播放键即可听到声音。</p>';
+      } else {
+        h += '<img src="' + o.src + '" style="width:100%;border-radius:12px">';
+      }
       h += '<h4>文件</h4><pre>' + esc(o.path + NL + o.mb + ' MB') + '</pre>';
     } else if (kind === 's') {
       h += '<div class="kv"><b>分类</b><span>' + esc(o.cat) + '</span><b>时长</b><span>' + esc(o.d) +
@@ -247,8 +254,8 @@
       h += '<h4>怎么用</h4><pre>' + esc('读卡全文：' + o.p + NL +
         '# 再按卡里「参考实现」去 demos/ 找源码，copy 进工程改参数') + '</pre>';
     } else if (kind === 'm') {
-      h += '<div class="kv"><b>分类</b><span>' + esc(o.cat) + '</span><b>时长</b><span>' + o.ms +
-        'ms</span><b>循环</b><span>' + (o.loop ? '是' : '否') + '</span></div>';
+      h += '<div class="kv"><b>分类</b><span>' + esc(o.cat) + '</span><b>时长</b><span>' + durLabel(o.ms) +
+        '</span><b>循环</b><span>' + (o.loop ? '是' : '否') + '</span></div>';
       h += '<h4>怎么用</h4><pre>' + esc('node engines/wise-motion/scripts/show.mjs ' + o.id + ' --details' + NL +
         'node engines/wise-motion/scripts/export.mjs ' + o.id + ' --out-dir <你的工程>') + '</pre>';
     } else if (kind === 't') {
@@ -259,6 +266,20 @@
     $('#mBody').innerHTML = h;
     $('#modal').classList.add('on');
     document.body.style.overflow = 'hidden';
+    setTimeout(tryPlayVideo, 120);
+  }
+  function tryPlayVideo() {
+    var v = document.querySelector('#mBody video');
+    if (!v) return;
+    var btn = document.querySelector("#mBody .bigplay");
+    var hide = function () { if (btn) btn.style.display = "none"; };
+    v.addEventListener('playing', hide);
+    if (btn) {
+      btn.addEventListener('click', function () { v.play().catch(function () {}); });
+    }
+    v.muted = false;
+    var pr = v.play();
+    if (pr && pr.then) pr.then(hide).catch(function () { /* 等用户点大按钮 */ });
   }
   function closeDetail() {
     $('#modal').classList.remove('on');
@@ -408,10 +429,28 @@ $('#playOnly').addEventListener('change', function (e) { state.playOnly = e.targ
   function playerBlock(src, kind, label) {
     var head = '<h4>直接播放</h4>';
     if (kind === 'module') return head + moduleHint(src);
-    var frame = '<div class=' + Q + 'frame' + Q + '><iframe src=' + Q + src + Q + ' loading=' + Q + 'lazy' + Q + ' allow=' + Q + 'autoplay; fullscreen' + Q + '></iframe></div>';
-    var note = '<p class=' + Q + 'playnote' + Q + '>在播放器里实时渲染（' + esc(label || '') + '），可直接操作 · <a href=' + Q + src + Q + ' target=' + Q + '_blank' + Q + '>新窗口打开</a></p>';
-    return head + frame + note;
+    var isWise = src.indexOf('wise-motion') >= 0;
+    if (isWise) {
+      return head +
+        '<div class="frame crop"><div class="shift"><iframe src="' + src + '" loading="lazy" allow="autoplay; fullscreen"></iframe></div></div>' +
+        '<p class="playnote">wise 播放器只保留了预览区（原站的导航/侧栏已裁掉）· <a href="' + src + '" target="_blank">新窗口打开完整播放器</a>' +
+        ' · 该目录多数动效本身无音轨（462 条中 22 条带音效）</p>';
+    }
+    return head +
+      '<div class="frame"><iframe src="' + src + '" loading="lazy" allow="autoplay; fullscreen"></iframe></div>' +
+      '<p class="playnote">在播放器里实时渲染（' + esc(label || '') + '）· <a href="' + src + '" target="_blank">新窗口打开</a></p>';
   }
+  function fitCrop() {
+    [].slice.call(document.querySelectorAll('.frame.crop')).forEach(function (wrap) {
+      var shift = wrap.querySelector('.shift');
+      if (!shift) return;
+      var s = (wrap.clientWidth || 772) / 772;
+      shift.style.transform = 'scale(' + s + ')';
+      shift.style.left = (-429 * s) + 'px';
+      shift.style.top = (-259 * s) + 'px';
+    });
+  }
+  window.addEventListener('resize', fitCrop);
   function injectPlayer(attr) {
     var kind = attr.slice(0, 1), id = attr.slice(2), src = null, pkind = "classic", label = "";
     if (kind === "m") {
@@ -427,6 +466,7 @@ $('#playOnly').addEventListener('change', function (e) { state.playOnly = e.targ
     var body = $("#mBody");
     if (!body || body.querySelector(".frame") || body.querySelector(".playnote")) return;
     body.insertAdjacentHTML("afterbegin", playerBlock(src, pkind, label));
+    setTimeout(fitCrop, 60);
   }
   document.addEventListener("click", function (e) {
     var card = e.target.closest && e.target.closest("[data-open]");

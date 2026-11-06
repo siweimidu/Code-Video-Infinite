@@ -53,6 +53,7 @@ const videos = Object.keys(posterMeta).map((key) => {
     poster: m.poster ? 'posters/' + m.poster : null,
     duration: m.duration || 0,
     mb: Math.round((fs.statSync(abs).size / 1048576) * 10) / 10,
+    audio: hasAudio(abs),
     path: m.rel,
   };
 }).filter((v) => v.mb > 0.5).sort((a, b) => b.mb - a.mb);
@@ -208,6 +209,12 @@ for (const m of motions) {
 }
 for (const mv of entries.filter((e) => e.collection === "move")) {
   const hit = motions.length ? null : null;
+}
+/* ---------- 视频音轨探测（ffprobe） ---------- */
+import { spawnSync } from 'node:child_process';
+function hasAudio(file) {
+  const r = spawnSync('ffprobe', ['-v', 'error', '-select_streams', 'a', '-show_entries', 'stream=codec_name', '-of', 'csv=p=0', file], { encoding: 'utf8' });
+  return !!(r.stdout && r.stdout.trim());
 }
 /* ---------- wise 封面：build-covers.mjs 抓的真实预览帧 ---------- */
 const COVER_DIR = path.join(OUT, "covers");
