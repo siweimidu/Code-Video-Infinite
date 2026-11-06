@@ -246,6 +246,7 @@
     clearTimeout(t._h); t._h = setTimeout(function () { t.className = ''; }, 1600);
   }
   function doCopy(key) {
+    if (COPY.pending && !COPY[key]) { toast('全文加载中，稍等一下'); return; }
     var text = COPY[key] || '';
     var done = function () { toast(key === 'code' ? '已复制视频代码' : '已复制'); };
     if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -286,8 +287,10 @@
     if (!o) return;
     if (kind === 's' && !window.__SHOT_MD__) {
       $('#mTitle').textContent = o.id;
-      $('#mActions').innerHTML = '<button class="abtn" type="button" onclick="document.getElementById(\'mClose\').click()">关闭</button>';
-      $('#mBody').innerHTML = '<div class="loading">正在加载卡片全文…</div>';
+      $('#mActions').innerHTML = '<button class="abtn primary" type="button" data-copy="prompt">复制提示词</button>' +
+        '<button class="abtn" type="button" data-copy="code">复制视频代码</button>';
+      COPY = { prompt: '', code: '', pending: true };
+      $('#mBody').innerHTML = '<div class="skeleton"></div>';
       $('#modal').classList.add('on'); document.body.style.overflow = 'hidden';
       ensureShotMd().then(function () { openDetail(attr); }).catch(function () { $('#mBody').innerHTML = '<div class="loading">加载失败</div>'; });
       return;
@@ -335,9 +338,13 @@
       acts.push(abtn('复制风格行', 'primary', 'prompt'));
     } else if (kind === 't') {
       body += '<p class="lead">' + esc(o.t) + '</p>';
-      body += details('入口', esc('读：' + o.p + NL + '形态：' + o.medium));
-      COPY.prompt = o.p;
-      acts.push(abtn('复制路径', 'primary', 'prompt'));
+      if (o.excerpt) body += '<div class="article" style="margin-top:18px"><p class="lead">' + esc(o.excerpt) + '…</p></div>';
+      body += '<div class="kv" style="margin-top:18px"><b>形态</b><span>' + esc(o.medium) + '</span><b>入口</b><span>' + esc(o.p) + '</span></div>';
+      COPY.prompt = '用 ' + o.id + ' 引擎（' + o.medium + '）做：<在这里写你的需求>' + NL + '入口：' + o.p;
+      COPY.code = o.p;
+      acts.push(abtn('复制调用指令', 'primary', 'prompt'));
+      acts.push('<a class="abtn" href="' + o.p + '" target="_blank">打开 SKILL.md</a>');
+      body += details('入口路径', esc(o.p));
     }
     $('#mTitle').textContent = kind === 'f' ? o.name : (o.name || o.id || o.t);
     $('#mActions').innerHTML = acts.join('');
@@ -694,6 +701,12 @@ $('#playOnly').addEventListener('change', function (e) { state.playOnly = e.targ
     if (!btn) return;
     doCopy(btn.getAttribute('data-copy'));
   });
+  function prefetchShotMd() {
+    if (window.__SHOT_MD__) return;
+    if (window.requestIdleCallback) requestIdleCallback(function () { ensureShotMd(); }, { timeout: 2500 });
+    else setTimeout(function () { ensureShotMd(); }, 1200);
+  }
+  prefetchShotMd();
   renderLibChips();
   renderChips();
   render();

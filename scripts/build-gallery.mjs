@@ -185,8 +185,21 @@ const motions = entries.filter((e) => e.collection === 'motion-entry').map((e) =
   id: e.id, t: e.title || e.id, cat: e.category || '', ms: e.durationMs || 0,
   loop: !!e.loop, doc: e.doc || e.path || '',
 }));
+function excerptOf(p, n) {
+  try {
+    const abs = path.join(ROOT, String(p || ''));
+    if (!exists(abs)) return "";
+    let t = fs.readFileSync(abs, 'utf8');
+    t = t.replace(/^---[\s\S]*?---/, '');
+    t = t.replace(/^#.*$/gm, '');
+    t = t.replace(/```[\s\S]*?```/g, '');
+    t = t.replace(/\*\*/g, '').replace(/`/g, '').replace(/\s+/g, ' ').trim();
+    return t.slice(0, n || 320);
+  } catch (e) { return ""; }
+}
 const tools = entries.filter((e) => e.collection === 'tool').map((e) => ({
   id: e.id, medium: e.medium, t: String(e.summary || '').slice(0, 240), cover: coverOf(e.id), p: e.path,
+  excerpt: excerptOf(e.path, 360),
 }));
 
 /* ---------- 预览图索引：claude-motion 的 scenes/extensions/production/models 各自带 preview ---------- */
