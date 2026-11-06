@@ -260,8 +260,9 @@
       side += details('文件路径', esc(o.path + NL + o.mb + ' MB'));
     } else if (kind === 's') {
       side += '<div class="kv"><b>分类</b><span>' + esc(o.cat) + '</span><b>时长</b><span>' + esc(o.d) + '</span><b>能量</b><span>' + esc(o.en) + '</span></div>';
-      side += '<p class="lead">' + esc(o.t) + '</p>';
-      side += details('怎么用', esc('读卡全文：' + o.p + NL + '按卡里「参考实现」去 demos/ 找源码'));
+      side += '<div class="md">' + (o.mdHtml || ('<p>' + esc(o.t) + '</p>')) + '</div>';
+      if (o.code) side += '<details class="fold"><summary>参考实现源码（前 90 行）</summary><pre class="code">' + esc(o.code) + '</pre></details>';
+      side += '<p class="note">卡片原文：' + esc(o.p) + '</p>';
     } else if (kind === 'm') {
       if (o.video) media = vplayer(o.video, o.cover, { audio: false, loop: true });
       else if (o.cover) media = '<img class="dimg" src="' + o.cover + '" alt="">';
@@ -445,8 +446,23 @@ $('#playOnly').addEventListener('change', function (e) { state.playOnly = e.targ
     document.body.style.overflow = "hidden";
   }
 
+  function renderAll() {
+    var body = $("#allBody");
+    if (!body || !D.allEntries) return;
+    var q = (state.q || "").trim().toLowerCase();
+    var rows = D.allEntries.filter(function (e) {
+      if (!q) return true;
+      return (e.id + " " + e.title + " " + e.coll + " " + e.cat).toLowerCase().indexOf(q) >= 0;
+    });
+    body.innerHTML = rows.map(function (e) {
+      return "<tr><td class=" + Q + "c" + Q + ">" + esc(e.coll) + "</td><td class=" + Q + "t" + Q + ">" + esc(e.title) +
+        "</td><td>" + esc(e.cat || "—") + "</td><td class=" + Q + "p" + Q + ">" + esc(e.path || "—") + "</td></tr>";
+    }).join("");
+    var c = $("#cAll");
+    if (c) c.textContent = rows.length + " / " + D.allEntries.length + " 条";
+  }
   var baseRender = render;
-  render = function () { baseRender(); renderLib(); };
+  render = function () { baseRender(); renderLib(); renderAll(); };
 
   document.addEventListener("click", function (e) {
     var lc = e.target.closest && e.target.closest(".libchip");

@@ -121,10 +121,60 @@ const posterOf = (id) => {
   const p = path.join(posterRoot, id + '.jpg');
   return exists(p) ? url(p) : null;
 };
-const shotCards = entries.filter((e) => e.collection === 'shot-card').map((e) => ({
-  id: e.id, t: String(e.title || '').slice(0, 140), cat: e.category || '',
-  d: e.duration || '', en: e.energy || '', p: e.path || '', poster: posterOf(e.id),
-}));
+/* ---------- 镜头卡：md 全文与参考实现源码（直接内嵌，不在弹层里让用户去找文件） ---------- */
+function escHtml(s) {
+  return String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+}
+function inlineMd(s) {
+  return escHtml(s).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>').replace(/`([^`]+)`/g, '<code>$1</code>');
+}
+function mdToHtml(md) {
+  const lines = md.replace(/^---[\s\S]*?---\s*/, '').split(/\r?\n/);
+  const out = [];
+  let list = null, table = null;
+  const flush = () => {
+    if (list) { out.push('<ul>' + list.join('') + '</ul>'); list = null; }
+    if (table) { out.push(table); table = null; }
+  };
+  for (const raw of lines) {
+    const line = raw.trimEnd();
+    if (!line.trim()) { flush(); continue; }
+    if (/^\|/.test(line)) {
+      const cells = line.split('|').slice(1, -1).map((c) => c.trim());
+      if (cells.every((c) => /^:?-{3,}:?$/.test(c))) continue;
+      if (!table) {
+        table = '<table><tbody>';
+      }
+      table += '<tr>' + cells.map((c) => '<td>' + inlineMd(c) + '</td>').join('') + '</tr>';
+      continue;
+    }
+    if (table) { table += '</tbody></table>'; out.push(table); table = null; }
+    if (/^###\s+/.test(line)) { flush(); out.push('<h4>' + inlineMd(line.replace(/^###\s+/, '')) + '</h4>'); continue; }
+    if (/^##\s+/.test(line)) { flush(); out.push('<h3>' + inlineMd(line.replace(/^##\s+/, '')) + '</h3>'); continue; }
+    if (/^[-*]\s+/.test(line)) { if (!list) list = []; list.push('<li>' + inlineMd(line.replace(/^[-*]\s+/, '')) + '</li>'); continue; }
+    flush();
+    out.push('<p>' + inlineMd(line) + '</p>');
+  }
+  flush();
+  return out.join('');
+}
+function demoCodeOf(category, id) {
+  const dir = path.join(engRoot, 'shotcraft/demos', category || '', id);
+  try {
+    const f = fs.readdirSync(dir).find((x) => x.endsWith('.tsx'));
+    if (!f) return null;
+    return fs.readFileSync(path.join(dir, f), 'utf8').split(/\r?\n/).slice(0, 90).join('\n');
+  } catch (e) { return null; }
+}
+const shotCards = entries.filter((e) => e.collection === 'shot-card').map((e) => {
+  let md = '';
+  try { md = fs.readFileSync(path.join(ROOT, e.path || ""), "utf8"); } catch (err) { md = ""; }
+  return {
+    id: e.id, t: String(e.title || '').slice(0, 140), cat: e.category || '',
+    d: e.duration || '', en: e.energy || '', p: e.path || '', poster: posterOf(e.id),
+    mdHtml: md ? mdToHtml(md) : "", code: demoCodeOf(e.category, e.id),
+  };
+});
 const motions = entries.filter((e) => e.collection === 'motion-entry').map((e) => ({
   id: e.id, t: e.title || e.id, cat: e.category || '', ms: e.durationMs || 0,
   loop: !!e.loop, doc: e.doc || e.path || '',
@@ -182,6 +232,16 @@ const library = libDefs.map((d) => {
   return { key: d.key, label: d.label, count: items.length, items };
 }).filter((c) => c.count > 0);
 
+/* ---------- 全部条目（1023 条一行一条，供「全部条目」表视图） ---------- */
+const COLL_LABEL = { style: "风格实现", "shot-card": "镜头卡", "motion-entry": "动作", tool: "工具" };
+for (const d of libDefs) COLL_LABEL[d.key] = d.label;
+const allEntries = entries.map((e) => ({
+  id: e.id,
+  title: String(e.title || e.titleZh || e.id).slice(0, 90),
+  coll: COLL_LABEL[e.collection] || e.collection,
+  cat: e.category || "",
+  path: String(e.path || e.doc || "").slice(0, 110),
+}));
 const libTotal = library.reduce((s, c) => s + c.count, 0);
 const dedicated = entries.filter((e) => ["shot-card", "motion-entry", "tool"].indexOf(e.collection) >= 0).length;
 const styleCount = entries.filter((e) => e.collection === "style").length;
@@ -245,6 +305,7 @@ const DATA = {
   },
   families, videos, gifs, shotCards, motions, tools,
   library,
+  allEntries,
   coverage: { catalogEntries: entries.length, dedicated, styleCount, libTotal, covered },
 };
 

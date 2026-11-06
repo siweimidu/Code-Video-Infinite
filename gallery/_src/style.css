@@ -336,3 +336,23 @@ button:hover{background:var(--muted);border-color:#d6d6dc;text-decoration:none}
 
 .statnote{margin:18px 0 0;font-size:12.5px;line-height:1.7;color:#86868b;max-width:900px}
 .chipnote{font-size:11.5px;color:#a1a1a6;margin-right:12px;align-self:center;white-space:nowrap}
+
+.allwrap{max-height:72vh;overflow:auto;border:1px solid var(--border);border-radius:14px;background:#fff}
+.alltable{width:100%;border-collapse:collapse;font-size:12.5px}
+.alltable th{position:sticky;top:0;background:#fafafa;text-align:left;font-weight:600;padding:10px 14px;border-bottom:1px solid var(--border);color:#6e6e73;z-index:1}
+.alltable td{padding:9px 14px;border-bottom:1px solid #f2f2f4;vertical-align:top}
+.alltable tr:hover td{background:#f7faff}
+.alltable td.c{white-space:nowrap;color:#6e6e73}
+.alltable td.t{font-weight:500}
+.alltable td.p{color:#a1a1a6;font-family:var(--mono,monospace);font-size:11.5px;word-break:break-all}
+
+.md{margin-top:16px;max-width:760px}
+.md h3{font-size:15px;margin:20px 0 8px;font-weight:600}
+.md h4{font-size:13.5px;margin:14px 0 6px;font-weight:600;color:#3a3a3c}
+.md p{margin:6px 0;font-size:13.5px;line-height:1.72;color:#3a3a3c}
+.md ul{margin:6px 0 6px 18px;padding:0}
+.md li{font-size:13.5px;line-height:1.7;color:#3a3a3c;margin:3px 0}
+.md table{width:100%;border-collapse:collapse;margin:10px 0;font-size:12.5px}
+.md td{border-top:1px solid var(--border);padding:7px 10px;vertical-align:top;color:#3a3a3c}
+.md code{background:#f4f4f6;border-radius:5px;padding:1px 5px;font-size:12px}
+.code{max-height:420px;overflow:auto}
