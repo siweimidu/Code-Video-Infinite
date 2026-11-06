@@ -33,7 +33,7 @@ node scripts/doctor.mjs                                  # 环境 + 十一个引
 | 内容 | 数量 | 出处 |
 |---|---|---|
 | 镜头配方卡 | 124 张 | shotcraft |
-| 动效条目（23 类动作语汇） | 462 条 | wise-motion |
+| 动效条目（23 类动作语汇） | 472 条 | wise-motion |
 | 源码动画案例 | 47 套 | claude-motion |
 | 源码组件 / 物件模型 / 场景起点 | 20 / 30 / 14 | claude-motion |
 | MG 签名技法 | 15 种 | mg-motion |

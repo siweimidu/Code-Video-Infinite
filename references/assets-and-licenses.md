@@ -14,7 +14,7 @@
 | shotcraft | `assets/audio/bgm/`（5 首 BGM）、`assets/{lib,scripts}/`、`demos/`、`gallery/`、`template/` | `LICENSE`（Apache-2.0）、`assets/audio/ATTRIBUTION.md` | SFX 走 Freesound（默认 CC0 / 允许时 CC BY）并自动记账；**共 5 首 BGM 的授权见 ATTRIBUTION** |
 | claude-motion | `assets/cases/`、`assets/extensions/`、`assets/models/`（27 个外部 GLB）、`assets/scenes/`、`assets/production/` | `LICENSE`（MIT，仅原创代码）+ `THIRD_PARTY_NOTICES.md`（13.7KB，逐资产） | 模型有自己的许可（例如 CC0 的通用样例模型）；每条案例的 `source.license` 写在 `engines/claude-motion/references/case-catalog.json` |
 | mg-motion | `mg-styles-15/assets/{fonts,hdri,textures}/` | 上游 mg-styles-15 为 **MIT**（github.com/siweimidu/mg-styles-15）；本包未附独立 LICENSE，见 `NOTICE-UPSTREAM.md` | 字体用 `bootstrap_fonts.py` 下 OFL/Apache 字体；HDRI 等按上游说明 |
-| wise-motion | `catalog/{assets,effects,fonts}/`、`vendor/`、`dist/` | `LICENSE`（Apache-2.0）+ `NOTICE.md`（19.7KB，逐素材署名/来源/许可） | 目录里 462 条动效的 `source.license` 多为 Apache-2.0 / MIT，逐条可查 |
+| wise-motion | `catalog/{assets,effects,fonts}/`、`vendor/`、`dist/` | `LICENSE`（Apache-2.0）+ `NOTICE.md`（19.7KB，逐素材署名/来源/许可） | 目录里 472 条动效的 `source.license` 多为 Apache-2.0 / MIT，逐条可查 |
 
 ## 用素材时的硬规矩
 

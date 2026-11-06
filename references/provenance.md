@@ -188,3 +188,11 @@ wise 的播放器是整站页面：`#preview` 里既有动效画布，又叠着�
 
 成片仍然是页内原生 `<video>`（10/13 有 aac 音轨、不静音、大播放键、可下载）。
 check-gallery 36 → 37 项（动作详情有真实预览帧、有播放入口）。
+
+## 第十三轮：对齐 wise-motion 官方目录（462 → 472）
+
+官方 `CATALOG-STATS.md` 为 320 单个动作 / 98 插画单图 / 54 组合片段 = 472；本地旧版是 315 / 99 / 48 = 462。
+- 新增 `scripts/pull-wise-upstream.mjs`：用 GitHub API（token）比对 `catalog/` 全量 761 个文件，缺 34 个、版本不同 11 个，逐个下载写入
+- 同步后 registry.json = 472 条（320/98/54），播放器标签页实测显示相同数字；`celebrating-characters-illustration` 等新条目可正常打开
+- 统一索引 1013 → 1023 条（wise-motion 472）
+- 文档里的 462/1013 全部改为 472/1023；历史记录保留原数字

@@ -51,7 +51,11 @@
     return {positive, denied};
   }
   function rank(registry, query, options = {}) {
-    const {positive, denied} = parse(query);
+    // 直接查名称、旧名称或别名时按字面匹配，避免把“告别”中的“别”当作否定。
+    const lookup = String(query).trim().toLowerCase();
+    const named = lookup && registry.effects.some(e => [e.name,...(e.previous_names||[]),...e.aliases]
+      .some(name => name.toLowerCase() === lookup));
+    const {positive, denied} = named ? {positive:String(query), denied:[]} : parse(query);
     const text=positive.trim().toLowerCase();
     const explicit = options.exclude || [];
     const prohibited = exclusions.filter(([pattern]) => denied.some(x => pattern.test(x)));
@@ -110,7 +114,7 @@
       `明确排除：${effect.avoid}`,
       `对应参考：本地目录「${effect.name}」${actions.length ? '；所用动作：' + actions.join('、') : ''}`,
       `源码：${effect.source.path} 中的 ${effect.source.factory}`,
-      `来源与许可：${effect.source.extraction ? '原码提取与接入' : '自编示例'}，Apache-2.0；${nativeScene ? 'Blender、Remotion与系统字体保留各自权利，详见随包来源说明' : 'Anime.js 4.5.0，MIT'}。`,
+      `来源与许可：${effect.source.extraction ? '原码提取与接入' : '自编示例'}，Apache-2.0；${effect.source.license_note || (nativeScene ? 'Blender、Remotion与系统字体保留各自权利，详见随包来源说明' : 'Anime.js 4.5.0，MIT')}。`,
       `关键假设：${effect.assumptions}`
     ].join('\n');
   }

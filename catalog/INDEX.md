@@ -12,7 +12,7 @@
 | `M3-web-artifact` | 网页/UI 制品（页面·仪表盘·原型·deck·数据可视化） | 7 |
 | `M4-article` | 长文文章（单文件 HTML，离线可分享） | 1 |
 | `M5-image` | 静态图（海报·信息图·产品图·分镜·UI mockup） | 18 |
-| `M6-motion-source` | 动效素材（单动作/转场的真实源码） | 462 |
+| `M6-motion-source` | 动效素材（单动作/转场的真实源码） | 472 |
 | `M7-retrieval` | 知识库检索（本地目录答问，带出处） | 1 |
 | `M8-shot` | 镜头配方（单镜头编排与实现） | 124 |
 
@@ -28,8 +28,8 @@
 | onetake | 41 |
 | shotcraft | 124 |
 | web-design-engineer | 6 |
-| wise-motion | 462 |
-| **合计** | **1013** |
+| wise-motion | 472 |
+| **合计** | **1023** |
 
 ## 三、风格族（39）
 
@@ -195,7 +195,7 @@
 | `style-20` | 像素风 Pixel Art / 8-bit | MG 风格 | M1-video | `engines/mg-motion/references/styles.md` |
 | `style-22` | 赛博朋克 HUD / FUI Cyberpunk HUD / FUI (Fictional UI) | MG 风格 | M1-video | `engines/mg-motion/references/styles.md` |
 
-### 动效条目（wise-motion）（462）
+### 动效条目（wise-motion）（472）
 
 | id | 名称 / 一句话 | 分类 | 形态 | 入口 |
 | --- | --- | --- | --- | --- |
@@ -245,11 +245,12 @@
 | `card-compress-merge` | 卡片压缩合并 | 布局与层次 | M6-motion-source | `engines/wise-motion/references/effects/card-compress-merge.md` |
 | `card-conveyor` | 斜向反向滚动 | 滚动与轮播 | M6-motion-source | `engines/wise-motion/references/effects/card-conveyor.md` |
 | `card-flip` | 卡片翻面 | 立体与镜头 | M6-motion-source | `engines/wise-motion/references/effects/card-flip.md` |
+| `cat-context-links` | 中心词连接周围词语 | 界面与演示 | M6-motion-source | `` |
 | `cat-factory-journey` | 小猫加工厂完整循环 | 图形与材质 | M6-motion-source | `engines/wise-motion/references/effects/cat-factory-journey.md` |
 | `cat-mouth-illustration` | 小猫张嘴 | 物件与角色 | M6-motion-source | `engines/wise-motion/references/effects/cat-mouth-illustration.md` |
 | `celebrating-characters-illustration` | 庆祝人物组 | 物件与角色 | M6-motion-source | `engines/wise-motion/references/effects/celebrating-characters-illustration.md` |
 | `center-ripple-emit` | 同心涟漪扩散 | 反馈与联动 | M6-motion-source | `engines/wise-motion/references/effects/center-ripple-emit.md` |
-| `char-color-cycle` | 文字依次换色 | 强调与配色 | M6-motion-source | `engines/wise-motion/references/effects/char-color-cycle.md` |
+| `char-color-cycle` | 字标开场与换色 | 文字与叙事 | M6-motion-source | `engines/wise-motion/references/effects/char-color-cycle.md` |
 | `character-expression-response` | 人物表情回应 | 反馈与联动 | M6-motion-source | `engines/wise-motion/references/effects/character-expression-response.md` |
 | `chart-card-illustration` | 手绘折线图卡 | 物件与角色 | M6-motion-source | `engines/wise-motion/references/effects/chart-card-illustration.md` |
 | `chrome-outline-echo` | 文字描边拖影 | 文字与字形 | M6-motion-source | `engines/wise-motion/references/effects/chrome-outline-echo.md` |
@@ -267,7 +268,7 @@
 | `claude-phyllotaxis-illustration` | 旋转螺旋点阵 | 几何与网络 | M6-motion-source | `engines/wise-motion/references/effects/claude-phyllotaxis-illustration.md` |
 | `claude-plexus-illustration` | 漂移点线网络 | 几何与网络 | M6-motion-source | `engines/wise-motion/references/effects/claude-plexus-illustration.md` |
 | `claude-sine-grid-illustration` | 方块波浪 | 几何与网络 | M6-motion-source | `engines/wise-motion/references/effects/claude-sine-grid-illustration.md` |
-| `claude-spectrum-illustration` | 起伏频谱柱 | 界面与读数 | M6-motion-source | `engines/wise-motion/references/effects/claude-spectrum-illustration.md` |
+| `claude-spectrum-illustration` | 起伏频谱柱 | 扫描与信号 | M6-motion-source | `engines/wise-motion/references/effects/claude-spectrum-illustration.md` |
 | `claude-terrain-illustration` | 起伏地形线 | 自然与天体 | M6-motion-source | `engines/wise-motion/references/effects/claude-terrain-illustration.md` |
 | `claude-warp-illustration` | 放射加速光线 | 流场与能量 | M6-motion-source | `engines/wise-motion/references/effects/claude-warp-illustration.md` |
 | `claude-wireframe-illustration` | 旋转立方线框 | 几何与网络 | M6-motion-source | `engines/wise-motion/references/effects/claude-wireframe-illustration.md` |
@@ -275,13 +276,15 @@
 | `color-evolve` | 平滑换色 | 强调与配色 | M6-motion-source | `engines/wise-motion/references/effects/color-evolve.md` |
 | `color-segment-stagger` | 色带依次展开 | 强调与配色 | M6-motion-source | `engines/wise-motion/references/effects/color-segment-stagger.md` |
 | `column-to-row` | 纵排变横排 | 布局与层次 | M6-motion-source | `engines/wise-motion/references/effects/column-to-row.md` |
-| `concept-diagram` | 图解逐段演变 | 数字与图表 | M6-motion-source | `engines/wise-motion/references/effects/concept-diagram.md` |
+| `concept-diagram` | 图解逐段演变 | 界面与演示 | M6-motion-source | `engines/wise-motion/references/effects/concept-diagram.md` |
 | `confused-characters-illustration` | 疑惑人物组 | 物件与角色 | M6-motion-source | `engines/wise-motion/references/effects/confused-characters-illustration.md` |
+| `context-silk-flow` | 光丝传递词语关联 | 路径与描绘 | M6-motion-source | `` |
 | `contour-draw-fill` | 描边后填色 | 路径与描绘 | M6-motion-source | `engines/wise-motion/references/effects/contour-draw-fill.md` |
 | `convex-glass-lens` | 玻璃伸缩折射 | 变形与生长 | M6-motion-source | `engines/wise-motion/references/effects/convex-glass-lens.md` |
 | `coordinate-focus-zoom` | 镜头推近中心 | 立体与镜头 | M6-motion-source | `engines/wise-motion/references/effects/coordinate-focus-zoom.md` |
 | `coordinate-grid-build` | 网格依次画出 | 数字与图表 | M6-motion-source | `engines/wise-motion/references/effects/coordinate-grid-build.md` |
 | `core-ring-expand` | 光球扩出光环 | 光效与氛围 | M6-motion-source | `engines/wise-motion/references/effects/core-ring-expand.md` |
+| `cosine-gauge-sweep` | 仪表指针与读数联动 | 数字与图表 | M6-motion-source | `` |
 | `count-up` | 数字加速至无穷 | 数字与图表 | M6-motion-source | `engines/wise-motion/references/effects/count-up.md` |
 | `countdown-dial` | 表盘倒计时 | 数字与图表 | M6-motion-source | `engines/wise-motion/references/effects/countdown-dial.md` |
 | `crank-linked-turn` | 连杆带动转轮 | 反馈与联动 | M6-motion-source | `engines/wise-motion/references/effects/crank-linked-turn.md` |
@@ -301,13 +304,14 @@
 | `dandelion-seed-illustration` | 蒲公英种子 | 自然与天体 | M6-motion-source | `engines/wise-motion/references/effects/dandelion-seed-illustration.md` |
 | `dandelion-subject-illustration` | 蒲公英主体 | 自然与天体 | M6-motion-source | `engines/wise-motion/references/effects/dandelion-subject-illustration.md` |
 | `dandelion-wind-journey` | 蒲公英·风过之处 | 图形与材质 | M6-motion-source | `engines/wise-motion/references/effects/dandelion-wind-journey.md` |
-| `data-pulse` | 频谱波形同步 | 数字与图表 | M6-motion-source | `engines/wise-motion/references/effects/data-pulse.md` |
+| `data-pulse` | 频谱波形同步 | 扫描与信号 | M6-motion-source | `engines/wise-motion/references/effects/data-pulse.md` |
 | `density-field` | 点阵增密 | 变形与生长 | M6-motion-source | `engines/wise-motion/references/effects/density-field.md` |
 | `diagonal-edge-transition` | 斜向擦除转场 | 画面转场 | M6-motion-source | `engines/wise-motion/references/effects/diagonal-edge-transition.md` |
 | `diamond-aperture-release` | 菱形开窗转场 | 画面转场 | M6-motion-source | `engines/wise-motion/references/effects/diamond-aperture-release.md` |
 | `diffuse-light-drift` | 柔光缓慢流动 | 光效与氛围 | M6-motion-source | `engines/wise-motion/references/effects/diffuse-light-drift.md` |
 | `dim-focus` | 周围淡化聚焦 | 强调与配色 | M6-motion-source | `engines/wise-motion/references/effects/dim-focus.md` |
 | `dimension-line` | 尺寸线向两端展开 | 数字与图表 | M6-motion-source | `engines/wise-motion/references/effects/dimension-line.md` |
+| `dimensions-unfold-fold` | 坐标展开成万维 | 立体与镜头 | M6-motion-source | `` |
 | `dither-lab-book` | 插画翻页书 | 界面与演示 | M6-motion-source | `engines/wise-motion/references/effects/dither-lab-book.md` |
 | `door-halftone-illustration` | 字标点阵 | 物件与角色 | M6-motion-source | `engines/wise-motion/references/effects/door-halftone-illustration.md` |
 | `dot-mask-reveal` | 点阵逐行显现 | 入场与展开 | M6-motion-source | `engines/wise-motion/references/effects/dot-mask-reveal.md` |
@@ -345,6 +349,7 @@
 | `fade-rise` | 淡入上移 | 入场与展开 | M6-motion-source | `engines/wise-motion/references/effects/fade-rise.md` |
 | `fall-stack-grid` | 卡片堆叠排齐 | 布局与层次 | M6-motion-source | `engines/wise-motion/references/effects/fall-stack-grid.md` |
 | `fan-object-rise` | 三列依次升入 | 入场与展开 | M6-motion-source | `engines/wise-motion/references/effects/fan-object-rise.md` |
+| `farewell-actions` | 人物告别与三连点亮 | 文字与叙事 | M6-motion-source | `` |
 | `filament-shed-drift` | 种子脱落飘散 | 粒子与流动 | M6-motion-source | `engines/wise-motion/references/effects/filament-shed-drift.md` |
 | `filament-unfold-turn` | 冠毛展开转向 | 变形与生长 | M6-motion-source | `engines/wise-motion/references/effects/filament-unfold-turn.md` |
 | `film-scratch-flicker` | 胶片纹理闪动 | 光效与氛围 | M6-motion-source | `engines/wise-motion/references/effects/film-scratch-flicker.md` |
@@ -391,7 +396,7 @@
 | `group-expand` | 卡片逐张放大 | 入场与展开 | M6-motion-source | `engines/wise-motion/references/effects/group-expand.md` |
 | `group-stagger` | 按距离依次响应 | 反馈与联动 | M6-motion-source | `engines/wise-motion/references/effects/group-stagger.md` |
 | `heads-illustration` | 环形光点汇聚 | 几何与网络 | M6-motion-source | `engines/wise-motion/references/effects/heads-illustration.md` |
-| `heartbeat-follow` | 心电线失真恢复 | 路径与描绘 | M6-motion-source | `engines/wise-motion/references/effects/heartbeat-follow.md` |
+| `heartbeat-follow` | 心电线失真恢复 | 扫描与信号 | M6-motion-source | `engines/wise-motion/references/effects/heartbeat-follow.md` |
 | `heat-grid-converge` | 色块显出轮廓 | 变形与生长 | M6-motion-source | `engines/wise-motion/references/effects/heat-grid-converge.md` |
 | `helical-screw-seat` | 螺丝旋入锁紧 | 立体与镜头 | M6-motion-source | `engines/wise-motion/references/effects/helical-screw-seat.md` |
 | `hex-radial-pulse` | 六边形波纹扩散 | 反馈与联动 | M6-motion-source | `engines/wise-motion/references/effects/hex-radial-pulse.md` |
@@ -402,13 +407,13 @@
 | `hud-candidate-status` | 热力图聚焦 | 扫描与信号 | M6-motion-source | `engines/wise-motion/references/effects/hud-candidate-status.md` |
 | `hud-data-stream` | 数据字符刷新 | 扫描与信号 | M6-motion-source | `engines/wise-motion/references/effects/hud-data-stream.md` |
 | `hud-globe-scan` | 扫描后镜头推近 | 扫描与信号 | M6-motion-source | `engines/wise-motion/references/effects/hud-globe-scan.md` |
-| `hud-navigation-bars` | 弧形仪表联动 | 扫描与信号 | M6-motion-source | `engines/wise-motion/references/effects/hud-navigation-bars.md` |
+| `hud-navigation-bars` | 弧形仪表联动 | 数字与图表 | M6-motion-source | `engines/wise-motion/references/effects/hud-navigation-bars.md` |
 | `hud-radar-sweep` | 轨迹逐点定位 | 扫描与信号 | M6-motion-source | `engines/wise-motion/references/effects/hud-radar-sweep.md` |
 | `hud-range-readout` | 测距联动放大 | 扫描与信号 | M6-motion-source | `engines/wise-motion/references/effects/hud-range-readout.md` |
 | `hud-ring-build` | 圆环逐层展开 | 扫描与信号 | M6-motion-source | `engines/wise-motion/references/effects/hud-ring-build.md` |
-| `hud-signal-waves` | 占比分区变化 | 扫描与信号 | M6-motion-source | `engines/wise-motion/references/effects/hud-signal-waves.md` |
+| `hud-signal-waves` | 占比分区变化 | 数字与图表 | M6-motion-source | `engines/wise-motion/references/effects/hud-signal-waves.md` |
 | `hud-spectrum-bars` | 频谱柱跳动 | 扫描与信号 | M6-motion-source | `engines/wise-motion/references/effects/hud-spectrum-bars.md` |
-| `hud-system-boot` | 面积图展开 | 扫描与信号 | M6-motion-source | `engines/wise-motion/references/effects/hud-system-boot.md` |
+| `hud-system-boot` | 面积图展开 | 数字与图表 | M6-motion-source | `engines/wise-motion/references/effects/hud-system-boot.md` |
 | `hud-target-lock` | 准星锁定变色 | 扫描与信号 | M6-motion-source | `engines/wise-motion/references/effects/hud-target-lock.md` |
 | `image-particles-wordmark` | 图像散开聚字 | 文字与字形 | M6-motion-source | `engines/wise-motion/references/effects/image-particles-wordmark.md` |
 | `interface-feedback` | 按钮操作反馈 | 界面与演示 | M6-motion-source | `engines/wise-motion/references/effects/interface-feedback.md` |
@@ -423,7 +428,7 @@
 | `journey-pond-animal-illustration` | 蒲公英旅途地面动物 | 自然与天体 | M6-motion-source | `engines/wise-motion/references/effects/journey-pond-animal-illustration.md` |
 | `keyframe-workbench` | 曲线回弹演示 | 界面与演示 | M6-motion-source | `engines/wise-motion/references/effects/keyframe-workbench.md` |
 | `landscape-boundary-carry` | 沿地形衔接换景 | 画面转场 | M6-motion-source | `engines/wise-motion/references/effects/landscape-boundary-carry.md` |
-| `lap-outline-echo` | 绕圈叠出轮廓 | 滚动与轮播 | M6-motion-source | `engines/wise-motion/references/effects/lap-outline-echo.md` |
+| `lap-outline-echo` | 绕圈叠出轮廓 | 路径与描绘 | M6-motion-source | `engines/wise-motion/references/effects/lap-outline-echo.md` |
 | `layer-expand` | 图层分离展开 | 布局与层次 | M6-motion-source | `engines/wise-motion/references/effects/layer-expand.md` |
 | `layout-reorder` | 列表变网格 | 布局与层次 | M6-motion-source | `engines/wise-motion/references/effects/layout-reorder.md` |
 | `leader-callout` | 引线标注 | 数字与图表 | M6-motion-source | `engines/wise-motion/references/effects/leader-callout.md` |
@@ -488,12 +493,14 @@
 | `outro-recap-sequence` | 散射归位片尾展开 | 文字与叙事 | M6-motion-source | `engines/wise-motion/references/effects/outro-recap-sequence.md` |
 | `page-cover` | 新页推入覆盖 | 画面转场 | M6-motion-source | `engines/wise-motion/references/effects/page-cover.md` |
 | `panel-rise-collapse` | 窗口升入压扁消失 | 变形与生长 | M6-motion-source | `engines/wise-motion/references/effects/panel-rise-collapse.md` |
+| `paper-card-drop` | 论文资料依次入场 | 文字与叙事 | M6-motion-source | `` |
 | `paper-disc-pop` | 圆盘定格回弹 | 跟随与回弹 | M6-motion-source | `engines/wise-motion/references/effects/paper-disc-pop.md` |
 | `paper-scroll-illustration` | 纸卷展开 | 物件与角色 | M6-motion-source | `engines/wise-motion/references/effects/paper-scroll-illustration.md` |
 | `paper-spiral-sequence` | 纸条铺展螺线旋转 | 图形与材质 | M6-motion-source | `engines/wise-motion/references/effects/paper-spiral-sequence.md` |
 | `paper-strip-stagger` | 左右交替滑入 | 入场与展开 | M6-motion-source | `engines/wise-motion/references/effects/paper-strip-stagger.md` |
 | `paper-tilt` | 叠层倾斜展开 | 布局与层次 | M6-motion-source | `engines/wise-motion/references/effects/paper-tilt.md` |
 | `paper-title-stagger` | 文字定格升入 | 文字与字形 | M6-motion-source | `engines/wise-motion/references/effects/paper-title-stagger.md` |
+| `pareto-efficiency-sequence` | 性能开销曲线对比 | 数字与图表 | M6-motion-source | `` |
 | `particle-ballistic-fall` | 粒子抛出落下 | 粒子与流动 | M6-motion-source | `engines/wise-motion/references/effects/particle-ballistic-fall.md` |
 | `particle-hopper` | 粒子落入漏斗 | 粒子与流动 | M6-motion-source | `engines/wise-motion/references/effects/particle-hopper.md` |
 | `particle-torus-roll` | 粒子圆环翻滚 | 粒子与流动 | M6-motion-source | `engines/wise-motion/references/effects/particle-torus-roll.md` |
@@ -517,10 +524,11 @@
 | `progress-readout` | 进度与数字同步 | 数字与图表 | M6-motion-source | `engines/wise-motion/references/effects/progress-readout.md` |
 | `prompt-border-trace` | 边框逐段画出 | 路径与描绘 | M6-motion-source | `engines/wise-motion/references/effects/prompt-border-trace.md` |
 | `prompt-char-gather` | 文字绕弧汇聚 | 文字与字形 | M6-motion-source | `engines/wise-motion/references/effects/prompt-char-gather.md` |
-| `prompt-chinese-type` | 文字分行输入 | 文字与字形 | M6-motion-source | `engines/wise-motion/references/effects/prompt-chinese-type.md` |
+| `prompt-chinese-type` | 输入后推近发送 | 界面与演示 | M6-motion-source | `engines/wise-motion/references/effects/prompt-chinese-type.md` |
 | `prompt-to-core-sequence` | 文字汇聚光核扩散 | 图形与材质 | M6-motion-source | `engines/wise-motion/references/effects/prompt-to-core-sequence.md` |
 | `prompt-ui-push` | 界面入场推近 | 布局与层次 | M6-motion-source | `engines/wise-motion/references/effects/prompt-ui-push.md` |
 | `proximity-link-drift` | 光点靠近连线 | 路径与描绘 | M6-motion-source | `engines/wise-motion/references/effects/proximity-link-drift.md` |
+| `purchase-table-vector` | 购买表格突出一行 | 数字与图表 | M6-motion-source | `` |
 | `radial-branch-flow` | 涟漪扩散连线分流 | 图形与材质 | M6-motion-source | `engines/wise-motion/references/effects/radial-branch-flow.md` |
 | `radial-flash-transition` | 中心闪光转场 | 画面转场 | M6-motion-source | `engines/wise-motion/references/effects/radial-flash-transition.md` |
 | `radial-line-burst` | 短线向外散开 | 粒子与流动 | M6-motion-source | `engines/wise-motion/references/effects/radial-line-burst.md` |
@@ -528,9 +536,10 @@
 | `rain-freeze-resume` | 文字雨暂停后继续 | 反馈与联动 | M6-motion-source | `engines/wise-motion/references/effects/rain-freeze-resume.md` |
 | `rapid-cut` | 节拍闪切 | 画面转场 | M6-motion-source | `engines/wise-motion/references/effects/rapid-cut.md` |
 | `rasengan-illustration` | 蓝色能量球 | 流场与能量 | M6-motion-source | `engines/wise-motion/references/effects/rasengan-illustration.md` |
-| `rect-aperture-breathe` | 矩形窗口伸缩 | 布局与层次 | M6-motion-source | `engines/wise-motion/references/effects/rect-aperture-breathe.md` |
+| `rect-aperture-breathe` | 矩形窗口伸缩 | 画面转场 | M6-motion-source | `engines/wise-motion/references/effects/rect-aperture-breathe.md` |
 | `rect-wave-field` | 色块随机闪亮 | 反馈与联动 | M6-motion-source | `engines/wise-motion/references/effects/rect-wave-field.md` |
 | `reduction-dimension` | 条形缩短对比 | 数字与图表 | M6-motion-source | `engines/wise-motion/references/effects/reduction-dimension.md` |
+| `related-sentences-converge` | 相关句子逐渐靠近 | 立体与镜头 | M6-motion-source | `` |
 | `result-anchors` | KIMI K3 宣传片复刻 | 界面与演示 | M6-motion-source | `engines/wise-motion/references/effects/result-anchors.md` |
 | `ridge-text-write` | 跟拍文字书写 | 文字与字形 | M6-motion-source | `engines/wise-motion/references/effects/ridge-text-write.md` |
 | `rigid-rebound` | 左右滑入回摆 | 跟随与回弹 | M6-motion-source | `engines/wise-motion/references/effects/rigid-rebound.md` |
@@ -619,7 +628,7 @@
 | `theme-card-layout` | 排版逐行展开 | 布局与层次 | M6-motion-source | `engines/wise-motion/references/effects/theme-card-layout.md` |
 | `theme-color-cycle` | 配色同步轮换 | 强调与配色 | M6-motion-source | `engines/wise-motion/references/effects/theme-color-cycle.md` |
 | `thread-weave` | 双线交织成形 | 变形与生长 | M6-motion-source | `engines/wise-motion/references/effects/thread-weave.md` |
-| `three-column-aperture` | 三列窗口依次开合 | 布局与层次 | M6-motion-source | `engines/wise-motion/references/effects/three-column-aperture.md` |
+| `three-column-aperture` | 三列窗口依次开合 | 画面转场 | M6-motion-source | `engines/wise-motion/references/effects/three-column-aperture.md` |
 | `tile-ring-unfold` | 地块逐圈翻开 | 立体与镜头 | M6-motion-source | `engines/wise-motion/references/effects/tile-ring-unfold.md` |
 | `tile-round-wave` | 方圆旋转变形 | 变形与生长 | M6-motion-source | `engines/wise-motion/references/effects/tile-round-wave.md` |
 | `tile-wall-focus` | 图块推近 | 立体与镜头 | M6-motion-source | `engines/wise-motion/references/effects/tile-wall-focus.md` |
@@ -638,6 +647,7 @@
 | `trend-draw` | 折线依次画出 | 数字与图表 | M6-motion-source | `engines/wise-motion/references/effects/trend-draw.md` |
 | `type-burst-settle` | 立体字弹起归位 | 文字与字形 | M6-motion-source | `engines/wise-motion/references/effects/type-burst-settle.md` |
 | `type-reveal` | 文字逐字亮起 | 文字与字形 | M6-motion-source | `engines/wise-motion/references/effects/type-reveal.md` |
+| `vector-angle-swing` | 向量夹角来回摆动 | 数字与图表 | M6-motion-source | `` |
 | `venturi-illustration` | 缩口管道流线 | 几何与网络 | M6-motion-source | `engines/wise-motion/references/effects/venturi-illustration.md` |
 | `vertical-feed` | 连续向上滚动 | 滚动与轮播 | M6-motion-source | `engines/wise-motion/references/effects/vertical-feed.md` |
 | `vortex-line-roll` | 环形流线翻滚 | 粒子与流动 | M6-motion-source | `engines/wise-motion/references/effects/vortex-line-roll.md` |

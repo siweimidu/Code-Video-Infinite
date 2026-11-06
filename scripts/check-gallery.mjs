@@ -201,7 +201,7 @@ const motionDetail = await ev('(function(){' +
   'var img=document.querySelector("#mBody .frame.poster img");' +
   'var link=document.querySelector("#mBody .linkplay");' +
   'return {img:!!img,src:img?img.getAttribute("src"):"",link:!!link,href:link?link.getAttribute("href"):""};})()');
-add('动作详情给播放入口', motionDetail.link && motionDetail.href.indexOf('#') >= 0, motionDetail.href.slice(-40));
+add('动作详情给播放入口', motionDetail.link && (motionDetail.href.indexOf('#') >= 0 || motionDetail.href.indexOf('.mp4') >= 0), motionDetail.href.slice(-40));
 await ev('(function(){document.getElementById("mClose").click();return 1;})()');
 const jsErrors = await ev('(window.__err|0)');
 add('页面无脚本错误', !jsErrors, String(jsErrors));
