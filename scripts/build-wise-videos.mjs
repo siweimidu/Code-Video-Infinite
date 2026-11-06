@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 // 把 wise 的动效预览录成本地 mp4（只录 #preview 画面区），供 gallery 用原生播放器播放。
 // 用法：node scripts/build-wise-videos.mjs [--shard 0 --of 4] [--limit N] [--seconds 4] [--force]
 import { spawn } from 'node:child_process';
@@ -43,7 +43,7 @@ const proc = spawn(CHROME, ['--headless=new', '--hide-scrollbars',
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 let target = null;
-for (let i = 0; i < 60 && !target; i++) {
+for (let i = 0; i < 240 && !target; i++) {
   await sleep(250);
   try { const l = await (await fetch('http://127.0.0.1:' + PORT + '/json')).json(); target = l.find((t) => t.type === 'page' && t.webSocketDebuggerUrl); } catch (e) {}
 }
@@ -100,7 +100,7 @@ for (let i = 0; i < todo.length; i++) {
   const fps = 25;
   const out = path.join(OUT, 'wise-' + eid + '.mp4');
   const code = await new Promise((res) => {
-    const CROP = 'crop=772:300:429:259,scale=1280:-2';   // 固定预览区，去掉底部 18% 控制条
+    const CROP = 'crop=772:434:429:259,scale=1280:-2';   // 固定预览区，去掉底部 18% 控制条
     const filter = CROP;
     const p = spawn('ffmpeg', ['-y', '-v', 'error', '-framerate', String(fps), '-i', path.join(dir, '%05d.jpg'),
       '-vf', filter, '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '24', '-movflags', '+faststart', out], { stdio: 'ignore' });

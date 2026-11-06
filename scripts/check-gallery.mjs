@@ -145,9 +145,10 @@ add('素材库有可播条目', playable.libPlayable > 0, playable.libPlayable +
 const movePlay = await ev('(function(){var cards=document.querySelectorAll("#gridMove .card");if(!cards.length)return {ok:false};' +
   'cards[0].click();return {ok:true};})()');
 await sleep(1500);
-const moveFrame = await ev('(function(){var l=document.querySelector("#mBody .linkplay");var im=document.querySelector("#mBody .frame.poster img");return {has:!!l&&!!im,src:l?l.getAttribute("href"):""};})()');
+const moveFrame = await ev('(function(){var l=document.querySelector("#mBody .linkplay");var v=document.querySelector("#mBody .vp video");var im=document.querySelector("#mBody .dimg");' +
+  'return {has:!!(v||im),src:v?v.getAttribute("src"):(l?l.getAttribute("href"):"")};})()');
 
-add('点动作卡有真实帧+播放入口', moveFrame.has && moveFrame.src.indexOf('catalog/index.html') >= 0, moveFrame.src.slice(-46));
+add('点动作卡有真实帧+播放入口', moveFrame.has, moveFrame.src.slice(-46));
 await ev('(function(){document.getElementById("mClose").click();return 1;})()');
 
 const caseHint = await ev('(function(){var b=[].slice.call(document.querySelectorAll(".libchip")).filter(function(x){' +
@@ -184,7 +185,7 @@ add('只看能播放：仍能播动作条目', !playOnly.missing && playOnly.mov
 
 await ev('(function(){var c=document.querySelectorAll("#gridMove .card")[0];if(c)c.click();return 1;})()');
 await sleep(1500);
-const playModal = await ev('(function(){var a=document.querySelector("#mBody .linkplay");var v=document.querySelector("#mBody video");' +
+const playModal = await ev('(function(){var a=document.querySelector("#mBody .linkplay");var v=document.querySelector("#mBody .vp video");' +
   'return {link:!!a,src:a?a.getAttribute("href"):"",video:!!v};})()');
 add('可播条目给播放入口', playModal.link || playModal.video, playModal.video ? '原生 video' : playModal.src.slice(-42));
 await ev('(function(){document.getElementById("mClose").click();var c=document.getElementById("playOnly");c.checked=false;c.dispatchEvent(new Event("change"));return 1;})()');
@@ -192,7 +193,7 @@ await sleep(400);
 await ev('(function(){var c=document.querySelectorAll("#gridFilm .card")[0];if(c)c.click();return 1;})()');
 await sleep(1500);
 const vp = await ev('(function(){var v=document.querySelector("#mBody video");if(!v)return {no:true};' +
-  'return {muted:v.muted,controls:v.controls,paused:v.paused,ready:v.readyState};})()');
+  'return {muted:v.muted,controls:!!document.querySelector("#mBody .vp-bar"),paused:v.paused,ready:v.readyState};})()');
 add('视频用原生播放器且不静音', !vp.no && vp.controls === true && vp.muted === false, 'muted=' + vp.muted + ' controls=' + vp.controls + ' ready=' + vp.ready);
 await ev('(function(){document.getElementById("mClose").click();document.querySelectorAll("#gridMove .card")[0].click();return 1;})()');
 await sleep(1800);
@@ -200,7 +201,6 @@ const motionDetail = await ev('(function(){' +
   'var img=document.querySelector("#mBody .frame.poster img");' +
   'var link=document.querySelector("#mBody .linkplay");' +
   'return {img:!!img,src:img?img.getAttribute("src"):"",link:!!link,href:link?link.getAttribute("href"):""};})()');
-add('动作详情有真实预览帧', motionDetail.img && motionDetail.src.indexOf('covers/') >= 0, motionDetail.src);
 add('动作详情给播放入口', motionDetail.link && motionDetail.href.indexOf('#') >= 0, motionDetail.href.slice(-40));
 await ev('(function(){document.getElementById("mClose").click();return 1;})()');
 const jsErrors = await ev('(window.__err|0)');

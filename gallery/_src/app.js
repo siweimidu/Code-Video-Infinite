@@ -220,57 +220,107 @@
     if (kind === 't') return D.tools.filter(function (x) { return x.id === id; })[0];
   }
 
+  function vplayer(src, poster, opts) {
+    opts = opts || {};
+    return '<div class="vp" data-loop="' + (opts.loop === false ? '0' : '1') + '" data-audio="' + (opts.audio ? '1' : '0') + '">' +
+      '<video src="' + src + '"' + (poster ? ' poster="' + poster + '"' : '') + ' playsinline preload="metadata"></video>' +
+      '<button class="vp-big" type="button" aria-label="播放">▶</button>' +
+      '<div class="vp-bar">' +
+        '<button class="vp-toggle" type="button" aria-label="播放/暂停">▶</button>' +
+        '<div class="vp-track"><div class="vp-fill"></div></div>' +
+        '<span class="vp-time">0.0 / 0.0</span>' +
+        '<button class="vp-mute" type="button" aria-label="静音">' + (opts.audio ? '🔊' : '🔇') + '</button>' +
+        '<button class="vp-fs" type="button" aria-label="全屏">⤢</button>' +
+      '</div>' +
+    '</div>';
+  }
+  function details(title, body) {
+    return '<details class="fold"><summary>' + title + '</summary><pre>' + body + '</pre></details>';
+  }
   function openDetail(attr) {
     var kind = attr.slice(0, 1), id = attr.slice(2), o = findObj(kind, id);
     if (!o) return;
-    var h = '';
+    var media = '', side = '';
     if (kind === 'f') {
-      h += '<div class="kv"><b>分类</b><span>' + esc(o.cat) + '</span><b>情绪</b><span>' + esc(o.mood.join(' / ') || '—') +
-        '</span><b>实现库</b><span>' + esc(o.libs.join(' , ')) + '</span></div>';
-      if (o.one) h += '<h4>一句话</h4><p class="sub">' + esc(o.one) + '</p>';
-      h += '<h4>这个族在各库里的实现</h4><pre>' + esc(o.impls.map(function (i) {
-        return i.library + ':' + i.id + NL + '  ' + i.path + (i.note ? '  — ' + i.note : '');
-      }).join(NL + NL)) + '</pre>';
-      var first = o.impls[0] || {};
-      h += '<h4>怎么用</h4><pre>' + esc('node scripts/do.mjs "<你的需求>"' + NL +
-        '# 在 brief.md 里写这一行：' + NL +
-        '风格：' + o.id + '（' + first.library + ':' + first.id + '）') + '</pre>';
-      if (o.preview) h += '<h4>真实案例帧</h4><img src="' + o.preview + '" style="width:100%;border-radius:12px;border:1px solid var(--border)">';
-    } else if (kind === 'v' || kind === 'g') {
-      if (kind === 'v') {
-        h += '<div class="frame video"><video src="' + o.src + '" controls autoplay playsinline preload="metadata"></video>' +
-          '<button class="bigplay" type="button" aria-label="播放">▶</button></div>';
-        h += '<p class="playnote">' + (o.audio ? '🔊 有音轨（aac 立体声）——若没声音，点播放器里的喇叭图标，或直接点一下画面' : '🔇 这段素材本身没有音轨') +
-          ' · <a href="' + o.src + '" target="_blank">下载 / 新窗口打开</a></p>' +
-          '<p class="playnote autoplay-tip" style="display:none">浏览器拦截了自动播放：点一下画面或播放键即可听到声音。</p>';
-      } else {
-        h += '<img src="' + o.src + '" style="width:100%;border-radius:12px">';
-      }
-      h += '<h4>文件</h4><pre>' + esc(o.path + NL + o.mb + ' MB') + '</pre>';
+      if (o.preview) media = '<img class="dimg" src="' + o.preview + '" alt="">';
+      side += '<div class="kv"><b>分类</b><span>' + esc(o.cat) + '</span><b>情绪</b><span>' + esc(o.mood.join(' / ') || '—') + '</span><b>实现库</b><span>' + esc(o.libs.join(' , ')) + '</span></div>';
+      if (o.one) side += '<p class="lead">' + esc(o.one) + '</p>';
+      side += details('各库实现（' + o.impls.length + '）', esc(o.impls.map(function (i) { return i.library + ':' + i.id + NL + '  ' + i.path; }).join(NL + NL)));
+      var f1 = o.impls[0] || {};
+      side += details('怎么用', esc('node scripts/do.mjs "<你的需求>"' + NL + '风格：' + o.id + '（' + f1.library + ':' + f1.id + '）'));
+    } else if (kind === 'v') {
+      media = vplayer(o.src, null, { audio: !!o.audio, loop: false });
+      side += '<div class="kv"><b>音轨</b><span>' + (o.audio ? 'aac 立体声' : '无音轨') + '</span><b>大小</b><span>' + o.mb + ' MB</span></div>';
+      side += '<p class="lead">' + (o.audio ? '有声音。若浏览器拦截自动播放，点一下画面即可。' : '这段素材本身没有音轨。') + '</p>';
+      side += details('文件路径', esc(o.path));
+      side += '<p class="acts"><a class="linkplay" href="' + o.src + '" target="_blank">新窗口播放</a><a class="linkghost" href="' + o.src + '" download>下载</a></p>';
+    } else if (kind === 'g') {
+      media = '<img class="dimg" src="' + o.src + '" alt="">';
+      side += details('文件路径', esc(o.path + NL + o.mb + ' MB'));
     } else if (kind === 's') {
-      h += '<div class="kv"><b>分类</b><span>' + esc(o.cat) + '</span><b>时长</b><span>' + esc(o.d) +
-        '</span><b>能量</b><span>' + esc(o.en) + '</span></div>';
-      h += '<h4>适用</h4><p class="sub">' + esc(o.t) + '</p>';
-      h += '<h4>怎么用</h4><pre>' + esc('读卡全文：' + o.p + NL +
-        '# 再按卡里「参考实现」去 demos/ 找源码，copy 进工程改参数') + '</pre>';
+      side += '<div class="kv"><b>分类</b><span>' + esc(o.cat) + '</span><b>时长</b><span>' + esc(o.d) + '</span><b>能量</b><span>' + esc(o.en) + '</span></div>';
+      side += '<p class="lead">' + esc(o.t) + '</p>';
+      side += details('怎么用', esc('读卡全文：' + o.p + NL + '按卡里「参考实现」去 demos/ 找源码'));
     } else if (kind === 'm') {
-      if (o.cover) h += '<div class="frame poster"><img src="' + o.cover + '" alt=""></div>';
-      if (o.player) h += '<p class="playnote"><a class="linkplay" href="' + o.player + '" target="_blank" rel="noopener">在播放器里播放</a>' +
-        '<span class="hint">新窗口打开 wise 播放器，动效实时渲染</span></p>';
-      h += '<p class="playnote">该目录多数动效本身无音轨（462 条中 22 条带音效）</p>';
-      h += '<div class="kv"><b>分类</b><span>' + esc(o.cat) + '</span><b>时长</b><span>' + durLabel(o.ms) +
-        '</span><b>循环</b><span>' + (o.loop ? '是' : '否') + '</span></div>';
-      h += '<h4>怎么用</h4><pre>' + esc('node engines/wise-motion/scripts/show.mjs ' + o.id + ' --details' + NL +
-        'node engines/wise-motion/scripts/export.mjs ' + o.id + ' --out-dir <你的工程>') + '</pre>';
+      if (o.video) media = vplayer(o.video, o.cover, { audio: false, loop: true });
+      else if (o.cover) media = '<img class="dimg" src="' + o.cover + '" alt="">';
+      side += '<div class="kv"><b>分类</b><span>' + esc(o.cat) + '</span><b>时长</b><span>' + durLabel(o.ms) + '</span><b>循环</b><span>' + (o.loop ? '是' : '否') + '</span></div>';
+      side += '<p class="lead">' + (o.video ? '本地 mp4，页内直接播放。' : '暂无本地录像，用下面的入口到播放器里看。') + '</p>';
+      if (o.player) side += '<p class="acts"><a class="linkplay" href="' + o.player + '" target="_blank">在完整播放器打开</a></p>';
+      side += '<p class="note">该目录多数动效本身无音轨（462 条中 22 条带音效）。</p>';
+      side += details('怎么用', esc('node engines/wise-motion/scripts/show.mjs ' + o.id + ' --details' + NL + 'node engines/wise-motion/scripts/export.mjs ' + o.id + ' --out-dir <你的工程>'));
     } else if (kind === 't') {
-      h += '<p class="sub">' + esc(o.t) + '</p>';
-      h += '<h4>入口</h4><pre>' + esc('读：' + o.p + NL + '形态：' + o.medium) + '</pre>';
+      side += '<p class="lead">' + esc(o.t) + '</p>';
+      side += details('入口', esc('读：' + o.p + NL + '形态：' + o.medium));
     }
     $('#mTitle').textContent = kind === 'f' ? o.name : (o.name || o.id || o.t);
-    $('#mBody').innerHTML = h;
+    $('#mBody').innerHTML = '<div class="detail">' + (media ? '<div class="dmedia">' + media + '</div>' : '') + '<div class="dside">' + side + '</div></div>';
     $('#modal').classList.add('on');
     document.body.style.overflow = 'hidden';
-    setTimeout(tryPlayVideo, 120);
+    wirePlayers();
+  }
+  function wirePlayers() {
+    [].slice.call(document.querySelectorAll('#mBody .vp')).forEach(function (vp) {
+      var v = vp.querySelector('video');
+      var big = vp.querySelector('.vp-big');
+      var tg = vp.querySelector('.vp-toggle');
+      var fill = vp.querySelector('.vp-fill');
+      var time = vp.querySelector('.vp-time');
+      var mute = vp.querySelector('.vp-mute');
+      var fsb = vp.querySelector('.vp-fs');
+      var loop = vp.getAttribute('data-loop') !== '0';
+      v.loop = loop;
+      if (vp.getAttribute('data-audio') !== '1') v.muted = true;
+      var fmt = function (t) { return (Math.round(t * 10) / 10).toFixed(1) + 's'; };
+      var paint = function () {
+        var d = v.duration || 0;
+        fill.style.width = d ? (v.currentTime / d * 100) + '%' : '0%';
+        time.textContent = fmt(v.currentTime) + ' / ' + fmt(d);
+        var playing = !v.paused;
+        tg.textContent = playing ? '❚❚' : '▶';
+        if (big) big.style.display = playing ? 'none' : 'block';
+      };
+      var toggle = function () { if (v.paused) v.play().catch(function () {}); else v.pause(); };
+      [big, tg].forEach(function (b) { if (b) b.addEventListener('click', toggle); });
+      v.addEventListener('timeupdate', paint);
+      v.addEventListener('loadedmetadata', paint);
+      v.addEventListener('play', paint);
+      v.addEventListener('pause', paint);
+      vp.querySelector('.vp-track').addEventListener('click', function (e) {
+        var r = e.currentTarget.getBoundingClientRect();
+        if (v.duration) v.currentTime = ((e.clientX - r.left) / r.width) * v.duration;
+      });
+      mute.addEventListener('click', function () {
+        v.muted = !v.muted;
+        mute.textContent = v.muted ? '🔇' : '🔊';
+      });
+      fsb.addEventListener('click', function () {
+        if (document.fullscreenElement) document.exitFullscreen();
+        else if (vp.requestFullscreen) vp.requestFullscreen();
+      });
+      paint();
+      v.play().catch(function () { /* 等用户点 */ });
+    });
   }
   function tryPlayVideo() {
     var v = document.querySelector('#mBody video');

@@ -225,7 +225,11 @@ const coverOfEffect = (id) => {
   if (fs.statSync(p).size < COVER_MIN_BYTES) return null;
   return "covers/wise-" + id + ".jpg";
 };
-for (const m of motions) m.cover = coverOfEffect(m.id);
+const videoOfEffect = (id) => {
+  const p = path.join(OUT, 'videos', 'wise-' + id + '.mp4');
+  return exists(p) && fs.statSync(p).size > 20000 ? "videos/wise-" + id + ".mp4" : null;
+};
+for (const m of motions) { m.cover = coverOfEffect(m.id); m.video = videoOfEffect(m.id); }
 const coveredMotions = motions.filter((m) => m.cover).length;
 const DATA = {
   generatedAt: new Date().toISOString().slice(0, 10),
