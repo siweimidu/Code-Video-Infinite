@@ -369,6 +369,15 @@ button:hover{background:var(--muted);border-color:#d6d6dc;text-decoration:none}
 .md code{background:#f4f4f6;border-radius:5px;padding:1px 5px;font-size:12px}
 .code{max-height:420px;overflow:auto}
 
+a.statp{display:block;text-decoration:none;color:inherit;position:relative;padding-right:18px;transition:transform .16s ease}
+a.statp:hover{transform:translateY(-2px)}
+a.statp:hover b{color:var(--primary)}
+a.statp i{display:block;margin-top:6px;font-style:normal;font-size:11.5px;color:var(--primary);opacity:0;transition:opacity .16s ease}
+a.statp:hover i{opacity:1}
+a.statp::after{content:"↗";position:absolute;right:0;top:0;font-size:12px;color:var(--primary);opacity:0;transition:opacity .16s ease}
+a.statp:hover::after{opacity:1}
+section{scroll-margin-top:130px}
+
 </style>
 </head>
 <body>
@@ -408,12 +417,12 @@ button:hover{background:var(--muted);border-color:#d6d6dc;text-decoration:none}
   <h1>先看，再选。<br><em>39 个风格族摆在一起。</em></h1>
   <p class="lede">这是这个 skill 的选片台：真实样片、风格族、镜头卡、动作语汇、以及十一个引擎里全部可检索的素材，都摊开在这里。不用记形态和引擎——看到喜欢的，点开就有「怎么用」那一行，照抄给 agent 就行。</p>
   <div class="stats">
-    <div class="statp"><b id="statFamilies">—</b><span>风格族</span></div>
-    <div class="statp"><b id="statPreview">—</b><span>带真实案例帧</span></div>
-    <div class="statp"><b id="statVideo">—</b><span>真实样片</span></div>
-    <div class="statp"><b id="statShot">—</b><span>镜头卡</span></div>
-    <div class="statp"><b id="statMove">—</b><span>动作条目</span></div>
-    <div class="statp"><b id="statEntries">—</b><span>索引条目（合计）</span></div>
+    <a class="statp" href="#styles"><b id="statFamilies">—</b><span>风格族</span><i>跳到风格族</i></a>
+    <a class="statp" href="#styles" data-real="1"><b id="statPreview">—</b><span>带真实案例帧</span><i>只看有图的</i></a>
+    <a class="statp" href="#films"><b id="statVideo">—</b><span>真实样片</span><i>跳到样片</i></a>
+    <a class="statp" href="#shots"><b id="statShot">—</b><span>镜头卡</span><i>跳到镜头卡</i></a>
+    <a class="statp" href="#moves"><b id="statMove">—</b><span>动作条目</span><i>跳到动作</i></a>
+    <a class="statp" href="#all"><b id="statEntries">—</b><span>索引条目（合计）</span><i>查看全部条目</i></a>
   </div>
   <p class="statnote" id="statNote"></p>
 </div></header>
@@ -1020,6 +1029,13 @@ $('#playOnly').addEventListener('change', function (e) { state.playOnly = e.targ
   var baseRender = render;
   render = function () { baseRender(); renderLib(); renderAll(); };
 
+  document.addEventListener("click", function (e) {
+    var stat = e.target.closest && e.target.closest("a.statp[data-real]");
+    if (stat) {
+      var c = document.getElementById("realOnly");
+      if (c && !c.checked) { c.checked = true; state.realOnly = true; render(); }
+    }
+  });
   document.addEventListener("click", function (e) {
     var lc = e.target.closest && e.target.closest(".libchip");
     if (lc) { libState.key = lc.getAttribute("data-key"); libState.limit = 1000; renderLibChips(); renderLib(); return; }

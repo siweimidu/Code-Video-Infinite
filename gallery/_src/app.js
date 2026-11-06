@@ -465,6 +465,13 @@ $('#playOnly').addEventListener('change', function (e) { state.playOnly = e.targ
   render = function () { baseRender(); renderLib(); renderAll(); };
 
   document.addEventListener("click", function (e) {
+    var stat = e.target.closest && e.target.closest("a.statp[data-real]");
+    if (stat) {
+      var c = document.getElementById("realOnly");
+      if (c && !c.checked) { c.checked = true; state.realOnly = true; render(); }
+    }
+  });
+  document.addEventListener("click", function (e) {
     var lc = e.target.closest && e.target.closest(".libchip");
     if (lc) { libState.key = lc.getAttribute("data-key"); libState.limit = 1000; renderLibChips(); renderLib(); return; }
     if (e.target.id === "libMore") { libState.limit += 96; renderLib(); return; }

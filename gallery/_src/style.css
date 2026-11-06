@@ -356,3 +356,12 @@ button:hover{background:var(--muted);border-color:#d6d6dc;text-decoration:none}
 .md td{border-top:1px solid var(--border);padding:7px 10px;vertical-align:top;color:#3a3a3c}
 .md code{background:#f4f4f6;border-radius:5px;padding:1px 5px;font-size:12px}
 .code{max-height:420px;overflow:auto}
+
+a.statp{display:block;text-decoration:none;color:inherit;position:relative;padding-right:18px;transition:transform .16s ease}
+a.statp:hover{transform:translateY(-2px)}
+a.statp:hover b{color:var(--primary)}
+a.statp i{display:block;margin-top:6px;font-style:normal;font-size:11.5px;color:var(--primary);opacity:0;transition:opacity .16s ease}
+a.statp:hover i{opacity:1}
+a.statp::after{content:"↗";position:absolute;right:0;top:0;font-size:12px;color:var(--primary);opacity:0;transition:opacity .16s ease}
+a.statp:hover::after{opacity:1}
+section{scroll-margin-top:130px}
