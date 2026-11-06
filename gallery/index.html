@@ -236,12 +236,14 @@ pre{
   padding:18px 24px;background:var(--popover);border-bottom:1px solid var(--border);
 }
 .hd-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
-.abtn{border:1px solid var(--border);background:var(--popover);color:#1d1d1f;font-size:13px;font-weight:500;padding:8px 14px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.abtn{border:1px solid var(--border);background:var(--popover);color:#1d1d1f;font-size:13px;font-weight:500;height:36px;min-width:116px;padding:0 18px;border-radius:999px;cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;line-height:1;text-decoration:none}
 .abtn:hover{background:#f5f5f7}
 .abtn.primary{background:var(--primary);border-color:transparent;color:#fff}
 .abtn.primary:hover{filter:brightness(1.05)}
+#mClose{height:36px;min-width:116px;padding:0 18px;border-radius:999px;font-size:13px;box-sizing:border-box;background:var(--popover);border:1px solid var(--border);color:#1d1d1f;cursor:pointer}
 .box .hd h3{margin:0;font-size:19px;font-weight:600;letter-spacing:-.02em}
-.box .bd{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;padding:26px 28px 40px}
+.box .bd{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:26px 28px 40px;scrollbar-width:none;-ms-overflow-style:none}
+.box .bd::-webkit-scrollbar{width:0;height:0;display:none}
 .box .bd h4{margin:26px 0 10px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-foreground)}
 .box .bd h4:first-child{margin-top:0}
 .box .bd p.sub{-webkit-line-clamp:unset;display:block;font-size:14px}
@@ -609,7 +611,7 @@ pre{position:relative}
   </div>
 
 </div></main>
-<footer class="buildstamp">构建 <b>2026-11-06 16:36</b> · 若你看到旧界面，请 Ctrl+F5 强制刷新</footer>
+<footer class="buildstamp">构建 <b>2026-11-06 16:39</b> · 若你看到旧界面，请 Ctrl+F5 强制刷新</footer>
 
 <div class="modal" id="modal"><div class="box">
   <div class="hd"><h3 id="mTitle"></h3><div class="hd-actions"><span id="mActions"></span><button id="mClose">关闭</button></div></div>
@@ -867,7 +869,7 @@ pre{position:relative}
   }
   function doCopy(key) {
     var text = COPY[key] || '';
-    var done = function () { toast(key === 'code' ? '已复制源码' : '已复制'); };
+    var done = function () { toast(key === 'code' ? '已复制视频代码' : '已复制'); };
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(done).catch(function () { fallback(); });
     } else { fallback(); }
@@ -893,7 +895,7 @@ pre{position:relative}
       COPY.prompt = o.mdRaw || o.t;
       COPY.code = o.code || '';
       acts.push(abtn('复制提示词', 'primary', 'prompt'));
-      if (o.code) acts.push(abtn('复制源码', '', 'code'));
+      if (o.code) acts.push(abtn('复制视频代码', '', 'code'));
       if (o.code) body += details('参考实现源码（前 90 行）', esc(o.code));
     } else if (kind === 'm') {
       if (o.video) body += vplayer(o.video, o.cover, { audio: false, loop: true });
@@ -903,7 +905,7 @@ pre{position:relative}
       COPY.prompt = o.t + '（' + o.id + '）' + NL + 'node engines/wise-motion/scripts/export.mjs ' + o.id + ' --out-dir <你的工程>';
       COPY.code = 'node engines/wise-motion/scripts/show.mjs ' + o.id + ' --details' + NL + 'node engines/wise-motion/scripts/export.mjs ' + o.id + ' --out-dir <你的工程>';
       acts.push(abtn('复制提示词', 'primary', 'prompt'));
-      acts.push(abtn('复制源码', '', 'code'));
+      acts.push(abtn('复制视频代码', '', 'code'));
       if (o.video) acts.push('<a class="abtn" href="' + o.video + '" target="_blank">新页面播放</a>');
       else if (o.player) acts.push('<a class="abtn" href="' + o.player + '" target="_blank">完整播放器</a>');
     } else if (kind === 'v') {

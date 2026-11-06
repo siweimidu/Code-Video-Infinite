@@ -247,7 +247,7 @@
   }
   function doCopy(key) {
     var text = COPY[key] || '';
-    var done = function () { toast(key === 'code' ? '已复制源码' : '已复制'); };
+    var done = function () { toast(key === 'code' ? '已复制视频代码' : '已复制'); };
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(done).catch(function () { fallback(); });
     } else { fallback(); }
@@ -273,7 +273,7 @@
       COPY.prompt = o.mdRaw || o.t;
       COPY.code = o.code || '';
       acts.push(abtn('复制提示词', 'primary', 'prompt'));
-      if (o.code) acts.push(abtn('复制源码', '', 'code'));
+      if (o.code) acts.push(abtn('复制视频代码', '', 'code'));
       if (o.code) body += details('参考实现源码（前 90 行）', esc(o.code));
     } else if (kind === 'm') {
       if (o.video) body += vplayer(o.video, o.cover, { audio: false, loop: true });
@@ -283,7 +283,7 @@
       COPY.prompt = o.t + '（' + o.id + '）' + NL + 'node engines/wise-motion/scripts/export.mjs ' + o.id + ' --out-dir <你的工程>';
       COPY.code = 'node engines/wise-motion/scripts/show.mjs ' + o.id + ' --details' + NL + 'node engines/wise-motion/scripts/export.mjs ' + o.id + ' --out-dir <你的工程>';
       acts.push(abtn('复制提示词', 'primary', 'prompt'));
-      acts.push(abtn('复制源码', '', 'code'));
+      acts.push(abtn('复制视频代码', '', 'code'));
       if (o.video) acts.push('<a class="abtn" href="' + o.video + '" target="_blank">新页面播放</a>');
       else if (o.player) acts.push('<a class="abtn" href="' + o.player + '" target="_blank">完整播放器</a>');
     } else if (kind === 'v') {
