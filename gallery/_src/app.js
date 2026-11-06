@@ -329,6 +329,12 @@
       COPY.prompt = o.path;
       acts.push('<a class="abtn primary" href="' + o.src + '" target="_blank">新页面播放</a>');
       acts.push('<a class="abtn" href="' + o.src + '" download>下载</a>');
+    } else if (kind === 'g') {
+      body += '<img class="dimg" src="' + o.src + '" alt="">';
+      body += '<div class="kv" style="margin-top:18px"><b>格式</b><span>GIF 动图</span><b>大小</b><span>' + o.mb + ' MB</span></div>';
+      COPY.prompt = o.path;
+      acts.push('<a class="abtn primary" href="' + o.src + '" target="_blank">新页面打开</a>');
+      acts.push('<a class="abtn" href="' + o.src + '" download>下载</a>');
     } else if (kind === 'f') {
       if (o.preview) body += '<img class="dimg" src="' + o.preview + '" alt="">';
       body += '<div class="kv" style="margin-top:18px"><b>分类</b><span>' + esc(o.cat) + '</span><b>情绪</b><span>' + esc(o.mood.join(' / ') || '—') + '</span><b>实现库</b><span>' + esc(o.libs.join(' , ')) + '</span></div>';

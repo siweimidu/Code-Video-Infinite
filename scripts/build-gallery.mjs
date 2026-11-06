@@ -226,12 +226,27 @@ const libDefs = [
   { key: "source-component", label: "源码组件", hint: (e) => "node engines/claude-motion/scripts/create-extension.mjs --extension " + e.id + " --out <新目录>", poster: (e) => cmPreview[e.id] || null },
   { key: "object-model", label: "物件模型", hint: (e) => "node engines/claude-motion/scripts/create-model.mjs --model " + e.id + " --out <新目录>", poster: (e) => cmPreview[e.id] || null },
   { key: "mg-style", label: "MG 签名技法", hint: (e) => "读 engines/mg-motion/references/styles.md 对应小节，写进 renderAt(t)", poster: () => null },
-  { key: "move", label: "动效函数", hint: (e) => "window.OM." + e.id + "(t, t0, ...) 纯时间函数", poster: () => null,
+  { key: "move", label: "动效函数", hint: (e) => "window.OM." + e.id + "(t, t0, ...) 纯时间函数",
+    poster: (e) => {
+      const p = path.join(engRoot, 'onetake/gallery/sheets', e.id + '.png');
+      return exists(p) ? url(p) : null;
+    },
     player: (e) => url(path.join(engRoot, "onetake/gallery/gallery.html")) + "?demo=" + e.id + "&play", playerKind: "classic" },
   { key: "look", label: "起始 look", hint: (e) => "python engines/onetake/scripts/look.py apply " + e.id, poster: () => null },
   { key: "design-school", label: "网页设计学校", hint: () => "按 Design Read 五档标尺给三个不同行的方向", poster: () => null },
   { key: "image-template", label: "出图模板类", hint: (e) => "读 " + (e.path || "") + "，再按模板槽位填 prompt", poster: () => null },
-  { key: "style", label: "风格实现", hint: (e) => "按 references/style-library.md 选族，再读 " + (e.path || "") + " 的实现", poster: () => null },
+  { key: "style", label: "风格实现", hint: (e) => "按 references/style-library.md 选族，再读 " + (e.path || "") + " 的实现",
+    poster: (e) => {
+      if (e.engine === 'motion-showreel') {
+        const p = path.join(engRoot, 'garden-skills/dist/imgs/motion-showreel/style-' + e.id + '.webp');
+        return exists(p) ? url(p) : null;
+      }
+      if (e.engine === 'claude-motion' && e.id.indexOf(':') > 0) {
+        const s = e.id.split(':')[1];
+        for (const c of ['lemo-' + s, 'expansion-' + s, s]) if (previews.has(c)) return previews.get(c);
+      }
+      return null;
+    } },
   { key: "research-source", label: "研究清单（只读）", hint: () => "已收录但未接成可调用案例，不要当可运行案例", poster: () => null },
 ];
 const library = libDefs.map((d) => {

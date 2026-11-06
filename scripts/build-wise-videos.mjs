@@ -13,7 +13,8 @@ const CATALOG = path.join(ROOT, 'engines/wise-motion/catalog/index.html');
 const argv = process.argv.slice(2);
 const num = (f, d) => { const i = argv.indexOf(f); return i >= 0 && argv[i + 1] !== undefined ? Number(argv[i + 1]) : d; };
 const SHARD = num('--shard', 0), OF = num('--of', 1);
-const LIMIT = num('--limit', 0), SECONDS = num('--seconds', 4), PORT = num('--port', 9500);
+const LIMIT = num('--limit', 0), SECONDS = num('--seconds', 5), PORT = num('--port', 9500);
+const WARMUP = num('--warmup', 4500);
 const FORCE = argv.includes('--force');
 const RESCUE = argv.includes('--missing-only');
 
@@ -79,13 +80,22 @@ for (let i = 0; i < todo.length; i++) {
     box = await ev('(function(){var e=document.querySelector("#preview");if(!e)return null;var r=e.getBoundingClientRect();' +
       'if(r.width<300)return null;return {x:Math.round(r.x),y:Math.round(r.y),w:Math.round(r.width),h:Math.round(r.height)};})()');
   }
-  await sleep(600);   // 让动效真正跑起来再开始录
+  await sleep(WARMUP);   // 等 wise 播放器真正出画面
   if (!box) { fail += 1; continue; }
   captureFrames = [];
   await send('Page.startScreencast', { format: 'jpeg', quality: 80, maxWidth: 1680, maxHeight: 1050, everyNthFrame: 1 });
   await sleep(SECONDS * 1000);
   await send('Page.stopScreencast');
-  const raw = (captureFrames || []).filter(function (x) { return x && x.d; });
+  let raw = (captureFrames || []).filter(function (x) { return x && x.d; });
+  if (raw.length < 12) {
+    const shots = [];
+    const t0 = Date.now();
+    while (Date.now() - t0 < SECONDS * 1000) {
+      const s = await send('Page.captureScreenshot', { format: 'jpeg', quality: 80 });
+      if (s.result && s.result.data) shots.push({ d: s.result.data, ts: Date.now() / 1000 });
+    }
+    if (shots.length > raw.length) raw = shots;
+  }
   captureFrames = null;
   const targetFps = 30;
   const frames = [];
