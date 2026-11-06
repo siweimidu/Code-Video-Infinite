@@ -526,6 +526,11 @@ $('#playOnly').addEventListener('change', function (e) { state.playOnly = e.targ
     var attr = card.getAttribute("data-open");
     if (attr.slice(0, 2) === 'l:') setTimeout(function () { injectPlayer(attr); }, 0);
   });
+  // ?q= 深链：从「全部本地素材」面板跳过来时带上搜索词
+  (function () {
+    var q0 = new URLSearchParams(location.search).get('q');
+    if (q0) { state.q = q0; var qi = $('#q'); if (qi) qi.value = q0; }
+  })();
   renderLibChips();
   renderChips();
   render();

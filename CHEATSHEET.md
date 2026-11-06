@@ -99,3 +99,8 @@ claude-motion 的 47 个源码 demo 用 ES module + 本地字体，要先装依�
 | demo 缺的字体 | `node scripts/fetch-demo-fonts.mjs` | 各 demo 的 `fonts/*.ttf` |
 
 claude 的 47 个源码 demo 目前在本机跑不起来（缺上游运行时，不是缺字体），所以那 14 个没有案例帧的保持文字卡。
+
+## 在 wise 目录页看全部素材
+
+打开 `engines/wise-motion/catalog/index.html`，右下角有「全部本地素材 1023」按钮：可按关键词搜索、按集合分组浏览；wise 条目直接跳到播放器，其他条目跳到选片台的 `?q=<id>` 搜索。
+数据由 `node scripts/build-all-local.mjs` 从 `catalog/index.json` 生成。

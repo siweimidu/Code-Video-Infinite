@@ -196,3 +196,8 @@ check-gallery 36 → 37 项（动作详情有真实预览帧、有播放入口�
 - 同步后 registry.json = 472 条（320/98/54），播放器标签页实测显示相同数字；`celebrating-characters-illustration` 等新条目可正常打开
 - 统一索引 1013 → 1023 条（wise-motion 472）
 - 文档里的 462/1013 全部改为 472/1023；历史记录保留原数字
+
+## 第十四轮：wise 目录页接入「全部本地素材」面板
+
+- 需求：在 `engines/wise-motion/catalog/index.html` 这个本地页面里能看到**本 skill 的全部素材**，不只是 472 条 wise。
+- 做法：不改上游逻辑，附加两个脚本 —— `all-local-data.js`（由 `scripts/build-all-local.mjs` 从 `catalog/index.json` 生成，1023 条）与 `all-local.js`（右下角悬浮按钮 + 全屏面板：搜索、按集合分组、wise 条目直接定位播放器、其他条目跳选片台 `?q=<id>`）。- 实测：按钮显示「全部本地素材 1023」，面板 14 组 945 行（超长组截断 400 行），搜索 shot → 125 行。
