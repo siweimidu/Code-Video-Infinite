@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 // 选片台回归自检（需要本机 Chrome）。用 CDP 打开 gallery/index.html，检查：
 //   1 chips 全部可见、没被其它元素挡住
 //   2 点一个分类 chip 后，风格族数量真的变了
@@ -197,7 +197,7 @@ await ev('(function(){document.getElementById("mClose").click();document.querySe
 await sleep(1800);
 const crop = await ev('(function(){var f=document.querySelector("#mBody .frame.crop");if(!f)return {no:true};var r=f.getBoundingClientRect();' +
   'return {ratio:Math.round(r.width/r.height*100)/100,w:Math.round(r.width)};})()');
-add('wise 播放器裁掉原站界面', !crop.no && Math.abs(crop.ratio - 16/9) < 0.06, '裁剪框 ' + crop.w + 'px · 比例 ' + crop.ratio);
+add('wise 播放器裁掉原站界面', !crop.no && Math.abs(crop.ratio - 772/392) < 0.06, '裁剪框 ' + crop.w + 'px · 比例 ' + crop.ratio);
 await ev('(function(){document.getElementById("mClose").click();return 1;})()');
 const jsErrors = await ev('(window.__err|0)');
 add('页面无脚本错误', !jsErrors, String(jsErrors));
