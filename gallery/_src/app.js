@@ -260,6 +260,8 @@
       side += details('文件路径', esc(o.path + NL + o.mb + ' MB'));
     } else if (kind === 's') {
       side += '<div class="kv"><b>分类</b><span>' + esc(o.cat) + '</span><b>时长</b><span>' + esc(o.d) + '</span><b>能量</b><span>' + esc(o.en) + '</span></div>';
+      side += '<p class="acts top"><button class="copybtn big" type="button" data-copy-sel=".md">复制卡片全文</button>' +
+        (o.code ? '<button class="copybtn big" type="button" data-copy-sel=".code">复制源码</button>' : '') + '</p>';
       side += '<div class="md">' + (o.mdHtml || ('<p>' + esc(o.t) + '</p>')) + '</div>';
       if (o.code) side += '<details class="fold"><summary>参考实现源码（前 90 行）</summary><pre class="code">' + esc(o.code) + '</pre></details>';
       side += '<p class="note">卡片原文：' + esc(o.p) + '</p>';
@@ -281,6 +283,42 @@
     $('#modal').classList.add('on');
     document.body.style.overflow = 'hidden';
     wirePlayers();
+    wireCopy();
+  }
+  function copyFallback(text, done) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand("copy"); done && done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+  function copyText(text, btn) {
+    var done = function () {
+      if (!btn) return;
+      var old = btn.textContent;
+      btn.textContent = '已复制'; btn.classList.add('ok');
+      setTimeout(function () { btn.textContent = old; btn.classList.remove("ok"); }, 1200);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done).catch(function () { copyFallback(text, done); });
+    } else { copyFallback(text, done); }
+  }
+  function wireCopy() {
+    [].slice.call(document.querySelectorAll('#mBody pre')).forEach(function (pre) {
+      if (pre.querySelector('.copybtn')) return;
+      var b = document.createElement('button');
+      b.className = 'copybtn'; b.type = 'button'; b.textContent = '复制';
+      b.addEventListener('click', function (e) { e.stopPropagation(); copyText(pre.textContent, b); });
+      pre.appendChild(b);
+    });
+    [].slice.call(document.querySelectorAll('#mBody [data-copy-sel]')).forEach(function (b) {
+      b.addEventListener('click', function () {
+        var el = document.querySelector('#mBody ' + b.getAttribute('data-copy-sel'));
+        if (el) copyText(el.innerText || el.textContent, b);
+      });
+    });
   }
   function wirePlayers() {
     [].slice.call(document.querySelectorAll('#mBody .vp')).forEach(function (vp) {

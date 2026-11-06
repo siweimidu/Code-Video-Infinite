@@ -212,6 +212,8 @@ await ev('(function(){var c=[].slice.call(document.querySelectorAll("#gridShot .
 await sleep(900);
 const shotDetail = await ev('(function(){var b=document.querySelector("#mBody");if(!b)return {no:true};' +
   'return {h3:b.querySelectorAll(".md h3").length,td:b.querySelectorAll(".md td").length,code:(b.querySelector(".code")||{textContent:""}).textContent.length};})()');
+const copyBtns = await ev('(function(){return document.querySelectorAll("#mBody .copybtn.big").length;})()');
+add('镜头卡详情有复制按钮', copyBtns >= 2, copyBtns + ' 个复制按钮');
 add('镜头卡详情直接显示全文', !shotDetail.no && shotDetail.h3 > 0, 'h3=' + shotDetail.h3 + ' 表格单元格=' + shotDetail.td);
 add('镜头卡详情带参考实现源码', !shotDetail.no && shotDetail.code > 500, '源码节选 ' + shotDetail.code + ' 字符');
 await ev('(function(){document.getElementById("mClose").click();return 1;})()');
