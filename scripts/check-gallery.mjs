@@ -57,7 +57,12 @@ const ev = async (expr) => {
   if (r.result && r.result.exceptionDetails) throw new Error('page eval failed: ' + JSON.stringify(r.result.exceptionDetails).slice(0, 200));
   return r.result && r.result.result ? r.result.result.value : null;
 };
-await sleep(1600);
+// 等首屏卡片渲染完（视频多了以后 1.6s 不够）
+for (let w = 0; w < 60; w++) {
+  const ready = await ev('document.querySelectorAll("#gridStyle .card").length > 0 && !!document.querySelector(".chips")');
+  if (ready) break;
+  await sleep(250);
+}
 
 const rows = [];
 const add = (name, ok, detail) => rows.push({ name, ok, detail: detail === undefined ? '' : String(detail) });

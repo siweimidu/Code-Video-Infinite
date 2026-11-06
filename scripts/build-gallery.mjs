@@ -162,6 +162,7 @@ const libDefs = [
   { key: "look", label: "起始 look", hint: (e) => "python engines/onetake/scripts/look.py apply " + e.id, poster: () => null },
   { key: "design-school", label: "网页设计学校", hint: () => "按 Design Read 五档标尺给三个不同行的方向", poster: () => null },
   { key: "image-template", label: "出图模板类", hint: (e) => "读 " + (e.path || "") + "，再按模板槽位填 prompt", poster: () => null },
+  { key: "style", label: "风格实现", hint: (e) => "按 references/style-library.md 选族，再读 " + (e.path || "") + " 的实现", poster: () => null },
   { key: "research-source", label: "研究清单（只读）", hint: () => "已收录但未接成可调用案例，不要当可运行案例", poster: () => null },
 ];
 const library = libDefs.map((d) => {
@@ -227,7 +228,7 @@ const coverOfEffect = (id) => {
 };
 const videoOfEffect = (id) => {
   const p = path.join(OUT, 'videos', 'wise-' + id + '.mp4');
-  return exists(p) && fs.statSync(p).size > 20000 ? "videos/wise-" + id + ".mp4" : null;
+  return exists(p) && fs.statSync(p).size > 6000 ? "videos/wise-" + id + ".mp4" : null;
 };
 for (const m of motions) { m.cover = coverOfEffect(m.id); m.video = videoOfEffect(m.id); }
 const coveredMotions = motions.filter((m) => m.cover).length;
@@ -260,5 +261,4 @@ const html = shell
 fs.mkdirSync(OUT, { recursive: true });
 fs.writeFileSync(path.join(OUT, 'index.html'), html, 'utf8');
 console.log('[gallery] gallery/index.html  ' + Math.round(Buffer.byteLength(html) / 1024) + ' KB');
-console.log('[gallery] families=' + families.length + ' real=' + DATA.totals.withPreview +
-  ' videos=' + videos.length + ' gifs=' + gifs.length + ' shots=' + shotCards.length + ' moves=' + motions.length);
+console.log('[gallery] families=' + families.le
