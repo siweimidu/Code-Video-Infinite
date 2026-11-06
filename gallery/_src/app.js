@@ -365,7 +365,7 @@
         else if (vp.requestFullscreen) vp.requestFullscreen();
       });
       paint();
-      v.play().catch(function () { /* 等用户点 */ });
+      if (vp.getAttribute('data-autoplay') !== '0') v.play().catch(function () { /* 等用户点 */ });
     });
   }
   function tryPlayVideo() {

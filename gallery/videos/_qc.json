@@ -1,0 +1,1705 @@
+{
+ "aboutlove-heart-illustration": {
+  "ok": true,
+  "mean": 40,
+  "sd": 15
+ },
+ "aboutlove-monologue-sequence": {
+  "ok": true,
+  "mean": 25,
+  "sd": 14
+ },
+ "aboutlove-mountains-illustration": {
+  "ok": true,
+  "mean": 9,
+  "sd": 4
+ },
+ "aboutlove-word-world-sequence": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "advected-trail": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "animal-illustration": {
+  "ok": true,
+  "mean": 17,
+  "sd": 20
+ },
+ "aperture-eye-illustration": {
+  "ok": true,
+  "mean": 13,
+  "sd": 10
+ },
+ "arc-branch-flicker": {
+  "ok": true,
+  "mean": 40,
+  "sd": 55
+ },
+ "archive-box-illustration": {
+  "ok": true,
+  "mean": 18,
+  "sd": 32
+ },
+ "archive-folder-illustration": {
+  "ok": true,
+  "mean": 57,
+  "sd": 75
+ },
+ "arrival-star-reveal": {
+  "ok": true,
+  "mean": 11,
+  "sd": 4
+ },
+ "atlas-reveal-clear": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "attention-illustration": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "axial-layer-reseat": {
+  "ok": true,
+  "mean": 29,
+  "sd": 39
+ },
+ "balance-reciprocate": {
+  "ok": true,
+  "mean": 71,
+  "sd": 43
+ },
+ "ball-bounce-trails": {
+  "ok": true,
+  "mean": 21,
+  "sd": 8
+ },
+ "bar-growth": {
+  "ok": true,
+  "mean": 14,
+  "sd": 8
+ },
+ "benchmark-columns": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "body-pendant-sway": {
+  "ok": true,
+  "mean": 22,
+  "sd": 39
+ },
+ "book-geometric-illustration": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "book-paper-light": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "book-spine-turn": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "botanical-grow-bloom": {
+  "ok": true,
+  "mean": 9,
+  "sd": 4
+ },
+ "boundary-curve-stop": {
+  "ok": true,
+  "mean": 9,
+  "sd": 9
+ },
+ "bounded-fibre-grow": {
+  "ok": true,
+  "mean": 9,
+  "sd": 6
+ },
+ "branch-angle-sway": {
+  "ok": true,
+  "mean": 15,
+  "sd": 15
+ },
+ "brush-glyph-build": {
+  "ok": true,
+  "mean": 214,
+  "sd": 47
+ },
+ "butterfly-illustration": {
+  "ok": true,
+  "mean": 41,
+  "sd": 60
+ },
+ "button-press-status": {
+  "ok": true,
+  "mean": 20,
+  "sd": 30
+ },
+ "camera-lag-departure": {
+  "ok": true,
+  "mean": 53,
+  "sd": 25
+ },
+ "capsule-impact-scatter": {
+  "ok": true,
+  "mean": 189,
+  "sd": 34
+ },
+ "capsule-type-sequence": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "caption-type-caret": {
+  "ok": true,
+  "mean": 22,
+  "sd": 17
+ },
+ "card-conveyor": {
+  "ok": true,
+  "mean": 21,
+  "sd": 6
+ },
+ "card-flip": {
+  "ok": false,
+  "reason": "noframes"
+ },
+ "cat-context-links": {
+  "ok": true,
+  "mean": 12,
+  "sd": 19
+ },
+ "cat-mouth-illustration": {
+  "ok": true,
+  "mean": 40,
+  "sd": 60
+ },
+ "center-ripple-emit": {
+  "ok": true,
+  "mean": 12,
+  "sd": 6
+ },
+ "char-color-cycle": {
+  "ok": true,
+  "mean": 27,
+  "sd": 44
+ },
+ "chart-card-illustration": {
+  "ok": true,
+  "mean": 80,
+  "sd": 103
+ },
+ "chrome-outline-echo": {
+  "ok": false,
+  "reason": "noframes"
+ },
+ "civilization-growth-sequence": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "claude-fractal-tree-illustration": {
+  "ok": true,
+  "mean": 15,
+  "sd": 14
+ },
+ "claude-frame-counter-illustration": {
+  "ok": true,
+  "mean": 14,
+  "sd": 24
+ },
+ "claude-glyph-rain-illustration": {
+  "ok": true,
+  "mean": 14,
+  "sd": 10
+ },
+ "claude-kick-rings-illustration": {
+  "ok": true,
+  "mean": 12,
+  "sd": 6
+ },
+ "claude-lissajous-illustration": {
+  "ok": true,
+  "mean": 17,
+  "sd": 15
+ },
+ "claude-orbits-illustration": {
+  "ok": true,
+  "mean": 12,
+  "sd": 15
+ },
+ "claude-pendulum-wave-illustration": {
+  "ok": true,
+  "mean": 11,
+  "sd": 9
+ },
+ "claude-phyllotaxis-illustration": {
+  "ok": true,
+  "mean": 14,
+  "sd": 9
+ },
+ "claude-sine-grid-illustration": {
+  "ok": true,
+  "mean": 14,
+  "sd": 7
+ },
+ "claude-spectrum-illustration": {
+  "ok": true,
+  "mean": 10,
+  "sd": 5
+ },
+ "claude-terrain-illustration": {
+  "ok": true,
+  "mean": 31,
+  "sd": 17
+ },
+ "claude-wireframe-illustration": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "collage-film-sequence": {
+  "ok": true,
+  "mean": 197,
+  "sd": 58
+ },
+ "color-evolve": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "color-segment-stagger": {
+  "ok": true,
+  "mean": 21,
+  "sd": 33
+ },
+ "column-to-row": {
+  "ok": true,
+  "mean": 12,
+  "sd": 16
+ },
+ "concept-diagram": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "confused-characters-illustration": {
+  "ok": true,
+  "mean": 9,
+  "sd": 4
+ },
+ "coordinate-focus-zoom": {
+  "ok": false,
+  "reason": "noframes"
+ },
+ "coordinate-grid-build": {
+  "ok": false,
+  "mean": 8,
+  "sd": 5
+ },
+ "cosine-gauge-sweep": {
+  "ok": true,
+  "mean": 12,
+  "sd": 24
+ },
+ "count-up": {
+  "ok": true,
+  "mean": 11,
+  "sd": 8
+ },
+ "countdown-dial": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "crank-linked-turn": {
+  "ok": false,
+  "reason": "noframes"
+ },
+ "cross-aperture-turn": {
+  "ok": true,
+  "mean": 36,
+  "sd": 46
+ },
+ "cross-flare-travel": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "cursive-regular-morph": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "curve-path": {
+  "ok": true,
+  "mean": 12,
+  "sd": 10
+ },
+ "curve-phase-shift": {
+  "ok": true,
+  "mean": 17,
+  "sd": 15
+ },
+ "cutout-stride-leap": {
+  "ok": true,
+  "mean": 221,
+  "sd": 47
+ },
+ "cyanotype": {
+  "ok": false,
+  "reason": "noframes"
+ },
+ "cyclone-illustration": {
+  "ok": true,
+  "mean": 11,
+  "sd": 6
+ },
+ "cylinder-drum": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "dandelion-radial-release": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "dandelion-subject-illustration": {
+  "ok": true,
+  "mean": 10,
+  "sd": 5
+ },
+ "data-pulse": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "diagonal-edge-transition": {
+  "ok": true,
+  "mean": 19,
+  "sd": 9
+ },
+ "diffuse-light-drift": {
+  "ok": true,
+  "mean": 44,
+  "sd": 23
+ },
+ "dim-focus": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "dimensions-unfold-fold": {
+  "ok": true,
+  "mean": 19,
+  "sd": 23
+ },
+ "dither-lab-book": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "door-halftone-illustration": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "dot-route-illustration": {
+  "ok": true,
+  "mean": 9,
+  "sd": 4
+ },
+ "dots-lines-cylinders": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "drafting-tools-illustration": {
+  "ok": true,
+  "mean": 30,
+  "sd": 55
+ },
+ "drive-balloon-illustration": {
+  "ok": true,
+  "mean": 9,
+  "sd": 4
+ },
+ "drive-car-illustration": {
+  "ok": true,
+  "mean": 45,
+  "sd": 74
+ },
+ "dual-scroll-settle": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "dwell-carousel": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "encore-flight": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "encore-full-journey": {
+  "ok": true,
+  "mean": 36,
+  "sd": 11
+ },
+ "encore-roll": {
+  "ok": true,
+  "mean": 9,
+  "sd": 4
+ },
+ "encore-tap": {
+  "ok": true,
+  "mean": 37,
+  "sd": 11
+ },
+ "encore-tip": {
+  "ok": true,
+  "mean": 37,
+  "sd": 11
+ },
+ "encore-umbrella-illustration": {
+  "ok": true,
+  "mean": 9,
+  "sd": 4
+ },
+ "energy-vortex-wrap": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "event-clock": {
+  "ok": true,
+  "mean": 14,
+  "sd": 10
+ },
+ "evidence-icons": {
+  "ok": true,
+  "mean": 12,
+  "sd": 6
+ },
+ "experience-progress": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "factory-cat-illustration": {
+  "ok": true,
+  "mean": 59,
+  "sd": 70
+ },
+ "factory-cat-puck-illustration": {
+  "ok": true,
+  "mean": 77,
+  "sd": 82
+ },
+ "factory-handle-illustration": {
+  "ok": false,
+  "mean": 8,
+  "sd": 10
+ },
+ "factory-handle-transfer": {
+  "ok": false,
+  "mean": 8,
+  "sd": 10
+ },
+ "fade-rise": {
+  "ok": true,
+  "mean": 16,
+  "sd": 15
+ },
+ "fall-stack-grid": {
+  "ok": true,
+  "mean": 9,
+  "sd": 4
+ },
+ "farewell-actions": {
+  "ok": false,
+  "mean": 6,
+  "sd": 2
+ },
+ "film-scratch-flicker": {
+  "ok": true,
+  "mean": 28,
+  "sd": 4
+ },
+ "flat-to-volume": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "flock-turn-gather": {
+  "ok": true,
+  "mean": 198,
+  "sd": 36
+ },
+ "focus-zoom": {
+  "ok": true,
+  "mean": 15,
+  "sd": 9
+ },
+ "follow": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "formula-evolve": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "forward-boat-illustration": {
+  "ok": true,
+  "mean": 22,
+  "sd": 39
+ },
+ "forward-plane-illustration": {
+  "ok": false,
+  "reason": "noframes"
+ },
+ "fragment-replace": {
+  "ok": true,
+  "mean": 21,
+  "sd": 32
+ },
+ "frame-jitter-type": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "framed-product-slide": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "frozen-depth-focus": {
+  "ok": true,
+  "mean": 24,
+  "sd": 22
+ },
+ "galaxy-axis-reveal": {
+  "ok": false,
+  "mean": 9,
+  "sd": 1
+ },
+ "gauge-rebound": {
+  "ok": true,
+  "mean": 16,
+  "sd": 11
+ },
+ "generative-flow-field": {
+  "ok": true,
+  "mean": 17,
+  "sd": 7
+ },
+ "generative-frame-readout": {
+  "ok": false,
+  "mean": 7,
+  "sd": 5
+ },
+ "generative-point-morph": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "geometric-poster-sequence": {
+  "ok": true,
+  "mean": 198,
+  "sd": 53
+ },
+ "glass-card-stagger": {
+  "ok": true,
+  "mean": 58,
+  "sd": 35
+ },
+ "glass-controls-card-illustration": {
+  "ok": true,
+  "mean": 12,
+  "sd": 16
+ },
+ "glass-dialogue-card-illustration": {
+  "ok": true,
+  "mean": 19,
+  "sd": 26
+ },
+ "glass-interface-sequence": {
+  "ok": false,
+  "reason": "noframes"
+ },
+ "glass-voice-card-illustration": {
+  "ok": true,
+  "mean": 13,
+  "sd": 16
+ },
+ "glitch-band-transition": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "glyph-bar-collapse": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "glyph-code-fill": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "glyph-cut-ending": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "glyph-multiply-structure": {
+  "ok": true,
+  "mean": 199,
+  "sd": 38
+ },
+ "glyph-unit-reflow": {
+  "ok": false,
+  "mean": 7,
+  "sd": 2
+ },
+ "grid-flow-unfold": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "grid-wave-scale": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "group-expand": {
+  "ok": true,
+  "mean": 9,
+  "sd": 4
+ },
+ "group-stagger": {
+  "ok": false,
+  "reason": "noframes"
+ },
+ "heads-illustration": {
+  "ok": true,
+  "mean": 11,
+  "sd": 7
+ },
+ "heartbeat-follow": {
+  "ok": true,
+  "mean": 11,
+  "sd": 8
+ },
+ "heat-grid-converge": {
+  "ok": true,
+  "mean": 9,
+  "sd": 4
+ },
+ "helical-screw-seat": {
+  "ok": true,
+  "mean": 38,
+  "sd": 35
+ },
+ "hex-radial-pulse": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "hill-vortex-illustration": {
+  "ok": true,
+  "mean": 12,
+  "sd": 7
+ },
+ "horizontal-metal-type": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "hud-acquisition-sequence": {
+  "ok": false,
+  "reason": "noframes"
+ },
+ "hud-candidate-status": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "hud-data-stream": {
+  "ok": true,
+  "mean": 21,
+  "sd": 22
+ },
+ "hud-navigation-bars": {
+  "ok": true,
+  "mean": 20,
+  "sd": 26
+ },
+ "hud-radar-sweep": {
+  "ok": true,
+  "mean": 14,
+  "sd": 15
+ },
+ "hud-range-readout": {
+  "ok": false,
+  "reason": "noframes"
+ },
+ "hud-ring-build": {
+  "ok": true,
+  "mean": 13,
+  "sd": 15
+ },
+ "hud-spectrum-bars": {
+  "ok": true,
+  "mean": 28,
+  "sd": 32
+ },
+ "hud-system-boot": {
+  "ok": true,
+  "mean": 17,
+  "sd": 23
+ },
+ "interface-feedback": {
+  "ok": true,
+  "mean": 21,
+  "sd": 31
+ },
+ "iris-open-transition": {
+  "ok": true,
+  "mean": 53,
+  "sd": 62
+ },
+ "joint-rule-unfold": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "journey-flower-illustration": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "journey-lotus-illustration": {
+  "ok": true,
+  "mean": 9,
+  "sd": 4
+ },
+ "journey-pond-animal-illustration": {
+  "ok": false,
+  "mean": 7,
+  "sd": 2
+ },
+ "keyframe-workbench": {
+  "ok": false,
+  "mean": 21,
+  "sd": 3
+ },
+ "landscape-boundary-carry": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "lap-outline-echo": {
+  "ok": true,
+  "mean": 9,
+  "sd": 4
+ },
+ "layer-expand": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "leader-callout": {
+  "ok": false,
+  "reason": "noframes"
+ },
+ "lego-brick-illustration": {
+  "ok": true,
+  "mean": 9,
+  "sd": 4
+ },
+ "letter-hole-zoom": {
+  "ok": true,
+  "mean": 134,
+  "sd": 54
+ },
+ "letter-ripple": {
+  "ok": true,
+  "mean": 13,
+  "sd": 14
+ },
+ "letter-settle": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "letter-symbol-illustration": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "lid-open-float": {
+  "ok": true,
+  "mean": 32,
+  "sd": 55
+ },
+ "lightning-orb-illustration": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "line-converge": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "live-code-readout": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "load-balance": {
+  "ok": true,
+  "mean": 17,
+  "sd": 22
+ },
+ "local-scan": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "map-paint": {
+  "ok": false,
+  "reason": "noframes"
+ },
+ "mask-stagger-text": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "masked-image-scroll": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "material-card-stagger": {
+  "ok": true,
+  "mean": 216,
+  "sd": 41
+ },
+ "material-fab-panel": {
+  "ok": true,
+  "mean": 209,
+  "sd": 48
+ },
+ "material-like-pop": {
+  "ok": true,
+  "mean": 225,
+  "sd": 44
+ },
+ "material-phone-rise": {
+  "ok": true,
+  "mean": 209,
+  "sd": 48
+ },
+ "material-spinner-arc": {
+  "ok": true,
+  "mean": 218,
+  "sd": 42
+ },
+ "material-switch-spring": {
+  "ok": true,
+  "mean": 217,
+  "sd": 42
+ },
+ "math-formula-drift": {
+  "ok": false,
+  "reason": "noframes"
+ },
+ "meshed-gears-drive": {
+  "ok": true,
+  "mean": 131,
+  "sd": 47
+ },
+ "metal-drop-split": {
+  "ok": false,
+  "reason": "noframes"
+ },
+ "mindmap-follow": {
+  "ok": true,
+  "mean": 9,
+  "sd": 4
+ },
+ "mindmap-grow": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "moon-card-illustration": {
+  "ok": true,
+  "mean": 37,
+  "sd": 51
+ },
+ "moon-event-fill": {
+  "ok": true,
+  "mean": 12,
+  "sd": 18
+ },
+ "motifs-gather-atlas": {
+  "ok": true,
+  "mean": 198,
+  "sd": 39
+ },
+ "motion-compare": {
+  "ok": true,
+  "mean": 13,
+  "sd": 7
+ },
+ "motion-oasis-sequence": {
+  "ok": true,
+  "mean": 196,
+  "sd": 39
+ },
+ "multi-orbit-drift": {
+  "ok": true,
+  "mean": 12,
+  "sd": 14
+ },
+ "mushroom-cloud-illustration": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "narrated-count": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "narrowing-flow-accelerate": {
+  "ok": true,
+  "mean": 12,
+  "sd": 7
+ },
+ "neon-horizon": {
+  "ok": true,
+  "mean": 45,
+  "sd": 43
+ },
+ "neon-title-sequence": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "neon-type-flicker": {
+  "ok": true,
+  "mean": 19,
+  "sd": 10
+ },
+ "next-shot-preentry": {
+  "ok": true,
+  "mean": 9,
+  "sd": 4
+ },
+ "note-hop-illustration": {
+  "ok": true,
+  "mean": 89,
+  "sd": 30
+ },
+ "orbit": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "osmanthus-butterfly-illustration": {
+  "ok": false,
+  "mean": 7,
+  "sd": 2
+ },
+ "osmanthus-flower-illustration": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "osmanthus-moon-illustration": {
+  "ok": true,
+  "mean": 21,
+  "sd": 47
+ },
+ "outro-recap-sequence": {
+  "ok": true,
+  "mean": 16,
+  "sd": 11
+ },
+ "page-cover": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "paper-disc-pop": {
+  "ok": false,
+  "reason": "noframes"
+ },
+ "paper-scroll-illustration": {
+  "ok": true,
+  "mean": 68,
+  "sd": 91
+ },
+ "paper-spiral-sequence": {
+  "ok": true,
+  "mean": 133,
+  "sd": 58
+ },
+ "paper-strip-stagger": {
+  "ok": true,
+  "mean": 110,
+  "sd": 24
+ },
+ "paper-tilt": {
+  "ok": false,
+  "reason": "noframes"
+ },
+ "paper-title-stagger": {
+  "ok": true,
+  "mean": 118,
+  "sd": 29
+ },
+ "pareto-efficiency-sequence": {
+  "ok": true,
+  "mean": 250,
+  "sd": 10
+ },
+ "particle-ballistic-fall": {
+  "ok": true,
+  "mean": 9,
+  "sd": 4
+ },
+ "particle-hopper": {
+  "ok": true,
+  "mean": 66,
+  "sd": 8
+ },
+ "particle-torus-roll": {
+  "ok": true,
+  "mean": 10,
+  "sd": 5
+ },
+ "particle-word": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "passage-animal-response": {
+  "ok": true,
+  "mean": 71,
+  "sd": 36
+ },
+ "pendulum-phase-wave": {
+  "ok": true,
+  "mean": 11,
+  "sd": 10
+ },
+ "perspective-grid-flow": {
+  "ok": true,
+  "mean": 27,
+  "sd": 20
+ },
+ "pivot-swing": {
+  "ok": false,
+  "reason": "noframes"
+ },
+ "pixel-dissolve-transition": {
+  "ok": true,
+  "mean": 9,
+  "sd": 4
+ },
+ "pixel-motion-sequence": {
+  "ok": true,
+  "mean": 31,
+  "sd": 7
+ },
+ "pixel-robot-illustration": {
+  "ok": true,
+  "mean": 9,
+  "sd": 4
+ },
+ "point-domain-flow-sequence": {
+  "ok": true,
+  "mean": 14,
+  "sd": 12
+ },
+ "point-link-hit": {
+  "ok": true,
+  "mean": 13,
+  "sd": 7
+ },
+ "point-morph": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "progress-fill-exit": {
+  "ok": true,
+  "mean": 12,
+  "sd": 6
+ },
+ "progress-readout": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "prompt-char-gather": {
+  "ok": true,
+  "mean": 26,
+  "sd": 17
+ },
+ "prompt-chinese-type": {
+  "ok": true,
+  "mean": 24,
+  "sd": 12
+ },
+ "prompt-ui-push": {
+  "ok": true,
+  "mean": 22,
+  "sd": 7
+ },
+ "proximity-link-drift": {
+  "ok": true,
+  "mean": 12,
+  "sd": 8
+ },
+ "purchase-table-vector": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "radial-branch-flow": {
+  "ok": true,
+  "mean": 11,
+  "sd": 4
+ },
+ "radial-flash-transition": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "radial-line-burst": {
+  "ok": true,
+  "mean": 12,
+  "sd": 7
+ },
+ "rapid-cut": {
+  "ok": true,
+  "mean": 9,
+  "sd": 4
+ },
+ "rasengan-illustration": {
+  "ok": true,
+  "mean": 39,
+  "sd": 53
+ },
+ "rect-aperture-breathe": {
+  "ok": true,
+  "mean": 85,
+  "sd": 73
+ },
+ "rect-wave-field": {
+  "ok": true,
+  "mean": 69,
+  "sd": 43
+ },
+ "reduction-dimension": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "related-sentences-converge": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "result-anchors": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "rigid-rebound": {
+  "ok": true,
+  "mean": 9,
+  "sd": 4
+ },
+ "ring-construction": {
+  "ok": true,
+  "mean": 11,
+  "sd": 4
+ },
+ "ring-sphere-journey": {
+  "ok": false,
+  "reason": "noframes"
+ },
+ "rolling-distance": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "ruler-ticks": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "scene-carry": {
+  "ok": true,
+  "mean": 19,
+  "sd": 24
+ },
+ "scraps-return-layout": {
+  "ok": true,
+  "mean": 235,
+  "sd": 39
+ },
+ "scroll-brake": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "seamless-scroll": {
+  "ok": true,
+  "mean": 17,
+  "sd": 10
+ },
+ "sector-appear": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "seed-bloom-brand-sequence": {
+  "ok": true,
+  "mean": 132,
+  "sd": 100
+ },
+ "selfie-foot-turn": {
+  "ok": true,
+  "mean": 153,
+  "sd": 94
+ },
+ "selfie-phone-illustration": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "selfie-phone-screen-illustration": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "selfie-preview-illustration": {
+  "ok": true,
+  "mean": 9,
+  "sd": 4
+ },
+ "send-press-ring": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "sentence-depth-tunnel": {
+  "ok": true,
+  "mean": 14,
+  "sd": 9
+ },
+ "sequential-spec": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "settle-grow-spread": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "shape-contact-rebound": {
+  "ok": false,
+  "reason": "noframes"
+ },
+ "shape-morph": {
+  "ok": true,
+  "mean": 29,
+  "sd": 43
+ },
+ "shared-object": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "shenzhen-skyline-illustration": {
+  "ok": true,
+  "mean": 46,
+  "sd": 22
+ },
+ "shenzhen-snow-journey": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "slide-type-reveal": {
+  "ok": true,
+  "mean": 43,
+  "sd": 55
+ },
+ "slider-response": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "smoke-ring-illustration": {
+  "ok": true,
+  "mean": 10,
+  "sd": 5
+ },
+ "snow-arrival-window": {
+  "ok": false,
+  "mean": 7,
+  "sd": 2
+ },
+ "spark-follow-text": {
+  "ok": true,
+  "mean": 11,
+  "sd": 11
+ },
+ "spatial-mechanical-sequence": {
+  "ok": true,
+  "mean": 189,
+  "sd": 97
+ },
+ "spheres-material-merge": {
+  "ok": true,
+  "mean": 191,
+  "sd": 63
+ },
+ "spherical-vortex-flow": {
+  "ok": true,
+  "mean": 12,
+  "sd": 7
+ },
+ "spiral-galaxy-illustration": {
+  "ok": true,
+  "mean": 10,
+  "sd": 6
+ },
+ "spiral-point-turn": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "squash-bounce": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "staged-build": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "stagger-crossfade": {
+  "ok": false,
+  "mean": 7,
+  "sd": 2
+ },
+ "stagger-in": {
+  "ok": true,
+  "mean": 13,
+  "sd": 6
+ },
+ "stamp-land": {
+  "ok": true,
+  "mean": 12,
+  "sd": 8
+ },
+ "star-letter-blue-journey": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "steel-ruler-illustration": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "step-hop": {
+  "ok": true,
+  "mean": 11,
+  "sd": 4
+ },
+ "striped-rise-pulse": {
+  "ok": true,
+  "mean": 34,
+  "sd": 40
+ },
+ "striped-sun-rise": {
+  "ok": false,
+  "reason": "noframes"
+ },
+ "stroke-draw": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "stroke-hatch": {
+  "ok": true,
+  "mean": 13,
+  "sd": 8
+ },
+ "subtitle-cell-focus": {
+  "ok": false,
+  "reason": "noframes"
+ },
+ "subtitle-focus": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "sunbeam-circle-rebound": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "sunset-pickup-journey": {
+  "ok": true,
+  "mean": 107,
+  "sd": 56
+ },
+ "sunset-sea-illustration": {
+  "ok": true,
+  "mean": 9,
+  "sd": 4
+ },
+ "sunset-water-reflection": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "swarm-arc-flight": {
+  "ok": false,
+  "mean": 5,
+  "sd": 9
+ },
+ "symbol-flight-settle": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "terminal-code": {
+  "ok": true,
+  "mean": 20,
+  "sd": 12
+ },
+ "terminal-window-illustration": {
+  "ok": true,
+  "mean": 22,
+  "sd": 11
+ },
+ "text-edit": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "text-plane-tilt": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "theme-color-cycle": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "thread-weave": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "tile-ring-unfold": {
+  "ok": true,
+  "mean": 196,
+  "sd": 37
+ },
+ "tile-round-wave": {
+  "ok": true,
+  "mean": 202,
+  "sd": 45
+ },
+ "tile-wave-transition": {
+  "ok": true,
+  "mean": 177,
+  "sd": 93
+ },
+ "tilt-drop-settle": {
+  "ok": true,
+  "mean": 76,
+  "sd": 100
+ },
+ "timeline-dock-down": {
+  "ok": false,
+  "reason": "noframes"
+ },
+ "timeline-keyframe-playhead": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "timeline-progress": {
+  "ok": true,
+  "mean": 9,
+  "sd": 4
+ },
+ "title-content": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "title-stagger": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "tone-grow": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "torus-illustration": {
+  "ok": true,
+  "mean": 11,
+  "sd": 5
+ },
+ "trend-draw": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "type-burst-settle": {
+  "ok": true,
+  "mean": 182,
+  "sd": 24
+ },
+ "type-reveal": {
+  "ok": false,
+  "mean": 18,
+  "sd": 1
+ },
+ "vector-angle-swing": {
+  "ok": true,
+  "mean": 13,
+  "sd": 13
+ },
+ "venturi-illustration": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "vertical-feed": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "vortex-ring-illustration": {
+  "ok": true,
+  "mean": 11,
+  "sd": 5
+ },
+ "water-wave-handoff": {
+  "ok": true,
+  "mean": 194,
+  "sd": 38
+ },
+ "wave-grid": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "weighted-node-signal": {
+  "ok": true,
+  "mean": 13,
+  "sd": 8
+ },
+ "window-experiment-tree-illustration": {
+  "ok": true,
+  "mean": 9,
+  "sd": 4
+ },
+ "window-flower-bloom": {
+  "ok": true,
+  "mean": 33,
+  "sd": 47
+ },
+ "window-step-connect": {
+  "ok": true,
+  "mean": 12,
+  "sd": 8
+ },
+ "wing-fold-sway": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "wing-root-color-reveal": {
+  "ok": true,
+  "mean": 9,
+  "sd": 4
+ },
+ "wipe": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "wire-ring-build-turn": {
+  "ok": true,
+  "mean": 9,
+  "sd": 5
+ },
+ "word-cloud-lift": {
+  "ok": false,
+  "mean": 7,
+  "sd": 2
+ },
+ "word-focus": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "word-river-evaporate": {
+  "ok": true,
+  "mean": 11,
+  "sd": 8
+ },
+ "word-slam": {
+  "ok": true,
+  "mean": 9,
+  "sd": 7
+ },
+ "xiaokui-selfie-journey": {
+  "ok": false,
+  "mean": 7,
+  "sd": 2
+ },
+ "zoom-transition": {
+  "ok": true,
+  "mean": 9,
+  "sd": 4
+ }
+}

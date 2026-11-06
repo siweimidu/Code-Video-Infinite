@@ -170,7 +170,7 @@ function demoCodeOf(category, id) {
 }
 const videoOfShot = (id) => {
   const p = path.join(OUT, 'videos', 'shot-' + id + '.mp4');
-  return exists(p) && fs.statSync(p).size > 50000 ? "videos/shot-" + id + ".mp4" : null;
+  return exists(p) && fs.statSync(p).size > 10000 ? "videos/shot-" + id + ".mp4" : null;
 };
 const shotCards = entries.filter((e) => e.collection === 'shot-card').map((e) => {
   let md = '';
@@ -299,9 +299,14 @@ const coverOfEffect = (id) => {
   if (fs.statSync(p).size < COVER_MIN_BYTES) return null;
   return "covers/wise-" + id + ".jpg";
 };
+const QC = (() => {
+  try { return JSON.parse(fs.readFileSync(path.join(OUT, 'videos', '_qc.json'), 'utf8')); } catch (e) { return {}; }
+})();
 const videoOfEffect = (id) => {
   const p = path.join(OUT, 'videos', 'wise-' + id + '.mp4');
-  return exists(p) && fs.statSync(p).size > 6000 ? "videos/wise-" + id + ".mp4" : null;
+  if (!exists(p) || fs.statSync(p).size <= 6000) return null;
+  if (QC[id] && QC[id].ok === false) return null;
+  return "videos/wise-" + id + ".mp4";
 };
 for (const m of motions) { m.cover = coverOfEffect(m.id); m.video = videoOfEffect(m.id); }
 const coveredMotions = motions.filter((m) => m.cover).length;
