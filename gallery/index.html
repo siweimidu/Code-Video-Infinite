@@ -455,6 +455,9 @@ body{padding-left:224px}
 
 .vp-loading{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#fff;font-size:12.5px;opacity:.8;z-index:2;pointer-events:none}
 
+.skeleton{height:280px;border-radius:14px;background:linear-gradient(90deg,#f2f2f4 25%,#e9e9ec 37%,#f2f2f4 63%);background-size:400% 100%;animation:sk 1.2s ease infinite}
+@keyframes sk{0%{background-position:100% 50%}100%{background-position:0 50%}}
+
 </style>
 </head>
 <body>
@@ -635,7 +638,7 @@ body{padding-left:224px}
   </div>
 
 </div></main>
-<footer class="buildstamp">构建 <b>2026-11-06 17:39</b> · 若你看到旧界面，请 Ctrl+F5 强制刷新</footer>
+<footer class="buildstamp">构建 <b>2026-11-06 17:43</b> · 若你看到旧界面，请 Ctrl+F5 强制刷新</footer>
 
 <div class="modal" id="modal"><div class="box">
   <div class="hd"><h3 id="mTitle"></h3><div class="hd-actions"><span id="mActions"></span><button id="mClose">关闭</button></div></div>
@@ -868,7 +871,7 @@ body{padding-left:224px}
 
   function vplayer(src, poster, opts) {
     opts = opts || {};
-    return '<div class="vp' + (opts.crop ? ' crop-bar' : '') + '" data-loop="' + (opts.loop === false ? '0' : '1') + '" data-audio="' + (opts.audio ? '1' : '0') + '">' +
+    return '<div class="vp' + (opts.crop ? ' crop-bar' : '') + '" data-loop="' + (opts.loop === false ? '0' : '1') + '" data-audio="' + (opts.audio ? '1' : '0') + '" data-autoplay="' + (opts.autoplay === false ? '0' : '1') + '">' +
       '<video src="' + src + '"' + (poster ? ' poster="' + poster + '"' : '') + ' playsinline preload="auto"></video>' +
       '<div class="vp-loading">加载中…</div>' +
       '<button class="vp-big" type="button" aria-label="播放">▶</button>' +
@@ -945,8 +948,8 @@ body{padding-left:224px}
     var body = '', acts = [];
     COPY = {};
     if (kind === 's') {
-      if (o.video) body += vplayer(o.video, o.poster, { audio: false, loop: true }) + '<div style="height:20px"></div>';
-      else if (o.poster) body += '<img class="dimg" src="' + o.poster + '" alt="" style="margin-bottom:22px">';
+      if (o.video) body += vplayer(o.video, o.poster, { audio: false, loop: true, autoplay: false }) + '<div style="height:20px"></div>';
+      else if (o.poster) body += '<img class="dimg" src="' + o.poster + '" alt="" decoding="async" style="margin-bottom:22px">';
       body += '<div class="article">' + (o.mdHtml || '<p class="lead">' + esc(o.t) + '</p>') + '</div>';
       COPY.prompt = o.mdRaw || o.t;
       COPY.code = o.code || '';
@@ -954,7 +957,7 @@ body{padding-left:224px}
       if (o.code) acts.push(abtn('复制视频代码', '', 'code'));
       if (o.code) body += details('参考实现源码（前 90 行）', esc(o.code));
     } else if (kind === 'm') {
-      if (o.video) body += vplayer(o.video, o.cover, { audio: false, loop: true });
+      if (o.video) body += vplayer(o.video, o.cover, { audio: false, loop: true, autoplay: false });
       else if (o.cover) body += '<img class="dimg" src="' + o.cover + '" alt="">';
       body += '<div class="kv" style="margin-top:20px"><b>分类</b><span>' + esc(o.cat) + '</span><b>时长</b><span>' + durLabel(o.ms) + '</span><b>循环</b><span>' + (o.loop ? '是' : '否') + '</span></div>';
       body += '<p class="lead">' + (o.video ? '本地 mp4（30fps），页内直接播放。' : '暂无本地录像，用右上角入口到播放器里看。') + '</p>';
@@ -987,10 +990,15 @@ body{padding-left:224px}
     }
     $('#mTitle').textContent = kind === 'f' ? o.name : (o.name || o.id || o.t);
     $('#mActions').innerHTML = acts.join('');
-    $('#mBody').innerHTML = body;
+    $('#mBody').innerHTML = '<div class="skeleton"></div>';
     $('#modal').classList.add('on');
     document.body.style.overflow = 'hidden';
-    wirePlayers();
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        $('#mBody').innerHTML = body;
+        wirePlayers();
+      });
+    });
   }
   function wirePlayers() {
     [].slice.call(document.querySelectorAll('#mBody .vp')).forEach(function (vp) {
@@ -1051,6 +1059,7 @@ body{padding-left:224px}
   }
   function tryPlayVideo() {
     var v = document.querySelector('#mBody video');
+    if (v && v.closest('.vp')) return;
     if (!v) return;
     var btn = document.querySelector("#mBody .bigplay");
     var hide = function () { if (btn) btn.style.display = "none"; };

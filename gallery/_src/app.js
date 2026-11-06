@@ -222,7 +222,7 @@
 
   function vplayer(src, poster, opts) {
     opts = opts || {};
-    return '<div class="vp' + (opts.crop ? ' crop-bar' : '') + '" data-loop="' + (opts.loop === false ? '0' : '1') + '" data-audio="' + (opts.audio ? '1' : '0') + '">' +
+    return '<div class="vp' + (opts.crop ? ' crop-bar' : '') + '" data-loop="' + (opts.loop === false ? '0' : '1') + '" data-audio="' + (opts.audio ? '1' : '0') + '" data-autoplay="' + (opts.autoplay === false ? '0' : '1') + '">' +
       '<video src="' + src + '"' + (poster ? ' poster="' + poster + '"' : '') + ' playsinline preload="auto"></video>' +
       '<div class="vp-loading">加载中…</div>' +
       '<button class="vp-big" type="button" aria-label="播放">▶</button>' +
@@ -299,8 +299,8 @@
     var body = '', acts = [];
     COPY = {};
     if (kind === 's') {
-      if (o.video) body += vplayer(o.video, o.poster, { audio: false, loop: true }) + '<div style="height:20px"></div>';
-      else if (o.poster) body += '<img class="dimg" src="' + o.poster + '" alt="" style="margin-bottom:22px">';
+      if (o.video) body += vplayer(o.video, o.poster, { audio: false, loop: true, autoplay: false }) + '<div style="height:20px"></div>';
+      else if (o.poster) body += '<img class="dimg" src="' + o.poster + '" alt="" decoding="async" style="margin-bottom:22px">';
       body += '<div class="article">' + (o.mdHtml || '<p class="lead">' + esc(o.t) + '</p>') + '</div>';
       COPY.prompt = o.mdRaw || o.t;
       COPY.code = o.code || '';
@@ -308,7 +308,7 @@
       if (o.code) acts.push(abtn('复制视频代码', '', 'code'));
       if (o.code) body += details('参考实现源码（前 90 行）', esc(o.code));
     } else if (kind === 'm') {
-      if (o.video) body += vplayer(o.video, o.cover, { audio: false, loop: true });
+      if (o.video) body += vplayer(o.video, o.cover, { audio: false, loop: true, autoplay: false });
       else if (o.cover) body += '<img class="dimg" src="' + o.cover + '" alt="">';
       body += '<div class="kv" style="margin-top:20px"><b>分类</b><span>' + esc(o.cat) + '</span><b>时长</b><span>' + durLabel(o.ms) + '</span><b>循环</b><span>' + (o.loop ? '是' : '否') + '</span></div>';
       body += '<p class="lead">' + (o.video ? '本地 mp4（30fps），页内直接播放。' : '暂无本地录像，用右上角入口到播放器里看。') + '</p>';
@@ -341,10 +341,15 @@
     }
     $('#mTitle').textContent = kind === 'f' ? o.name : (o.name || o.id || o.t);
     $('#mActions').innerHTML = acts.join('');
-    $('#mBody').innerHTML = body;
+    $('#mBody').innerHTML = '<div class="skeleton"></div>';
     $('#modal').classList.add('on');
     document.body.style.overflow = 'hidden';
-    wirePlayers();
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        $('#mBody').innerHTML = body;
+        wirePlayers();
+      });
+    });
   }
   function wirePlayers() {
     [].slice.call(document.querySelectorAll('#mBody .vp')).forEach(function (vp) {
@@ -405,6 +410,7 @@
   }
   function tryPlayVideo() {
     var v = document.querySelector('#mBody video');
+    if (v && v.closest('.vp')) return;
     if (!v) return;
     var btn = document.querySelector("#mBody .bigplay");
     var hide = function () { if (btn) btn.style.display = "none"; };
