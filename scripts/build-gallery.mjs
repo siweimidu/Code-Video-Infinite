@@ -310,6 +310,15 @@ const videoOfEffect = (id) => {
 };
 for (const m of motions) { m.cover = coverOfEffect(m.id); m.video = videoOfEffect(m.id); }
 const coveredMotions = motions.filter((m) => m.cover).length;
+/* ---------- 镜头卡全文拆包：避免 index.html 首屏解析 1.8MB ---------- */
+const SHOT_MD = {};
+for (const c of shotCards) {
+  SHOT_MD[c.id] = { mdHtml: c.mdHtml || "", mdRaw: c.mdRaw || "", code: c.code || "" };
+  delete c.mdHtml; delete c.mdRaw; delete c.code;
+}
+const dataDir = path.join(OUT, "data");
+fs.mkdirSync(dataDir, { recursive: true });
+fs.writeFileSync(path.join(dataDir, "shot-md.js"), "window.__SHOT_MD__ = " + JSON.stringify(SHOT_MD) + ";", "utf8");
 const DATA = {
   generatedAt: new Date().toISOString().slice(0, 10),
   totals: {

@@ -261,9 +261,40 @@
   function abtn(label, kind, key) {
     return '<button class="abtn ' + (kind === 'primary' ? 'primary' : '') + '" type="button" data-copy="' + key + '">' + label + '</button>';
   }
+  var shotMdPromise = null;
+  function ensureShotMd() {
+    if (window.__SHOT_MD__) return Promise.resolve(window.__SHOT_MD__);
+    if (shotMdPromise) return shotMdPromise;
+    shotMdPromise = new Promise(function (resolve, reject) {
+      var s = document.createElement("script");
+      s.src = "data/shot-md.js";
+      s.onload = function () { resolve(window.__SHOT_MD__ || {}); };
+      s.onerror = function () { reject(new Error("load shot-md failed")); };
+      document.head.appendChild(s);
+    });
+    return shotMdPromise;
+  }
+  function warmVideo(src) {
+    if (!src) return;
+    var v = document.createElement("video");
+    v.preload = "auto"; v.muted = true; v.src = src;
+    v.load();
+  }
   function openDetail(attr) {
     var kind = attr.slice(0, 1), id = attr.slice(2), o = findObj(kind, id);
     if (!o) return;
+    if (kind === 's' && !window.__SHOT_MD__) {
+      $('#mTitle').textContent = o.id;
+      $('#mActions').innerHTML = '<button class="abtn" type="button" onclick="document.getElementById(\'mClose\').click()">关闭</button>';
+      $('#mBody').innerHTML = '<div class="loading">正在加载卡片全文…</div>';
+      $('#modal').classList.add('on'); document.body.style.overflow = 'hidden';
+      ensureShotMd().then(function () { openDetail(attr); }).catch(function () { $('#mBody').innerHTML = '<div class="loading">加载失败</div>'; });
+      return;
+    }
+    if (kind === 's' && window.__SHOT_MD__) {
+      var md = window.__SHOT_MD__[id] || {};
+      o.mdHtml = md.mdHtml; o.mdRaw = md.mdRaw; o.code = md.code;
+    }
     var body = '', acts = [];
     COPY = {};
     if (kind === 's') {
