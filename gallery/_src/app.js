@@ -268,7 +268,8 @@
     var body = '', acts = [];
     COPY = {};
     if (kind === 's') {
-      body += o.poster ? '<img class="dimg" src="' + o.poster + '" alt="" style="margin-bottom:22px">' : '';
+      if (o.video) body += vplayer(o.video, o.poster, { audio: false, loop: true }) + '<div style="height:20px"></div>';
+      else if (o.poster) body += '<img class="dimg" src="' + o.poster + '" alt="" style="margin-bottom:22px">';
       body += '<div class="article">' + (o.mdHtml || '<p class="lead">' + esc(o.t) + '</p>') + '</div>';
       COPY.prompt = o.mdRaw || o.t;
       COPY.code = o.code || '';

@@ -168,13 +168,17 @@ function demoCodeOf(category, id) {
     return fs.readFileSync(path.join(dir, f), 'utf8').split(/\r?\n/).slice(0, 90).join('\n');
   } catch (e) { return null; }
 }
+const videoOfShot = (id) => {
+  const p = path.join(OUT, 'videos', 'shot-' + id + '.mp4');
+  return exists(p) && fs.statSync(p).size > 50000 ? "videos/shot-" + id + ".mp4" : null;
+};
 const shotCards = entries.filter((e) => e.collection === 'shot-card').map((e) => {
   let md = '';
   try { md = fs.readFileSync(path.join(ROOT, e.path || ""), "utf8"); } catch (err) { md = ""; }
   return {
     id: e.id, t: String(e.title || '').slice(0, 140), cat: e.category || '',
     d: e.duration || '', en: e.energy || '', p: e.path || '', poster: posterOf(e.id),
-    mdHtml: md ? mdToHtml(md) : "", mdRaw: md, code: demoCodeOf(e.category, e.id),
+    mdHtml: md ? mdToHtml(md) : "", mdRaw: md, code: demoCodeOf(e.category, e.id), video: videoOfShot(e.id),
   };
 });
 const motions = entries.filter((e) => e.collection === 'motion-entry').map((e) => ({
