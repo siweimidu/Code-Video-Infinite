@@ -219,7 +219,7 @@ add('镜头卡详情直接显示全文', !shotDetail.no && shotDetail.heads > 0,
 add('镜头卡详情带参考实现源码', !shotDetail.no && shotDetail.code > 500, '源码节选 ' + shotDetail.code + ' 字符');
 await ev('(function(){document.getElementById("mClose").click();return 1;})()');
 await ev('(function(){var c=[].slice.call(document.querySelectorAll("#gridFilm .card")).filter(function(x){var a=x.getAttribute("data-open")||"";return a.indexOf(".gif")>=0;})[0];if(c)c.click();return 1;})()');
-await sleep(1200);
+await sleep(2200);
 const gifModal = await ev('(function(){var i=document.querySelector("#mBody img.dimg");return i?{src:i.getAttribute("src"),ok:i.complete&&i.naturalWidth>0}:{no:true};})()');
 add('动图详情能显示图', !gifModal.no && gifModal.ok, gifModal.no ? '无图片' : gifModal.src.slice(-30));
 await ev('(function(){document.getElementById("mClose").click();return 1;})()');
