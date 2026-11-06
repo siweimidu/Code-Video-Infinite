@@ -8,7 +8,7 @@
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
     });
   };
-  var state = { q: '', cat: '全部', realOnly: false, playOnly: false, moveLimit: 72 };
+  var state = { q: '', cat: '全部', realOnly: false, playOnly: false, moveLimit: 472 };
   var Q = String.fromCharCode(34);   // 双引号，避免 HTML 属性里转义地狱
 
   function rgba(c, a) {
@@ -381,7 +381,7 @@ $('#playOnly').addEventListener('change', function (e) { state.playOnly = e.targ
   $('#statMove').textContent = D.totals.motions;
   $('#gen').textContent = '生成于 ' + D.generatedAt + ' · node scripts/build-gallery.mjs';
   /* ---------------- 素材库总表（覆盖索引里每一类素材） ---------------- */
-  var libState = { key: "all", limit: 60 };
+  var libState = { key: "all", limit: 1000 };
   function libKeyOf(collKey, id) { return collKey + "|" + id; }
   function cardLib(coll, it) {
     var media = it.poster ? ("<div class=" + Q + "media" + Q + "><img loading=" + Q + "lazy" + Q + " src=" + Q + it.poster + Q + " alt=" + Q + Q + ">" +
@@ -450,7 +450,7 @@ $('#playOnly').addEventListener('change', function (e) { state.playOnly = e.targ
 
   document.addEventListener("click", function (e) {
     var lc = e.target.closest && e.target.closest(".libchip");
-    if (lc) { libState.key = lc.getAttribute("data-key"); libState.limit = 60; renderLibChips(); renderLib(); return; }
+    if (lc) { libState.key = lc.getAttribute("data-key"); libState.limit = 1000; renderLibChips(); renderLib(); return; }
     if (e.target.id === "libMore") { libState.limit += 96; renderLib(); return; }
     var card = e.target.closest && e.target.closest("[data-lib]");
     if (card) {

@@ -261,4 +261,5 @@ const html = shell
 fs.mkdirSync(OUT, { recursive: true });
 fs.writeFileSync(path.join(OUT, 'index.html'), html, 'utf8');
 console.log('[gallery] gallery/index.html  ' + Math.round(Buffer.byteLength(html) / 1024) + ' KB');
-console.log('[gallery] families=' + families.le
+console.log('[gallery] families=' + families.length + ' real=' + DATA.totals.withPreview +
+  ' videos=' + videos.length + ' gifs=' + gifs.length + ' shots=' + shotCards.length + ' moves=' + motions.length);
