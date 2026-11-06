@@ -254,6 +254,10 @@
       h += '<h4>怎么用</h4><pre>' + esc('读卡全文：' + o.p + NL +
         '# 再按卡里「参考实现」去 demos/ 找源码，copy 进工程改参数') + '</pre>';
     } else if (kind === 'm') {
+      if (o.cover) h += '<div class="frame poster"><img src="' + o.cover + '" alt=""></div>';
+      if (o.player) h += '<p class="playnote"><a class="linkplay" href="' + o.player + '" target="_blank" rel="noopener">在播放器里播放</a>' +
+        '<span class="hint">新窗口打开 wise 播放器，动效实时渲染</span></p>';
+      h += '<p class="playnote">该目录多数动效本身无音轨（462 条中 22 条带音效）</p>';
       h += '<div class="kv"><b>分类</b><span>' + esc(o.cat) + '</span><b>时长</b><span>' + durLabel(o.ms) +
         '</span><b>循环</b><span>' + (o.loop ? '是' : '否') + '</span></div>';
       h += '<h4>怎么用</h4><pre>' + esc('node engines/wise-motion/scripts/show.mjs ' + o.id + ' --details' + NL +
@@ -426,19 +430,16 @@ $('#playOnly').addEventListener('change', function (e) { state.playOnly = e.targ
     var link = '<a href=' + Q + src + Q + ' target=' + Q + '_blank' + Q + '>先在新窗口打开试试</a>';
     return '<div class=' + Q + 'playnote' + Q + '>这是源码级 demo（ES module + 本地字体），要先装依赖、补字体，再用本地服务打开：' + pre + link + '</div>';
   }
-  function playerBlock(src, kind, label) {
-    var head = '<h4>直接播放</h4>';
+  function playerBlock(src, kind, label, cover) {
+    var head = '<h4>播放</h4>';
     if (kind === 'module') return head + moduleHint(src);
-    var isWise = src.indexOf('wise-motion') >= 0;
-    if (isWise) {
-      return head +
-        '<div class="frame crop"><div class="shift"><iframe src="' + src + '" loading="lazy" allow="autoplay; fullscreen"></iframe></div></div>' +
-        '<p class="playnote">wise 播放器只保留了预览区（原站的导航/侧栏已裁掉）· <a href="' + src + '" target="_blank">新窗口打开完整播放器</a>' +
-        ' · 该目录多数动效本身无音轨（462 条中 22 条带音效）</p>';
-    }
-    return head +
-      '<div class="frame"><iframe src="' + src + '" loading="lazy" allow="autoplay; fullscreen"></iframe></div>' +
-      '<p class="playnote">在播放器里实时渲染（' + esc(label || '') + '）· <a href="' + src + '" target="_blank">新窗口打开</a></p>';
+    // 不再内嵌第三方播放器（会带进它的整套界面，控制条还会压在画面上）
+    // 只展示我们抓到的真实预览帧，播放交给原播放器。
+    var poster = cover ? '<div class="frame poster"><img src="' + cover + '" alt=""></div>' : '';
+    return head + poster +
+      '<p class="playnote"><a class="playbtn" href="' + src + '" target="_blank" rel="noopener">▶ 在播放器里播放</a>' +
+      ' <span>（新窗口打开 wise 播放器，动效实时渲染）</span></p>' +
+      '<p class="playnote">该目录多数动效本身无音轨（462 条中 22 条带音效）</p>';
   }
   function fitCrop() {
     [].slice.call(document.querySelectorAll('.frame.crop')).forEach(function (wrap) {
@@ -451,7 +452,7 @@ $('#playOnly').addEventListener('change', function (e) { state.playOnly = e.targ
     });
   }
   window.addEventListener('resize', fitCrop);
-  function injectPlayer(attr) {
+  function injectPlayer(attr, cover) {
     var kind = attr.slice(0, 1), id = attr.slice(2), src = null, pkind = "classic", label = "";
     if (kind === "m") {
       var mv = D.motions.filter(function (x) { return x.id === id; })[0];
@@ -465,14 +466,14 @@ $('#playOnly').addEventListener('change', function (e) { state.playOnly = e.targ
     if (!src) return;
     var body = $("#mBody");
     if (!body || body.querySelector(".frame") || body.querySelector(".playnote")) return;
-    body.insertAdjacentHTML("afterbegin", playerBlock(src, pkind, label));
+    body.insertAdjacentHTML("afterbegin", playerBlock(src, pkind, label, cover));
     setTimeout(fitCrop, 60);
   }
   document.addEventListener("click", function (e) {
     var card = e.target.closest && e.target.closest("[data-open]");
     if (!card) return;
     var attr = card.getAttribute("data-open");
-    setTimeout(function () { injectPlayer(attr); }, 0);
+    if (attr.slice(0, 2) === 'l:') setTimeout(function () { injectPlayer(attr); }, 0);
   });
   renderLibChips();
   renderChips();
