@@ -238,88 +238,81 @@
   function details(title, body) {
     return '<details class="fold"><summary>' + title + '</summary><pre>' + body + '</pre></details>';
   }
+  var COPY = {};
+  function toast(msg) {
+    var t = document.getElementById('toast');
+    if (!t) { t = document.createElement('div'); t.id = 'toast'; document.body.appendChild(t); }
+    t.textContent = msg; t.className = 'on';
+    clearTimeout(t._h); t._h = setTimeout(function () { t.className = ''; }, 1600);
+  }
+  function doCopy(key) {
+    var text = COPY[key] || '';
+    var done = function () { toast(key === 'code' ? '已复制源码' : '已复制'); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done).catch(function () { fallback(); });
+    } else { fallback(); }
+    function fallback() {
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      ta.remove(); done();
+    }
+  }
+  function abtn(label, kind, key) {
+    return '<button class="abtn ' + (kind === 'primary' ? 'primary' : '') + '" type="button" data-copy="' + key + '">' + label + '</button>';
+  }
   function openDetail(attr) {
     var kind = attr.slice(0, 1), id = attr.slice(2), o = findObj(kind, id);
     if (!o) return;
-    var media = '', side = '';
-    if (kind === 'f') {
-      if (o.preview) media = '<img class="dimg" src="' + o.preview + '" alt="">';
-      side += '<div class="kv"><b>分类</b><span>' + esc(o.cat) + '</span><b>情绪</b><span>' + esc(o.mood.join(' / ') || '—') + '</span><b>实现库</b><span>' + esc(o.libs.join(' , ')) + '</span></div>';
-      if (o.one) side += '<p class="lead">' + esc(o.one) + '</p>';
-      side += details('各库实现（' + o.impls.length + '）', esc(o.impls.map(function (i) { return i.library + ':' + i.id + NL + '  ' + i.path; }).join(NL + NL)));
-      var f1 = o.impls[0] || {};
-      side += details('怎么用', esc('node scripts/do.mjs "<你的需求>"' + NL + '风格：' + o.id + '（' + f1.library + ':' + f1.id + '）'));
-    } else if (kind === 'v') {
-      media = vplayer(o.src, null, { audio: !!o.audio, loop: false });
-      side += '<div class="kv"><b>时长</b><span>' + (o.dur ? o.dur + 's' : '—') + '</span><b>分辨率</b><span>' + esc(o.res || '—') + '</span>' +
-        '<b>音轨</b><span>' + (o.audio ? 'aac 立体声' : '无音轨') + '</span><b>大小</b><span>' + o.mb + ' MB</span></div>';
-      side += '<p class="lead">' + (o.audio ? '有声音。若浏览器拦截自动播放，点一下画面即可。' : '这段素材本身没有音轨。') + '</p>';
-      side += details('文件路径', esc(o.path));
-      side += '<p class="acts"><a class="linkplay" href="' + o.src + '" target="_blank">新窗口播放</a><a class="linkghost" href="' + o.src + '" download>下载</a></p>';
-    } else if (kind === 'g') {
-      media = '<img class="dimg" src="' + o.src + '" alt="">';
-      side += details('文件路径', esc(o.path + NL + o.mb + ' MB'));
-    } else if (kind === 's') {
-      side += '<div class="kv"><b>分类</b><span>' + esc(o.cat) + '</span><b>时长</b><span>' + esc(o.d) + '</span><b>能量</b><span>' + esc(o.en) + '</span></div>';
-      side += '<p class="acts top"><button class="copybtn big" type="button" data-copy-sel=".md">复制卡片全文</button>' +
-        (o.code ? '<button class="copybtn big" type="button" data-copy-sel=".code">复制源码</button>' : '') + '</p>';
-      side += '<div class="md">' + (o.mdHtml || ('<p>' + esc(o.t) + '</p>')) + '</div>';
-      if (o.code) side += '<details class="fold"><summary>参考实现源码（前 90 行）</summary><pre class="code">' + esc(o.code) + '</pre></details>';
-      side += '<p class="note">卡片原文：' + esc(o.p) + '</p>';
+    var body = '', acts = [];
+    COPY = {};
+    if (kind === 's') {
+      body += o.poster ? '<img class="dimg" src="' + o.poster + '" alt="" style="margin-bottom:22px">' : '';
+      body += '<div class="article">' + (o.mdHtml || '<p class="lead">' + esc(o.t) + '</p>') + '</div>';
+      COPY.prompt = o.mdRaw || o.t;
+      COPY.code = o.code || '';
+      acts.push(abtn('复制提示词', 'primary', 'prompt'));
+      if (o.code) acts.push(abtn('复制源码', '', 'code'));
+      if (o.code) body += details('参考实现源码（前 90 行）', esc(o.code));
     } else if (kind === 'm') {
-      if (o.video) media = vplayer(o.video, o.cover, { audio: false, loop: true, crop: true });
-      else if (o.cover) media = '<img class="dimg" src="' + o.cover + '" alt="">';
-      side += '<div class="kv"><b>分类</b><span>' + esc(o.cat) + '</span><b>时长</b><span>' + durLabel(o.ms) + '</span><b>循环</b><span>' + (o.loop ? '是' : '否') + '</span></div>';
-      side += '<p class="lead">' + (o.video ? '本地 mp4，页内直接播放。' : '暂无本地录像，用下面的入口到播放器里看。') + '</p>';
-      if (o.video) side += '<p class="acts"><a class="linkplay" href="' + o.video + '" target="_blank">新页面播放（本地 mp4）</a></p>';
-      else if (o.player) side += '<p class="acts"><a class="linkplay" href="' + o.player + '" target="_blank">在完整播放器打开</a></p>';
-      side += '<p class="note">该目录多数动效本身无音轨（462 条中 22 条带音效）。</p>';
-      side += details('怎么用', esc('node engines/wise-motion/scripts/show.mjs ' + o.id + ' --details' + NL + 'node engines/wise-motion/scripts/export.mjs ' + o.id + ' --out-dir <你的工程>'));
+      if (o.video) body += vplayer(o.video, o.cover, { audio: false, loop: true });
+      else if (o.cover) body += '<img class="dimg" src="' + o.cover + '" alt="">';
+      body += '<div class="kv" style="margin-top:20px"><b>分类</b><span>' + esc(o.cat) + '</span><b>时长</b><span>' + durLabel(o.ms) + '</span><b>循环</b><span>' + (o.loop ? '是' : '否') + '</span></div>';
+      body += '<p class="lead">' + (o.video ? '本地 mp4（30fps），页内直接播放。' : '暂无本地录像，用右上角入口到播放器里看。') + '</p>';
+      COPY.prompt = o.t + '（' + o.id + '）' + NL + 'node engines/wise-motion/scripts/export.mjs ' + o.id + ' --out-dir <你的工程>';
+      COPY.code = 'node engines/wise-motion/scripts/show.mjs ' + o.id + ' --details' + NL + 'node engines/wise-motion/scripts/export.mjs ' + o.id + ' --out-dir <你的工程>';
+      acts.push(abtn('复制提示词', 'primary', 'prompt'));
+      acts.push(abtn('复制源码', '', 'code'));
+      if (o.video) acts.push('<a class="abtn" href="' + o.video + '" target="_blank">新页面播放</a>');
+      else if (o.player) acts.push('<a class="abtn" href="' + o.player + '" target="_blank">完整播放器</a>');
+    } else if (kind === 'v') {
+      body += vplayer(o.src, null, { audio: !!o.audio, loop: false });
+      body += '<div class="kv" style="margin-top:20px"><b>音轨</b><span>' + (o.audio ? 'aac 立体声' : '无音轨') + '</span><b>大小</b><span>' + o.mb + ' MB</span></div>';
+      body += '<p class="lead">' + (o.audio ? '有声音。若浏览器拦截自动播放，点一下画面即可。' : '这段素材本身没有音轨。') + '</p>';
+      body += details('文件路径', esc(o.path));
+      COPY.prompt = o.path;
+      acts.push('<a class="abtn primary" href="' + o.src + '" target="_blank">新页面播放</a>');
+      acts.push('<a class="abtn" href="' + o.src + '" download>下载</a>');
+    } else if (kind === 'f') {
+      if (o.preview) body += '<img class="dimg" src="' + o.preview + '" alt="">';
+      body += '<div class="kv" style="margin-top:18px"><b>分类</b><span>' + esc(o.cat) + '</span><b>情绪</b><span>' + esc(o.mood.join(' / ') || '—') + '</span><b>实现库</b><span>' + esc(o.libs.join(' , ')) + '</span></div>';
+      if (o.one) body += '<p class="lead">' + esc(o.one) + '</p>';
+      body += details('各库实现（' + o.impls.length + '）', esc(o.impls.map(function (i) { return i.library + ':' + i.id + NL + '  ' + i.path; }).join(NL + NL)));
+      COPY.prompt = '风格：' + o.id + '（' + (o.impls[0] ? o.impls[0].library + ':' + o.impls[0].id : '') + '）';
+      acts.push(abtn('复制风格行', 'primary', 'prompt'));
     } else if (kind === 't') {
-      side += '<p class="lead">' + esc(o.t) + '</p>';
-      side += details('入口', esc('读：' + o.p + NL + '形态：' + o.medium));
+      body += '<p class="lead">' + esc(o.t) + '</p>';
+      body += details('入口', esc('读：' + o.p + NL + '形态：' + o.medium));
+      COPY.prompt = o.p;
+      acts.push(abtn('复制路径', 'primary', 'prompt'));
     }
     $('#mTitle').textContent = kind === 'f' ? o.name : (o.name || o.id || o.t);
-    $('#mBody').innerHTML = '<div class="detail">' + (media ? '<div class="dmedia">' + media + '</div>' : '') + '<div class="dside">' + side + '</div></div>';
+    $('#mActions').innerHTML = acts.join('');
+    $('#mBody').innerHTML = body;
     $('#modal').classList.add('on');
     document.body.style.overflow = 'hidden';
     wirePlayers();
-    wireCopy();
-  }
-  function copyFallback(text, done) {
-    var ta = document.createElement('textarea');
-    ta.value = text;
-    ta.style.position = 'fixed'; ta.style.opacity = '0';
-    document.body.appendChild(ta);
-    ta.select();
-    try { document.execCommand("copy"); done && done(); } catch (e) {}
-    document.body.removeChild(ta);
-  }
-  function copyText(text, btn) {
-    var done = function () {
-      if (!btn) return;
-      var old = btn.textContent;
-      btn.textContent = '已复制'; btn.classList.add('ok');
-      setTimeout(function () { btn.textContent = old; btn.classList.remove("ok"); }, 1200);
-    };
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(done).catch(function () { copyFallback(text, done); });
-    } else { copyFallback(text, done); }
-  }
-  function wireCopy() {
-    [].slice.call(document.querySelectorAll('#mBody pre')).forEach(function (pre) {
-      if (pre.querySelector('.copybtn')) return;
-      var b = document.createElement('button');
-      b.className = 'copybtn'; b.type = 'button'; b.textContent = '复制';
-      b.addEventListener('click', function (e) { e.stopPropagation(); copyText(pre.textContent, b); });
-      pre.appendChild(b);
-    });
-    [].slice.call(document.querySelectorAll('#mBody [data-copy-sel]')).forEach(function (b) {
-      b.addEventListener('click', function () {
-        var el = document.querySelector('#mBody ' + b.getAttribute('data-copy-sel'));
-        if (el) copyText(el.innerText || el.textContent, b);
-      });
-    });
   }
   function wirePlayers() {
     [].slice.call(document.querySelectorAll('#mBody .vp')).forEach(function (vp) {
@@ -539,6 +532,10 @@ $('#playOnly').addEventListener('change', function (e) { state.playOnly = e.targ
     library: D.library.reduce(function (n, c) { return n + c.items.length; }, 0),
     tools: D.tools.length
   };
+  [].slice.call(document.querySelectorAll(".sectn")).forEach(function (b) {
+    var k = b.getAttribute("data-k");
+    if (navCounts[k] !== undefined) b.textContent = navCounts[k];
+  });
   [].slice.call(document.querySelectorAll(".navn")).forEach(function (b) {
     var k = b.getAttribute("data-k");
     if (navCounts[k] !== undefined) b.textContent = navCounts[k];
@@ -612,6 +609,11 @@ $('#playOnly').addEventListener('change', function (e) { state.playOnly = e.targ
     var q0 = new URLSearchParams(location.search).get('q');
     if (q0) { state.q = q0; var qi = $('#q'); if (qi) qi.value = q0; }
   })();
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest && e.target.closest('[data-copy]');
+    if (!btn) return;
+    doCopy(btn.getAttribute('data-copy'));
+  });
   renderLibChips();
   renderChips();
   render();

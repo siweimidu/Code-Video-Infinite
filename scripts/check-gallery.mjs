@@ -203,18 +203,19 @@ add('视频用原生播放器且不静音', !vp.no && vp.controls === true && vp
 await ev('(function(){document.getElementById("mClose").click();document.querySelectorAll("#gridMove .card")[0].click();return 1;})()');
 await sleep(1800);
 const motionDetail = await ev('(function(){' +
-  'var img=document.querySelector("#mBody .frame.poster img");' +
-  'var link=document.querySelector("#mBody .linkplay");' +
-  'return {img:!!img,src:img?img.getAttribute("src"):"",link:!!link,href:link?link.getAttribute("href"):""};})()');
-add('动作详情给播放入口', motionDetail.link && (motionDetail.href.indexOf('#') >= 0 || motionDetail.href.indexOf('.mp4') >= 0), motionDetail.href.slice(-40));
+  'var a=document.querySelector("#mActions a.abtn[href]");' +
+  'var v=document.querySelector("#mBody .vp video");' +
+  'return {link:!!a,href:a?a.getAttribute("href"):"",video:!!v,vsrc:v?v.getAttribute("src"):""};})()');
+add('动作详情给播放入口', motionDetail.link || motionDetail.video, motionDetail.href.slice(-40) || motionDetail.vsrc.slice(-40));
 await ev('(function(){document.getElementById("mClose").click();return 1;})()');
 await ev('(function(){var c=[].slice.call(document.querySelectorAll("#gridShot .card"))[0];if(c)c.click();return 1;})()');
 await sleep(900);
 const shotDetail = await ev('(function(){var b=document.querySelector("#mBody");if(!b)return {no:true};' +
-  'return {h3:b.querySelectorAll(".md h3").length,td:b.querySelectorAll(".md td").length,code:(b.querySelector(".code")||{textContent:""}).textContent.length};})()');
-const copyBtns = await ev('(function(){return document.querySelectorAll("#mBody .copybtn.big").length;})()');
+  'return {heads:b.querySelectorAll(".article h1,.article h2,.article h3").length,td:b.querySelectorAll(".article td").length,' +
+  'code:(b.querySelector(".fold pre")||{textContent:""}).textContent.length};})()');
+const copyBtns = await ev('(function(){return document.querySelectorAll("#mActions .abtn[data-copy]").length;})()');
 add('镜头卡详情有复制按钮', copyBtns >= 2, copyBtns + ' 个复制按钮');
-add('镜头卡详情直接显示全文', !shotDetail.no && shotDetail.h3 > 0, 'h3=' + shotDetail.h3 + ' 表格单元格=' + shotDetail.td);
+add('镜头卡详情直接显示全文', !shotDetail.no && shotDetail.heads > 0, '标题=' + shotDetail.heads + ' 表格单元格=' + shotDetail.td);
 add('镜头卡详情带参考实现源码', !shotDetail.no && shotDetail.code > 500, '源码节选 ' + shotDetail.code + ' 字符');
 await ev('(function(){document.getElementById("mClose").click();return 1;})()');
 const jsErrors = await ev('(window.__err|0)');
