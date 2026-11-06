@@ -141,7 +141,8 @@
     cats.sort(function (a, b) {
       return a === "全部" ? -1 : b === "全部" ? 1 : a.localeCompare(b, "zh");
     });
-    $("#chips").innerHTML = cats.map(function (c) {
+    var chipNote = '<span class="chipnote">分类仅作用于风格族</span>';
+    $("#chips").innerHTML = chipNote + cats.map(function (c) {
       var n = c === "全部" ? D.families.length : D.families.filter(function (f) { return f.cat === c; }).length;
       var on = state.cat === c;
       return "<button class=" + Q + "chip" + (on ? " on" : "") + Q + " data-cat=" + Q + esc(c) + Q +
@@ -467,6 +468,11 @@ $('#playOnly').addEventListener('change', function (e) { state.playOnly = e.targ
   onScroll();
 
   if ($("#statEntries")) $("#statEntries").textContent = D.coverage ? D.coverage.catalogEntries : D.totals.entries;
+  if ($("#statNote")) {
+    var libTotal = D.library.reduce(function (n, c) { return n + c.items.length; }, 0);
+    var styleCount = (D.coverage && D.coverage.styleCount) || 104;
+    $("#statNote").textContent = "口径：" + D.families.length + " 个风格族（对应 " + styleCount + " 个实现）＋ " + D.shotCards.length + " 张镜头卡 ＋ " + D.motions.length + " 条动作 ＋ " + D.tools.length + " 个工具 ＋ " + libTotal + " 条素材库 ＝ " + D.totals.entries + " 条索引；另有 " + (D.videos.length + D.gifs.length) + " 个视频/动图样片属于演示资产，不计入索引。";
+  }
   if ($("#covNum")) $("#covNum").textContent = D.coverage ? (D.coverage.covered + " / " + D.coverage.catalogEntries) : String(D.totals.entries);
   /* ---------------- 播放器：详情里直接看/试播 ---------------- */
   function addPlayBadge(html, kind) {
