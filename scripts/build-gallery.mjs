@@ -185,7 +185,7 @@ const library = libDefs.map((d) => {
 const libTotal = library.reduce((s, c) => s + c.count, 0);
 const dedicated = entries.filter((e) => ["shot-card", "motion-entry", "tool"].indexOf(e.collection) >= 0).length;
 const styleCount = entries.filter((e) => e.collection === "style").length;
-const covered = libTotal + dedicated + styleCount;
+const covered = libTotal + dedicated;   // style 已并入 library，不再重复计
 /* ---------- 可播放资源：wise 播放器 / onetake 播放器 / claude demo ---------- */
 const PLAYERS = {
   wise: (id) => url(path.join(engRoot, "wise-motion/catalog/index.html")) + "#" + id,

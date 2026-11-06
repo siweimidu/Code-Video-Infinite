@@ -471,7 +471,7 @@ $('#playOnly').addEventListener('change', function (e) { state.playOnly = e.targ
   if ($("#statNote")) {
     var libTotal = D.library.reduce(function (n, c) { return n + c.items.length; }, 0);
     var styleCount = (D.coverage && D.coverage.styleCount) || 104;
-    $("#statNote").textContent = "口径：" + D.families.length + " 个风格族（对应 " + styleCount + " 个实现）＋ " + D.shotCards.length + " 张镜头卡 ＋ " + D.motions.length + " 条动作 ＋ " + D.tools.length + " 个工具 ＋ " + libTotal + " 条素材库 ＝ " + D.totals.entries + " 条索引；另有 " + (D.videos.length + D.gifs.length) + " 个视频/动图样片属于演示资产，不计入索引。";
+    $("#statNote").textContent = "口径：" + D.shotCards.length + " 张镜头卡 ＋ " + D.motions.length + " 条动作 ＋ " + D.tools.length + " 个工具 ＋ " + libTotal + " 条素材库（含 " + styleCount + " 个风格实现）＝ " + D.totals.entries + " 条索引，全部可在本页看到；另有 " + D.families.length + " 张风格族卡是分组视图、" + (D.videos.length + D.gifs.length) + " 个视频/动图样片是演示资产。";
   }
   if ($("#covNum")) $("#covNum").textContent = D.coverage ? (D.coverage.covered + " / " + D.coverage.catalogEntries) : String(D.totals.entries);
   /* ---------------- 播放器：详情里直接看/试播 ---------------- */

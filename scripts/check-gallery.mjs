@@ -71,7 +71,7 @@ const chips = await ev('(function(){var vw=window.innerWidth;var cs=[].slice.cal
   'var clipped=[],blocked=[];cs.forEach(function(c){var r=c.getBoundingClientRect();if(r.right>vw+1)clipped.push(c.textContent);' +
   'var x=Math.min(r.left+r.width/2,vw-4),y=r.top+r.height/2;if(y<0||y>window.innerHeight)return;' +
   'var el=document.elementFromPoint(x,y);if(!(el&&(el===c||c.contains(el))))blocked.push(c.textContent);});' +
-  'return {count:cs.length,clipped:clipped,blocked:blocked,scrollable:document.querySelector(".chips").scrollWidth>document.querySelector(".chips").clientWidth+1};})()');
+  'var box=document.querySelector(".chips");return {count:cs.length,clipped:clipped,blocked:blocked,scrollable:box?box.scrollWidth>box.clientWidth+1:false};})()');
 add('chips 数量', chips.count > 0, chips.count + ' 个');
 add('chips 不被裁切', chips.clipped.length === 0, chips.clipped.join(', '));
 add('chips 不被遮挡', chips.blocked.length === 0, chips.blocked.join(', '));
