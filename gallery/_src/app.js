@@ -223,7 +223,7 @@
 
   function vplayer(src, poster, opts) {
     opts = opts || {};
-    return '<div class="vp" data-loop="' + (opts.loop === false ? '0' : '1') + '" data-audio="' + (opts.audio ? '1' : '0') + '">' +
+    return '<div class="vp' + (opts.crop ? ' crop-bar' : '') + '" data-loop="' + (opts.loop === false ? '0' : '1') + '" data-audio="' + (opts.audio ? '1' : '0') + '">' +
       '<video src="' + src + '"' + (poster ? ' poster="' + poster + '"' : '') + ' playsinline preload="metadata"></video>' +
       '<button class="vp-big" type="button" aria-label="播放">▶</button>' +
       '<div class="vp-bar">' +
@@ -251,7 +251,8 @@
       side += details('怎么用', esc('node scripts/do.mjs "<你的需求>"' + NL + '风格：' + o.id + '（' + f1.library + ':' + f1.id + '）'));
     } else if (kind === 'v') {
       media = vplayer(o.src, null, { audio: !!o.audio, loop: false });
-      side += '<div class="kv"><b>音轨</b><span>' + (o.audio ? 'aac 立体声' : '无音轨') + '</span><b>大小</b><span>' + o.mb + ' MB</span></div>';
+      side += '<div class="kv"><b>时长</b><span>' + (o.dur ? o.dur + 's' : '—') + '</span><b>分辨率</b><span>' + esc(o.res || '—') + '</span>' +
+        '<b>音轨</b><span>' + (o.audio ? 'aac 立体声' : '无音轨') + '</span><b>大小</b><span>' + o.mb + ' MB</span></div>';
       side += '<p class="lead">' + (o.audio ? '有声音。若浏览器拦截自动播放，点一下画面即可。' : '这段素材本身没有音轨。') + '</p>';
       side += details('文件路径', esc(o.path));
       side += '<p class="acts"><a class="linkplay" href="' + o.src + '" target="_blank">新窗口播放</a><a class="linkghost" href="' + o.src + '" download>下载</a></p>';
@@ -266,7 +267,7 @@
       if (o.code) side += '<details class="fold"><summary>参考实现源码（前 90 行）</summary><pre class="code">' + esc(o.code) + '</pre></details>';
       side += '<p class="note">卡片原文：' + esc(o.p) + '</p>';
     } else if (kind === 'm') {
-      if (o.video) media = vplayer(o.video, o.cover, { audio: false, loop: true });
+      if (o.video) media = vplayer(o.video, o.cover, { audio: false, loop: true, crop: true });
       else if (o.cover) media = '<img class="dimg" src="' + o.cover + '" alt="">';
       side += '<div class="kv"><b>分类</b><span>' + esc(o.cat) + '</span><b>时长</b><span>' + durLabel(o.ms) + '</span><b>循环</b><span>' + (o.loop ? '是' : '否') + '</span></div>';
       side += '<p class="lead">' + (o.video ? '本地 mp4，页内直接播放。' : '暂无本地录像，用下面的入口到播放器里看。') + '</p>';
@@ -529,6 +530,19 @@ $('#playOnly').addEventListener('change', function (e) { state.playOnly = e.targ
   onScroll();
 
   if ($("#statEntries")) $("#statEntries").textContent = D.coverage ? D.coverage.catalogEntries : D.totals.entries;
+  var navCounts = {
+    entries: D.totals.entries,
+    films: D.videos.length + D.gifs.length,
+    families: D.families.length,
+    shots: D.shotCards.length,
+    moves: D.motions.length,
+    library: D.library.reduce(function (n, c) { return n + c.items.length; }, 0),
+    tools: D.tools.length
+  };
+  [].slice.call(document.querySelectorAll(".navn")).forEach(function (b) {
+    var k = b.getAttribute("data-k");
+    if (navCounts[k] !== undefined) b.textContent = navCounts[k];
+  });
   if ($("#statNote")) {
     var libTotal = D.library.reduce(function (n, c) { return n + c.items.length; }, 0);
     var styleCount = (D.coverage && D.coverage.styleCount) || 104;

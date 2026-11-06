@@ -54,6 +54,7 @@ const videos = Object.keys(posterMeta).map((key) => {
     duration: m.duration || 0,
     mb: Math.round((fs.statSync(abs).size / 1048576) * 10) / 10,
     audio: hasAudio(abs),
+    ...probeMeta(abs),
     path: m.rel,
   };
 }).filter((v) => v.mb > 0.5).sort((a, b) => b.mb - a.mb);
@@ -274,6 +275,13 @@ for (const mv of entries.filter((e) => e.collection === "move")) {
 }
 /* ---------- 视频音轨探测（ffprobe） ---------- */
 import { spawnSync } from 'node:child_process';
+function probeMeta(file) {
+  const d = spawnSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', file], { encoding: 'utf8' });
+  const v = spawnSync('ffprobe', ['-v', 'error', '-select_streams', 'v:0', '-show_entries', 'stream=width,height', '-of', 'csv=p=0', file], { encoding: 'utf8' });
+  const dur = parseFloat((d.stdout || '').trim()) || 0;
+  const res = (v.stdout || '').trim().split(',')[0] ? (v.stdout || '').trim().split(',')[0] + 'x' + (v.stdout || '').trim().split(',')[1] : '';
+  return { dur: Math.round(dur * 10) / 10, res };
+}
 function hasAudio(file) {
   const r = spawnSync('ffprobe', ['-v', 'error', '-select_streams', 'a', '-show_entries', 'stream=codec_name', '-of', 'csv=p=0', file], { encoding: 'utf8' });
   return !!(r.stdout && r.stdout.trim());
