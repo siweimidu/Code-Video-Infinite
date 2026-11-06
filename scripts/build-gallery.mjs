@@ -323,7 +323,9 @@ const fontCss = exists(path.join(SRC, 'fonts.css')) ? stripBom(fs.readFileSync(p
 const css = fontCss + stripBom(fs.readFileSync(path.join(SRC, 'style.css'), 'utf8'));
 const app = stripBom(fs.readFileSync(path.join(SRC, 'app.js'), 'utf8'));
 
+const buildStamp = new Date().toISOString().slice(0, 16).replace('T', ' ');
 const html = shell
+  .split('<!--BUILD-->').join(buildStamp)
   .split('<!--CSS-->').join(css)
   .split('<!--DATA-->').join(JSON.stringify(DATA))
   .split('<!--APP-->').join(app);

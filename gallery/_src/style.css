@@ -405,3 +405,5 @@ pre{position:relative}
 .sectionbar a b{font-weight:600;font-size:10.5px;color:#86868b}
 .sectionbar a:hover b{color:var(--primary)}
 .chrome.scrolled .sectionbar{padding-bottom:6px}
+
+.buildstamp{max-width:1120px;margin:40px auto 60px;padding:0 24px;font-size:11.5px;color:#a1a1a6}
