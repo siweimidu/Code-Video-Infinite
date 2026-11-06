@@ -102,7 +102,6 @@
   function cardShot(c) {
     var lv = energyLevel(c.en);
     var media = c.poster ? ("<div class=" + Q + "media" + Q + "><img loading=" + Q + "lazy" + Q + " src=" + Q + c.poster + Q + " alt=" + Q + Q + ">" +
-      "<span class=" + Q + "tagbadge" + Q + ">真实静帧</span>" +
       (c.d ? "<span class=" + Q + "corner" + Q + ">" + esc(shortDur(c.d)) + "</span>" : "") + "</div>") : "";
     var tags = "<span class=" + Q + "tag k" + Q + ">" + esc(c.cat) + "</span>" +
       (c.d ? "<span class=" + Q + "tag" + Q + ">" + esc(shortDur(c.d)) + "</span>" : "") +

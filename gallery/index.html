@@ -628,7 +628,7 @@ body{padding-left:224px}
   </div>
 
 </div></main>
-<footer class="buildstamp">构建 <b>2026-11-06 17:32</b> · 若你看到旧界面，请 Ctrl+F5 强制刷新</footer>
+<footer class="buildstamp">构建 <b>2026-11-06 17:34</b> · 若你看到旧界面，请 Ctrl+F5 强制刷新</footer>
 
 <div class="modal" id="modal"><div class="box">
   <div class="hd"><h3 id="mTitle"></h3><div class="hd-actions"><span id="mActions"></span><button id="mClose">关闭</button></div></div>
@@ -741,7 +741,6 @@ body{padding-left:224px}
   function cardShot(c) {
     var lv = energyLevel(c.en);
     var media = c.poster ? ("<div class=" + Q + "media" + Q + "><img loading=" + Q + "lazy" + Q + " src=" + Q + c.poster + Q + " alt=" + Q + Q + ">" +
-      "<span class=" + Q + "tagbadge" + Q + ">真实静帧</span>" +
       (c.d ? "<span class=" + Q + "corner" + Q + ">" + esc(shortDur(c.d)) + "</span>" : "") + "</div>") : "";
     var tags = "<span class=" + Q + "tag k" + Q + ">" + esc(c.cat) + "</span>" +
       (c.d ? "<span class=" + Q + "tag" + Q + ">" + esc(shortDur(c.d)) + "</span>" : "") +
