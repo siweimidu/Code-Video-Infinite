@@ -174,7 +174,7 @@ const shotCards = entries.filter((e) => e.collection === 'shot-card').map((e) =>
   return {
     id: e.id, t: String(e.title || '').slice(0, 140), cat: e.category || '',
     d: e.duration || '', en: e.energy || '', p: e.path || '', poster: posterOf(e.id),
-    mdHtml: md ? mdToHtml(md) : "", code: demoCodeOf(e.category, e.id),
+    mdHtml: md ? mdToHtml(md) : "", mdRaw: md, code: demoCodeOf(e.category, e.id),
   };
 });
 const motions = entries.filter((e) => e.collection === 'motion-entry').map((e) => ({
