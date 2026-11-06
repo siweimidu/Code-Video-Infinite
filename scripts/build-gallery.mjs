@@ -94,6 +94,11 @@ const palOf = (cat) => {
   return ['#ffffff', '#1d1d1f', '#8e8e93'];
 };
 
+const famFile = (id) => 'family-' + String(id).replace(/[^a-zA-Z0-9_-]/g, '-') + '.mp4';
+const familyVideoOf = (id) => {
+  const p = path.join(OUT, 'videos', famFile(id));
+  return exists(p) && fs.statSync(p).size > 1500 ? 'videos/family-' + id + '.mp4' : null;
+};
 const families = (sty.families || []).map((f) => {
   let preview = null;
   for (const i of f.implementations) {
@@ -110,7 +115,7 @@ const families = (sty.families || []).map((f) => {
   return {
     id: f.id, name: f.name, cat: f.category || '未分类',
     mood: f.mood || [], libs: f.libraries || [], impls: f.implementations || [],
-    preview, pal: palOf(f.category), one,
+    preview, video: familyVideoOf(f.id), pal: palOf(f.category), one,
   };
 });
 
@@ -332,7 +337,7 @@ const QC = (() => {
 })();
 const videoOfEffect = (id) => {
   const p = path.join(OUT, 'videos', 'wise-' + id + '.mp4');
-  if (!exists(p) || fs.statSync(p).size <= 6000) return null;
+  if (!exists(p) || fs.statSync(p).size <= 1500) return null;
   if (QC[id] && QC[id].ok === false) return null;
   return "videos/wise-" + id + ".mp4";
 };

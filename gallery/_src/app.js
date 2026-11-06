@@ -60,14 +60,15 @@
       '<div class="sub">' + esc(g.path) + '</div></div></div>';
   }
   function cardFamily(f) {
-    var media = f.preview ? ("<div class=" + Q + "media" + Q + "><img loading=" + Q + "lazy" + Q + " src=" + Q + f.preview + Q + " alt=" + Q + Q + ">" +
-      "<span class=" + Q + "tagbadge real" + Q + ">真实案例帧</span></div>") : "";
+    var media = f.video
+      ? ('<div class="media"><video class="cardvid" src="' + f.video + '" autoplay muted loop playsinline preload="auto"></video></div>')
+      : (f.preview ? ('<div class="media"><img loading="lazy" src="' + f.preview + '" alt=""><span class="tagbadge real">真实案例帧</span></div>') : "");
     var tags = f.mood.slice(0, 3).map(function (m) {
       return "<span class=" + Q + "tag" + Q + ">" + esc(m) + "</span>";
     }).join("") + f.libs.map(function (l) {
       return "<span class=" + Q + "tag k" + Q + ">" + esc(l) + "</span>";
     }).join("");
-    return "<div class=" + Q + "card" + Q + " tabindex=" + Q + "0" + Q + " role=" + Q + "button" + Q + " data-cat=" + Q + esc(f.cat) + Q + " data-open=" + Q + "f:" + esc(f.id) + Q + " data-real=" + Q + (f.preview ? 1 : 0) + Q + ">" + media +
+    return "<div class=" + Q + "card" + Q + " tabindex=" + Q + "0" + Q + " role=" + Q + "button" + Q + " data-open=" + Q + "f:" + esc(f.id) + Q + " data-real=" + Q + (f.preview || f.video ? 1 : 0) + Q + ">" + media +
       "<div class=" + Q + "body" + Q + (media ? "" : " tight") + Q + "><div class=" + Q + "name" + Q + ">" + esc(f.name) + "</div>" +
       "<div class=" + Q + "sub" + Q + ">" + esc(f.one || f.cat) + "</div>" +
       "<div class=" + Q + "tags" + Q + ">" + tags + "</div></div></div>";
@@ -117,8 +118,10 @@
     return Math.round(ms) + "ms";
   }
   function cardMove(m) {
-    var media = m.cover ? ("<div class=" + Q + "media" + Q + "><img loading=" + Q + "lazy" + Q + " src=" + Q + m.cover + Q + " alt=" + Q + Q + ">" +
-      "<span class=" + Q + "tagbadge real" + Q + ">真实预览帧</span>" +
+    var media = (m.video || m.cover) ? ("<div class=" + Q + "media" + Q + ">" +
+        (m.video ? ("<video class=" + Q + "cardvid" + Q + " src=" + Q + m.video + Q + " poster=" + Q + (m.cover || "") + Q + " muted loop playsinline preload=" + Q + "none" + Q + "></video>")
+          : ("<img loading=" + Q + "lazy" + Q + " src=" + Q + m.cover + Q + " alt=" + Q + Q + ">")) +
+      (m.video ? "" : "<span class=" + Q + "tagbadge real" + Q + ">真实预览帧</span>") +
       (m.ms ? "<span class=" + Q + "corner" + Q + ">" + durLabel(m.ms) + "</span>" : "") + "</div>") : "";
     var tags = "<span class=" + Q + "tag k" + Q + ">" + esc(m.cat) + "</span>" +
       (m.player ? "<span class=" + Q + "tag play" + Q + ">▶ 可试播</span>" : "") +
@@ -336,7 +339,8 @@
       acts.push('<a class="abtn primary" href="' + o.src + '" target="_blank">新页面打开</a>');
       acts.push('<a class="abtn" href="' + o.src + '" download>下载</a>');
     } else if (kind === 'f') {
-      if (o.preview) body += '<img class="dimg" src="' + o.preview + '" alt="">';
+      if (o.video) body += vplayer(o.video, o.preview || null, { audio: false, loop: true });
+      else if (o.preview) body += '<img class="dimg" src="' + o.preview + '" alt="">';
       body += '<div class="kv" style="margin-top:18px"><b>分类</b><span>' + esc(o.cat) + '</span><b>情绪</b><span>' + esc(o.mood.join(' / ') || '—') + '</span><b>实现库</b><span>' + esc(o.libs.join(' , ')) + '</span></div>';
       if (o.one) body += '<p class="lead">' + esc(o.one) + '</p>';
       body += details('各库实现（' + o.impls.length + '）', esc(o.impls.map(function (i) { return i.library + ':' + i.id + NL + '  ' + i.path; }).join(NL + NL)));

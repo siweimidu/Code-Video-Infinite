@@ -2,200 +2,266 @@
  "aboutlove-heart-illustration": {
   "ok": true,
   "first": 9,
-  "med": 28,
-  "sd": 15
+  "med": 27,
+  "sd": 14
  },
  "aboutlove-monologue-sequence": {
   "ok": true,
   "first": 9,
-  "med": 25,
-  "sd": 14
+  "med": 26,
+  "sd": 17
+ },
+ "aboutlove-moon-illustration": {
+  "ok": true,
+  "first": 23,
+  "med": 23,
+  "sd": 25
+ },
+ "aboutlove-motion-sequence": {
+  "ok": true,
+  "first": 53,
+  "med": 53,
+  "sd": 82
  },
  "aboutlove-mountains-illustration": {
+  "ok": true,
+  "first": 15,
+  "med": 15,
+  "sd": 9
+ },
+ "aboutlove-river-illustration": {
   "ok": false,
-  "first": 9,
-  "med": 9,
+  "first": 12,
+  "med": 12,
   "sd": 4
  },
+ "aboutlove-word-sphere-illustration": {
+  "ok": true,
+  "first": 30,
+  "med": 31,
+  "sd": 24
+ },
  "aboutlove-word-world-sequence": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
+  "ok": true,
+  "first": 19,
+  "med": 19,
+  "sd": 23
  },
  "advected-trail": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
+  "ok": true,
+  "first": 152,
+  "med": 152,
+  "sd": 15
  },
  "animal-illustration": {
   "ok": true,
   "first": 9,
-  "med": 17,
-  "sd": 20
+  "med": 19,
+  "sd": 26
  },
  "aperture-eye-illustration": {
-  "ok": true,
+  "ok": false,
   "first": 9,
-  "med": 13,
-  "sd": 10
+  "med": 11,
+  "sd": 4
  },
  "arc-branch-flicker": {
   "ok": true,
-  "first": 9,
-  "med": 39,
-  "sd": 54
+  "first": 10,
+  "med": 28,
+  "sd": 42
  },
  "archive-box-illustration": {
-  "ok": true,
-  "first": 9,
-  "med": 18,
-  "sd": 32
+  "ok": false,
+  "first": 10,
+  "med": 10,
+  "sd": 1
  },
  "archive-folder-illustration": {
   "ok": true,
-  "first": 9,
-  "med": 57,
-  "sd": 75
+  "first": 10,
+  "med": 50,
+  "sd": 71
  },
  "arrival-star-reveal": {
   "ok": false,
   "first": 11,
   "med": 11,
-  "sd": 4
+  "sd": 1
+ },
+ "arrival-star-sparkle": {
+  "ok": true,
+  "first": 12,
+  "med": 12,
+  "sd": 10
  },
  "atlas-reveal-clear": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 193,
+  "med": 193,
+  "sd": 31
  },
  "attention-illustration": {
   "ok": false,
   "first": 9,
   "med": 9,
-  "sd": 7
+  "sd": 1
  },
  "axial-layer-reseat": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 41
+  "ok": true,
+  "first": 39,
+  "med": 39,
+  "sd": 47
  },
  "balance-reciprocate": {
   "ok": true,
   "first": 74,
-  "med": 69,
-  "sd": 45
+  "med": 71,
+  "sd": 43
  },
  "ball-bounce-trails": {
   "ok": true,
-  "first": 21,
-  "med": 21,
-  "sd": 8
+  "first": 22,
+  "med": 22,
+  "sd": 10
+ },
+ "balloon-drive-journey": {
+  "ok": true,
+  "first": 69,
+  "med": 68,
+  "sd": 13
  },
  "bar-growth": {
   "ok": true,
   "first": 9,
   "med": 14,
-  "sd": 8
+  "sd": 12
+ },
+ "bar-sweep": {
+  "ok": false,
+  "first": 7,
+  "med": 7,
+  "sd": 2
+ },
+ "barrel-stored-energy": {
+  "ok": true,
+  "first": 138,
+  "med": 138,
+  "sd": 34
+ },
+ "beat-ring-pulse": {
+  "ok": true,
+  "first": 12,
+  "med": 12,
+  "sd": 6
  },
  "benchmark-columns": {
   "ok": false,
   "first": 9,
   "med": 9,
-  "sd": 7
+  "sd": 1
+ },
+ "bezier-editor": {
+  "ok": true,
+  "first": 15,
+  "med": 15,
+  "sd": 10
  },
  "body-pendant-sway": {
   "ok": true,
   "first": 9,
-  "med": 22,
-  "sd": 39
+  "med": 16,
+  "sd": 29
  },
  "book-geometric-illustration": {
-  "ok": false,
+  "ok": true,
   "first": 9,
-  "med": 9,
-  "sd": 5
+  "med": 18,
+  "sd": 16
  },
  "book-paper-light": {
   "ok": false,
   "first": 9,
   "med": 9,
-  "sd": 5
+  "sd": 1
  },
  "book-spine-turn": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 17,
+  "med": 17,
+  "sd": 5
  },
  "botanical-grow-bloom": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 17
+  "ok": true,
+  "first": 219,
+  "med": 219,
+  "sd": 10
  },
  "boundary-curve-stop": {
   "ok": false,
-  "first": 7,
-  "med": 9,
+  "first": 4,
+  "med": 4,
   "sd": 9
  },
  "bounded-fibre-grow": {
   "ok": false,
-  "first": 9,
+  "first": 7,
   "med": 7,
-  "sd": 6
+  "sd": 1
  },
  "branch-angle-sway": {
   "ok": true,
   "first": 9,
-  "med": 14,
-  "sd": 15
+  "med": 17,
+  "sd": 20
  },
  "brush-glyph-build": {
   "ok": true,
-  "first": 9,
-  "med": 210,
-  "sd": 47
+  "first": 10,
+  "med": 215,
+  "sd": 32
  },
  "butterfly-illustration": {
   "ok": true,
-  "first": 9,
-  "med": 33,
-  "sd": 59
+  "first": 10,
+  "med": 21,
+  "sd": 38
  },
  "button-press-status": {
   "ok": true,
-  "first": 21,
-  "med": 20,
-  "sd": 31
+  "first": 12,
+  "med": 12,
+  "sd": 7
  },
  "camera-lag-departure": {
   "ok": true,
   "first": 9,
   "med": 53,
-  "sd": 25
+  "sd": 24
  },
  "capsule-impact-scatter": {
   "ok": true,
   "first": 9,
-  "med": 187,
-  "sd": 34
+  "med": 195,
+  "sd": 11
  },
  "capsule-type-sequence": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 165,
+  "med": 165,
+  "sd": 41
  },
  "caption-type-caret": {
+  "ok": false,
+  "first": 14,
+  "med": 14,
+  "sd": 4
+ },
+ "card-compress-merge": {
   "ok": true,
-  "first": 19,
-  "med": 21,
-  "sd": 17
+  "first": 12,
+  "med": 12,
+  "sd": 7
  },
  "card-conveyor": {
   "ok": true,
@@ -204,100 +270,142 @@
   "sd": 7
  },
  "card-flip": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 23,
+  "med": 23,
+  "sd": 22
  },
  "cat-context-links": {
+  "ok": false,
+  "first": 6,
+  "med": 9,
+  "sd": 16
+ },
+ "cat-factory-journey": {
   "ok": true,
-  "first": 8,
-  "med": 12,
-  "sd": 20
+  "first": 68,
+  "med": 68,
+  "sd": 35
  },
  "cat-mouth-illustration": {
   "ok": true,
-  "first": 40,
-  "med": 40,
-  "sd": 60
+  "first": 21,
+  "med": 21,
+  "sd": 32
+ },
+ "celebrating-characters-illustration": {
+  "ok": true,
+  "first": 78,
+  "med": 78,
+  "sd": 84
  },
  "center-ripple-emit": {
-  "ok": true,
+  "ok": false,
   "first": 11,
-  "med": 12,
-  "sd": 6
+  "med": 11,
+  "sd": 2
  },
  "char-color-cycle": {
-  "ok": true,
+  "ok": false,
   "first": 11,
-  "med": 27,
-  "sd": 44
+  "med": 11,
+  "sd": 1
+ },
+ "character-expression-response": {
+  "ok": true,
+  "first": 65,
+  "med": 65,
+  "sd": 83
  },
  "chart-card-illustration": {
   "ok": true,
   "first": 9,
-  "med": 80,
-  "sd": 103
+  "med": 67,
+  "sd": 97
  },
  "chrome-outline-echo": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
+  "ok": true,
+  "first": 41,
+  "med": 41,
+  "sd": 52
+ },
+ "circle-expand-wordmark": {
+  "ok": true,
+  "first": 143,
+  "med": 143,
+  "sd": 12
  },
  "civilization-growth-sequence": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 203,
+  "med": 201,
+  "sd": 31
+ },
+ "claude-flow-field-illustration": {
+  "ok": true,
+  "first": 21,
+  "med": 21,
+  "sd": 19
  },
  "claude-fractal-tree-illustration": {
   "ok": true,
-  "first": 9,
-  "med": 15,
-  "sd": 14
+  "first": 10,
+  "med": 17,
+  "sd": 18
  },
  "claude-frame-counter-illustration": {
-  "ok": true,
-  "first": 14,
-  "med": 14,
-  "sd": 24
+  "ok": false,
+  "first": 10,
+  "med": 10,
+  "sd": 2
  },
  "claude-glyph-rain-illustration": {
   "ok": true,
-  "first": 14,
-  "med": 14,
-  "sd": 10
+  "first": 16,
+  "med": 16,
+  "sd": 12
+ },
+ "claude-hex-pulse-illustration": {
+  "ok": true,
+  "first": 22,
+  "med": 22,
+  "sd": 13
  },
  "claude-kick-rings-illustration": {
-  "ok": true,
-  "first": 9,
-  "med": 12,
-  "sd": 6
+  "ok": false,
+  "first": 10,
+  "med": 11,
+  "sd": 4
  },
  "claude-lissajous-illustration": {
   "ok": true,
-  "first": 17,
-  "med": 17,
-  "sd": 15
+  "first": 16,
+  "med": 16,
+  "sd": 17
  },
  "claude-orbits-illustration": {
   "ok": true,
-  "first": 12,
-  "med": 12,
-  "sd": 15
+  "first": 11,
+  "med": 11,
+  "sd": 11
  },
  "claude-pendulum-wave-illustration": {
   "ok": true,
-  "first": 11,
-  "med": 11,
-  "sd": 9
+  "first": 10,
+  "med": 10,
+  "sd": 6
  },
  "claude-phyllotaxis-illustration": {
   "ok": true,
-  "first": 14,
-  "med": 14,
-  "sd": 9
+  "first": 12,
+  "med": 12,
+  "sd": 6
+ },
+ "claude-plexus-illustration": {
+  "ok": true,
+  "first": 11,
+  "med": 11,
+  "sd": 6
  },
  "claude-sine-grid-illustration": {
   "ok": true,
@@ -307,1561 +415,2179 @@
  },
  "claude-spectrum-illustration": {
   "ok": false,
-  "first": 9,
+  "first": 10,
   "med": 10,
-  "sd": 5
+  "sd": 8
  },
  "claude-terrain-illustration": {
   "ok": true,
-  "first": 30,
-  "med": 30,
-  "sd": 17
+  "first": 23,
+  "med": 23,
+  "sd": 19
+ },
+ "claude-warp-illustration": {
+  "ok": true,
+  "first": 12,
+  "med": 12,
+  "sd": 10
  },
  "claude-wireframe-illustration": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
+  "ok": true,
+  "first": 13,
+  "med": 13,
+  "sd": 15
  },
  "collage-film-sequence": {
   "ok": true,
   "first": 9,
-  "med": 191,
-  "sd": 61
+  "med": 204,
+  "sd": 53
  },
  "color-evolve": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 25,
+  "med": 25,
+  "sd": 39
  },
  "color-segment-stagger": {
   "ok": true,
   "first": 9,
-  "med": 21,
-  "sd": 33
+  "med": 26,
+  "sd": 43
  },
  "column-to-row": {
   "ok": true,
-  "first": 9,
-  "med": 12,
-  "sd": 15
+  "first": 10,
+  "med": 11,
+  "sd": 23
  },
  "concept-diagram": {
   "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
+  "first": 11,
+  "med": 11,
+  "sd": 3
  },
  "confused-characters-illustration": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 4
+  "ok": true,
+  "first": 79,
+  "med": 79,
+  "sd": 88
+ },
+ "context-silk-flow": {
+  "ok": true,
+  "first": 21,
+  "med": 22,
+  "sd": 32
+ },
+ "contour-draw-fill": {
+  "ok": true,
+  "first": 11,
+  "med": 11,
+  "sd": 5
+ },
+ "convex-glass-lens": {
+  "ok": true,
+  "first": 68,
+  "med": 69,
+  "sd": 38
  },
  "coordinate-focus-zoom": {
   "ok": false,
   "first": 9,
   "med": 9,
-  "sd": 5
+  "sd": 1
  },
  "coordinate-grid-build": {
   "ok": false,
-  "first": 6,
-  "med": 8,
+  "first": 14,
+  "med": 14,
   "sd": 5
  },
- "cosine-gauge-sweep": {
+ "core-ring-expand": {
   "ok": true,
+  "first": 26,
+  "med": 26,
+  "sd": 25
+ },
+ "cosine-gauge-sweep": {
+  "ok": false,
   "first": 9,
-  "med": 12,
-  "sd": 24
+  "med": 8,
+  "sd": 7
  },
  "count-up": {
-  "ok": true,
-  "first": 11,
-  "med": 11,
-  "sd": 9
+  "ok": false,
+  "first": 10,
+  "med": 10,
+  "sd": 8
  },
  "countdown-dial": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 19,
+  "med": 19,
+  "sd": 24
  },
  "crank-linked-turn": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 199,
+  "med": 199,
+  "sd": 52
  },
  "cross-aperture-turn": {
   "ok": true,
   "first": 8,
-  "med": 36,
-  "sd": 46
+  "med": 25,
+  "sd": 35
  },
  "cross-flare-travel": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
+  "ok": true,
+  "first": 18,
+  "med": 18,
+  "sd": 9
+ },
+ "crt-collapse": {
+  "ok": true,
+  "first": 21,
+  "med": 21,
+  "sd": 21
  },
  "cursive-regular-morph": {
   "ok": false,
   "first": 9,
   "med": 9,
-  "sd": 7
+  "sd": 1
  },
  "curve-path": {
-  "ok": false,
+  "ok": true,
   "first": 9,
-  "med": 10,
-  "sd": 10
+  "med": 12,
+  "sd": 13
  },
  "curve-phase-shift": {
   "ok": true,
   "first": 9,
-  "med": 17,
-  "sd": 19
+  "med": 16,
+  "sd": 20
+ },
+ "curved-image-picker": {
+  "ok": true,
+  "first": 29,
+  "med": 29,
+  "sd": 43
  },
  "cutout-stride-leap": {
   "ok": true,
-  "first": 9,
-  "med": 220,
-  "sd": 47
+  "first": 10,
+  "med": 232,
+  "sd": 19
+ },
+ "cutout-type-fold": {
+  "ok": true,
+  "first": 189,
+  "med": 191,
+  "sd": 79
  },
  "cyanotype": {
-  "ok": false,
-  "reason": "noframes"
+  "ok": true,
+  "first": 171,
+  "med": 171,
+  "sd": 60
  },
  "cyclone-illustration": {
-  "ok": true,
-  "first": 9,
-  "med": 11,
-  "sd": 6
+  "ok": false,
+  "first": 10,
+  "med": 10,
+  "sd": 3
  },
  "cylinder-drum": {
   "ok": false,
   "first": 9,
   "med": 9,
-  "sd": 5
+  "sd": 1
  },
  "dandelion-radial-release": {
   "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
- },
- "dandelion-subject-illustration": {
-  "ok": false,
-  "first": 10,
-  "med": 10,
-  "sd": 5
- },
- "data-pulse": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
- },
- "diagonal-edge-transition": {
-  "ok": true,
-  "first": 13,
-  "med": 19,
-  "sd": 9
- },
- "diffuse-light-drift": {
-  "ok": true,
-  "first": 9,
-  "med": 44,
-  "sd": 23
- },
- "dim-focus": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
- },
- "dimensions-unfold-fold": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 23
- },
- "dither-lab-book": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
- },
- "door-halftone-illustration": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
- },
- "dot-route-illustration": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 4
- },
- "dots-lines-cylinders": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
- },
- "drafting-tools-illustration": {
-  "ok": true,
-  "first": 9,
-  "med": 30,
-  "sd": 55
- },
- "drive-balloon-illustration": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 4
- },
- "drive-car-illustration": {
-  "ok": true,
-  "first": 9,
-  "med": 45,
-  "sd": 74
- },
- "dual-scroll-settle": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
- },
- "dwell-carousel": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
- },
- "encore-flight": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
- },
- "encore-full-journey": {
-  "ok": true,
-  "first": 10,
-  "med": 36,
-  "sd": 11
- },
- "encore-roll": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 4
- },
- "encore-tap": {
-  "ok": true,
-  "first": 37,
-  "med": 37,
-  "sd": 11
- },
- "encore-tip": {
-  "ok": true,
-  "first": 9,
-  "med": 37,
-  "sd": 11
- },
- "encore-umbrella-illustration": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 4
- },
- "energy-vortex-wrap": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
- },
- "event-clock": {
-  "ok": true,
-  "first": 13,
-  "med": 14,
-  "sd": 10
- },
- "evidence-icons": {
-  "ok": true,
-  "first": 11,
-  "med": 12,
-  "sd": 6
- },
- "experience-progress": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
- },
- "factory-cat-illustration": {
-  "ok": true,
-  "first": 60,
-  "med": 58,
-  "sd": 71
- },
- "factory-cat-puck-illustration": {
-  "ok": true,
-  "first": 9,
-  "med": 77,
-  "sd": 82
- },
- "factory-handle-illustration": {
-  "ok": false,
-  "first": 7,
-  "med": 8,
-  "sd": 10
- },
- "factory-handle-transfer": {
-  "ok": false,
-  "first": 7,
-  "med": 8,
-  "sd": 10
- },
- "fade-rise": {
-  "ok": true,
-  "first": 9,
-  "med": 16,
-  "sd": 15
- },
- "fall-stack-grid": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 4
- },
- "farewell-actions": {
-  "ok": false,
-  "first": 7,
-  "med": 6,
-  "sd": 2
- },
- "film-scratch-flicker": {
-  "ok": false,
-  "first": 9,
-  "med": 15,
-  "sd": 5
- },
- "flat-to-volume": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
- },
- "flock-turn-gather": {
-  "ok": true,
-  "first": 9,
-  "med": 52,
-  "sd": 35
- },
- "focus-zoom": {
-  "ok": true,
-  "first": 9,
-  "med": 15,
-  "sd": 9
- },
- "follow": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
- },
- "formula-evolve": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
- },
- "forward-boat-illustration": {
-  "ok": true,
-  "first": 22,
-  "med": 22,
-  "sd": 39
- },
- "forward-plane-illustration": {
-  "ok": false,
   "reason": "noframes"
  },
- "fragment-replace": {
+ "dandelion-seed-illustration": {
+  "ok": true,
+  "first": 13,
+  "med": 13,
+  "sd": 21
+ },
+ "dandelion-subject-illustration": {
+  "ok": true,
+  "first": 13,
+  "med": 13,
+  "sd": 29
+ },
+ "dandelion-wind-journey": {
+  "ok": false,
+  "first": 8,
+  "med": 8,
+  "sd": 10
+ },
+ "data-pulse": {
   "ok": true,
   "first": 9,
-  "med": 21,
-  "sd": 32
+  "med": 15,
+  "sd": 16
  },
- "frame-jitter-type": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
- },
- "framed-product-slide": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
- },
- "frozen-depth-focus": {
-  "ok": true,
-  "first": 9,
-  "med": 20,
-  "sd": 24
- },
- "galaxy-axis-reveal": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 1
- },
- "gauge-rebound": {
+ "density-field": {
   "ok": true,
   "first": 16,
   "med": 16,
   "sd": 11
  },
+ "diagonal-edge-transition": {
+  "ok": true,
+  "first": 12,
+  "med": 19,
+  "sd": 7
+ },
+ "diamond-aperture-release": {
+  "ok": true,
+  "first": 76,
+  "med": 77,
+  "sd": 46
+ },
+ "diffuse-light-drift": {
+  "ok": true,
+  "first": 10,
+  "med": 39,
+  "sd": 20
+ },
+ "dim-focus": {
+  "ok": true,
+  "first": 13,
+  "med": 13,
+  "sd": 11
+ },
+ "dimension-line": {
+  "ok": true,
+  "first": 12,
+  "med": 12,
+  "sd": 7
+ },
+ "dimensions-unfold-fold": {
+  "ok": true,
+  "first": 24,
+  "med": 24,
+  "sd": 35
+ },
+ "dither-lab-book": {
+  "ok": true,
+  "first": 30,
+  "med": 28,
+  "sd": 25
+ },
+ "door-halftone-illustration": {
+  "ok": true,
+  "first": 9,
+  "med": 16,
+  "sd": 13
+ },
+ "dot-mask-reveal": {
+  "ok": true,
+  "first": 17,
+  "med": 17,
+  "sd": 15
+ },
+ "dot-route-illustration": {
+  "ok": false,
+  "reason": "noframes"
+ },
+ "dots-lines-cylinders": {
+  "ok": true,
+  "first": 215,
+  "med": 215,
+  "sd": 15
+ },
+ "drafting-tools-illustration": {
+  "ok": true,
+  "first": 10,
+  "med": 34,
+  "sd": 66
+ },
+ "drive-balloon-illustration": {
+  "ok": true,
+  "first": 91,
+  "med": 93,
+  "sd": 84
+ },
+ "drive-balloon-release": {
+  "ok": true,
+  "first": 27,
+  "med": 27,
+  "sd": 46
+ },
+ "drive-car-illustration": {
+  "ok": true,
+  "first": 10,
+  "med": 19,
+  "sd": 36
+ },
+ "drive-road-illustration": {
+  "ok": false,
+  "first": 67,
+  "med": 67,
+  "sd": 1
+ },
+ "dual-scroll-settle": {
+  "ok": true,
+  "first": 15,
+  "med": 15,
+  "sd": 7
+ },
+ "dual-scroll": {
+  "ok": true,
+  "first": 18,
+  "med": 19,
+  "sd": 13
+ },
+ "dwell-carousel": {
+  "ok": true,
+  "first": 15,
+  "med": 15,
+  "sd": 16
+ },
+ "emission-drift": {
+  "ok": true,
+  "first": 94,
+  "med": 93,
+  "sd": 58
+ },
+ "encore-flight": {
+  "ok": false,
+  "first": 9,
+  "med": 9,
+  "sd": 1
+ },
+ "encore-full-journey": {
+  "ok": true,
+  "first": 10,
+  "med": 35,
+  "sd": 10
+ },
+ "encore-hook": {
+  "ok": true,
+  "first": 36,
+  "med": 36,
+  "sd": 11
+ },
+ "encore-roll": {
+  "ok": true,
+  "first": 37,
+  "med": 37,
+  "sd": 11
+ },
+ "encore-shed": {
+  "ok": true,
+  "first": 42,
+  "med": 42,
+  "sd": 8
+ },
+ "encore-tap": {
+  "ok": true,
+  "first": 34,
+  "med": 34,
+  "sd": 9
+ },
+ "encore-tip": {
+  "ok": true,
+  "first": 10,
+  "med": 34,
+  "sd": 9
+ },
+ "encore-umbrella-illustration": {
+  "ok": false,
+  "first": 11,
+  "med": 11,
+  "sd": 5
+ },
+ "energy-density-growth": {
+  "ok": true,
+  "first": 17,
+  "med": 17,
+  "sd": 13
+ },
+ "energy-discharge-journey": {
+  "ok": true,
+  "first": 16,
+  "med": 16,
+  "sd": 12
+ },
+ "energy-vortex-wrap": {
+  "ok": true,
+  "first": 48,
+  "med": 49,
+  "sd": 60
+ },
+ "event-clock": {
+  "ok": false,
+  "first": 11,
+  "med": 11,
+  "sd": 3
+ },
+ "evidence-icons": {
+  "ok": false,
+  "first": 11,
+  "med": 11,
+  "sd": 1
+ },
+ "experience-progress": {
+  "ok": true,
+  "first": 9,
+  "med": 17,
+  "sd": 18
+ },
+ "factory-cat-illustration": {
+  "ok": true,
+  "first": 62,
+  "med": 59,
+  "sd": 75
+ },
+ "factory-cat-puck-illustration": {
+  "ok": true,
+  "first": 9,
+  "med": 74,
+  "sd": 85
+ },
+ "factory-handle-illustration": {
+  "ok": false,
+  "first": 8,
+  "med": 8,
+  "sd": 14
+ },
+ "factory-handle-transfer": {
+  "ok": false,
+  "reason": "noframes"
+ },
+ "factory-machine-illustration": {
+  "ok": true,
+  "first": 29,
+  "med": 29,
+  "sd": 45
+ },
+ "fade-drop": {
+  "ok": true,
+  "first": 49,
+  "med": 50,
+  "sd": 65
+ },
+ "fade-rise": {
+  "ok": true,
+  "first": 10,
+  "med": 13,
+  "sd": 7
+ },
+ "fall-stack-grid": {
+  "ok": true,
+  "first": 10,
+  "med": 14,
+  "sd": 46
+ },
+ "fan-object-rise": {
+  "ok": true,
+  "first": 119,
+  "med": 120,
+  "sd": 82
+ },
+ "farewell-actions": {
+  "ok": true,
+  "first": 40,
+  "med": 41,
+  "sd": 61
+ },
+ "filament-shed-drift": {
+  "ok": false,
+  "first": 96,
+  "med": 96,
+  "sd": 4
+ },
+ "filament-unfold-turn": {
+  "ok": false,
+  "first": 99,
+  "med": 99,
+  "sd": 4
+ },
+ "film-scratch-flicker": {
+  "ok": false,
+  "first": 22,
+  "med": 22,
+  "sd": 1
+ },
+ "flat-to-volume": {
+  "ok": true,
+  "first": 22,
+  "med": 22,
+  "sd": 29
+ },
+ "float": {
+  "ok": true,
+  "first": 14,
+  "med": 14,
+  "sd": 10
+ },
+ "flock-turn-gather": {
+  "ok": true,
+  "first": 10,
+  "med": 52,
+  "sd": 26
+ },
+ "focus-zoom": {
+  "ok": false,
+  "first": 10,
+  "med": 12,
+  "sd": 3
+ },
+ "folded-step-rebound": {
+  "ok": true,
+  "first": 236,
+  "med": 236,
+  "sd": 7
+ },
+ "folio-cards-illustration": {
+  "ok": true,
+  "first": 43,
+  "med": 43,
+  "sd": 74
+ },
+ "follow": {
+  "ok": true,
+  "first": 12,
+  "med": 13,
+  "sd": 12
+ },
+ "formula-evolve": {
+  "ok": true,
+  "first": 14,
+  "med": 14,
+  "sd": 11
+ },
+ "forward-boat-illustration": {
+  "ok": true,
+  "first": 16,
+  "med": 16,
+  "sd": 29
+ },
+ "forward-plane-illustration": {
+  "ok": true,
+  "first": 46,
+  "med": 48,
+  "sd": 79
+ },
+ "fragment-replace": {
+  "ok": false,
+  "first": 9,
+  "med": 11,
+  "sd": 1
+ },
+ "frame-jitter-type": {
+  "ok": true,
+  "first": 21,
+  "med": 21,
+  "sd": 26
+ },
+ "frame-ring-collapse": {
+  "ok": false,
+  "first": 5,
+  "med": 5,
+  "sd": 4
+ },
+ "framed-product-slide": {
+  "ok": true,
+  "first": 59,
+  "med": 59,
+  "sd": 49
+ },
+ "frozen-depth-focus": {
+  "ok": true,
+  "first": 9,
+  "med": 19,
+  "sd": 25
+ },
+ "galaxy-axis-reveal": {
+  "ok": true,
+  "first": 49,
+  "med": 50,
+  "sd": 42
+ },
+ "gauge-rebound": {
+  "ok": true,
+  "first": 14,
+  "med": 14,
+  "sd": 7
+ },
  "generative-flow-field": {
   "ok": true,
   "first": 17,
   "med": 17,
-  "sd": 7
+  "sd": 8
  },
  "generative-frame-readout": {
   "ok": false,
-  "first": 7,
-  "med": 7,
+  "first": 9,
+  "med": 8,
   "sd": 5
  },
  "generative-point-morph": {
   "ok": false,
-  "first": 7,
-  "med": 9,
+  "first": 9,
+  "med": 8,
   "sd": 7
+ },
+ "generative-point-sequence": {
+  "ok": false,
+  "first": 10,
+  "med": 10,
+  "sd": 9
  },
  "geometric-poster-sequence": {
   "ok": true,
+  "first": 10,
+  "med": 214,
+  "sd": 35
+ },
+ "geometry-turn-build": {
+  "ok": false,
   "first": 9,
-  "med": 198,
-  "sd": 53
+  "med": 9,
+  "sd": 1
  },
  "glass-card-stagger": {
   "ok": true,
+  "first": 10,
+  "med": 60,
+  "sd": 42
+ },
+ "glass-control-card-illustration": {
+  "ok": false,
   "first": 9,
-  "med": 58,
-  "sd": 35
+  "med": 9,
+  "sd": 3
  },
  "glass-controls-card-illustration": {
-  "ok": true,
-  "first": 9,
-  "med": 12,
-  "sd": 16
+  "ok": false,
+  "first": 10,
+  "med": 10,
+  "sd": 1
  },
  "glass-dialogue-card-illustration": {
   "ok": true,
-  "first": 9,
-  "med": 18,
-  "sd": 41
+  "first": 10,
+  "med": 13,
+  "sd": 48
  },
  "glass-interface-sequence": {
   "ok": false,
   "first": 9,
   "med": 9,
-  "sd": 5
+  "sd": 1
+ },
+ "glass-music-card-illustration": {
+  "ok": true,
+  "first": 23,
+  "med": 23,
+  "sd": 28
  },
  "glass-voice-card-illustration": {
   "ok": true,
-  "first": 9,
+  "first": 10,
+  "med": 16,
+  "sd": 21
+ },
+ "glass-weather-card-illustration": {
+  "ok": true,
+  "first": 14,
   "med": 13,
-  "sd": 16
+  "sd": 17
  },
  "glitch-band-transition": {
   "ok": false,
   "first": 9,
   "med": 9,
-  "sd": 7
+  "sd": 1
  },
  "glyph-bar-collapse": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 215,
+  "med": 215,
+  "sd": 28
  },
  "glyph-code-fill": {
   "ok": false,
   "first": 9,
   "med": 9,
-  "sd": 5
+  "sd": 1
  },
  "glyph-cut-ending": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 223,
+  "med": 223,
+  "sd": 29
  },
  "glyph-multiply-structure": {
   "ok": true,
   "first": 9,
-  "med": 199,
-  "sd": 39
+  "med": 202,
+  "sd": 21
+ },
+ "glyph-rain-fall": {
+  "ok": true,
+  "first": 15,
+  "med": 15,
+  "sd": 13
  },
  "glyph-unit-reflow": {
-  "ok": false,
-  "first": 7,
-  "med": 7,
-  "sd": 2
+  "ok": true,
+  "first": 21,
+  "med": 21,
+  "sd": 21
  },
  "grid-flow-unfold": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 30,
+  "med": 31,
+  "sd": 12
  },
  "grid-wave-scale": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
+  "ok": true,
+  "first": 13,
+  "med": 12,
   "sd": 7
  },
  "group-expand": {
   "ok": false,
   "first": 9,
   "med": 9,
-  "sd": 4
+  "sd": 1
  },
  "group-stagger": {
   "ok": true,
   "first": 9,
-  "med": 16,
-  "sd": 15
+  "med": 15,
+  "sd": 17
  },
  "heads-illustration": {
-  "ok": true,
-  "first": 9,
-  "med": 11,
-  "sd": 7
+  "ok": false,
+  "first": 10,
+  "med": 10,
+  "sd": 3
  },
  "heartbeat-follow": {
-  "ok": true,
-  "first": 9,
-  "med": 11,
-  "sd": 8
- },
- "heat-grid-converge": {
   "ok": false,
   "first": 9,
-  "med": 9,
-  "sd": 4
+  "med": 10,
+  "sd": 1
+ },
+ "heat-grid-converge": {
+  "ok": true,
+  "first": 88,
+  "med": 90,
+  "sd": 34
  },
  "helical-screw-seat": {
   "ok": true,
-  "first": 38,
-  "med": 38,
-  "sd": 35
+  "first": 37,
+  "med": 37,
+  "sd": 38
  },
  "hex-radial-pulse": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
+  "ok": true,
+  "first": 22,
+  "med": 22,
+  "sd": 12
  },
  "hill-vortex-illustration": {
-  "ok": true,
-  "first": 9,
-  "med": 12,
-  "sd": 8
- },
- "horizontal-metal-type": {
   "ok": false,
   "first": 9,
-  "med": 9,
+  "med": 11,
+  "sd": 4
+ },
+ "hinged-wing-flap": {
+  "ok": true,
+  "first": 39,
+  "med": 38,
+  "sd": 50
+ },
+ "horizontal-metal-type": {
+  "ok": true,
+  "first": 21,
+  "med": 21,
   "sd": 7
  },
  "hud-acquisition-sequence": {
   "ok": false,
-  "reason": "noframes"
+  "first": 9,
+  "med": 9,
+  "sd": 1
  },
  "hud-candidate-status": {
   "ok": false,
   "first": 9,
   "med": 9,
-  "sd": 7
+  "sd": 1
  },
  "hud-data-stream": {
   "ok": true,
-  "first": 20,
-  "med": 21,
-  "sd": 22
+  "first": 13,
+  "med": 13,
+  "sd": 14
+ },
+ "hud-globe-scan": {
+  "ok": true,
+  "first": 14,
+  "med": 14,
+  "sd": 12
  },
  "hud-navigation-bars": {
   "ok": true,
-  "first": 9,
-  "med": 20,
-  "sd": 26
+  "first": 10,
+  "med": 14,
+  "sd": 17
  },
  "hud-radar-sweep": {
   "ok": true,
   "first": 13,
-  "med": 14,
+  "med": 13,
   "sd": 15
  },
  "hud-range-readout": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 23,
+  "med": 23,
+  "sd": 32
  },
  "hud-ring-build": {
   "ok": true,
-  "first": 9,
+  "first": 10,
   "med": 13,
-  "sd": 16
+  "sd": 17
+ },
+ "hud-signal-waves": {
+  "ok": true,
+  "first": 44,
+  "med": 44,
+  "sd": 60
  },
  "hud-spectrum-bars": {
   "ok": true,
-  "first": 9,
-  "med": 28,
-  "sd": 32
+  "first": 10,
+  "med": 14,
+  "sd": 15
  },
  "hud-system-boot": {
   "ok": true,
   "first": 8,
-  "med": 15,
-  "sd": 23
+  "med": 13,
+  "sd": 24
  },
- "interface-feedback": {
-  "ok": true,
-  "first": 21,
-  "med": 21,
-  "sd": 32
- },
- "iris-open-transition": {
-  "ok": true,
-  "first": 14,
-  "med": 42,
-  "sd": 62
- },
- "joint-rule-unfold": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
- },
- "journey-flower-illustration": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
- },
- "journey-lotus-illustration": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 4
- },
- "journey-pond-animal-illustration": {
+ "hud-target-lock": {
   "ok": false,
   "first": 7,
   "med": 7,
-  "sd": 2
+  "sd": 3
  },
- "keyframe-workbench": {
+ "image-particles-wordmark": {
   "ok": true,
-  "first": 10,
-  "med": 21,
-  "sd": 5
+  "first": 214,
+  "med": 214,
+  "sd": 11
  },
- "landscape-boundary-carry": {
+ "interface-feedback": {
+  "ok": true,
+  "first": 12,
+  "med": 12,
+  "sd": 7
+ },
+ "inventory-contour-fit": {
+  "ok": true,
+  "first": 65,
+  "med": 65,
+  "sd": 41
+ },
+ "inward-curve-flow": {
+  "ok": true,
+  "first": 11,
+  "med": 11,
+  "sd": 6
+ },
+ "iris-open-transition": {
+  "ok": true,
+  "first": 11,
+  "med": 25,
+  "sd": 55
+ },
+ "joint-rule-unfold": {
+  "ok": true,
+  "first": 236,
+  "med": 236,
+  "sd": 6
+ },
+ "journey-air-animal-illustration": {
   "ok": false,
   "first": 9,
   "med": 9,
-  "sd": 5
+  "sd": 16
+ },
+ "journey-flower-illustration": {
+  "ok": true,
+  "first": 14,
+  "med": 14,
+  "sd": 22
+ },
+ "journey-landscape-illustration": {
+  "ok": true,
+  "first": 92,
+  "med": 92,
+  "sd": 16
+ },
+ "journey-lotus-illustration": {
+  "ok": true,
+  "first": 47,
+  "med": 48,
+  "sd": 80
+ },
+ "journey-pond-animal-illustration": {
+  "ok": false,
+  "first": 8,
+  "med": 8,
+  "sd": 7
+ },
+ "keyframe-workbench": {
+  "ok": false,
+  "first": 9,
+  "med": 21,
+  "sd": 1
+ },
+ "landscape-boundary-carry": {
+  "ok": true,
+  "first": 8,
+  "med": 74,
+  "sd": 39
  },
  "lap-outline-echo": {
   "ok": false,
   "first": 9,
   "med": 9,
-  "sd": 4
+  "sd": 9
  },
  "layer-expand": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 17,
+  "med": 17,
+  "sd": 13
+ },
+ "layout-reorder": {
+  "ok": true,
+  "first": 16,
+  "med": 17,
+  "sd": 10
  },
  "leader-callout": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
- },
- "lego-brick-illustration": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 4
- },
- "letter-hole-zoom": {
-  "ok": true,
-  "first": 23,
-  "med": 134,
-  "sd": 97
- },
- "letter-ripple": {
   "ok": true,
   "first": 9,
   "med": 12,
+  "sd": 6
+ },
+ "lego-brick-illustration": {
+  "ok": true,
+  "first": 190,
+  "med": 190,
+  "sd": 55
+ },
+ "lego-comparison-timer": {
+  "ok": true,
+  "first": 222,
+  "med": 221,
+  "sd": 17
+ },
+ "lego-engine-flow": {
+  "ok": true,
+  "first": 208,
+  "med": 208,
   "sd": 15
+ },
+ "letter-galaxy-illustration": {
+  "ok": false,
+  "first": 9,
+  "med": 9,
+  "sd": 2
+ },
+ "letter-hole-zoom": {
+  "ok": true,
+  "first": 11,
+  "med": 117,
+  "sd": 96
+ },
+ "letter-ripple": {
+  "ok": false,
+  "first": 10,
+  "med": 10,
+  "sd": 1
  },
  "letter-settle": {
   "ok": false,
   "first": 9,
   "med": 9,
-  "sd": 7
+  "sd": 1
  },
  "letter-symbol-illustration": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
+  "ok": true,
+  "first": 15,
+  "med": 15,
+  "sd": 24
  },
  "lid-open-float": {
   "ok": true,
-  "first": 9,
-  "med": 32,
-  "sd": 55
+  "first": 10,
+  "med": 16,
+  "sd": 32
  },
  "lightning-orb-illustration": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 52,
+  "med": 52,
+  "sd": 63
  },
  "line-converge": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 19,
+  "med": 19,
+  "sd": 14
  },
  "live-code-readout": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
+  "ok": true,
+  "first": 23,
+  "med": 23,
+  "sd": 21
  },
  "load-balance": {
   "ok": true,
-  "first": 9,
-  "med": 16,
-  "sd": 21
+  "first": 10,
+  "med": 13,
+  "sd": 17
  },
  "local-scan": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 18,
+  "med": 19,
+  "sd": 27
  },
  "map-paint": {
   "ok": false,
   "first": 9,
-  "med": 9,
-  "sd": 7
+  "med": 12,
+  "sd": 4
  },
  "mask-stagger-text": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 23,
+  "med": 23,
+  "sd": 36
  },
  "masked-image-scroll": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 61,
+  "med": 62,
+  "sd": 57
  },
  "material-card-stagger": {
   "ok": true,
-  "first": 216,
-  "med": 216,
-  "sd": 41
+  "first": 218,
+  "med": 219,
+  "sd": 21
+ },
+ "material-evolution-sequence": {
+  "ok": true,
+  "first": 211,
+  "med": 211,
+  "sd": 43
  },
  "material-fab-panel": {
   "ok": true,
   "first": 9,
-  "med": 209,
-  "sd": 48
+  "med": 206,
+  "sd": 42
+ },
+ "material-form-chain": {
+  "ok": true,
+  "first": 193,
+  "med": 194,
+  "sd": 61
  },
  "material-like-pop": {
   "ok": true,
-  "first": 216,
-  "med": 225,
-  "sd": 45
+  "first": 219,
+  "med": 219,
+  "sd": 21
  },
  "material-phone-rise": {
   "ok": true,
-  "first": 216,
+  "first": 219,
+  "med": 206,
+  "sd": 43
+ },
+ "material-phone-sequence": {
+  "ok": true,
+  "first": 209,
   "med": 209,
-  "sd": 48
+  "sd": 49
  },
  "material-spinner-arc": {
   "ok": true,
   "first": 9,
-  "med": 218,
-  "sd": 42
+  "med": 219,
+  "sd": 21
  },
  "material-switch-spring": {
   "ok": true,
-  "first": 217,
-  "med": 217,
-  "sd": 43
+  "first": 219,
+  "med": 219,
+  "sd": 21
  },
  "math-formula-drift": {
   "ok": false,
-  "reason": "noframes"
+  "first": 11,
+  "med": 11,
+  "sd": 4
+ },
+ "mechanical-window-sequence": {
+  "ok": true,
+  "first": 61,
+  "med": 61,
+  "sd": 35
  },
  "meshed-gears-drive": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 47
+  "ok": true,
+  "first": 138,
+  "med": 138,
+  "sd": 44
  },
  "metal-drop-split": {
-  "ok": false,
-  "reason": "noframes"
+  "ok": true,
+  "first": 17,
+  "med": 18,
+  "sd": 8
+ },
+ "metal-impact-type-sequence": {
+  "ok": true,
+  "first": 22,
+  "med": 22,
+  "sd": 8
  },
  "mindmap-follow": {
   "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 4
+  "first": 11,
+  "med": 11,
+  "sd": 3
  },
  "mindmap-grow": {
   "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "first": 12,
+  "med": 12,
+  "sd": 4
  },
  "moon-card-illustration": {
   "ok": true,
   "first": 12,
-  "med": 37,
-  "sd": 51
+  "med": 36,
+  "sd": 55
  },
  "moon-event-fill": {
   "ok": true,
-  "first": 9,
-  "med": 12,
-  "sd": 18
+  "first": 10,
+  "med": 11,
+  "sd": 14
  },
  "motifs-gather-atlas": {
   "ok": true,
-  "first": 9,
-  "med": 175,
-  "sd": 39
+  "first": 10,
+  "med": 171,
+  "sd": 36
  },
  "motion-compare": {
   "ok": true,
   "first": 13,
   "med": 13,
-  "sd": 7
+  "sd": 8
  },
  "motion-oasis-sequence": {
   "ok": true,
-  "first": 9,
-  "med": 189,
-  "sd": 44
+  "first": 10,
+  "med": 199,
+  "sd": 23
+ },
+ "mouth-open-react": {
+  "ok": true,
+  "first": 44,
+  "med": 44,
+  "sd": 64
  },
  "multi-orbit-drift": {
   "ok": true,
   "first": 9,
-  "med": 12,
-  "sd": 14
+  "med": 11,
+  "sd": 10
  },
  "mushroom-cloud-illustration": {
   "ok": false,
   "first": 9,
   "med": 9,
-  "sd": 7
+  "sd": 1
+ },
+ "mushroom-sphere-journey": {
+  "ok": true,
+  "first": 17,
+  "med": 17,
+  "sd": 12
  },
  "narrated-count": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 26,
+  "med": 26,
+  "sd": 39
  },
  "narrowing-flow-accelerate": {
   "ok": true,
   "first": 9,
-  "med": 12,
-  "sd": 7
+  "med": 11,
+  "sd": 5
  },
  "neon-horizon": {
   "ok": true,
   "first": 10,
-  "med": 42,
-  "sd": 43
+  "med": 30,
+  "sd": 44
  },
  "neon-title-sequence": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
+  "ok": true,
+  "first": 18,
+  "med": 55,
+  "sd": 63
  },
  "neon-type-flicker": {
-  "ok": true,
-  "first": 19,
-  "med": 19,
-  "sd": 10
+  "ok": false,
+  "first": 14,
+  "med": 14,
+  "sd": 4
  },
  "next-shot-preentry": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 39
+  "ok": true,
+  "first": 46,
+  "med": 46,
+  "sd": 47
  },
  "note-hop-illustration": {
   "ok": true,
   "first": 9,
-  "med": 89,
-  "sd": 30
+  "med": 80,
+  "sd": 32
  },
  "orbit": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
+  "ok": true,
+  "first": 32,
+  "med": 32,
+  "sd": 22
  },
  "osmanthus-butterfly-illustration": {
   "ok": false,
-  "first": 7,
-  "med": 7,
-  "sd": 2
+  "first": 8,
+  "med": 8,
+  "sd": 10
+ },
+ "osmanthus-butterfly-journey": {
+  "ok": false,
+  "first": 10,
+  "med": 10,
+  "sd": 27
  },
  "osmanthus-flower-illustration": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
+  "ok": true,
+  "first": 31,
+  "med": 31,
+  "sd": 59
+ },
+ "osmanthus-leaf-illustration": {
+  "ok": true,
+  "first": 11,
+  "med": 10,
+  "sd": 17
  },
  "osmanthus-moon-illustration": {
   "ok": true,
-  "first": 9,
-  "med": 15,
-  "sd": 66
+  "first": 10,
+  "med": 13,
+  "sd": 54
+ },
+ "osmanthus-symbol-illustration": {
+  "ok": false,
+  "first": 7,
+  "med": 7,
+  "sd": 3
+ },
+ "osmanthus-tree-illustration": {
+  "ok": true,
+  "first": 13,
+  "med": 12,
+  "sd": 26
+ },
+ "outro-credit-lift": {
+  "ok": true,
+  "first": 27,
+  "med": 28,
+  "sd": 47
  },
  "outro-recap-sequence": {
-  "ok": true,
-  "first": 16,
-  "med": 16,
-  "sd": 11
+  "ok": false,
+  "first": 12,
+  "med": 12,
+  "sd": 4
  },
  "page-cover": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 38,
+  "med": 38,
+  "sd": 31
+ },
+ "panel-rise-collapse": {
+  "ok": true,
+  "first": 22,
+  "med": 22,
+  "sd": 8
+ },
+ "paper-card-drop": {
+  "ok": true,
+  "first": 158,
+  "med": 164,
+  "sd": 92
  },
  "paper-disc-pop": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
+  "ok": true,
+  "first": 154,
+  "med": 155,
+  "sd": 51
  },
  "paper-scroll-illustration": {
   "ok": true,
-  "first": 9,
-  "med": 63,
-  "sd": 91
+  "first": 10,
+  "med": 57,
+  "sd": 85
  },
  "paper-spiral-sequence": {
   "ok": true,
   "first": 10,
-  "med": 133,
-  "sd": 58
+  "med": 118,
+  "sd": 52
  },
  "paper-strip-stagger": {
   "ok": true,
-  "first": 9,
-  "med": 108,
-  "sd": 25
+  "first": 10,
+  "med": 104,
+  "sd": 27
  },
  "paper-tilt": {
   "ok": false,
   "first": 9,
   "med": 9,
-  "sd": 7
+  "sd": 1
  },
  "paper-title-stagger": {
   "ok": true,
   "first": 9,
-  "med": 118,
-  "sd": 29
+  "med": 114,
+  "sd": 15
  },
  "pareto-efficiency-sequence": {
   "ok": true,
-  "first": 250,
-  "med": 250,
-  "sd": 10
+  "first": 247,
+  "med": 247,
+  "sd": 11
  },
  "particle-ballistic-fall": {
   "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 4
+  "first": 11,
+  "med": 11,
+  "sd": 2
  },
  "particle-hopper": {
   "ok": true,
-  "first": 9,
-  "med": 66,
-  "sd": 9
+  "first": 10,
+  "med": 67,
+  "sd": 7
  },
  "particle-torus-roll": {
   "ok": false,
-  "first": 9,
-  "med": 10,
-  "sd": 5
+  "first": 7,
+  "med": 7,
+  "sd": 2
  },
  "particle-word": {
   "ok": false,
-  "first": 9,
-  "med": 9,
+  "first": 18,
+  "med": 18,
   "sd": 5
  },
  "passage-animal-response": {
   "ok": true,
   "first": 9,
-  "med": 71,
+  "med": 72,
   "sd": 36
  },
  "pendulum-phase-wave": {
   "ok": true,
   "first": 9,
-  "med": 11,
-  "sd": 10
+  "med": 10,
+  "sd": 6
  },
  "perspective-grid-flow": {
+  "ok": false,
+  "first": 10,
+  "med": 14,
+  "sd": 4
+ },
+ "phrase-weave-glyph": {
   "ok": true,
-  "first": 9,
+  "first": 26,
   "med": 27,
-  "sd": 20
+  "sd": 24
  },
  "pivot-swing": {
-  "ok": false,
-  "reason": "noframes"
+  "ok": true,
+  "first": 13,
+  "med": 13,
+  "sd": 20
  },
  "pixel-dissolve-transition": {
   "ok": false,
   "first": 9,
+  "med": 13,
+  "sd": 5
+ },
+ "pixel-hop-squash": {
+  "ok": false,
+  "first": 9,
   "med": 9,
-  "sd": 4
+  "sd": 1
  },
  "pixel-motion-sequence": {
   "ok": true,
-  "first": 30,
-  "med": 31,
-  "sd": 14
+  "first": 29,
+  "med": 29,
+  "sd": 10
  },
  "pixel-robot-illustration": {
+  "ok": true,
+  "first": 29,
+  "med": 29,
+  "sd": 43
+ },
+ "plume-rise-curl": {
   "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 42
+  "first": 10,
+  "med": 10,
+  "sd": 1
  },
  "point-domain-flow-sequence": {
-  "ok": false,
-  "first": 2,
-  "med": 14,
-  "sd": 12
+  "ok": true,
+  "first": 21,
+  "med": 22,
+  "sd": 19
  },
  "point-link-hit": {
-  "ok": true,
+  "ok": false,
   "first": 9,
   "med": 13,
-  "sd": 7
+  "sd": 4
  },
  "point-morph": {
   "ok": false,
   "first": 9,
   "med": 9,
-  "sd": 7
+  "sd": 1
+ },
+ "polished-metal-sweep": {
+  "ok": true,
+  "first": 39,
+  "med": 38,
+  "sd": 38
+ },
+ "pop-pulse-ring": {
+  "ok": true,
+  "first": 12,
+  "med": 12,
+  "sd": 11
  },
  "progress-fill-exit": {
-  "ok": true,
+  "ok": false,
   "first": 11,
-  "med": 12,
-  "sd": 6
+  "med": 11,
+  "sd": 1
  },
  "progress-readout": {
+  "ok": true,
+  "first": 22,
+  "med": 22,
+  "sd": 46
+ },
+ "prompt-border-trace": {
   "ok": false,
-  "first": 9,
-  "med": 9,
+  "first": 20,
+  "med": 20,
   "sd": 5
  },
  "prompt-char-gather": {
   "ok": true,
-  "first": 9,
-  "med": 20,
-  "sd": 16
+  "first": 10,
+  "med": 19,
+  "sd": 14
  },
  "prompt-chinese-type": {
   "ok": true,
-  "first": 9,
-  "med": 24,
-  "sd": 12
+  "first": 10,
+  "med": 21,
+  "sd": 8
+ },
+ "prompt-to-core-sequence": {
+  "ok": true,
+  "first": 28,
+  "med": 28,
+  "sd": 15
  },
  "prompt-ui-push": {
-  "ok": true,
-  "first": 22,
-  "med": 22,
-  "sd": 7
+  "ok": false,
+  "first": 20,
+  "med": 20,
+  "sd": 5
  },
  "proximity-link-drift": {
   "ok": true,
   "first": 9,
-  "med": 12,
-  "sd": 8
+  "med": 11,
+  "sd": 6
  },
  "purchase-table-vector": {
   "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "first": 8,
+  "med": 8,
+  "sd": 9
  },
  "radial-branch-flow": {
   "ok": false,
   "first": 9,
-  "med": 11,
-  "sd": 4
+  "med": 9,
+  "sd": 1
  },
  "radial-flash-transition": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 24,
+  "med": 24,
+  "sd": 11
  },
  "radial-line-burst": {
-  "ok": true,
+  "ok": false,
   "first": 11,
   "med": 11,
-  "sd": 7
+  "sd": 2
+ },
+ "radial-speed-lines": {
+  "ok": true,
+  "first": 12,
+  "med": 12,
+  "sd": 9
+ },
+ "rain-freeze-resume": {
+  "ok": true,
+  "first": 28,
+  "med": 28,
+  "sd": 26
  },
  "rapid-cut": {
-  "ok": false,
-  "first": 9,
-  "med": 8,
-  "sd": 4
+  "ok": true,
+  "first": 48,
+  "med": 48,
+  "sd": 29
  },
  "rasengan-illustration": {
   "ok": true,
-  "first": 9,
-  "med": 39,
-  "sd": 53
+  "first": 10,
+  "med": 27,
+  "sd": 42
  },
  "rect-aperture-breathe": {
   "ok": true,
-  "first": 46,
-  "med": 76,
+  "first": 41,
+  "med": 62,
   "sd": 73
  },
  "rect-wave-field": {
   "ok": true,
   "first": 9,
-  "med": 56,
-  "sd": 34
+  "med": 52,
+  "sd": 37
  },
  "reduction-dimension": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 14,
+  "med": 14,
+  "sd": 12
  },
  "related-sentences-converge": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
+  "ok": true,
+  "first": 10,
+  "med": 10,
+  "sd": 14
  },
  "result-anchors": {
+  "ok": true,
+  "first": 181,
+  "med": 181,
+  "sd": 63
+ },
+ "ridge-text-write": {
   "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "first": 13,
+  "med": 13,
+  "sd": 2
  },
  "rigid-rebound": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 4
+  "ok": true,
+  "first": 13,
+  "med": 13,
+  "sd": 5
  },
  "ring-construction": {
   "ok": false,
   "first": 11,
   "med": 11,
-  "sd": 4
+  "sd": 2
  },
  "ring-sphere-journey": {
   "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "first": 11,
+  "med": 11,
+  "sd": 2
  },
  "rolling-distance": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 35,
+  "med": 35,
+  "sd": 67
+ },
+ "row-flash-transform": {
+  "ok": true,
+  "first": 212,
+  "med": 212,
+  "sd": 13
  },
  "ruler-ticks": {
   "ok": false,
   "first": 9,
   "med": 9,
-  "sd": 5
+  "sd": 1
+ },
+ "sage-butterfly-illustration": {
+  "ok": true,
+  "first": 52,
+  "med": 52,
+  "sd": 67
+ },
+ "scale-in": {
+  "ok": true,
+  "first": 14,
+  "med": 14,
+  "sd": 11
  },
  "scene-carry": {
   "ok": true,
   "first": 9,
-  "med": 19,
-  "sd": 24
+  "med": 25,
+  "sd": 33
  },
  "scraps-return-layout": {
   "ok": true,
   "first": 9,
-  "med": 235,
-  "sd": 39
+  "med": 234,
+  "sd": 11
  },
  "scroll-brake": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
- },
- "seamless-scroll": {
   "ok": true,
   "first": 17,
   "med": 17,
+  "sd": 12
+ },
+ "scroll-unroll-feed": {
+  "ok": true,
+  "first": 83,
+  "med": 84,
+  "sd": 98
+ },
+ "seamless-scroll": {
+  "ok": false,
+  "first": 12,
+  "med": 12,
+  "sd": 4
+ },
+ "seat-water-lift": {
+  "ok": true,
+  "first": 150,
+  "med": 150,
   "sd": 10
  },
  "sector-appear": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 15,
+  "med": 15,
+  "sd": 17
  },
  "seed-bloom-brand-sequence": {
   "ok": true,
   "first": 9,
-  "med": 132,
+  "med": 113,
   "sd": 100
+ },
+ "seed-shedding-illustration": {
+  "ok": false,
+  "first": 96,
+  "med": 96,
+  "sd": 4
+ },
+ "seed-sprout-bloom": {
+  "ok": true,
+  "first": 135,
+  "med": 135,
+  "sd": 13
+ },
+ "selfie-cat-illustration": {
+  "ok": false,
+  "first": 10,
+  "med": 10,
+  "sd": 10
  },
  "selfie-foot-turn": {
   "ok": true,
   "first": 9,
-  "med": 153,
+  "med": 163,
   "sd": 94
  },
  "selfie-phone-illustration": {
   "ok": false,
   "first": 9,
   "med": 9,
-  "sd": 5
+  "sd": 1
  },
  "selfie-phone-screen-illustration": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
+  "ok": true,
+  "first": 202,
+  "med": 202,
+  "sd": 56
  },
  "selfie-preview-illustration": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 4
+  "ok": true,
+  "first": 150,
+  "med": 150,
+  "sd": 94
  },
  "send-press-ring": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
+  "ok": true,
+  "first": 22,
+  "med": 22,
+  "sd": 6
  },
  "sentence-depth-tunnel": {
   "ok": true,
   "first": 9,
-  "med": 13,
-  "sd": 9
+  "med": 14,
+  "sd": 12
  },
  "sequential-spec": {
   "ok": false,
   "first": 9,
   "med": 9,
-  "sd": 5
+  "sd": 1
  },
  "settle-grow-spread": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
+  "ok": true,
+  "first": 116,
+  "med": 121,
+  "sd": 13
  },
  "shape-contact-rebound": {
   "ok": false,
-  "reason": "noframes"
+  "first": 9,
+  "med": 9,
+  "sd": 1
  },
  "shape-morph": {
   "ok": true,
-  "first": 24,
-  "med": 27,
-  "sd": 45
+  "first": 15,
+  "med": 17,
+  "sd": 31
  },
  "shared-object": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 35,
+  "med": 35,
+  "sd": 20
  },
  "shenzhen-skyline-illustration": {
   "ok": true,
   "first": 9,
-  "med": 46,
+  "med": 56,
   "sd": 22
  },
  "shenzhen-snow-journey": {
+  "ok": true,
+  "first": 39,
+  "med": 39,
+  "sd": 24
+ },
+ "shutter-transition": {
   "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
+  "first": 23,
+  "med": 23,
+  "sd": 4
+ },
+ "slat-alternate-transition": {
+  "ok": true,
+  "first": 19,
+  "med": 19,
+  "sd": 6
  },
  "slide-type-reveal": {
   "ok": true,
   "first": 12,
-  "med": 43,
-  "sd": 55
+  "med": 40,
+  "sd": 54
  },
  "slider-response": {
   "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "reason": "noframes"
  },
  "smoke-ring-illustration": {
   "ok": false,
   "first": 9,
-  "med": 10,
-  "sd": 5
+  "med": 9,
+  "sd": 1
  },
  "snow-arrival-window": {
+  "ok": true,
+  "first": 53,
+  "med": 53,
+  "sd": 22
+ },
+ "snow-crystal-illustration": {
   "ok": false,
-  "first": 7,
-  "med": 7,
-  "sd": 24
+  "first": 9,
+  "med": 9,
+  "sd": 2
+ },
+ "soft-type-land": {
+  "ok": true,
+  "first": 165,
+  "med": 164,
+  "sd": 47
  },
  "spark-follow-text": {
   "ok": true,
-  "first": 9,
-  "med": 10,
-  "sd": 12
+  "first": 10,
+  "med": 11,
+  "sd": 13
+ },
+ "sparse-dial-counterturn": {
+  "ok": false,
+  "first": 18,
+  "med": 18,
+  "sd": 2
  },
  "spatial-mechanical-sequence": {
   "ok": true,
-  "first": 135,
-  "med": 189,
-  "sd": 97
+  "first": 128,
+  "med": 215,
+  "sd": 108
  },
  "spheres-material-merge": {
   "ok": true,
-  "first": 9,
-  "med": 190,
-  "sd": 63
+  "first": 10,
+  "med": 219,
+  "sd": 25
  },
  "spherical-vortex-flow": {
-  "ok": true,
+  "ok": false,
   "first": 10,
-  "med": 12,
-  "sd": 7
+  "med": 11,
+  "sd": 4
+ },
+ "spiral-draw-spin": {
+  "ok": true,
+  "first": 149,
+  "med": 149,
+  "sd": 48
  },
  "spiral-galaxy-illustration": {
-  "ok": false,
-  "first": 9,
-  "med": 10,
+  "ok": true,
+  "first": 11,
+  "med": 11,
   "sd": 6
  },
- "spiral-point-turn": {
+ "spiral-inward-flow": {
   "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "first": 10,
+  "med": 10,
+  "sd": 4
+ },
+ "spiral-point-turn": {
+  "ok": true,
+  "first": 11,
+  "med": 11,
+  "sd": 8
  },
  "squash-bounce": {
   "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
+  "first": 11,
+  "med": 11,
+  "sd": 1
  },
- "staged-build": {
+ "stack-flick": {
   "ok": false,
   "first": 9,
   "med": 9,
-  "sd": 7
+  "sd": 1
+ },
+ "stage-merge-illustration": {
+  "ok": false,
+  "first": 10,
+  "med": 10,
+  "sd": 4
+ },
+ "staged-build": {
+  "ok": true,
+  "first": 9,
+  "med": 21,
+  "sd": 27
  },
  "stagger-crossfade": {
+  "ok": false,
+  "first": 9,
+  "med": 9,
+  "sd": 1
+ },
+ "stagger-drop": {
+  "ok": true,
+  "first": 36,
+  "med": 36,
+  "sd": 63
+ },
+ "stagger-in": {
+  "ok": false,
+  "first": 11,
+  "med": 11,
+  "sd": 2
+ },
+ "stamp-land": {
+  "ok": false,
+  "first": 11,
+  "med": 11,
+  "sd": 1
+ },
+ "star-letter-blue-journey": {
+  "ok": true,
+  "first": 62,
+  "med": 62,
+  "sd": 30
+ },
+ "star-letter-journey": {
   "ok": false,
   "first": 7,
   "med": 7,
   "sd": 2
  },
- "stagger-in": {
-  "ok": true,
-  "first": 11,
-  "med": 13,
-  "sd": 6
- },
- "stamp-land": {
-  "ok": true,
-  "first": 11,
-  "med": 11,
-  "sd": 8
- },
- "star-letter-blue-journey": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
- },
  "steel-ruler-illustration": {
   "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
+  "first": 7,
+  "med": 7,
+  "sd": 2
  },
  "step-hop": {
-  "ok": false,
-  "first": 11,
-  "med": 11,
-  "sd": 4
+  "ok": true,
+  "first": 12,
+  "med": 12,
+  "sd": 5
  },
  "striped-rise-pulse": {
   "ok": true,
-  "first": 20,
-  "med": 34,
-  "sd": 40
+  "first": 14,
+  "med": 25,
+  "sd": 35
  },
  "striped-sun-rise": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
+  "ok": true,
+  "first": 41,
+  "med": 42,
+  "sd": 47
  },
  "stroke-draw": {
   "ok": false,
-  "first": 9,
-  "med": 9,
+  "first": 12,
+  "med": 12,
   "sd": 5
  },
  "stroke-hatch": {
+  "ok": false,
+  "first": 11,
+  "med": 12,
+  "sd": 5
+ },
+ "subtitle-block-shift": {
   "ok": true,
-  "first": 12,
+  "first": 13,
+  "med": 13,
+  "sd": 6
+ },
+ "subtitle-cell-focus": {
+  "ok": true,
+  "first": 13,
   "med": 13,
   "sd": 8
  },
- "subtitle-cell-focus": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
- },
  "subtitle-focus": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 14,
+  "med": 12,
+  "sd": 8
  },
  "sunbeam-circle-rebound": {
+  "ok": true,
+  "first": 148,
+  "med": 148,
+  "sd": 23
+ },
+ "sunset-airplane-illustration": {
   "ok": false,
-  "first": 9,
+  "first": 10,
   "med": 9,
-  "sd": 7
+  "sd": 9
  },
  "sunset-pickup-journey": {
   "ok": true,
   "first": 9,
-  "med": 107,
-  "sd": 56
+  "med": 116,
+  "sd": 60
  },
  "sunset-sea-illustration": {
   "ok": false,
   "first": 9,
   "med": 9,
-  "sd": 4
+  "sd": 1
+ },
+ "sunset-sun-illustration": {
+  "ok": true,
+  "first": 33,
+  "med": 33,
+  "sd": 56
  },
  "sunset-water-reflection": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 96,
+  "med": 96,
+  "sd": 11
  },
  "swarm-arc-flight": {
   "ok": false,
   "first": 9,
-  "med": 5,
-  "sd": 9
+  "med": 9,
+  "sd": 1
  },
  "symbol-flight-settle": {
   "ok": false,
   "first": 9,
   "med": 9,
-  "sd": 5
+  "sd": 1
  },
  "terminal-code": {
   "ok": true,
   "first": 9,
-  "med": 20,
-  "sd": 12
+  "med": 18,
+  "sd": 13
  },
  "terminal-window-illustration": {
   "ok": true,
-  "first": 9,
-  "med": 22,
-  "sd": 11
+  "first": 10,
+  "med": 23,
+  "sd": 17
+ },
+ "terraced-rise": {
+  "ok": true,
+  "first": 198,
+  "med": 198,
+  "sd": 29
+ },
+ "terrain-line-wave": {
+  "ok": true,
+  "first": 31,
+  "med": 30,
+  "sd": 18
+ },
+ "text-decode": {
+  "ok": true,
+  "first": 21,
+  "med": 21,
+  "sd": 33
  },
  "text-edit": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 16,
+  "med": 16,
+  "sd": 14
  },
  "text-plane-tilt": {
   "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
+  "first": 5,
+  "med": 5,
+  "sd": 7
+ },
+ "theme-card-layout": {
+  "ok": true,
+  "first": 21,
+  "med": 21,
+  "sd": 9
  },
  "theme-color-cycle": {
-  "ok": false,
+  "ok": true,
   "first": 9,
-  "med": 9,
-  "sd": 7
+  "med": 25,
+  "sd": 37
  },
  "thread-weave": {
   "ok": false,
   "first": 9,
   "med": 9,
-  "sd": 5
+  "sd": 1
+ },
+ "three-column-aperture": {
+  "ok": true,
+  "first": 29,
+  "med": 29,
+  "sd": 43
  },
  "tile-ring-unfold": {
   "ok": true,
   "first": 9,
-  "med": 195,
-  "sd": 37
+  "med": 196,
+  "sd": 22
  },
  "tile-round-wave": {
   "ok": true,
-  "first": 216,
-  "med": 196,
-  "sd": 46
+  "first": 219,
+  "med": 194,
+  "sd": 38
+ },
+ "tile-wall-focus": {
+  "ok": true,
+  "first": 17,
+  "med": 17,
+  "sd": 10
  },
  "tile-wave-transition": {
   "ok": true,
@@ -1871,188 +2597,228 @@
  },
  "tilt-drop-settle": {
   "ok": true,
-  "first": 9,
-  "med": 75,
-  "sd": 103
+  "first": 10,
+  "med": 67,
+  "sd": 98
+ },
+ "time-in-motion-sequence": {
+  "ok": true,
+  "first": 21,
+  "med": 21,
+  "sd": 38
+ },
+ "timed-point-hop": {
+  "ok": true,
+  "first": 94,
+  "med": 94,
+  "sd": 30
  },
  "timeline-dock-down": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 11,
+  "med": 11,
+  "sd": 6
  },
  "timeline-keyframe-playhead": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
+  "ok": true,
+  "first": 27,
+  "med": 27,
+  "sd": 10
  },
  "timeline-progress": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 4
+  "ok": true,
+  "first": 16,
+  "med": 16,
+  "sd": 15
  },
  "title-content": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 25,
+  "med": 25,
+  "sd": 41
  },
  "title-stagger": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
+  "ok": true,
+  "first": 27,
+  "med": 27,
+  "sd": 20
  },
  "tone-grow": {
   "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
+  "reason": "noframes"
  },
  "torus-illustration": {
-  "ok": true,
+  "ok": false,
   "first": 9,
-  "med": 11,
-  "sd": 5
+  "med": 10,
+  "sd": 2
+ },
+ "trash-intake-output": {
+  "ok": true,
+  "first": 13,
+  "med": 13,
+  "sd": 15
  },
  "trend-draw": {
   "ok": false,
   "first": 9,
   "med": 9,
-  "sd": 5
+  "sd": 1
  },
  "type-burst-settle": {
   "ok": true,
-  "first": 9,
-  "med": 175,
-  "sd": 30
+  "first": 10,
+  "med": 192,
+  "sd": 10
  },
  "type-reveal": {
-  "ok": false,
-  "first": 9,
-  "med": 18,
-  "sd": 1
+  "ok": true,
+  "first": 26,
+  "med": 26,
+  "sd": 19
  },
  "vector-angle-swing": {
   "ok": true,
   "first": 9,
-  "med": 13,
-  "sd": 13
+  "med": 12,
+  "sd": 10
  },
  "venturi-illustration": {
-  "ok": false,
+  "ok": true,
   "first": 9,
-  "med": 9,
-  "sd": 7
+  "med": 12,
+  "sd": 5
  },
  "vertical-feed": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
+  "ok": true,
+  "first": 13,
+  "med": 13,
   "sd": 7
+ },
+ "vortex-line-roll": {
+  "ok": false,
+  "first": 10,
+  "med": 10,
+  "sd": 4
  },
  "vortex-ring-illustration": {
   "ok": false,
-  "first": 9,
-  "med": 11,
-  "sd": 5
+  "first": 10,
+  "med": 10,
+  "sd": 4
  },
  "water-wave-handoff": {
   "ok": true,
-  "first": 186,
-  "med": 193,
-  "sd": 38
+  "first": 194,
+  "med": 194,
+  "sd": 20
  },
  "wave-grid": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 5
+  "ok": true,
+  "first": 54,
+  "med": 54,
+  "sd": 30
  },
  "weighted-node-signal": {
   "ok": true,
   "first": 9,
-  "med": 12,
-  "sd": 7
+  "med": 13,
+  "sd": 8
+ },
+ "window-experiment-journey": {
+  "ok": true,
+  "first": 228,
+  "med": 227,
+  "sd": 28
  },
  "window-experiment-tree-illustration": {
   "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 4
+  "first": 8,
+  "med": 8,
+  "sd": 1
  },
  "window-flower-bloom": {
   "ok": true,
   "first": 9,
   "med": 15,
-  "sd": 59
+  "sd": 62
  },
  "window-step-connect": {
-  "ok": true,
-  "first": 10,
-  "med": 12,
-  "sd": 8
+  "ok": false,
+  "first": 9,
+  "med": 9,
+  "sd": 1
  },
  "wing-fold-sway": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 46,
+  "med": 48,
+  "sd": 79
  },
  "wing-root-color-reveal": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 4
+  "ok": true,
+  "first": 23,
+  "med": 22,
+  "sd": 38
  },
  "wipe": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 28,
+  "med": 28,
+  "sd": 16
  },
  "wire-ring-build-turn": {
   "ok": false,
   "first": 9,
   "med": 9,
-  "sd": 5
+  "sd": 1
+ },
+ "wireframe-axis-turn": {
+  "ok": true,
+  "first": 14,
+  "med": 14,
+  "sd": 15
  },
  "word-cloud-lift": {
-  "ok": false,
-  "first": 7,
-  "med": 7,
-  "sd": 2
+  "ok": true,
+  "first": 11,
+  "med": 14,
+  "sd": 13
  },
  "word-focus": {
   "ok": false,
   "first": 9,
   "med": 9,
-  "sd": 7
+  "sd": 1
  },
  "word-river-evaporate": {
-  "ok": true,
-  "first": 9,
-  "med": 11,
-  "sd": 8
+  "ok": false,
+  "first": 10,
+  "med": 10,
+  "sd": 1
  },
  "word-slam": {
-  "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 7
+  "ok": true,
+  "first": 25,
+  "med": 25,
+  "sd": 42
+ },
+ "word-sphere-arrival": {
+  "ok": true,
+  "first": 30,
+  "med": 30,
+  "sd": 24
  },
  "xiaokui-selfie-journey": {
-  "ok": false,
-  "first": 7,
-  "med": 7,
-  "sd": 2
+  "ok": true,
+  "first": 203,
+  "med": 203,
+  "sd": 55
  },
  "zoom-transition": {
   "ok": false,
-  "first": 9,
-  "med": 9,
-  "sd": 4
+  "first": 10,
+  "med": 10,
+  "sd": 1
  }
 }

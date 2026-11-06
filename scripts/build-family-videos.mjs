@@ -11,7 +11,7 @@ const VID = path.join(ROOT, 'gallery', 'videos');
 const SHOTS = path.join(ROOT, 'gallery', 'shots');
 const HTML = path.join(ROOT, 'gallery', 'index.html');
 const FORCE = process.argv.includes('--force');
-const FONT = ['C:/Windows/Fonts/msyh.ttc', 'C:/Windows/Fonts/arial.ttf'].find((p) => fs.existsSync(p));
+const FONT = 'gallery/fonts/msyh.ttc';
 
 const html = fs.readFileSync(HTML, 'utf8');
 const m = html.match(/window\.__DATA__=([\s\S]*?);<\/script>/);
@@ -21,7 +21,7 @@ const has = (p) => { try { return fs.existsSync(p) && fs.statSync(p).size > 5000
 
 let copied = 0, ken = 0, slate = 0, skip = 0, fail = 0;
 for (const f of fams) {
-  const out = path.join(VID, 'family-' + f.id + '.mp4');
+  const out = path.join(VID, 'family-' + String(f.id).replace(/[^a-zA-Z0-9_-]/g, '-') + '.mp4');
   if (!FORCE && has(out)) { skip += 1; continue; }
   let src = null;
   for (const i of f.impls || f.implementations || []) {
@@ -56,8 +56,9 @@ for (const f of fams) {
     const code = await new Promise((res) => {
       const p = spawn('ffmpeg', ['-y', '-v', 'error', '-f', 'lavfi', '-i', 'color=c=0x0b0d12:s=1280x720:d=3:r=30',
         '-vf', 'drawtext=fontfile=' + FONT + ':text=' + label + ':fontcolor=0xffffff:fontsize=44:x=(w-text_w)/2:y=(h-text_h)/2',
-        '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '24', '-movflags', '+faststart', out], { stdio: 'ignore' });
-      p.on('close', res);
+        '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '24', '-movflags', '+faststart', out], { stdio: ['ignore', 'ignore', 'pipe'] });
+      let err = ''; p.stderr.on('data', (d) => { err += d; });
+      p.on('close', (c) => { if (c !== 0) console.log('  slate fail ' + f.id + ': ' + err.slice(-160)); res(c); });
     });
     if (code === 0) slate += 1; else fail += 1;
   } else fail += 1;
