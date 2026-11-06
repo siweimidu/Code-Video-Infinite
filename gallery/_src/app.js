@@ -67,7 +67,7 @@
     }).join("") + f.libs.map(function (l) {
       return "<span class=" + Q + "tag k" + Q + ">" + esc(l) + "</span>";
     }).join("");
-    return "<div class=" + Q + "card" + Q + " tabindex=" + Q + "0" + Q + " role=" + Q + "button" + Q + " data-open=" + Q + "f:" + esc(f.id) + Q + " data-real=" + Q + (f.preview ? 1 : 0) + Q + ">" + media +
+    return "<div class=" + Q + "card" + Q + " tabindex=" + Q + "0" + Q + " role=" + Q + "button" + Q + " data-cat=" + Q + esc(f.cat) + Q + " data-open=" + Q + "f:" + esc(f.id) + Q + " data-real=" + Q + (f.preview ? 1 : 0) + Q + ">" + media +
       "<div class=" + Q + "body" + Q + (media ? "" : " tight") + Q + "><div class=" + Q + "name" + Q + ">" + esc(f.name) + "</div>" +
       "<div class=" + Q + "sub" + Q + ">" + esc(f.one || f.cat) + "</div>" +
       "<div class=" + Q + "tags" + Q + ">" + tags + "</div></div></div>";
@@ -494,6 +494,28 @@ $('#playOnly').addEventListener('change', function (e) { state.playOnly = e.targ
     var c = $("#cAll");
     if (c) c.textContent = rows.length + " / " + D.allEntries.length + " 条";
   }
+  function spy() {
+    var chips = [].slice.call(document.querySelectorAll(".chip[data-cat]"));
+    var cards = [].slice.call(document.querySelectorAll("#gridStyle .card"));
+    if (chips.length && cards.length && state.cat === "全部") {
+      var active = null;
+      for (var i = 0; i < cards.length; i++) {
+        if (cards[i].getBoundingClientRect().top <= 260) active = cards[i].getAttribute("data-cat");
+        else break;
+      }
+      if (!active) active = cards[0].getAttribute("data-cat");
+      chips.forEach(function (c) { c.classList.toggle("on", c.getAttribute("data-cat") === active); });
+    }
+    var secs = ["all", "films", "styles", "shots", "moves", "library", "tools"];
+    var cur = null;
+    secs.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= 200) cur = id;
+    });
+    [].slice.call(document.querySelectorAll(".raillinks a")).forEach(function (l) {
+      l.classList.toggle("on", l.getAttribute("href") === "#" + cur);
+    });
+  }
   var baseRender = render;
   render = function () { baseRender(); renderLib(); renderAll(); };
 
@@ -582,6 +604,12 @@ $('#playOnly').addEventListener('change', function (e) { state.playOnly = e.targ
     });
   }
   window.addEventListener('resize', fitCrop);
+  var spyTick = false;
+  window.addEventListener('scroll', function () {
+    if (spyTick) return;
+    spyTick = true;
+    requestAnimationFrame(function () { spyTick = false; spy(); });
+  }, { passive: true });
   function injectPlayer(attr, cover) {
     var kind = attr.slice(0, 1), id = attr.slice(2), src = null, pkind = "classic", label = "";
     if (kind === "m") {
