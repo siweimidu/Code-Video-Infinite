@@ -399,6 +399,12 @@ const fontCss = exists(path.join(SRC, 'fonts.css')) ? stripBom(fs.readFileSync(p
 const css = fontCss + stripBom(fs.readFileSync(path.join(SRC, 'style.css'), 'utf8'));
 const app = stripBom(fs.readFileSync(path.join(SRC, 'app.js'), 'utf8'));
 
+const __V__ = Date.now().toString(36);
+const bust = (u) => (typeof u === 'string' && /^(\.\.?\/)?(videos|covers|posters|shots)\//.test(u)) ? u + (u.indexOf('?') >= 0 ? '&' : '?') + 'v=' + __V__ : u;
+for (const m of (DATA.motions || [])) { if (m.video) m.video = bust(m.video); if (m.cover) m.cover = bust(m.cover); }
+for (const v of (DATA.videos || [])) { if (v.src) v.src = bust(v.src); }
+for (const c of (DATA.shotCards || [])) { if (c.poster) c.poster = bust(c.poster); }
+for (const coll of (DATA.library || [])) { for (const it of coll.items) { if (it.poster && it.poster.slice(0, 5) !== 'data:') it.poster = bust(it.poster); } }
 const buildStamp = new Date().toISOString().slice(0, 16).replace('T', ' ');
 const html = shell
   .split('<!--BUILD-->').join(buildStamp)
