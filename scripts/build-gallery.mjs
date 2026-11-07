@@ -281,6 +281,32 @@ const allEntries = entries.map((e) => ({
   cat: e.category || "",
   path: String(e.path || e.doc || "").slice(0, 110),
 }));
+/* ---------- 素材库缺封面的条目：生成文档式封面卡（SVG data URI，不是假视频） ---------- */
+const COLORS = {
+  "源码动画案例": ["#1b1b1f", "#3a3a44"], "制作系统": ["#10202e", "#1d3b52"], "场景起点": ["#1d2a20", "#33513a"],
+  "源码组件": ["#2a1f10", "#52391c"], "物件模型": ["#251a2e", "#432f52"], "MG 签名技法": ["#2b1414", "#542525"],
+  "动效函数": ["#11242b", "#1e4653"], "起始 look": ["#2a2416", "#514428"], "网页设计学校": ["#1a1a2e", "#33335c"],
+  "出图模板类": ["#241a10", "#4a3418"], "风格实现": ["#141a24", "#243447"], "研究清单（只读）": ["#1a1a1a", "#333333"]
+};
+function libPosterSvg(label, title, cat) {
+  const c = COLORS[label] || ["#1c1c22", "#33333c"];
+  const t = String(title || "").replace(/[<>&"]/g, (m) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", '"': "&quot;" }[m])).slice(0, 34);
+  const sub = String(cat || "").slice(0, 18);
+  const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360">' +
+    '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="' + c[0] + '"/><stop offset="1" stop-color="' + c[1] + '"/></linearGradient></defs>' +
+    '<rect width="640" height="360" fill="url(#g)"/>' +
+    '<rect x="28" y="28" width="584" height="304" rx="16" fill="none" stroke="rgba(255,255,255,.18)"/>' +
+    '<text x="52" y="86" fill="rgba(255,255,255,.55)" font-size="18" font-family="sans-serif">' + label + '</text>' +
+    '<text x="52" y="180" fill="#fff" font-size="34" font-family="sans-serif" font-weight="600">' + t + '</text>' +
+    '<text x="52" y="226" fill="rgba(255,255,255,.6)" font-size="18" font-family="sans-serif">' + sub + '</text>' +
+    '</svg>';
+  return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+}
+for (const coll of library) {
+  for (const it of coll.items) {
+    if (!it.poster) it.poster = libPosterSvg(coll.label, it.title, it.cat);
+  }
+}
 const libTotal = library.reduce((s, c) => s + c.count, 0);
 const dedicated = entries.filter((e) => ["shot-card", "motion-entry", "tool"].indexOf(e.collection) >= 0).length;
 const styleCount = entries.filter((e) => e.collection === "style").length;

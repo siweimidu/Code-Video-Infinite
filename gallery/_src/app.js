@@ -563,11 +563,13 @@ $('#playOnly').addEventListener('change', function (e) { state.playOnly = e.targ
     if (it.hint) h += "<h4>怎么用</h4><pre>" + esc(it.hint) + "</pre>";
     if (it.path) h += "<h4>入口</h4><pre>" + esc(it.path) + "</pre>";
     if (it.link) h += "<h4>来源</h4><p class=" + Q + "libmeta" + Q + ">" + esc(it.link) + "</p>";
-    if (it.poster) h += "<h4>预览</h4><img src=" + Q + it.poster + Q + " style=" + Q + "width:100%;border-radius:12px;border:1px solid var(--border)" + Q + ">";
+    if (it.player && it.playerKind !== "module") h += "<div class=" + Q + "frame wise" + Q + " id=" + Q + "libPlayHost" + Q + "></div><p class=" + Q + "note" + Q + ">站内播放器（实时渲染）</p>";
+    else if (it.poster) h += "<h4>预览</h4><img src=" + Q + it.poster + Q + " style=" + Q + "width:100%;border-radius:12px;border:1px solid var(--border)" + Q + ">";
     $("#mTitle").textContent = it.title || it.id;
     $("#mBody").innerHTML = h;
     $("#modal").classList.add("on");
     document.body.style.overflow = "hidden";
+    (function(){var hh=document.getElementById("libPlayHost"); if(hh && it.player && it.playerKind !== "module"){ var f=document.createElement("iframe"); f.className="wise-frame"; f.setAttribute("allow","autoplay; fullscreen"); f.src=it.player; hh.appendChild(f); }})();
   }
 
   function renderAll() {
