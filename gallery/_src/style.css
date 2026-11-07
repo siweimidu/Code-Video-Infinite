@@ -450,3 +450,6 @@ body{padding-left:224px}
 
 .card{content-visibility:auto;contain-intrinsic-size:320px}
 .allwrap{content-visibility:auto;contain-intrinsic-size:600px}
+
+.frame.wise{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#0a0a0a}
+.frame.wise .wise-frame{position:absolute;inset:0;width:100%;height:100%;border:0}
