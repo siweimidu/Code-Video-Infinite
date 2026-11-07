@@ -337,7 +337,7 @@ const QC = (() => {
 })();
 const videoOfEffect = (id) => {
   const f = path.join(OUT, 'videos', 'wise-' + id + '.mp4');
-  if (!exists(f) || fs.statSync(f).size < 100000) return null;
+  if (!exists(f) || fs.statSync(f).size < 2500) return null;
   return 'videos/wise-' + id + '.mp4';
 };
 for (const m of motions) { m.cover = coverOfEffect(m.id); m.video = videoOfEffect(m.id); }
