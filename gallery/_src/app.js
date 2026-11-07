@@ -314,11 +314,8 @@
       if (o.code) acts.push(abtn('复制视频代码', '', 'code'));
       if (o.code) body += details('参考实现源码（前 90 行）', esc(o.code));
     } else if (kind === 'm') {
-      if (o.player) {
-        window.__wiseUrl = o.player;
-        body += '<div class="frame wise" id="wiseHost"></div>' +
-          '<p class="note" style="margin-top:10px">站内播放器（wise 实时渲染，与官网一致）· <a class="linkplay" href="' + o.player + '" target="_blank">新窗口打开</a></p>';
-      }
+      if (o.video) body += vplayer(o.video, o.cover, { audio: false, loop: true, autoplay: false });
+      else if (o.poster || o.cover) body += '<div class="frame poster"><img src="' + (o.cover || o.poster) + '" alt=""></div>';
       else if (o.cover) body += '<img class="dimg" src="' + o.cover + '" alt="">';
       body += '<div class="kv" style="margin-top:20px"><b>分类</b><span>' + esc(o.cat) + '</span><b>时长</b><span>' + durLabel(o.ms) + '</span><b>循环</b><span>' + (o.loop ? '是' : '否') + '</span></div>';
       body += '<p class="lead">' + (o.video ? '本地 mp4（30fps），页内直接播放。' : '暂无本地录像，用右上角入口到播放器里看。') + '</p>';
