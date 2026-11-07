@@ -60,7 +60,7 @@ ws.onmessage = (e) => {
 const send = (m, p) => new Promise((r) => { const i = ++id; pending.set(i, r); ws.send(JSON.stringify({ id: i, method: m, params: p || {} })); });
 const ev = async (x) => { const r = await send('Runtime.evaluate', { expression: x, returnByValue: true, awaitPromise: true }); return r.result && r.result.result ? r.result.result.value : null; };
 
-const base = 'http://localhost:' + HTTP + '/engines/wise-motion/catalog/index.html';
+const base = 'file:///' + path.join(ROOT, 'engines/wise-motion/catalog/index.html').split(path.sep).join('/');
 let ok = 0, fail = 0;
 const t0 = Date.now();
 for (let i = 0; i < todo.length; i++) {
@@ -75,7 +75,7 @@ for (let i = 0; i < todo.length; i++) {
     await sleep(250);
     frames = [];
     await send('Page.startScreencast', { format: 'jpeg', quality: 88, maxWidth: 1680, maxHeight: 1050, everyNthFrame: 1 });
-    await sleep(dur * 1000);
+    await sleep((dur + 0.6) * 1000);
     await send('Page.stopScreencast');
     const raw = frames.filter((x) => x && x.d);
     if (raw.length < 30) { fail++; console.log('  ' + eid + ' 帧少 ' + raw.length); continue; }
@@ -96,7 +96,7 @@ for (let i = 0; i < todo.length; i++) {
     picked.forEach((b, k) => fs.writeFileSync(path.join(dir, String(k).padStart(5, '0') + '.jpg'), Buffer.from(b, 'base64')));
     const out = path.join(OUT, 'wise-' + eid + '.mp4');
     const cw = Math.round(box.w), chh = Math.round(box.h);
-    const filter = 'crop=' + cw + ':' + chh + ':' + Math.round(box.x) + ':' + Math.round(box.y) + ',scale=1280:-2';
+    const filter = 'crop=' + cw + ':' + chh + ':' + Math.round(box.x) + ':' + Math.round(box.y) + ',crop=iw:ih*0.76:0:0,scale=1280:-2';
     const code = await new Promise((res) => {
       const p = spawn('ffmpeg', ['-y', '-v', 'error', '-framerate', String(FPS), '-i', path.join(dir, '%05d.jpg'),
         '-vf', filter, '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '20', '-movflags', '+faststart', out], { stdio: 'ignore' });

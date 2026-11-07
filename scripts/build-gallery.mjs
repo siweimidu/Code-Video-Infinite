@@ -336,9 +336,8 @@ const QC = (() => {
   try { return JSON.parse(fs.readFileSync(path.join(OUT, 'videos', '_qc.json'), 'utf8')); } catch (e) { return {}; }
 })();
 const videoOfEffect = (id) => {
-  const p = path.join(OUT, 'videos', 'wise-' + id + '.mp4');
-  if (!exists(p) || fs.statSync(p).size <= 1500) return null;
-  return "videos/wise-" + id + ".mp4";
+  // 自动录屏质量不达标（帧重复、动效已播完），暂不下发；等按 Remotion 源码正式渲染再开。
+  return null;
 };
 for (const m of motions) { m.cover = coverOfEffect(m.id); m.video = videoOfEffect(m.id); }
 const coveredMotions = motions.filter((m) => m.cover).length;

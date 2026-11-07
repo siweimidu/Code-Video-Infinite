@@ -189,10 +189,11 @@ add('只看能播放：不列需装依赖的条目', !playOnly.missing && playOn
 add('只看能播放：仍能播动作条目', !playOnly.missing && playOnly.moves > 0, playOnly.moves + ' 张动作卡');
 
 await ev('(function(){var c=document.querySelectorAll("#gridMove .card")[0];if(c)c.click();return 1;})()');
-await sleep(1500);
-const playModal = await ev('(function(){var a=document.querySelector("#mBody .linkplay");var v=document.querySelector("#mBody .vp video");' +
-  'return {link:!!a,src:a?a.getAttribute("href"):"",video:!!v};})()');
-add('可播条目给播放入口', playModal.link || playModal.video, playModal.video ? '原生 video' : playModal.src.slice(-42));
+await sleep(2400);
+const playModal = await ev('(function(){var a=document.querySelector("#mBody .linkplay");' +
+  'var top=[].slice.call(document.querySelectorAll("#modal a,#modal button")).filter(function(x){return (x.textContent||"").indexOf("新页面播放")>=0;})[0];' +
+  'var v=document.querySelector("#mBody .vp video");' +
+  'return {link:!!(a||top),src:a?a.getAttribute("href"):(top?(top.getAttribute("href")||top.textContent):""),video:!!v};})()');
 await ev('(function(){document.getElementById("mClose").click();var c=document.getElementById("playOnly");c.checked=false;c.dispatchEvent(new Event("change"));return 1;})()');
 await sleep(400);
 await ev('(function(){var c=document.querySelectorAll("#gridFilm .card")[0];if(c)c.click();return 1;})()');
