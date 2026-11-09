@@ -314,17 +314,14 @@
       if (o.code) acts.push(abtn('复制视频代码', '', 'code'));
       if (o.code) body += details('参考实现源码（前 90 行）', esc(o.code));
     } else if (kind === 'm') {
-      if (o.video) body += vplayer(o.video, o.cover, { audio: false, loop: true, autoplay: false });
-      else if (o.poster || o.cover) body += '<div class="frame poster"><img src="' + (o.cover || o.poster) + '" alt=""></div>';
-      else if (o.cover) body += '<img class="dimg" src="' + o.cover + '" alt="">';
+      if (o.cover || o.poster) body += '<div class="frame poster"><img src="' + (o.cover || o.poster) + '" alt=""></div>';
       body += '<div class="kv" style="margin-top:20px"><b>分类</b><span>' + esc(o.cat) + '</span><b>时长</b><span>' + durLabel(o.ms) + '</span><b>循环</b><span>' + (o.loop ? '是' : '否') + '</span></div>';
-      body += '<p class="lead">' + (o.video ? '本地 mp4（30fps），页内直接播放。' : '暂无本地录像，用右上角入口到播放器里看。') + '</p>';
+      body += '<p class="lead">动效在 <b>wise-motion 播放器</b>里查看（新页面打开，实时渲染，与官方目录完全一致）。</p>';
       COPY.prompt = o.t + '（' + o.id + '）' + NL + 'node engines/wise-motion/scripts/export.mjs ' + o.id + ' --out-dir <你的工程>';
       COPY.code = 'node engines/wise-motion/scripts/show.mjs ' + o.id + ' --details' + NL + 'node engines/wise-motion/scripts/export.mjs ' + o.id + ' --out-dir <你的工程>';
-      acts.push(abtn('复制提示词', 'primary', 'prompt'));
+      if (o.player) acts.push('<a class="abtn primary" href="' + o.player + '" target="_blank" rel="noopener">▶ 打开 wise-motion</a>');
+      acts.push(abtn('复制提示词', '', 'prompt'));
       acts.push(abtn('复制视频代码', '', 'code'));
-      if (o.video) acts.push('<a class="abtn" href="' + o.video + '" target="_blank">新页面播放</a>');
-      else if (o.player) acts.push('<a class="abtn" href="' + o.player + '" target="_blank">完整播放器</a>');
     } else if (kind === 'v') {
       body += vplayer(o.src, null, { audio: !!o.audio, loop: false });
       body += '<div class="kv" style="margin-top:20px"><b>音轨</b><span>' + (o.audio ? 'aac 立体声' : '无音轨') + '</span><b>大小</b><span>' + o.mb + ' MB</span></div>';
