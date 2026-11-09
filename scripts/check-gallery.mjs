@@ -150,8 +150,8 @@ add('素材库有可播条目', playable.libPlayable > 0, playable.libPlayable +
 const movePlay = await ev('(function(){var cards=document.querySelectorAll("#gridMove .card");if(!cards.length)return {ok:false};' +
   'cards[0].click();return {ok:true};})()');
 await sleep(1500);
-const moveFrame = await ev('(function(){var l=document.querySelector("#mBody .linkplay");var v=document.querySelector("#mBody .vp video");var im=document.querySelector("#mBody .dimg, #mBody .frame.wise iframe");' +
-  'return {has:!!(v||im),src:v?v.getAttribute("src"):(l?l.getAttribute("href"):"")};})()');
+const moveFrame = await ev('(function(){var a=document.querySelector("#mActions a[href*=\\"wise-motion\\"]");var im=document.querySelector("#mBody .frame.poster img, #mBody .dimg");return {has:!!(a||im),src:a?a.getAttribute("href"):""};})()');
+
 
 add('点动作卡有真实帧+播放入口', moveFrame.has, moveFrame.src.slice(-46));
 await ev('(function(){document.getElementById("mClose").click();return 1;})()');
