@@ -66,7 +66,7 @@ ws.onmessage = (e) => {
 const send = (m, p) => new Promise((r) => { const i = ++id; pending.set(i, r); ws.send(JSON.stringify({ id: i, method: m, params: p || {} })); });
 const ev = async (x) => { const r = await send('Runtime.evaluate', { expression: x, returnByValue: true }); return r.result && r.result.result ? r.result.result.value : null; };
 
-const fileUrl = 'file:///' + CATALOG.split(path.sep).join('/');
+const fileUrl = 'http://localhost:' + (num('--serve', 8099)) + '/engines/wise-motion/catalog/index.html';
 const TMP = path.join(os.tmpdir(), 'cvi-wise-frames');
 let ok = 0, fail = 0;
 const t0 = Date.now();
@@ -75,9 +75,9 @@ for (let i = 0; i < todo.length; i++) {
   const eid = todo[i];
   await send('Page.navigate', { url: fileUrl + '?r=' + i + '#' + eid });
   let box = null;
-  for (let w = 0; w < 45 && !box; w++) {
+  for (let w = 0; w < 60 && !box; w++) {
     await sleep(200);
-    box = await ev('(function(){var e=document.querySelector("#preview");if(!e)return null;var r=e.getBoundingClientRect();' +
+    box = await ev('(function(){var e=document.querySelector("#preview iframe");if(!e)return null;var r=e.getBoundingClientRect();' +
       'if(r.width<300)return null;return {x:Math.round(r.x),y:Math.round(r.y),w:Math.round(r.width),h:Math.round(r.height)};})()');
   }
   await sleep(WARMUP);   // 等 wise 播放器真正出画面
